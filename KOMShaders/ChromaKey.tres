@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bnrifxo7ggotb"]
+
+[ext_resource type="Shader" path="res://KOMShaders/ChromaKey.gdshader" id="1_eyxep"]
+
+[resource]
+shader = ExtResource("1_eyxep")
+shader_parameter/key_color = Color(0.847059, 0.862745, 0.933333, 1)
+shader_parameter/similarity = 0.4
+shader_parameter/smoothness = 0.08
+shader_parameter/spill = 0.1

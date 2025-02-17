@@ -1,0 +1,156 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxcyiuwx82tuu"]
+
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="1_top1o"]
+[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="2_u8v80"]
+[ext_resource type="Script" path="res://Scripts/CreditsButton.gd" id="3_gc61a"]
+
+[node name="Credits" type="ColorRect"]
+visible = false
+z_index = 1
+offset_left = -488.0
+offset_top = -447.0
+offset_right = 482.0
+offset_bottom = 93.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FinnStuff" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 27.0
+offset_right = 925.0
+offset_bottom = 505.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.286275, 0.00784314, 1)
+theme_override_fonts/normal_font = ExtResource("1_top1o")
+bbcode_enabled = true
+text = "[center]Credits
+[wave]
+A Game By
+Finn Tanguay
+(@Karbonicc)
+Contact:
+FadingClubGames@gmail.com
+"
+
+[node name="PatronTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 157.0
+offset_right = 868.0
+offset_bottom = 227.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_top1o")
+bbcode_enabled = true
+text = "[center][wave]
+----------------------------------------------------------
+Patreon Supporters
+----------------------------------------------------------
+"
+
+[node name="PatronCredits" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 222.0
+offset_right = 702.0
+offset_bottom = 510.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_top1o")
+bbcode_enabled = true
+text = "[center][wave]
+RandolfTheMediocre
+Phorosys
+Spoomk
+Scott Steffes
+Avagant
+Evan Delagardelle
+Anonicus
+Batworks Software
+Complete Failure
+Fignuts21
+Hank Johnson
+Indecisive Yama
+Just Ethan Tbh
+Locket
+Nyx of Wind
+"
+
+[node name="PatronCredits2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 674.0
+offset_top = 222.0
+offset_right = 860.0
+offset_bottom = 510.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_top1o")
+bbcode_enabled = true
+text = "[center][wave]
+Lucio Rodriguez
+Ame Abyssal
+RoboticAlienDude
+Mishrock
+Shy_Ninja
+Yioskamt
+Oneiromoon
+Sincore777
+Yuvin!
+BrainBlast
+Jagd_Katze
+Tsuskido
+Kahoona
+frogmanroswell "
+
+[node name="LocalTitle" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 160.0
+offset_right = 428.0
+offset_bottom = 230.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_top1o")
+bbcode_enabled = true
+text = "[center][wave]
+----------------------------------------------------------
+Localisation Teams
+----------------------------------------------------------
+"
+
+[node name="LocalCredits" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 200.0
+offset_right = 449.0
+offset_bottom = 836.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_top1o")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center][wave]
+----------------------------------------------------------
+Japanese Localisation       ローカリゼーション (日本語)
+Kurono Studios        クロノ・スタジオ
+Sam Lewis Kurono      クロノ サム
+Hishiai                          ひしあい
+Miyuka Yamauchi     山内 美優香
+Alexander Golding       ゴールディン アレックス
+Samuel Ruddy        ィー サムエル
+----------------------------------------------------------
+Russian Localisation
+Script Translation - Poptepip (vk.com/poptepip)
+Cyrillic Font and Texture Translation - Birzavr
+----------------------------------------------------------
+Portuguese Localisation
+Script Translation
+Uneven Prankster & Sarqueen
+----------------------------------------------------------"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+modulate = Color(0.431301, 0.255126, 0.101887, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 618.0
+offset_top = 27.0
+offset_right = 650.0
+offset_bottom = 59.0
+texture_normal = ExtResource("2_u8v80")
+script = ExtResource("3_gc61a")

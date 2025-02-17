@@ -1,0 +1,160 @@
+[gd_resource type="Resource" script_class="ItemProtoset" load_steps=2 format=3 uid="uid://1vk2qehuhumm"]
+
+[ext_resource type="Script" path="res://addons/gloot/core/item_protoset.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+json_data = "[
+    {
+        \"description\": \"A rusted key. Someone put the rust there on purpose.\",
+        \"height\": 2,
+        \"id\": \"Key01\",
+        \"image\": \"res://Sprites/Items/Key.png\",
+        \"name\": \"Basic Key\",
+        \"usable\": \"false\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"A strange metal block. You don't know what it does, but it must do something, right?\",
+        \"health\": -2,
+        \"height\": 1,
+        \"id\": \"Block\",
+        \"name\": \"Metal Block\",
+        \"usable\": \"true\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"An unknown syringe, with an unknown bright red fluid in it.\",
+        \"health\": 3,
+        \"height\": 2,
+        \"id\": \"Syringe1\",
+        \"image\": \"res://Sprites/Items/Syringe1.png\",
+        \"mana\": -2,
+        \"name\": \"Red Syringe\",
+        \"usable\": \"true\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"An unknown syringe, with some sort of purple stuff in it?\",
+        \"health\": -2,
+        \"height\": 2,
+        \"id\": \"Syringe2\",
+        \"image\": \"res://Sprites/Items/Syringe2.png\",
+        \"mana\": 2,
+        \"name\": \"Purple Syringe\",
+        \"usable\": \"true\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"A rusted, but very special key.\",
+        \"height\": 2,
+        \"id\": \"QueenKey\",
+        \"image\": \"res://Sprites/Items/QueenKey.png\",
+        \"name\": \"Queen Key\",
+        \"usable\": \"false\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"A plastic keycard.\",
+        \"height\": 1,
+        \"id\": \"KeyCard\",
+        \"image\": \"res://Sprites/Items/KeyCard.png\",
+        \"name\": \"Nurse KeyCard\",
+        \"usable\": \"false\",
+        \"width\": 2
+    },
+    {
+        \"description\": \"A smelly Crystal.\",
+        \"height\": 1,
+        \"id\": \"Sulfur\",
+        \"image\": \"res://Sprites/Items/Sulfur.png\",
+        \"name\": \"Sulfur\",
+        \"usable\": \"false\",
+        \"width\": 2
+    },
+    {
+        \"description\": \"A Poisonous Crystal Chemical.\",
+        \"height\": 2,
+        \"id\": \"DDT\",
+        \"image\": \"res://Sprites/Items/DDT.png\",
+        \"name\": \"DDT\",
+        \"usable\": \"false\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"A Noxious Cleaner.\",
+        \"height\": 1,
+        \"id\": \"Bromine\",
+        \"image\": \"res://Sprites/Items/Chemical.png\",
+        \"name\": \"Bromine\",
+        \"usable\": \"false\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"An Empty Syringe, used for collecting DNA Samples.\",
+        \"height\": 2,
+        \"id\": \"EmptySyringe\",
+        \"image\": \"res://Sprites/Items/DNA1.png\",
+        \"name\": \"Empty Syringe\",
+        \"usable\": \"false\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"A container full of valuable DNA information. Don't Drop it.\",
+        \"height\": 2,
+        \"id\": \"DNASyringe\",
+        \"image\": \"res://Sprites/Items/DNA2.png\",
+        \"name\": \"Filled Syringe\",
+        \"usable\": \"false\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"It's not actually a key, but an important component of life.\",
+        \"height\": 2,
+        \"id\": \"ParagonKey\",
+        \"image\": \"res://Sprites/Items/ParagonKey.png\",
+        \"name\": \"Paragon Key\",
+        \"usable\": \"false\",
+        \"width\": 2
+    },
+    {
+        \"CookTime\": 0,
+        \"description\": \"Fresh, hand-cut potatoes prepared in 100% sunflower oil\",
+        \"health\": 3,
+        \"height\": 1,
+        \"id\": \"Fries\",
+        \"image\": \"res://KOMSprites/innout/fries.png\",
+        \"usable\": \"true\",
+        \"width\": 2
+    },
+    {
+        \"CookTime\": 0,
+        \"description\": \"Two American beef patties, with hand-leafed lettuce, tomato, spread, with or without onions, stacked high on a freshly baked bun.\",
+        \"height\": 2,
+        \"id\": \"Burger\",
+        \"image\": \"res://KOMSprites/innout/In-N-Out-Burger.png\",
+        \"name\": \"Burger\",
+        \"width\": 2
+    },
+    {
+        \"CookTime\": 0,
+        \"description\": \"Fresh, hand-cut potatoes\",
+        \"health\": -1,
+        \"height\": 1,
+        \"id\": \"FFries\",
+        \"image\": \"res://KOMSprites/innout/FryPile.png\",
+        \"name\": \"Fresh Fries\",
+        \"usable\": \"true\",
+        \"width\": 2
+    },
+    {
+        \"description\": \"Ethically sourced raw meat\",
+        \"health\": -5,
+        \"height\": 1,
+        \"id\": \"RawPatty\",
+        \"image\": \"res://KOMSprites/innout/raw-patty.png\",
+        \"name\": \"Raw Patty\",
+        \"usable\": \"true\",
+        \"width\": 2
+    }
+]"

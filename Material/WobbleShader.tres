@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3]
+
+[ext_resource type="Shader" uid="uid://v3wceittcv86" path="res://Shaders/SpriteWobble.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://b6jlfqmcgtojg" path="res://textures/Noise.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://rytqyvcbyvqo" path="res://Sprites/Vili.png" id="3"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/Amp = Vector3(0.1000000014901161, 0, 0)
+shader_parameter/Noise_Texture = ExtResource("2")
+shader_parameter/Texture = ExtResource("3")

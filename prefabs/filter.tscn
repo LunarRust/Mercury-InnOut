@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b63tux4o6hnqp"]
+
+[ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="1_d4yig"]
+
+[node name="Filter" type="ColorRect"]
+z_index = 2
+material = ExtResource("1_d4yig")
+offset_right = 969.0
+offset_bottom = 538.0
+mouse_filter = 2

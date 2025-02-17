@@ -1,0 +1,30 @@
+[gd_resource type="VisualShader" load_steps=2 format=3]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_55vdc"]
+source = 1
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform sampler2D screen_tex_frg_2 : hint_screen_texture;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(screen_tex_frg_2, SCREEN_UV);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out2p0.xyz);
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_55vdc")
+nodes/fragment/2/position = Vector2(-60, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)

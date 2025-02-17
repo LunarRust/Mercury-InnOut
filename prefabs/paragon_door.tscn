@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" uid="uid://8t8krj3l837h" path="res://Models/ParagonDoor.blend" id="1"]
+[ext_resource type="Script" path="res://Scripts/ItemAnimTrigger.cs" id="2"]
+[ext_resource type="Texture2D" uid="uid://rrseiiie7al0" path="res://Sprites/Sigil.png" id="3"]
+[ext_resource type="Script" path="res://Scripts/Tweener3D.cs" id="4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4hxbd"]
+size = Vector3(15, 15, 1)
+
+[sub_resource type="Animation" id="Animation_vihqm"]
+length = 0.001000000047497451
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sigil:alpha_hash_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.11]
+}
+
+[sub_resource type="Animation" id="Animation_67b3d"]
+resource_name = "Wobble"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sigil:alpha_hash_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.11, 1.61, 0.11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_80vlf"]
+_data = {
+"RESET": SubResource("Animation_vihqm"),
+"Wobble": SubResource("Animation_67b3d")
+}
+
+[node name="ParagonDoor" type="StaticBody3D"]
+transform = Transform3D(-1.573610042271412e-08, 0, -0.3600000143051147, 0, 0.3600000143051147, 0, 0.3600000143051147, 0, -1.573610042271412e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, -7.105429898699844e-15, 0, 1, 0, 7.105429898699844e-15, 0, 1, -4.768369876728684e-07, 0, 0)
+shape = SubResource("BoxShape3D_4hxbd")
+
+[node name="ParagonDoor" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 7.105429898699844e-15, 0, 1, 0, -7.105429898699844e-15, 0, 1, 2.049650049684715e-08, 0, 0.4689050018787384)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(2.777780055999756, 0, 2.842169926600864e-14, 0, 2.777780055999756, 0, -2.842169926600864e-14, 0, 2.777780055999756, -1.621249975869432e-05, 0, 1.525879997643642e-05)
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("anim")]
+script = ExtResource("2")
+itemMatch = "Paragon Key"
+anim = NodePath("../ParagonDoor/AnimationPlayer")
+
+[node name="Sigil" type="Sprite3D" parent="."]
+transform = Transform3D(-3.21641993522644, -0.0003923529875464737, -0.1518969982862473, -0.0003921989991795272, -3.21995997428894, 0.01661729998886585, -0.1518969982862473, 0.01661729998886585, 3.216370105743408, 8.679659657673255e-08, 0, 1.985679984092712)
+modulate = Color(0, 0.6078429818153381, 0.2666670083999634, 1)
+alpha_cut = 3
+alpha_scissor_threshold = 0.4799999892711639
+alpha_hash_scale = 0.1099999994039536
+texture = ExtResource("3")
+script = ExtResource("4")
+Time = 5.0
+endrotation = Vector3(0, 0, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sigil"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_80vlf")
+}
+autoplay = "Wobble"
+
+[editable path="ParagonDoor"]

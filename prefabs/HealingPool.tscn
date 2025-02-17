@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Material" uid="uid://diyvtj3fc7hwj" path="res://textures/Metal1.tres" id="1"]
+[ext_resource type="Material" uid="uid://bvwq24jl4x8r4" path="res://textures/WaterCaustic3.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://csjqep7wtnqao" path="res://Sprites/Particles/GenericPart.png" id="3"]
+[ext_resource type="Script" path="res://Scripts/CausticRegion.cs" id="4"]
+[ext_resource type="AudioStream" uid="uid://dw6wtcsoyyeri" path="res://Sounds/HealPoolAmb.ogg" id="5"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_k2yvc"]
+inner_radius = 0.8700000047683716
+outer_radius = 1.151999950408936
+rings = 8
+ring_segments = 3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3ahq4"]
+top_radius = 1.0
+height = 0.6100000143051147
+radial_segments = 8
+
+[sub_resource type="Curve" id="Curve_d1kdk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.4878050088882446, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lamx2"]
+curve = SubResource("Curve_d1kdk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bc0yx"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_lamx2")
+turbulence_enabled = true
+turbulence_noise_scale = 1.115000009536743
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxogu"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.7764710187911987, 0.9725490212440491, 1)
+albedo_texture = ExtResource("3")
+disable_receive_shadows = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_a44q0"]
+material = SubResource("StandardMaterial3D_mxogu")
+size = Vector2(0.1899999976158142, 0.1599999964237213)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvsqn"]
+size = Vector3(2.76282000541687, 2.439579963684082, 3.056400060653687)
+
+[node name="HealPool" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.799999952316284, 0, 0, 0, 1.799999952316284, 0, 0, 0, 1.799999952316284, 0, 0.1068819984793663, 0)
+material_override = ExtResource("1")
+mesh = SubResource("TorusMesh_k2yvc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.799999952316284, 0, 0, 0, 1.799999952316284, 0, 0, 0, 1.799999952316284, 0, -0.3740879893302917, 0)
+material_override = ExtResource("2")
+mesh = SubResource("CylinderMesh_3ahq4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23819600045681, 0)
+light_color = Color(0.4784309864044189, 0.7803919911384583, 1, 1)
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+omni_range = 2.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_bc0yx")
+draw_pass_1 = SubResource("QuadMesh_a44q0")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("4")
+amount = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02410889975726604, 0.7197880148887634, -0.1535640060901642)
+shape = SubResource("BoxShape3D_yvsqn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5")
+volume_db = -10.39999961853027
+autoplay = true
+max_distance = 8.0
+attenuation_filter_db = 0.0

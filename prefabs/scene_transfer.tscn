@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/SceneTransfer.cs" id="1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jgxo"]
+size = Vector3(1.66414999961853, 1.960569977760315, 1.893470048904419)
+
+[node name="SceneTransfer" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.854830026626587, -6, 13)
+visible = false
+script = ExtResource("1")
+targetPosition = Vector3(0.5, 1, 0.5)
+
+[node name="Bounds" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5jgxo")
+
+[connection signal="area_entered" from="." to="." method="OnBodyEntered"]

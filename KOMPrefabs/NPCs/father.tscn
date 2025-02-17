@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0bn44i1ayger"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_r5id2"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2_xnhc3"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="3_bdes7"]
+[ext_resource type="Script" path="res://Scripts/FamilyBehavior.cs" id="3_iwpws"]
+[ext_resource type="PackedScene" uid="uid://br8x8rhnt8ll2" path="res://Models/Father.blend" id="4_tq2kk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
+radius = 0.23274
+height = 1.6038
+
+[node name="Father" type="StaticBody3D"]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 17.5, 7, 94.5)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a2lqy")
+
+[node name="DialogueSystem" type="Node3D" parent="."]
+script = ExtResource("1_r5id2")
+npcName = "Father"
+Dialogue = "A Flower is a very special thing.
+It's beauty is captivating, and yet, it brings a stench of death, a deadly poison. What kind of flower can I give to you, sir?
+Ah, the dog wants me? I'll be there."
+LookDescription = "The man stands taller than you. He has a smug look on his face that makes your skin crawl. "
+TouchDescription = "A soft, touching handshake. It lingers longer than you would like."
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="."]
+script = ExtResource("2_xnhc3")
+HP = 99999
+
+[node name="NpcToNpcHealthHandler" type="Node3D" parent="." node_paths=PackedStringArray("CoreHealthHandler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_bdes7")
+CoreHealthHandler = NodePath("../HealthHandler")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("3_iwpws")
+
+[node name="Father" parent="." instance=ExtResource("4_tq2kk")]
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, -0.99554, 0)
+
+[node name="Skeleton3D" parent="Father/Armature" index="0"]
+bones/0/position = Vector3(2.12388e-08, 2.78394, -0.200087)
+bones/0/rotation = Quaternion(0.0748935, 1.18874e-07, 8.92799e-09, 0.997192)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.0140377, -6.68747e-09, -4.10732e-08, 0.999901)
+bones/2/rotation = Quaternion(0.00866456, -0.0331719, -0.606151, 0.79461)
+bones/3/rotation = Quaternion(-0.24829, 0.149303, -0.664686, 0.688661)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.312127, -0.0700249, -0.116383, 0.940281)
+bones/5/rotation = Quaternion(-0.00517019, 9.79256e-08, -0.0215049, 0.999755)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0795716, -9.9681e-15, 1.89714e-08, 0.996829)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0485515, 1.79791e-14, 1.15756e-08, 0.998821)
+bones/8/rotation = Quaternion(-0.0392521, 0.0175981, 0.0270122, 0.998709)
+bones/9/rotation = Quaternion(0.00866441, 0.0331717, 0.606151, 0.794611)
+bones/10/rotation = Quaternion(-0.24829, -0.149303, 0.664685, 0.688661)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(0.312127, 0.0700249, 0.116383, 0.940281)
+bones/12/rotation = Quaternion(-0.0051702, -9.81075e-08, 0.0215049, 0.999755)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(-7.22535e-08, 2.78394, -0.200087)
+bones/13/rotation = Quaternion(-0.327721, -0.626577, -0.327721, 0.626577)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.841467, 0.173827, 0.203795, -0.469238)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.0887925, 0.0214608, 0.569389, 0.816977)
+bones/16/rotation = Quaternion(0.163691, -0.0326325, -0.864171, 0.474709)
+bones/17/position = Vector3(7.22535e-08, 2.78394, -0.200087)
+bones/17/rotation = Quaternion(-0.327721, 0.626577, 0.327721, 0.626577)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.841467, -0.173827, -0.203795, -0.469238)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.0887925, -0.0214608, -0.569389, 0.816977)
+bones/20/rotation = Quaternion(0.163691, 0.0326325, 0.864171, 0.474709)
+
+[node name="AnimationPlayer" parent="Father" index="1"]
+autoplay = "Idle"
+
+[editable path="Father"]

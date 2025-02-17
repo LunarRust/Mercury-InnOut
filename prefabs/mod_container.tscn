@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://px2baxucxk0h"]
+
+[ext_resource type="Script" path="res://Scripts/ModContainer.cs" id="1"]
+[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://vyg54i670nrq" path="res://Sprites/UI/PsychopompFace64.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://8r5jhp6ga36p" path="res://Sprites/UI/PlayButton.png" id="4"]
+[ext_resource type="Script" path="res://Scripts/WorkshopButton.gd" id="5"]
+
+[node name="ModContainer" type="ColorRect" node_paths=PackedStringArray("playButton")]
+custom_minimum_size = Vector2(703.115, 86.475)
+size_flags_horizontal = 3
+color = Color(0.223529, 0.101961, 0.0588235, 1)
+script = ExtResource("1")
+playButton = NodePath("Play Button")
+
+[node name="ModName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 75.0
+offset_bottom = 26.0
+theme = ExtResource("2")
+text = "Mod Name"
+
+[node name="ModType" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 20.0
+offset_right = 140.0
+offset_bottom = 43.0
+theme = ExtResource("2")
+text = "Mod Type: Unknown"
+
+[node name="ModDescript" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 39.0
+offset_right = 267.0
+offset_bottom = 74.0
+theme = ExtResource("2")
+text = "Mod Description: This is a dummy mod.
+It serves as a standin for real mods."
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 12.0
+offset_right = 688.0
+offset_bottom = 76.0
+texture = ExtResource("3")
+expand_mode = 1
+
+[node name="Play Button" type="Button" parent="."]
+modulate = Color(1, 0.152941, 0.254902, 1)
+layout_mode = 0
+offset_left = 497.0
+offset_top = 48.0
+offset_right = 610.0
+offset_bottom = 80.0
+theme = ExtResource("2")
+theme_override_font_sizes/font_size = 24
+text = "Play"
+
+[node name="PlayButton" type="Sprite2D" parent="Play Button"]
+position = Vector2(20, 15)
+texture = ExtResource("4")
+
+[node name="Play Button2" type="Button" parent="." node_paths=PackedStringArray("ParentRect")]
+modulate = Color(1, 0.152941, 0.254902, 1)
+layout_mode = 0
+offset_left = 410.0
+offset_top = 9.0
+offset_right = 610.0
+offset_bottom = 33.0
+theme = ExtResource("2")
+theme_override_font_sizes/font_size = 16
+text = "Open on Workshop"
+script = ExtResource("5")
+ParentRect = NodePath("..")

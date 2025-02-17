@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/BasicEnemy.gd" id="1"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nkj6s"]
+radius = 0.4000000059604645
+height = 1.700000047683716
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1nxb4"]
+
+[node name="EnemyTemplate" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("1")
+nav_agent = NodePath("NavigationAgent3D")
+speed = 2.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8585209846496582, 0)
+shape = SubResource("CapsuleShape3D_nkj6s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_1nxb4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+avoidance_enabled = true
+radius = 1.0
+
+[node name="HealthHandler" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2")
+HP = 3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pitch_scale = 0.239999994635582
+autoplay = true
+max_distance = 5.0

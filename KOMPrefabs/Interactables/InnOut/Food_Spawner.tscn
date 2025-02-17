@@ -1,0 +1,142 @@
+[gd_scene load_steps=20 format=3 uid="uid://gix2jhce0o2h"]
+
+[ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1_5jc4k"]
+[ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_34j1f"]
+[ext_resource type="Resource" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_pfff6"]
+[ext_resource type="Material" path="res://textures/Plastic2.tres" id="3_amkx1"]
+[ext_resource type="Material" path="res://textures/Rust.tres" id="4_aj38o"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/FoodSpawner.gd" id="5_y1vtp"]
+[ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="6_8dvv0"]
+[ext_resource type="Texture2D" uid="uid://b3ff2t2wvlbv7" path="res://KOMSprites/innout/raw-patty.png" id="7_l2pam"]
+[ext_resource type="Material" uid="uid://b2q8quyis51mr" path="res://KOMShaders/CRT.tres" id="8_jv6nd"]
+[ext_resource type="Texture2D" uid="uid://tk0d1labganf" path="res://KOMMaterials/green.PNG" id="9_6bhio"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wl11t"]
+size = Vector3(0.764831, 0.747994, 0.74646)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_onqlc"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 1, 1.00001, 1),
+"attribute_data": PackedByteArray(0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("3_amkx1"),
+"name": "Plastic2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}, {
+"aabb": AABB(-1, -1, -1, 1.00001, 1, 1),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"format": 34359742487,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5, 0, 3, 0, 5, 0, 6, 0, 7, 0, 8, 0, 9, 0, 7, 0, 9, 0, 10, 0, 11, 0, 12, 0, 13, 0, 11, 0, 13, 0, 14, 0, 15, 0, 16, 0, 17, 0),
+"material": ExtResource("4_aj38o"),
+"name": "Rust",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 63, 255, 63, 255, 127, 255, 191, 255, 63, 255, 63, 255, 127, 255, 191, 255, 63, 255, 63, 255, 127, 255, 191, 255, 63, 255, 63, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+}]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_o2ljd"]
+vertices = PackedVector3Array(-1, 1, -1, -1, 0, -1, 0, 0, -1, 0, 1, -1, -1, 1, -1, -1, 1, 0, -1, 0, 0, -1, 0, -1, 0, 0, -1, -1, 0, -1, -1, 0, 0, 0, 0, 0, 0, 1, -1, 0, 1, 0, -1, 1, 0, -1, 1, -1, 0, 1, -1, 0, 0, -1, 0, 0, 0, 0, 1, 0, -1, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, -1, -1, 0, 0, -1, -1, 0, -1, 0, -1, -1, -1, 0, -1, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, -1, 0, 0, -1, 0, -1, -1, 0, -1, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, 0)
+indices = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 25, 26, 27, 28, 29, 27, 29, 30, 31, 32, 33, 31, 33, 34, 35, 36, 37, 35, 37, 38, 39, 40, 41)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aiymt"]
+points = PackedVector3Array(-1, 1, -1, -1, 0, -1, 0, 0, -1, 0, 1, -1, -1, 1, 0, -1, 0, 0, 0, 0, 0, 0, 1, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uuscy"]
+points = PackedVector3Array(0, -1, -1, 0, 0, -1, -1, 0, -1, -1, 0, 0, 0, -1, 0, 0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ulbx"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lwuib"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xknp7"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_lwuib")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1oak"]
+size = Vector3(3, 2, 0.1)
+
+[node name="FoodSpawner" type="Node3D" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+script = ExtResource("1_5jc4k")
+node_viewport = NodePath("SubViewport")
+node_quad = NodePath("Quad")
+node_area = NodePath("Quad/Area3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.04335, 0, 0, 0, 1.04335, 0, 0, 0, 1.04335, -0.3849, 0.387869, -0.387777)
+shape = SubResource("BoxShape3D_wl11t")
+
+[node name="Behavior" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("SoundPlayer", "FoodSprite")]
+script = ExtResource("5_y1vtp")
+SoundPlayer = NodePath("../../SoundPlayer")
+FoodSprite = NodePath("../../FoodDisplay")
+ItemID = "RawPatty"
+
+[node name="SoundPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458403, 0.36084, -0.39983)
+stream = ExtResource("6_8dvv0")
+volume_db = -10.0
+max_distance = 5.0
+
+[node name="FoodDisplay" type="Sprite3D" parent="."]
+transform = Transform3D(-3.36578e-09, 0, -0.077, 0, 0.077, 0, 0.077, 0, -3.36578e-09, -0.77107, 0.376952, -0.382354)
+visibility_range_end = 10.0
+visibility_range_end_margin = 5.0
+visibility_range_fade_mode = 1
+double_sided = false
+texture = ExtResource("7_l2pam")
+
+[node name="FoodSpawner" type="Node3D" parent="."]
+transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, 0, 0, 0)
+script = ExtResource("1_34j1f")
+global_map_file = "C:/Users/je0976317/GodotProjects/KingOfMercury/CustomMaps/FoodSpawner.map"
+map_settings = ExtResource("2_pfff6")
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="FoodSpawner"]
+collision_mask = 0
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="FoodSpawner/entity_0_worldspawn"]
+mesh = SubResource("ArrayMesh_onqlc")
+
+[node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="FoodSpawner/entity_0_worldspawn"]
+occluder = SubResource("ArrayOccluder3D_o2ljd")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="FoodSpawner/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_aiymt")
+
+[node name="entity_0_brush_1_collision_shape" type="CollisionShape3D" parent="FoodSpawner/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_uuscy")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport"]
+material = ExtResource("8_jv6nd")
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("9_6bhio")
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+process_mode = 3
+transform = Transform3D(-1.11464e-08, 0, -0.875, 0, 0.375, 0, 0.255, 0, -3.82475e-08, -0.770244, 0.38581, -0.383956)
+mesh = SubResource("QuadMesh_0ulbx")
+surface_material_override/0 = SubResource("StandardMaterial3D_xknp7")
+
+[node name="Area3D" type="Area3D" parent="Quad"]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+shape = SubResource("BoxShape3D_n1oak")

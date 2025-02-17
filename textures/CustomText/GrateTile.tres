@@ -1,0 +1,9 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dto2mq8q5ogjc"]
+
+[ext_resource type="Texture2D" uid="uid://mbuvmboc4dt0" path="res://textures/CustomText/Grate.png" id="1_c43lj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_65d42"]
+texture = ExtResource("1_c43lj")
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_65d42")

@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Scripts/BasicEnemy.gd" id="1"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2"]
+[ext_resource type="AudioStream" uid="uid://b14b23emmhqar" path="res://Sounds/PedestrianAmb.ogg" id="3"]
+[ext_resource type="PackedScene" uid="uid://cxo5socf63o6j" path="res://Models/Pedestrian.blend" id="4"]
+[ext_resource type="PackedScene" uid="uid://cfxuxnndkjooc" path="res://Models/Pedestrian.glb" id="5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1nxb4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nkj6s"]
+height = 3.128010034561157
+
+[node name="Pedestrian" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "anim")]
+script = ExtResource("1")
+nav_agent = NodePath("NavigationAgent3D")
+anim = NodePath("Pedestrian2/AnimationPlayer")
+attackThreshold = 1.0
+aggroRange = 12
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_1nxb4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.578230023384094, 0)
+shape = SubResource("CapsuleShape3D_nkj6s")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+avoidance_enabled = true
+radius = 1.0
+
+[node name="HealthHandler" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2")
+HP = 5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("3")
+autoplay = true
+max_distance = 5.0
+
+[node name="Pedestrian" parent="." instance=ExtResource("4")]
+visible = false
+
+[node name="Skeleton3D" parent="Pedestrian/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.02531139925122261, -1.191709984027511e-07, 3.017359917478757e-09, 0.9996799826622009)
+bones/1/rotation = Quaternion(0.08234799653291702, 2.422959937884144e-14, -1.963329943066583e-08, 0.9966040253639221)
+bones/2/rotation = Quaternion(-0.05709610134363174, -5.78259016936907e-15, 1.361279977629692e-08, 0.9983689785003662)
+bones/3/rotation = Quaternion(0.1404200047254562, -1.121329998255913e-14, -3.347879840021051e-08, 0.9900919795036316)
+bones/4/rotation = Quaternion(0.9052039980888367, 0.1074530035257339, 0.3335149884223938, 0.2404720038175583)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.456369012594223, 0.03721579909324646, 0.4123660027980804, 0.7875890135765076)
+bones/6/rotation = Quaternion(-0.3173229992389679, -0.02882999926805496, -0.332181990146637, 0.8877670168876648)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.9052039980888367, -0.1074530035257339, -0.3335149884223938, 0.2404730021953583)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.456369012594223, -0.03721579909324646, -0.4123660027980804, 0.7875890135765076)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.3173229992389679, 0.02882999926805496, 0.332181990146637, 0.8877670168876648)
+bones/9/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="Pedestrian" index="1"]
+autoplay = "Idle"
+
+[node name="Pedestrian2" parent="." instance=ExtResource("5")]
+
+[node name="Skeleton3D" parent="Pedestrian2/Armature" index="0"]
+bones/0/position = Vector3(-3.66847996424724e-09, 1.296519994735718, -6.885069847584191e-09)
+bones/1/rotation = Quaternion(0.08234799653291702, 2.43406996083351e-14, -1.963329943066583e-08, 0.9966040253639221)
+bones/2/rotation = Quaternion(-0.03596179932355881, -0.2245389968156815, 0.04451210051774979, 0.9727830290794373)
+bones/3/rotation = Quaternion(0.3804250061511993, -0.1710249930620193, -0.03868760168552399, 0.908037006855011)
+bones/4/rotation = Quaternion(0.8652099967002869, 0.1508290022611618, 0.3162739872932434, 0.3586539924144745)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.5946919918060303, 0.03983680158853531, 0.5376620292663574, 0.5963839888572693)
+bones/6/rotation = Quaternion(-0.4235160052776337, -0.03780139982700348, -0.4288060069084167, 0.7970759868621826)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.8652139902114868, -0.1508249938488007, -0.3162760138511658, 0.3586440086364746)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.5946919918060303, -0.03983689844608307, -0.5376620292663574, 0.5963839888572693)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.4235160052776337, 0.03780150040984154, 0.4288060069084167, 0.7970759868621826)
+bones/9/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="Pedestrian2" index="1"]
+autoplay = "Idle"
+
+[editable path="Pedestrian"]
+[editable path="Pedestrian2"]

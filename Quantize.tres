@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dtqcvgaocj3o5"]
+
+[ext_resource type="Shader" path="res://Shaders/quantize.gdshader" id="1"]
+
+[resource]
+shader = ExtResource("1")
+shader_parameter/range = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 4.65814e-09
+shader_parameter/offsetIntensity = 3.25988e-09
+shader_parameter/colorOffsetIntensity = 0.0

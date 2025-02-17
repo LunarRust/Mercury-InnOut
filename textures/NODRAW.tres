@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+transparency = 1
+depth_draw_mode = 2
+no_depth_test = true
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0)
+texture_filter = 0
+disable_receive_shadows = true
+proximity_fade_distance = 7.199999809265137
+distance_fade_min_distance = 358.9299926757812
+distance_fade_max_distance = 326.7000122070312

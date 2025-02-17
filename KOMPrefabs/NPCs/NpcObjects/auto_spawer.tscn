@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://br1yim6ld7iqo"]
+
+[ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="1_gxq5w"]
+[ext_resource type="Script" path="res://CustomScripts/AutoSceneInstantiator.gd" id="2_61gl2"]
+[ext_resource type="PackedScene" uid="uid://bfi7rk6kntbbc" path="res://KOMPrefabs/Interactables/NpcMarker.tscn" id="3_7k517"]
+
+[node name="AutoSpawer" type="TextureButton"]
+offset_left = -150.0
+offset_top = -132.0
+offset_right = -86.0
+offset_bottom = -68.0
+texture_normal = ExtResource("1_gxq5w")
+script = ExtResource("2_61gl2")
+Scene = ExtResource("3_7k517")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

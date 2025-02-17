@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://drs64ko457eba"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2"]
+[ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ophv7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tiqho"]
+
+[node name="NPC Template" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a2lqy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ophv7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.47839, 0.485188)
+mesh = SubResource("BoxMesh_tiqho")
+
+[node name="DialogueSystem" type="Node3D" parent="."]
+script = ExtResource("1")
+Dialogue = "Dialogue goes here!"
+LookDescription = "Look description goes here."
+TouchDescription = "Touch Description goes here."
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="."]
+script = ExtResource("2")
+
+[node name="Interactable" type="Node" parent="."]
+script = ExtResource("3")

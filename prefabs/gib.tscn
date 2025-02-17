@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Gib.cs" id="1"]
+[ext_resource type="PackedScene" uid="uid://bmgmoa8ajqo7e" path="res://Models/Chunk.blend" id="2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akl5u"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jocd2"]
+size = Vector3(0.232695996761322, 0.1454340070486069, 0.2157309949398041)
+
+[node name="Gib" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_akl5u")
+script = ExtResource("1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_jocd2")
+
+[node name="Chunk" parent="." instance=ExtResource("2")]

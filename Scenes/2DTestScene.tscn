@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://ctmda1qnv7ebp"]
+
+[ext_resource type="Texture2D" uid="uid://b2t37hvn6rg" path="res://Sprites/UI/MercFaceSmile-Expressions.png" id="1_14wnn"]
+[ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="1_fqcuk"]
+[ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="2_gte4x"]
+[ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="4_3d3g4"]
+[ext_resource type="AudioStream" uid="uid://cqels461h2oq1" path="res://Music/Cold Cleaning.ogg" id="5_pvb5e"]
+[ext_resource type="PackedScene" uid="uid://cr4ovc1iagi4v" path="res://CustomMercScenes/CustomScenes/SimpleButtonBase.tscn" id="6_cukk7"]
+
+[sub_resource type="Animation" id="Animation_mcvc5"]
+resource_name = "Test"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(2, -0.25, 0, 0.25, 500, 2, -0.25, 0, 0.25, 500),
+"times": PackedFloat32Array(1.4, 3.7)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 400, 0, -0.25, 0, 0.25, 500, 0, -0.25, 0, 0.25, 500),
+"times": PackedFloat32Array(4.1, 4.1001, 6.7)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.3, 3.9, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 4, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1wru"]
+_data = {
+"Test": SubResource("Animation_mcvc5")
+}
+
+[node name="2dTestScene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.227451, 0, 0.0156863, 1)
+position = Vector2(596, 204)
+texture = ExtResource("1_14wnn")
+offset = Vector2(220.402, 0)
+hframes = 8
+region_rect = Rect2(0.10498, -2, 363.808, 374)
+script = ExtResource("2_gte4x")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_g1wru")
+}
+autoplay = "Test"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("1_fqcuk")
+offset_left = -18.0
+offset_top = -20.0
+offset_right = 1165.0
+offset_bottom = 660.0
+
+[node name="DebugLabel" parent="." instance=ExtResource("4_3d3g4")]
+text = "[shake rate=20] TEST SCENE 1"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pvb5e")
+autoplay = true
+
+[node name="ReturnButton" parent="." instance=ExtResource("6_cukk7")]
+offset_left = 43.0
+offset_top = 86.0
+offset_right = 257.0
+offset_bottom = 131.0
+text = "Return
+"
+destination = "DebugMenu"

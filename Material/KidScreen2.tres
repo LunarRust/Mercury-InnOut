@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" uid="uid://cq02ix13yo2bj" path="res://Shaders/PatientScreen.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://2yig32bp5ekt" path="res://Sprites/TVs/Kids2.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/Speed = Vector2(0, 0.8999999761581421)
+shader_parameter/Face_Texture = ExtResource("2")

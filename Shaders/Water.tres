@@ -1,0 +1,67 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://b86rlqpm0l304"]
+
+[ext_resource type="Texture2D" uid="uid://bkxtnshpoon17" path="res://textures/Water.png" id="1"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_3h57c"]
+texture = ExtResource("1")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8asaw"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_kwvmn"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_gupul"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8i02f"]
+default_input_values = [0, 0.0, 1, 0.01]
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Input:4
+	vec2 n_out4p0 = UV;
+
+
+// Input:3
+	float n_out3p0 = TIME;
+
+
+// FloatOp:7
+	float n_in7p1 = 0.01000;
+	float n_out7p0 = n_out3p0 * n_in7p1;
+
+
+// VectorOp:6
+	vec3 n_out6p0 = vec3(n_out4p0, 0.0) + vec3(n_out7p0);
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, vec2(n_out6p0.xy));
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out2p0.x;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_3h57c")
+nodes/fragment/2/position = Vector2(114, 145)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_8asaw")
+nodes/fragment/3/position = Vector2(-780, 400)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_kwvmn")
+nodes/fragment/4/position = Vector2(-660, 280)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorOp_gupul")
+nodes/fragment/6/position = Vector2(-260, 280)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_8i02f")
+nodes/fragment/7/position = Vector2(-480, 460)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 4, 0, 6, 0, 6, 0, 2, 0, 3, 0, 7, 0, 7, 0, 6, 1, 2, 0, 0, 1)

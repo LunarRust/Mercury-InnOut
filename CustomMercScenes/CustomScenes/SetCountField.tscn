@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp73sjcnqhv0f"]
+
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="1_6wdh8"]
+[ext_resource type="Texture2D" uid="uid://8r5jhp6ga36p" path="res://Sprites/UI/PlayButton.png" id="1_bii3s"]
+[ext_resource type="Texture2D" uid="uid://bv4y27x06n8a5" path="res://Sprites/UI/PlayButtonInvert.png" id="2_ndjgm"]
+[ext_resource type="Script" path="res://CustomScripts/KeysCollectedChanger.gd" id="4_01st4"]
+[ext_resource type="AudioStream" uid="uid://dtpxmcbak6rth" path="res://Sounds/tick3.ogg" id="5_rs0l2"]
+
+[node name="SetCountField" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 206.0
+offset_bottom = 27.0
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 5.0
+offset_right = 167.0
+offset_bottom = 22.0
+theme_override_colors/default_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_fonts/normal_font = ExtResource("1_6wdh8")
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "% Eggs collected"
+fit_content = true
+
+[node name="Down" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 2.0
+offset_right = 224.0
+offset_bottom = 24.0
+rotation = 1.5708
+texture_normal = ExtResource("1_bii3s")
+texture_pressed = ExtResource("2_ndjgm")
+stretch_mode = 6
+script = ExtResource("4_01st4")
+
+[node name="Up" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 25.0
+offset_right = 26.0
+offset_bottom = 47.0
+rotation = 4.71239
+texture_normal = ExtResource("1_bii3s")
+texture_pressed = ExtResource("2_ndjgm")
+stretch_mode = 5
+script = ExtResource("4_01st4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect"]
+stream = ExtResource("5_rs0l2")
+
+[connection signal="pressed" from="ColorRect/Down" to="ColorRect/Down" method="_on_pressed"]
+[connection signal="pressed" from="ColorRect/Down" to="ColorRect/Down" method="_down"]
+[connection signal="pressed" from="ColorRect/Up" to="ColorRect/Up" method="_on_pressed"]
+[connection signal="pressed" from="ColorRect/Up" to="ColorRect/Up" method="_up"]

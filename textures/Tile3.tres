@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://bnoecedu3nny0" path="res://textures/Tile3.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c0exuybscqfss" path="res://textures/Normals/Tile3_normal.png" id="2"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness = 0.6000000238418579
+normal_enabled = true
+normal_scale = 3.700000047683716
+normal_texture = ExtResource("2")
+texture_filter = 2

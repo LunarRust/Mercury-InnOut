@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://tm7ippqqitkr"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_vi4fc"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2_0xy8e"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="3_gok5h"]
+[ext_resource type="Script" path="res://Scripts/FamilyBehavior.cs" id="3_qsy31"]
+[ext_resource type="PackedScene" uid="uid://buseoax8q1b7n" path="res://Models/Child.blend" id="4_no3eq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
+
+[node name="Family3" type="StaticBody3D"]
+transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a2lqy")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("1_vi4fc")
+npcName = "Child"
+Dialogue = "Everyone loves puppets. Especially puppets themselves.
+Oh good, it's you! I was getting so bored here! I'll meet you there.
+Heh, by the way, what do you think about Puppets?"
+LookDescription = "The child smiles at you. There are more folds under their eyes than there should be."
+TouchDescription = "A surprisingly firm handshake."
+soundSource = NodePath("../AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="."]
+script = ExtResource("2_0xy8e")
+
+[node name="NpcToNpcHealthHandler" type="Node3D" parent="." node_paths=PackedStringArray("CoreHealthHandler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_gok5h")
+CoreHealthHandler = NodePath("../HealthHandler")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("3_qsy31")
+
+[node name="Child" parent="." instance=ExtResource("4_no3eq")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -1, 0.129662)
+
+[node name="Skeleton3D" parent="Child/Armature" index="0"]
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.146461, 4.97397e-18, 4.85848e-18, 0.989216)
+bones/2/rotation = Quaternion(0.0272424, -1.09265e-16, -1.15314e-16, 0.999629)
+bones/3/rotation = Quaternion(0.157625, 2.35438e-07, 3.75806e-08, 0.987499)
+bones/4/rotation = Quaternion(-0.0141236, 0.00186603, -0.821823, 0.569565)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.00993543, -1.24591e-08, 0.137542, 0.990446)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.00240436, 3.89335e-08, 0.0332851, 0.999443)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0141236, -0.00186603, 0.821823, 0.569565)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.00993543, 1.24591e-08, -0.137542, 0.990446)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.00240436, -3.89335e-08, -0.0332851, 0.999443)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.723363, 0.0816217, 0.0290585, 0.685011)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.00928183, -2.98252e-05, 0.0109741, 0.999897)
+bones/12/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.723363, -0.0816217, -0.0290585, 0.685011)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(-0.00928183, 2.98252e-05, -0.0109741, 0.999897)
+bones/15/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="Child" index="1"]
+autoplay = "Idle"
+
+[editable path="Child"]

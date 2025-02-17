@@ -1,0 +1,205 @@
+[gd_scene load_steps=14 format=3 uid="uid://cnd41ygwjkosa"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/NavNodeCon.gd" id="1_xotax"]
+[ext_resource type="PackedScene" uid="uid://jur7vxccf5uw" path="res://KOMPrefabs/Interactables/CamGrabber.tscn" id="2_i7a0y"]
+[ext_resource type="AudioStream" uid="uid://wi5bbugtlb5w" path="res://Sounds/DNAstart.ogg" id="3_4gt68"]
+[ext_resource type="AudioStream" uid="uid://cfjal7c4hnmq" path="res://Sounds/DNAfail.ogg" id="4_2rfeb"]
+[ext_resource type="PackedScene" uid="uid://cbmb6fb7ncl8" path="res://KOMModels/innout/cash_register.glb" id="5_8cdur"]
+[ext_resource type="PackedScene" uid="uid://cp46x0ogan7h0" path="res://KOMPrefabs/Interactables/InnOut/food_tray.tscn" id="6_c3pmk"]
+[ext_resource type="PackedScene" uid="uid://cf08hharkb570" path="res://KOMPrefabs/Logic/RandomOrderGen.tscn" id="9_7lvxl"]
+[ext_resource type="PackedScene" uid="uid://c2d6efsd3ij6e" path="res://KOMPrefabs/Interactables/InnOut/OrderPanel.tscn" id="10_yb0mo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ckcs2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0d2xj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_cisdd"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_826g7"]
+viewport_path = NodePath("OrderPanel/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xt4g"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_826g7")
+
+[node name="Register" type="Node3D"]
+
+[node name="RegisterTarget" type="Node3D" parent="." node_paths=PackedStringArray("RegisterOrderGen") groups=["ExecOnReached", "NavNodeTarget", "Register"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.485532, 0, 0)
+script = ExtResource("1_xotax")
+RegisterOrderGen = NodePath("../RandomOrderGen")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RegisterTarget"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RegisterTarget/StaticBody3D"]
+shape = SubResource("BoxShape3D_ckcs2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RegisterTarget/StaticBody3D"]
+mesh = SubResource("BoxMesh_0d2xj")
+skeleton = NodePath("../..")
+
+[node name="RegisterGrabber" parent="." instance=ExtResource("2_i7a0y")]
+transform = Transform3D(-1.19658, 0, -1.80679e-07, 0, 1.19658, 0, 1.80679e-07, 0, -1.19658, -0.837778, 2.74735, -0.383419)
+
+[node name="Register2" parent="RegisterGrabber/CanvasLayer" index="0" node_paths=PackedStringArray("SoundSource", "PosRefrence", "ItemGen")]
+SoundSource = NodePath("../Sound")
+SoundPositive = ExtResource("3_4gt68")
+SoundNegative = ExtResource("4_2rfeb")
+PosRefrence = NodePath("../..")
+ItemGen = NodePath("../../../RandomOrderGen")
+
+[node name="CollisionShape3D" parent="RegisterGrabber" index="2"]
+transform = Transform3D(0.24, 0, 2.97838e-12, 0, 0.24, 0, -8.56062e-13, 0, 0.835, -0.00165892, -0.271315, 0.0449848)
+
+[node name="Camera3D" parent="RegisterGrabber" index="3"]
+transform = Transform3D(1.42857, 0, 2.84217e-14, 0, 1.34082, 0.492978, -1.42109e-14, -0.492978, 1.34082, 3.57628e-07, 0.600475, 1.03062)
+
+[node name="Behavior" parent="RegisterGrabber" index="4" node_paths=PackedStringArray("CanvasToShow", "UIToToggle")]
+CanvasToShow = NodePath("../CanvasLayer")
+UIToToggle = [null]
+
+[node name="Sketchfab_Scene" parent="RegisterGrabber" instance=ExtResource("5_8cdur")]
+transform = Transform3D(-6.9064e-08, 0, -1.58, 0, 1.58, 0, 1.58, 0, -6.9064e-08, 0, -0.31476, 0)
+
+[node name="FoodTray" parent="." instance=ExtResource("6_c3pmk")]
+
+[node name="Behavior" parent="FoodTray" index="1" node_paths=PackedStringArray("OrderGen", "NavNodeTarget")]
+OrderGen = NodePath("../../RandomOrderGen")
+NavNodeTarget = NodePath("../../RegisterTarget")
+
+[node name="RandomOrderGen" parent="." groups=["OrderGen1"] instance=ExtResource("9_7lvxl")]
+
+[node name="CtrlInventoryGridEx" parent="RandomOrderGen" index="3"]
+visible = false
+
+[node name="_VScrollBar_17634" type="VScrollBar" parent="RandomOrderGen/CtrlInventoryGridEx/Labels/RichTextLabel" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_17635" type="VScrollBar" parent="RandomOrderGen/CtrlInventoryGridEx/Labels/RichTextLabel2" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_VScrollBar_17636" type="VScrollBar" parent="RandomOrderGen/CtrlInventoryGridEx/Labels/RichTextLabel3" index="1"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+step = 1.0
+
+[node name="_Control_17672" type="Control" parent="RandomOrderGen/CtrlInventoryGridEx" index="2"]
+anchors_preset = 0
+
+[node name="_Panel_17673" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="_Panel_17674" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_top = 34.0
+offset_right = 32.0
+offset_bottom = 66.0
+
+[node name="_Panel_17675" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_right = 66.0
+offset_bottom = 32.0
+
+[node name="_Panel_17676" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 66.0
+offset_bottom = 66.0
+
+[node name="_Panel_17677" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_right = 100.0
+offset_bottom = 32.0
+
+[node name="_Panel_17678" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 66.0
+
+[node name="_Panel_17679" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_right = 134.0
+offset_bottom = 32.0
+
+[node name="_Panel_17680" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_top = 34.0
+offset_right = 134.0
+offset_bottom = 66.0
+
+[node name="_Panel_17681" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_right = 168.0
+offset_bottom = 32.0
+
+[node name="_Panel_17682" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx/_Control_17672"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_top = 34.0
+offset_right = 168.0
+offset_bottom = 66.0
+
+[node name="_Control_17669" type="Control" parent="RandomOrderGen/CtrlInventoryGridEx" index="3"]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="_Sprite2D_17670" type="Sprite2D" parent="RandomOrderGen/CtrlInventoryGridEx" index="4"]
+visible = false
+z_index = 1
+centered = false
+
+[node name="_Panel_17671" type="Panel" parent="RandomOrderGen/CtrlInventoryGridEx" index="5"]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+
+[node name="OrderPanel" parent="." instance=ExtResource("10_yb0mo")]
+
+[node name="Quad" parent="OrderPanel" index="1"]
+mesh = SubResource("QuadMesh_cisdd")
+surface_material_override/0 = SubResource("StandardMaterial3D_7xt4g")
+
+[node name="ShowDebug" parent="OrderPanel" index="4" node_paths=PackedStringArray("OtherNodes")]
+OtherNodes = [null]
+
+[editable path="RegisterGrabber"]
+[editable path="FoodTray"]
+[editable path="RandomOrderGen"]
+[editable path="OrderPanel"]

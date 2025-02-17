@@ -1,0 +1,84 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://ccyq74m7mmwqm"]
+
+[sub_resource type="VisualShaderNodeFresnel" id="VisualShaderNodeFresnel_hehd4"]
+default_input_values = [2, false, 3, 2.0]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_1b2c7"]
+parameter_name = "Fresnel_Color"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_lppa1"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_b17ea"]
+parameter_name = "Power"
+default_value_enabled = true
+default_value = 2.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_51uy8"]
+parameter_name = "emission_energy_multiplier"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_3quw4"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float Power = 2;
+uniform vec4 Fresnel_Color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform float emission_energy_multiplier = 1;
+
+
+
+void fragment() {
+// FloatParameter:5
+	float n_out5p0 = Power;
+
+
+// Fresnel:2
+	float n_out2p0 = pow(1.0 - clamp(dot(NORMAL, VIEW), 0.0, 1.0), n_out5p0);
+
+
+// ColorParameter:3
+	vec4 n_out3p0 = Fresnel_Color;
+
+
+// VectorOp:4
+	vec4 n_out4p0 = vec4(n_out2p0) * n_out3p0;
+
+
+// FloatParameter:6
+	float n_out6p0 = emission_energy_multiplier;
+
+
+// VectorOp:7
+	vec4 n_out7p0 = n_out4p0 * vec4(n_out6p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+	EMISSION = vec3(n_out7p0.xyz);
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeFresnel_hehd4")
+nodes/fragment/2/position = Vector2(-420, 320)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_1b2c7")
+nodes/fragment/3/position = Vector2(-400, 480)
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_lppa1")
+nodes/fragment/4/position = Vector2(-120, 280)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_b17ea")
+nodes/fragment/5/position = Vector2(-780, 280)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_51uy8")
+nodes/fragment/6/position = Vector2(-240, 700)
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_3quw4")
+nodes/fragment/7/position = Vector2(60, 460)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 3, 0, 4, 1, 2, 0, 4, 0, 5, 0, 2, 3, 6, 0, 7, 1, 4, 0, 7, 0, 7, 0, 0, 5)

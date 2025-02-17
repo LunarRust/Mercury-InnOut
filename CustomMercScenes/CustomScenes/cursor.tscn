@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://badg1udv6ulvx"]
+
+[ext_resource type="Texture2D" uid="uid://2lleq8anq1s5" path="res://Sprites/UI/ControllerCursor.png" id="1_l6v7f"]
+[ext_resource type="Script" path="res://Scripts/WorldMapPlayer.cs" id="2_q137t"]
+
+[node name="Cursor" type="Sprite2D"]
+z_index = 3
+position = Vector2(-34, 577)
+scale = Vector2(0.786072, 0.786072)
+texture = ExtResource("1_l6v7f")
+script = ExtResource("2_q137t")

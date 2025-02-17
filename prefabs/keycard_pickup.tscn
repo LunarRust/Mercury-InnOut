@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnvw4qeo8ci3m"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_82kti"]
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2"]
+[ext_resource type="PackedScene" uid="uid://cnh06xjilykw8" path="res://Models/Keycard.blend" id="3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7sm0"]
+size = Vector3(0.450098, 0.498294, 0.210897)
+
+[node name="Keycard Pickup" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.278675, 1.9375, -0.534097)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271321, 0)
+shape = SubResource("BoxShape3D_d7sm0")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("1_82kti")
+ItemID = "KeyCard"
+
+[node name="ModelRoot" type="Node3D" parent="."]
+script = ExtResource("2")
+
+[node name="Keycard" parent="ModelRoot" instance=ExtResource("3")]
+transform = Transform3D(0.0853612, 0.034202, -0.00988095, -0.0343541, 0.0858693, 0.000444263, 0.00933821, 0.00326022, 0.0919569, 0, 0.249661, 0)

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" uid="uid://ccg3u786vt1h4" path="res://Shaders/StrangeSky.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://bh3hrlaq4ack4" path="res://textures/Nightmare.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/Speed = Vector2(0.009999999776482582, 0)
+shader_parameter/Texture = ExtResource("2")

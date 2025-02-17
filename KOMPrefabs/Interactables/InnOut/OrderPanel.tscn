@@ -1,0 +1,207 @@
+[gd_scene load_steps=13 format=3 uid="uid://c2d6efsd3ij6e"]
+
+[ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1_fg8mi"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="2_51toa"]
+[ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="3_1e0lp"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="4_c2ngu"]
+
+[sub_resource type="QuadMesh" id="1"]
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n1eij"]
+viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st0yu"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_n1eij")
+
+[sub_resource type="BoxShape3D" id="4"]
+size = Vector3(3, 2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7007"]
+albedo_color = Color(0.054902, 0.054902, 0.054902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2rpwp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kcj7t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8j5n"]
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="OrderPanel" type="Node3D" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+process_mode = 3
+transform = Transform3D(-0.348682, 0, 0.181651, 0, 0.393162, 0, -0.181651, 0, -0.348682, -1.87698, 2.99961, -0.336513)
+script = ExtResource("1_fg8mi")
+node_viewport = NodePath("SubViewport")
+node_quad = NodePath("Quad")
+node_area = NodePath("Quad/Area3D")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(192, 157)
+render_target_update_mode = 4
+
+[node name="CtrlInventoryGridEx" type="Control" parent="SubViewport"]
+custom_minimum_size = Vector2(168, 66)
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 16.175
+offset_right = 178.0
+offset_bottom = 82.175
+scale = Vector2(1, 2)
+script = ExtResource("2_51toa")
+item_spacing = 2
+grid_color = Color(0.494118, 0.415686, 0, 1)
+draw_selections = true
+selection_color = Color(0.492188, 0.414063, 0, 1)
+inventory_path = NodePath("../../../RandomOrderGen/InventoryGrid")
+default_item_texture = ExtResource("3_1e0lp")
+
+[node name="_Control_17686" type="Control" parent="SubViewport/CtrlInventoryGridEx"]
+anchors_preset = 0
+
+[node name="_Panel_17687" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="_Panel_17688" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_top = 34.0
+offset_right = 32.0
+offset_bottom = 66.0
+
+[node name="_Panel_17689" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_right = 66.0
+offset_bottom = 32.0
+
+[node name="_Panel_17690" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 66.0
+offset_bottom = 66.0
+
+[node name="_Panel_17691" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_right = 100.0
+offset_bottom = 32.0
+
+[node name="_Panel_17692" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 66.0
+
+[node name="_Panel_17693" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_right = 134.0
+offset_bottom = 32.0
+
+[node name="_Panel_17694" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_top = 34.0
+offset_right = 134.0
+offset_bottom = 66.0
+
+[node name="_Panel_17695" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_right = 168.0
+offset_bottom = 32.0
+
+[node name="_Panel_17696" type="Panel" parent="SubViewport/CtrlInventoryGridEx/_Control_17686"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_top = 34.0
+offset_right = 168.0
+offset_bottom = 66.0
+
+[node name="Labels" type="Node2D" parent="SubViewport/CtrlInventoryGridEx"]
+visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewport/CtrlInventoryGridEx/Labels"]
+offset_left = -14.0
+offset_top = -24.0
+offset_right = 149.0
+offset_bottom = 16.0
+bbcode_enabled = true
+text = "Order Gen Inventory"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SubViewport/CtrlInventoryGridEx/Labels"]
+offset_top = 69.0
+offset_right = 135.0
+offset_bottom = 109.0
+bbcode_enabled = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="SubViewport/CtrlInventoryGridEx/Labels"]
+offset_left = -304.0
+offset_top = -184.0
+offset_right = 114.0
+offset_bottom = -144.0
+bbcode_enabled = true
+
+[node name="_Control_17683" type="Control" parent="SubViewport/CtrlInventoryGridEx"]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="_Sprite2D_17684" type="Sprite2D" parent="SubViewport/CtrlInventoryGridEx"]
+visible = false
+z_index = 1
+centered = false
+
+[node name="_Panel_17685" type="Panel" parent="SubViewport/CtrlInventoryGridEx"]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.875, 0, 0, 0, 0.52, 0, 0, 0, 0.875, 0, 0, 0)
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_st0yu")
+
+[node name="Area3D" type="Area3D" parent="Quad"]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+shape = SubResource("4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.44, 0, -9.89732e-15, 0, 1, 0, 2.84111e-13, 0, 0.085, -0.0417078, -0.016037, -0.0472193)
+material_override = SubResource("StandardMaterial3D_f7007")
+mesh = SubResource("BoxMesh_2rpwp")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.265, 0, -5.42962e-15, 0, 1.115, 0, 1.06581e-14, 0, 0.135, 1.19209e-07, -1.05388, -0.0578394)
+mesh = SubResource("BoxMesh_kcj7t")
+surface_material_override/0 = SubResource("StandardMaterial3D_m8j5n")
+
+[node name="ShowDebug" type="Node" parent="." node_paths=PackedStringArray("OtherNodes")]
+script = ExtResource("4_c2ngu")
+key = 4194335
+OtherNodes = [null]

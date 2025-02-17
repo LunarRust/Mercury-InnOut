@@ -1,0 +1,142 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Script" path="res://Scripts/AnimationRandomizer.cs" id="1"]
+[ext_resource type="Script" path="res://Scripts/DeathScythe.cs" id="2"]
+[ext_resource type="Texture2D" uid="uid://c3ibk1jk0qrk8" path="res://Sprites/Particles/RedLightning.png" id="3"]
+[ext_resource type="Material" uid="uid://bya4s3d3f57xi" path="res://textures/Stone.tres" id="4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgq1v"]
+size = Vector3(14, 0.6150000095367432, 0.6449999809265137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_623yb"]
+atlas = ExtResource("3")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cx0d"]
+atlas = ExtResource("3")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op4os"]
+atlas = ExtResource("3")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sahc2"]
+animations = [{
+"frames": [{
+"duration": 0.2000000029802322,
+"texture": SubResource("AtlasTexture_623yb")
+}, {
+"duration": 0.2000000029802322,
+"texture": SubResource("AtlasTexture_5cx0d")
+}, {
+"duration": 0.2000000029802322,
+"texture": SubResource("AtlasTexture_op4os")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="PrismMesh" id="PrismMesh_wqldq"]
+
+[sub_resource type="Animation" id="Animation_v8dsc"]
+length = 0.001000000047497451
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ngjn3"]
+resource_name = "updown"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcqm5"]
+_data = {
+"RESET": SubResource("Animation_v8dsc"),
+"updown": SubResource("Animation_ngjn3")
+}
+
+[sub_resource type="PrismMesh" id="PrismMesh_4y0rm"]
+
+[node name="ZapLaser" type="Node3D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1")
+anim = NodePath("AnimationPlayer")
+range = 2.0
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2")
+damage = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+shape = SubResource("BoxShape3D_tgq1v")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Area3D"]
+transform = Transform3D(-5.455180129843029e-08, 4.712820053100586, 0, -1.248000025749207, -2.06004003189264e-07, 0, 0, 0, 1, 0.6148530244827271, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_sahc2")
+autoplay = "default"
+frame_progress = 0.4783450067043304
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Area3D"]
+transform = Transform3D(3.907990128878235e-14, 4.712820053100586, -4.371139894487897e-08, 5.455180129843029e-08, -2.06004003189264e-07, -1, -1.248000025749207, 0, -4.371139894487897e-08, 0.6148530244827271, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_sahc2")
+autoplay = "default"
+frame_progress = 0.4783450067043304
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(-5.682479908841742e-08, 1.299999952316284, 0, -1.299999952316284, -5.682479908841742e-08, 0, 0, 0, 1.299999952316284, 7, 0, 0)
+mesh = SubResource("PrismMesh_wqldq")
+surface_material_override/0 = ExtResource("4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(-5.682479908841742e-08, -1.299999952316284, 0, 1.299999952316284, -5.682479908841742e-08, 0, 0, 0, 1.299999952316284, -6, 0, 0)
+mesh = SubResource("PrismMesh_wqldq")
+surface_material_override/0 = ExtResource("4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 3.789000034332275
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 3.789000034332275
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wcqm5")
+}
+autoplay = "updown"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.311340014353846e-08, 0, -15.39000034332275, 0, 0.300000011920929, 0, 0.300000011920929, 0, -6.727179879817413e-07, 0.2272039949893951, -0.9478240013122559, 9.931420130726565e-09)
+mesh = SubResource("PrismMesh_4y0rm")
+surface_material_override/0 = ExtResource("4")

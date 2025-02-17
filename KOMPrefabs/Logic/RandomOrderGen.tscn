@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf08hharkb570"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/RandomOrderGen.gd" id="1_8cgtl"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid.gd" id="2_qyvix"]
+[ext_resource type="Resource" uid="uid://1vk2qehuhumm" path="res://ItemsNew.tres" id="3_4lwhx"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="4_lwdvg"]
+[ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="5_ovvm5"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_item.gd" id="6_f56l7"]
+
+[node name="RandomOrderGen" type="Node" node_paths=PackedStringArray("inv", "invCtrl", "Labels")]
+process_mode = 3
+script = ExtResource("1_8cgtl")
+inv = NodePath("InventoryGrid")
+invCtrl = NodePath("CtrlInventoryGridEx")
+Labels = NodePath("CtrlInventoryGridEx/Labels")
+Protoset = ExtResource("3_4lwhx")
+ItemCounts = {
+"Burger": 0,
+"Fries": 2
+}
+
+[node name="InvItems" type="Node" parent="."]
+
+[node name="_Node_46606" type="Node" parent="InvItems"]
+script = ExtResource("6_f56l7")
+protoset = ExtResource("3_4lwhx")
+prototype_id = "Burger"
+
+[node name="_Node_46733" type="Node" parent="InvItems"]
+script = ExtResource("6_f56l7")
+protoset = ExtResource("3_4lwhx")
+prototype_id = "Fries"
+properties = {
+"grid_position": Vector2i(2, 0)
+}
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 333.0
+offset_top = 130.0
+offset_right = 413.0
+offset_bottom = 161.0
+text = "Generate"
+
+[node name="InventoryGrid" type="Node" parent="."]
+script = ExtResource("2_qyvix")
+size = Vector2i(5, 2)
+item_protoset = ExtResource("3_4lwhx")
+
+[node name="CtrlInventoryGridEx" type="Control" parent="."]
+custom_minimum_size = Vector2(168, 66)
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 305.0
+offset_top = 185.0
+offset_right = 473.0
+offset_bottom = 251.0
+script = ExtResource("4_lwdvg")
+item_spacing = 2
+grid_color = Color(0.494118, 0.415686, 0, 1)
+draw_selections = true
+selection_color = Color(0.492188, 0.414063, 0, 1)
+inventory_path = NodePath("../InventoryGrid")
+default_item_texture = ExtResource("5_ovvm5")
+
+[node name="Labels" type="Node2D" parent="CtrlInventoryGridEx"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CtrlInventoryGridEx/Labels"]
+offset_left = -14.0
+offset_top = -24.0
+offset_right = 149.0
+offset_bottom = 16.0
+bbcode_enabled = true
+text = "Order Gen Inventory"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CtrlInventoryGridEx/Labels"]
+offset_top = 69.0
+offset_right = 135.0
+offset_bottom = 109.0
+bbcode_enabled = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CtrlInventoryGridEx/Labels"]
+offset_left = -304.0
+offset_top = -184.0
+offset_right = 114.0
+offset_bottom = -144.0
+bbcode_enabled = true
+
+[connection signal="pressed" from="Button" to="." method="Generate"]

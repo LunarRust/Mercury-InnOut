@@ -1,0 +1,77 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://cihn7c36d1kbn"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_e6jtt"]
+parameter_name = "Color"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qabp8"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_jivcw"]
+function = 0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bacqw"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_gubum"]
+constant = 1.0
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_xx2go"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 Color : source_color;
+
+
+
+void fragment() {
+// ColorParameter:2
+	vec4 n_out2p0 = Color;
+
+
+// Input:3
+	float n_out3p0 = TIME;
+
+
+// FloatConstant:6
+	float n_out6p0 = 1.000000;
+
+
+// VectorOp:5
+	vec2 n_out5p0 = vec2(n_out3p0) * vec2(n_out6p0);
+
+
+// FloatFunc:4
+	float n_out4p0 = sin(n_out5p0.x);
+
+
+// VectorOp:7
+	vec4 n_out7p0 = n_out2p0 * vec4(n_out4p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	EMISSION = vec3(n_out7p0.xyz);
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_e6jtt")
+nodes/fragment/2/position = Vector2(-260, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_qabp8")
+nodes/fragment/3/position = Vector2(-520, 460)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatFunc_jivcw")
+nodes/fragment/4/position = Vector2(-40, 520)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_bacqw")
+nodes/fragment/5/position = Vector2(-200, 440)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_gubum")
+nodes/fragment/6/position = Vector2(-500, 560)
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_xx2go")
+nodes/fragment/7/position = Vector2(140, 340)
+nodes/fragment/connections = PackedInt32Array(3, 0, 5, 0, 6, 0, 5, 1, 5, 0, 4, 0, 2, 0, 7, 0, 4, 0, 7, 1, 7, 0, 0, 5, 2, 0, 0, 0)

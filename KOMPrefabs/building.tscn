@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce142bwsodkb1"]
+
+[ext_resource type="Texture2D" uid="uid://82874ggftfr4" path="res://textures/Building 2.png" id="1_j6d5n"]
+[ext_resource type="Texture2D" uid="uid://d1gr2sqxp7gni" path="res://textures/Building 2 em.png" id="2_1h30m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ck3g"]
+albedo_texture = ExtResource("1_j6d5n")
+emission_enabled = true
+emission_texture = ExtResource("2_1h30m")
+uv1_scale = Vector3(6.01, 10.795, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_txa8h"]
+
+[node name="Building" type="MeshInstance3D"]
+transform = Transform3D(5.7, 0, 0, 0, 17.7361, 0, 0, 0, 6.71422, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_2ck3g")
+mesh = SubResource("BoxMesh_txa8h")

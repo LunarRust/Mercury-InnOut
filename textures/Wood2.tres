@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://fj4t3tj305m6" path="res://textures/Wood2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d07w1e48ek0pw" path="res://textures/Normals/Wood2_heightmap.png" id="2"]
+
+[resource]
+albedo_texture = ExtResource("1")
+metallic_specular = 0.0
+heightmap_scale = 5.443999767303467
+heightmap_texture = ExtResource("2")
+texture_filter = 2

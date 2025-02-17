@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://wh62y6r1qr16"]
+
+[ext_resource type="Shader" path="res://KOMShaders/Fire.gdshader" id="1_osj3r"]
+
+[resource]
+shader = ExtResource("1_osj3r")
+shader_parameter/fireMovement = Vector2(0.015, 0.2)
+shader_parameter/distortionMovement = Vector2(0.045, -0.3)
+shader_parameter/normalStrength = 40.0
+shader_parameter/distortionStrength = 0.1

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" uid="uid://blmwhuwirg5tv" path="res://Shaders/FadeGlow.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://c3waio6rdmoex" path="res://textures/AbstractConcrete2.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/Intensity = 0.2
+shader_parameter/Texture1 = ExtResource("2")

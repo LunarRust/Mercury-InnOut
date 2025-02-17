@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3]
+
+[ext_resource type="Shader" uid="uid://8tsfa8gg50j1" path="res://Shaders/TextureDrip.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://bo3y7hmtviacq" path="res://textures/RockWall.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c38v85nib2ouk" path="res://textures/Goop.png" id="3"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/NormalLevel = 0.0
+shader_parameter/Speed = -0.1
+shader_parameter/Texture = ExtResource("2")
+shader_parameter/NormalMap = null
+shader_parameter/Texture2 = ExtResource("3")

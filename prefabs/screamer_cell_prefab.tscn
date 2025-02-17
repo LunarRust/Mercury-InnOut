@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Scripts/ScreamerCell.cs" id="1"]
+[ext_resource type="PackedScene" uid="uid://bpue5xeo3f3cg" path="res://Models/ScreamerCell.blend" id="2"]
+[ext_resource type="AudioStream" uid="uid://dnx5qlsl0rs38" path="res://Sounds/Innerman.ogg" id="3"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m6moh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_igw12"]
+radius = 0.7124940156936646
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwyh7"]
+size = Vector3(5.358520030975342, 2.819819927215576, 5.642029762268066)
+
+[node name="ScreamerCellPrefab" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 6, -33)
+
+[node name="ScreamerCell" type="RigidBody3D" parent="." node_paths=PackedStringArray("aggroTrigger", "soundSource")]
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_m6moh")
+can_sleep = false
+max_contacts_reported = 2
+contact_monitor = true
+linear_damp_mode = 1
+linear_damp = 100.0
+angular_damp_mode = 1
+angular_damp = 100.0
+script = ExtResource("1")
+speedLimit = 0.5
+aggroTrigger = NodePath("../Area3D")
+soundSource = NodePath("AudioStreamPlayer3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScreamerCell"]
+shape = SubResource("SphereShape3D_igw12")
+
+[node name="ScreamerCell" parent="ScreamerCell" instance=ExtResource("2")]
+transform = Transform3D(0.2000000029802322, 0, 0, 0, 0.2000000029802322, 0, 0, 0, 0.2000000029802322, 0, 0, 0)
+
+[node name="Skeleton3D" parent="ScreamerCell/ScreamerCell/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.3898789882659912, 0.1709609925746918, -0.3970620036125183, 0.8130859732627869)
+bones/3/rotation = Quaternion(-0.353859007358551, -0.06671469658613205, -0.6458290219306946, 0.673229992389679)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.4916009902954102, -0.1237789988517761, 0.7882270216941833, -0.3488630056381226)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.3898789882659912, -0.1709609925746918, 0.3970620036125183, 0.8130859732627869)
+bones/6/rotation = Quaternion(-0.353859007358551, 0.06671469658613205, 0.6458290219306946, 0.673229992389679)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.4916009902954102, -0.1237789988517761, 0.7882270216941833, 0.3488630056381226)
+bones/7/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="ScreamerCell/ScreamerCell" index="1"]
+autoplay = "Idle"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ScreamerCell"]
+stream = ExtResource("3")
+max_distance = 20.0
+
+[node name="HealthHandler" type="Node3D" parent="ScreamerCell"]
+script = ExtResource("4")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_lwyh7")
+
+[editable path="ScreamerCell/ScreamerCell"]

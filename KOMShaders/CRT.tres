@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b2q8quyis51mr"]
+
+[ext_resource type="Shader" path="res://KOMShaders/CRT.gdshader" id="1_3uyrv"]
+
+[resource]
+shader = ExtResource("1_3uyrv")
+shader_parameter/fisheye_strength = 1.0
+shader_parameter/curve_strength = 2.5

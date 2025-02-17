@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://crlxkf7rvm4e"]
+
+[ext_resource type="Texture2D" uid="uid://jd44ysgb4yey" path="res://KOMSprites/innout/Register.png" id="1_mg3ye"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/RegisterCon.gd" id="2_rkxw0"]
+[ext_resource type="AudioStream" uid="uid://wi5bbugtlb5w" path="res://Sounds/DNAstart.ogg" id="3_p2qb0"]
+[ext_resource type="AudioStream" uid="uid://cfjal7c4hnmq" path="res://Sounds/DNAfail.ogg" id="4_pin60"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="5_u4rpg"]
+[ext_resource type="Curve" uid="uid://iwl6freusb4t" path="res://KOMResources/Curves/CamGrabberCurve.tres" id="6_83fdw"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="7_7ptkb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s47yy"]
+size = Vector3(2.69515, 2.76039, 1.29054)
+
+[node name="CamGrabber" type="StaticBody3D"]
+transform = Transform3D(0.7, 0, 1.66893e-07, 0, 0.7, 0, -1.66893e-07, 0, 0.7, 0.761729, 1.4295, 0.0488453)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Register2" type="TextureButton" parent="CanvasLayer"]
+offset_left = -451.0
+offset_top = 122.0
+offset_right = -1.0
+offset_bottom = 572.0
+texture_normal = ExtResource("1_mg3ye")
+script = ExtResource("2_rkxw0")
+SoundPositive = ExtResource("3_p2qb0")
+SoundNegative = ExtResource("4_pin60")
+
+[node name="Sound" type="AudioStreamPlayer" parent="CanvasLayer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 3.58114e-12, 0, 1, 0, -3.58114e-12, 0, 1, 0.0232935, -0.297965, -0.429907)
+shape = SubResource("BoxShape3D_s47yy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1.42857, 1.69954e-07, 4.54328e-08, -1.69954e-07, 1.23801, 0.712839, 4.54326e-08, -0.712839, 1.23801, 9.53674e-07, 0.46123, 0.69226)
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("MenuCam", "CanvasToShow", "CollisionShape", "UIToToggle")]
+script = ExtResource("5_u4rpg")
+MenuCam = NodePath("../Camera3D")
+CanvasToShow = NodePath("../CanvasLayer")
+CamCurve = ExtResource("6_83fdw")
+CollisionShape = NodePath("../CollisionShape3D")
+UIToToggle = [null, null, null, null]
+
+[node name="SoundSource" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_7ptkb")
+
+[connection signal="pressed" from="CanvasLayer/Register2" to="CanvasLayer/Register2" method="_on_pressed"]

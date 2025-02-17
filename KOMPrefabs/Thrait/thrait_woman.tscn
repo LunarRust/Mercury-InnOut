@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://wtckr3mak6q8"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_n7kor"]
+[ext_resource type="AudioStream" uid="uid://ceeqgi6kqmdhw" path="res://Sounds/NPCSound1.ogg" id="2_fe6yc"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="3_vdlcr"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="4_fxjlu"]
+[ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="4_v4p6n"]
+[ext_resource type="PackedScene" uid="uid://copi71jpyccwi" path="res://Models/Thrait.blend" id="5_23ryw"]
+[ext_resource type="Script" path="res://Scripts/ThraitBabyBehavior.cs" id="6_302xb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xcfd"]
+
+[node name="Thrait Woman" type="StaticBody3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 1.01008, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_0xcfd")
+
+[node name="DialogueSystem" type="Node3D" parent="." node_paths=PackedStringArray("soundSource")]
+script = ExtResource("1_n7kor")
+npcName = "Thrait Woman"
+Dialogue = "These concrete walls have gotten smaller.
+It pains me to see the child trapped this deep.
+Under a sickly blue sky..."
+LookDescription = "The Thrait woman looks tired and stressed, most likely due to her environment."
+TouchDescription = "The Thrait Woman shies away."
+soundSource = NodePath("../AudioStreamPlayer3D")
+DialogueSound = ExtResource("2_fe6yc")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="."]
+script = ExtResource("3_vdlcr")
+
+[node name="NpcToNpcHealthHandler" type="Node3D" parent="." node_paths=PackedStringArray("CoreHealthHandler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("4_fxjlu")
+CoreHealthHandler = NodePath("../HealthHandler")
+
+[node name="Interactable" type="Node" parent="."]
+script = ExtResource("4_v4p6n")
+
+[node name="Thrait" parent="." instance=ExtResource("5_23ryw")]
+transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, 0, -1, -0.508147)
+
+[node name="Skeleton3D" parent="Thrait/ThraitArm" index="0"]
+bones/0/rotation = Quaternion(0.185049, -1.1715e-07, -2.20596e-08, 0.982729)
+bones/1/rotation = Quaternion(0.146335, -1.86303e-14, -3.48891e-08, 0.989235)
+bones/2/rotation = Quaternion(0.0920063, -5.24028e-15, -2.1936e-08, 0.995758)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.471082, -0.0821362, -0.613823, 0.628137)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.108466, -0.027082, 0.235654, 0.965385)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.0803759, 0.0154901, 0.35931, 0.929621)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0899455, -1.18726e-07, -3.2167e-08, 0.995947)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.054613, -2.38063e-07, -3.90623e-08, 0.998508)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.171144, -3.52356e-07, -2.24423e-07, 0.985246)
+bones/10/rotation = Quaternion(0.408794, 4.71813e-12, -6.8225e-07, 0.912627)
+bones/11/rotation = Quaternion(0.28363, 4.8015e-12, -4.7336e-07, 0.958934)
+bones/12/rotation = Quaternion(0.215617, -0.0619149, 0.20933, 0.951765)
+bones/13/rotation = Quaternion(0.215617, -0.0619149, 0.20933, 0.951765)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(0.215617, 0.0619165, -0.20933, 0.951765)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.215617, 0.0619165, -0.20933, 0.951765)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.298851, -0.00111687, 0.0211055, 0.954066)
+bones/17/rotation = Quaternion(0.298851, 0.0011185, -0.0211062, 0.954066)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.108466, 0.027082, -0.235654, 0.965385)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(0.0803759, -0.0154901, -0.35931, 0.929621)
+bones/21/rotation = Quaternion(0.195715, 0.0442411, 0.371762, 0.906384)
+
+[node name="AnimationPlayer" parent="Thrait" index="1"]
+autoplay = "Idle"
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("thraits")]
+script = ExtResource("6_302xb")
+thraits = [null]
+
+[editable path="Thrait"]

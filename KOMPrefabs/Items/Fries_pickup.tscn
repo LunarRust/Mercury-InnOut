@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmthr6fl3qdjq"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_b3lfe"]
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2_tyhvg"]
+[ext_resource type="Texture2D" uid="uid://b8cnpnu0vqxy6" path="res://KOMSprites/innout/fries.png" id="3_bockf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7sm0"]
+size = Vector3(0.65371, 0.812319, 0.210897)
+
+[node name="Fries Pickup" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236326, 0.271321, 0)
+shape = SubResource("BoxShape3D_d7sm0")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("1_b3lfe")
+ItemID = "Fries"
+
+[node name="ModelRoot" type="Node3D" parent="."]
+script = ExtResource("2_tyhvg")
+
+[node name="Sprite3D" type="Sprite3D" parent="ModelRoot"]
+transform = Transform3D(0.179784, 0.0614627, 0, -0.0614627, 0.179784, 0, 0, 0, 0.19, 0, 0.28998, 0)
+shaded = true
+texture = ExtResource("3_bockf")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636349, 0)
+light_color = Color(0.662745, 0.45098, 0.054902, 1)
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+omni_range = 1.09562

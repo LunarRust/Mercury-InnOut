@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://clak8qk3qyhik"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_met4v"]
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2_i4gop"]
+[ext_resource type="Texture2D" uid="uid://b2j0kt7ppsv7a" path="res://KOMSprites/innout/In-N-Out-Burger.png" id="3_2onjn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7sm0"]
+size = Vector3(0.446385, 0.812319, 0.210897)
+
+[node name="Burger Pickup" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271321, 0)
+shape = SubResource("BoxShape3D_d7sm0")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("1_met4v")
+ItemID = "Burger"
+
+[node name="ModelRoot" type="Node3D" parent="."]
+script = ExtResource("2_i4gop")
+
+[node name="Sprite3D" type="Sprite3D" parent="ModelRoot"]
+transform = Transform3D(0.265, 0, 0, 0, 0.265, 0, 0, 0, 0.265, 0, 0.28998, 0)
+shaded = true
+texture = ExtResource("3_2onjn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636349, 0)
+light_color = Color(0.662745, 0.45098, 0.054902, 1)
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+omni_range = 1.09562

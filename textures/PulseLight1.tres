@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" uid="uid://drc4jfkkwj0ul" path="res://Shaders/pulseLight.tres" id="1"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/Color = Color(0.4549019932746887, 0, 0, 1)

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" uid="uid://ylu0atx0blmq" path="res://Models/textures/Pedestrian Texture.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dki0p1fu6qdy2" path="res://Models/textures/PedestrianNormal.png" id="2"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness = 0.2300000041723251
+normal_enabled = true
+normal_texture = ExtResource("2")

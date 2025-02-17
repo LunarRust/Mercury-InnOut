@@ -1,0 +1,806 @@
+[gd_scene load_steps=24 format=3 uid="uid://bjp7e01fnvxmv"]
+
+[ext_resource type="Script" path="res://Scripts/ElevatorLoader.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cgsjy16rn3j5i" path="res://Sprites/ElevatorBack.png" id="2"]
+[ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="3"]
+[ext_resource type="Texture2D" uid="uid://bwf1mmenny2k" path="res://Sprites/ElevatorPomp.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://3gl5rnx426t4" path="res://Sprites/UI/Gear2.png" id="5"]
+[ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="6"]
+[ext_resource type="Texture2D" uid="uid://bdaqtom6jx333" path="res://Sprites/ElevatorPompFrames.png" id="7"]
+[ext_resource type="Script" path="res://Scripts/SlidingUp.gd" id="8"]
+[ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="9"]
+[ext_resource type="AudioStream" uid="uid://dvtyqyhkumfnn" path="res://Music/DownWeGo.ogg" id="10"]
+[ext_resource type="AudioStream" uid="uid://dtbb7mwybdhxv" path="res://Sounds/Machinery.ogg" id="11"]
+
+[sub_resource type="Animation" id="Animation_xxdl6"]
+resource_name = "ElevatorBlink"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.7, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_wm66a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jnqc"]
+_data = {
+"ElevatorBlink": SubResource("Animation_xxdl6"),
+"RESET": SubResource("Animation_wm66a")
+}
+
+[sub_resource type="Environment" id="Environment_f7xf4"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_exposure = 0.74
+tonemap_white = 3.5
+ssr_fade_in = 0.31058
+ssr_fade_out = 0.784584
+ssr_depth_tolerance = 79.21
+ssao_radius = 3.93
+ssao_power = 0.699775
+ssao_ao_channel_affect = 1.0
+ssil_radius = 11.38
+ssil_intensity = 8.95
+ssil_sharpness = 0.0
+sdfgi_bounce_feedback = 0.0
+glow_enabled = true
+glow_intensity = 3.57
+glow_strength = 0.0
+glow_mix = 0.364
+glow_bloom = 0.17
+glow_blend_mode = 4
+glow_hdr_threshold = 0.0
+fog_density = 0.258
+
+[sub_resource type="Animation" id="Animation_kan0m"]
+resource_name = "GlowChange"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:glow_strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.6, 3.6, 4.2, 5),
+"transitions": PackedFloat32Array(1, 0.258816, 0.210224, 0.392292, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.5, 1.5, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1nuf1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:glow_strength")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87yrv"]
+_data = {
+"GlowChange": SubResource("Animation_kan0m"),
+"RESET": SubResource("Animation_1nuf1")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_lquqv"]
+
+[sub_resource type="Animation" id="Animation_3p8rs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(485.25, 275.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance2D6:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(485.25, 870)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-26.38]
+}
+
+[sub_resource type="Animation" id="Animation_3uqee"]
+resource_name = "Transition"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance2D5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(485.25, 275.75), Vector2(485.25, -346)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance2D6:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(485.25, 1100), Vector2(485.25, 276)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SceneLoader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Load"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-26.38, -13.9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1oqhs"]
+_data = {
+"RESET": SubResource("Animation_3p8rs"),
+"Transition": SubResource("Animation_3uqee")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_iwd0u"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -449.0
+offset_top = -242.0
+offset_right = 1627.0
+offset_bottom = 1025.0
+color = Color(0, 0, 0, 1)
+
+[node name="ElevatorBack" type="Sprite2D" parent="."]
+position = Vector2(479, 269)
+texture = ExtResource("2")
+script = ExtResource("3")
+
+[node name="ElevatorPomp" type="Sprite2D" parent="."]
+position = Vector2(485, 273)
+texture = ExtResource("4")
+script = ExtResource("3")
+
+[node name="Gear4" type="Sprite2D" parent="ElevatorPomp"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-227, -82)
+scale = Vector2(0.283422, 0.283422)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 2.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="Gear2" type="Sprite2D" parent="ElevatorPomp"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(158.375, -225.625)
+scale = Vector2(0.311293, 0.311293)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 2.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="Gear3" type="Sprite2D" parent="ElevatorPomp"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-240, -221)
+scale = Vector2(0.508928, 0.508928)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 2.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="ElevatorPomp4" type="Sprite2D" parent="."]
+position = Vector2(461, 334)
+texture = ExtResource("7")
+hframes = 3
+script = ExtResource("3")
+power = 5.0
+
+[node name="ElevatorPomp3" type="Sprite2D" parent="."]
+position = Vector2(461, 334)
+texture = ExtResource("7")
+hframes = 3
+script = ExtResource("3")
+power = 3.0
+
+[node name="ElevatorPomp2" type="Sprite2D" parent="."]
+position = Vector2(461, 334)
+texture = ExtResource("7")
+hframes = 3
+script = ExtResource("3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ElevatorPomp2"]
+libraries = {
+"": SubResource("AnimationLibrary_8jnqc")
+}
+autoplay = "ElevatorBlink"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f7xf4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment"]
+libraries = {
+"": SubResource("AnimationLibrary_87yrv")
+}
+autoplay = "GlowChange"
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
+modulate = Color(0.819608, 0.231373, 0, 1)
+position = Vector2(198, 624.951)
+rotation = -3.14159
+scale = Vector2(31.375, 76.1528)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+visible = false
+modulate = Color(0.819608, 0.231373, 0, 1)
+position = Vector2(711, 624.951)
+rotation = -3.14159
+scale = Vector2(31.375, 76.1528)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+visible = false
+modulate = Color(0.517647, 0.133333, 0, 1)
+position = Vector2(198, 968.076)
+rotation = -3.14159
+scale = Vector2(31.375, 76.1528)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="."]
+visible = false
+modulate = Color(0.517647, 0.133333, 0, 1)
+position = Vector2(711, 968.076)
+rotation = -3.14159
+scale = Vector2(31.375, 76.1528)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+
+[node name="Shaker" type="Node2D" parent="."]
+script = ExtResource("3")
+power = 2.0
+
+[node name="LeftBack13" type="Node2D" parent="Shaker"]
+position = Vector2(113, -70)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftBack13"]
+modulate = Color(0.54902, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftBack14" type="Node2D" parent="Shaker"]
+position = Vector2(175, 53.0001)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftBack14"]
+modulate = Color(0.54902, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftBack15" type="Node2D" parent="Shaker"]
+position = Vector2(113, 154)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftBack15"]
+modulate = Color(0.54902, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftBack16" type="Node2D" parent="Shaker"]
+position = Vector2(175, 277)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftBack16"]
+modulate = Color(0.54902, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftBack17" type="Node2D" parent="Shaker"]
+position = Vector2(113, 382)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftBack17"]
+modulate = Color(0.54902, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftBack18" type="Node2D" parent="Shaker"]
+position = Vector2(175, 505)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftBack18"]
+modulate = Color(0.54902, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftFront" type="Node2D" parent="Shaker"]
+position = Vector2(10, 49)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftFront"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftFront2" type="Node2D" parent="Shaker"]
+position = Vector2(72, 172)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftFront2"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftFront3" type="Node2D" parent="Shaker"]
+position = Vector2(10, 273)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftFront3"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftFront4" type="Node2D" parent="Shaker"]
+position = Vector2(72, 396)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftFront4"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftFront5" type="Node2D" parent="Shaker"]
+position = Vector2(10, 501)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftFront5"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="LeftFront6" type="Node2D" parent="Shaker"]
+position = Vector2(72, 624)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/LeftFront6"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightBack13" type="Node2D" parent="Shaker"]
+position = Vector2(751, 45)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightBack13"]
+modulate = Color(0.513726, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightBack14" type="Node2D" parent="Shaker"]
+position = Vector2(813, 168)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightBack14"]
+modulate = Color(0.513726, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightBack15" type="Node2D" parent="Shaker"]
+position = Vector2(751, 269)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightBack15"]
+modulate = Color(0.513726, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightBack16" type="Node2D" parent="Shaker"]
+position = Vector2(813, 392)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightBack16"]
+modulate = Color(0.513726, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightBack17" type="Node2D" parent="Shaker"]
+position = Vector2(751, 497)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightBack17"]
+modulate = Color(0.513726, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightBack18" type="Node2D" parent="Shaker"]
+position = Vector2(813, 620)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightBack18"]
+modulate = Color(0.513726, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightFront7" type="Node2D" parent="Shaker"]
+position = Vector2(871, -62)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightFront7"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightFront8" type="Node2D" parent="Shaker"]
+position = Vector2(933, 61.0002)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightFront8"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightFront9" type="Node2D" parent="Shaker"]
+position = Vector2(871, 162)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightFront9"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightFront10" type="Node2D" parent="Shaker"]
+position = Vector2(933, 285)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightFront10"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightFront11" type="Node2D" parent="Shaker"]
+position = Vector2(871, 390)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightFront11"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="RightFront12" type="Node2D" parent="Shaker"]
+position = Vector2(933, 513)
+scale = Vector2(0.283422, 0.283422)
+script = ExtResource("8")
+
+[node name="Gear5" type="Sprite2D" parent="Shaker/RightFront12"]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("5")
+script = ExtResource("6")
+Time = 1.0
+tweenPosition = true
+endPosition = Vector2(-200, 0)
+tweenRotation = true
+endrotation = 2.0
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="Shaker"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(520.54, 641.941)
+rotation = 3.14159
+scale = Vector2(1245.94, 42.1733)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+speed = 200
+
+[node name="MeshInstance2D8" type="MeshInstance2D" parent="Shaker"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(520.54, 137)
+rotation = 3.14159
+scale = Vector2(1245.94, 42.1733)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+speed = 50
+
+[node name="MeshInstance2D6" type="MeshInstance2D" parent="Shaker"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(515, 207)
+rotation = -0.0767945
+scale = Vector2(1245.94, 42.1733)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+speed = 150
+
+[node name="MeshInstance2D7" type="MeshInstance2D" parent="Shaker"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(515, 605)
+rotation = 0.0802851
+scale = Vector2(1245.94, 42.1733)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("8")
+speed = 100
+
+[node name="MeshInstance2D9" type="MeshInstance2D" parent="Shaker"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-99.2832, 275.284)
+rotation = 0.16057
+scale = Vector2(352.069, 963.232)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("6")
+Time = 5.0
+tweenRotation = true
+endrotation = -0.261
+
+[node name="MeshInstance2D10" type="MeshInstance2D" parent="Shaker"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1042, 275.284)
+rotation = 0.16057
+scale = Vector2(352.069, 963.232)
+mesh = SubResource("QuadMesh_lquqv")
+script = ExtResource("6")
+Time = 5.0
+tweenRotation = true
+endrotation = -0.261
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 269)
+rotation = -0.0802851
+ignore_rotation = false
+rotation_smoothing_enabled = true
+script = ExtResource("6")
+Time = 2.0
+tweenRotation = true
+endrotation = 0.2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = ExtResource("9")
+offset_left = -221.0
+offset_top = -146.0
+offset_right = 1141.0
+offset_bottom = 720.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1oqhs")
+}
+autoplay = "Transition"
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(485.25, 275.75)
+scale = Vector2(971.5, 552.5)
+mesh = SubResource("QuadMesh_iwd0u")
+
+[node name="MeshInstance2D6" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(485.25, 870)
+scale = Vector2(1356.5, 958.25)
+mesh = SubResource("QuadMesh_iwd0u")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10")
+volume_db = -26.38
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11")
+volume_db = -14.55
+autoplay = true

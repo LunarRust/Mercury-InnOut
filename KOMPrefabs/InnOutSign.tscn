@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsw5yu4agnwvp"]
+
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="1_43k18"]
+[ext_resource type="Texture2D" uid="uid://de2qgm2uiimc1" path="res://KOMSprites/innout/InNOut_logo.png" id="1_t2sx3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5caa"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i6swc"]
+material = SubResource("StandardMaterial3D_v5caa")
+
+[node name="InnOutSign" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.471793, 0, 0.370691, 0, 15, 0, -0.370691, 0, 0.471793, 0, 0, 0)
+mesh = SubResource("BoxMesh_i6swc")
+skeleton = NodePath("../..")
+
+[node name="SignParent" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.51958, 0)
+script = ExtResource("1_43k18")
+
+[node name="Sprite3D" type="Sprite3D" parent="StaticBody3D/SignParent"]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0, 1.624, 0)
+shaded = true
+texture = ExtResource("1_t2sx3")

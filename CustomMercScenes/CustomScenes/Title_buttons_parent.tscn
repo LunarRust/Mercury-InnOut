@@ -1,0 +1,349 @@
+[gd_scene load_steps=15 format=3 uid="uid://br461f4jqsp4v"]
+
+[ext_resource type="PackedScene" uid="uid://c756vofx3l2qw" path="res://CustomMercScenes/CustomScenes/custom_button_parent.tscn" id="1_vcb2w"]
+[ext_resource type="Texture2D" uid="uid://rrmmw1e2tjdp" path="res://Sprites/UI/ButtonMenu.png" id="2_qompf"]
+[ext_resource type="Texture2D" uid="uid://bod7c6qoku143" path="res://Sprites/UI/ButtonMenu2.png" id="3_qj7li"]
+[ext_resource type="Script" path="res://Scripts/NewGameButton.gd" id="4_8w0ky"]
+[ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="5_xn80n"]
+[ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="6_4ksab"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="7_xuscy"]
+[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="8_5yqjl"]
+[ext_resource type="Script" path="res://Scripts/CreditsButton.gd" id="9_p6a0e"]
+[ext_resource type="Texture2D" uid="uid://bwwavieqcbdar" path="res://Sprites/UI/Check.png" id="10_8ljkf"]
+[ext_resource type="Script" path="res://Scripts/ContinueButton.gd" id="11_phcju"]
+[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="12_vvpwp"]
+
+[sub_resource type="GDScript" id="11"]
+script/source = "extends TextureButton
+
+func _pressed():
+	get_tree().quit()
+	pass"
+
+[sub_resource type="LabelSettings" id="12"]
+font = ExtResource("7_xuscy")
+font_color = Color(0.145098, 0.133333, 0.12549, 1)
+
+[node name="Button Parent" type="Node2D"]
+position = Vector2(480, 481)
+
+[node name="CustomButtonParent" parent="." instance=ExtResource("1_vcb2w")]
+
+[node name="NewGameButton" type="TextureButton" parent="."]
+offset_left = -284.0
+offset_top = -34.0
+offset_right = -149.0
+offset_bottom = 29.0
+texture_normal = ExtResource("2_qompf")
+texture_pressed = ExtResource("3_qj7li")
+texture_disabled = ExtResource("3_qj7li")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_8w0ky")
+
+[node name="ButtonPlayer" type="AudioStreamPlayer" parent="NewGameButton"]
+stream = ExtResource("5_xn80n")
+script = ExtResource("6_4ksab")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewGameButton"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 24.0
+offset_right = 106.0
+offset_bottom = 44.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[wave][center]Begin"
+scroll_active = false
+
+[node name="Warning" type="ColorRect" parent="NewGameButton"]
+visible = false
+layout_mode = 0
+offset_left = 83.0
+offset_top = -198.0
+offset_right = 531.0
+offset_bottom = -42.0
+color = Color(0, 0, 0, 1)
+
+[node name="FinnStuff" type="RichTextLabel" parent="NewGameButton/Warning"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 27.0
+offset_right = 412.0
+offset_bottom = 113.0
+theme_override_colors/default_color = Color(1, 0.286275, 0.00784314, 1)
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[center][wave]Warning!
+A Save File has been Detected.
+Starting a new game will delete the previous save file.
+Are you sure you want to restart?"
+
+[node name="Cancel" type="TextureButton" parent="NewGameButton/Warning"]
+modulate = Color(0.443137, 0.262745, 0.105882, 1)
+layout_mode = 0
+offset_left = 261.0
+offset_top = 107.0
+offset_right = 301.0
+offset_bottom = 147.0
+texture_normal = ExtResource("8_5yqjl")
+script = ExtResource("9_p6a0e")
+
+[node name="Confirm" type="TextureButton" parent="NewGameButton/Warning"]
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
+layout_mode = 0
+offset_left = 149.0
+offset_top = 107.0
+offset_right = 189.0
+offset_bottom = 147.0
+texture_normal = ExtResource("10_8ljkf")
+
+[node name="ContinueButton" type="TextureButton" parent="."]
+offset_left = -143.0
+offset_top = -34.0
+offset_right = -8.0
+offset_bottom = 29.0
+texture_normal = ExtResource("2_qompf")
+texture_pressed = ExtResource("3_qj7li")
+texture_disabled = ExtResource("3_qj7li")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("11_phcju")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ContinueButton"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 24.0
+offset_right = 107.0
+offset_bottom = 41.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[wave]Continue"
+scroll_active = false
+
+[node name="!" type="RichTextLabel" parent="ContinueButton"]
+visible = false
+layout_mode = 0
+offset_left = 99.0
+offset_top = 16.0
+offset_right = 121.0
+offset_bottom = 49.0
+theme = ExtResource("12_vvpwp")
+theme_override_colors/default_color = Color(1, 0.317647, 0, 1)
+bbcode_enabled = true
+text = "[wave]!"
+
+[node name="QuitButton" type="TextureButton" parent="."]
+offset_left = 152.0
+offset_top = -34.0
+offset_right = 287.0
+offset_bottom = 29.0
+texture_normal = ExtResource("2_qompf")
+texture_pressed = ExtResource("3_qj7li")
+texture_disabled = ExtResource("3_qj7li")
+ignore_texture_size = true
+stretch_mode = 0
+script = SubResource("11")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="QuitButton"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 24.0
+offset_right = 104.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[wave]Quit"
+scroll_active = false
+
+[node name="CreditsButton" type="TextureButton" parent="."]
+offset_left = 8.0
+offset_top = -34.0
+offset_right = 143.0
+offset_bottom = 29.0
+texture_normal = ExtResource("2_qompf")
+texture_pressed = ExtResource("3_qj7li")
+texture_disabled = ExtResource("3_qj7li")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("9_p6a0e")
+
+[node name="Credits" type="ColorRect" parent="CreditsButton"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = -488.0
+offset_top = -447.0
+offset_right = 482.0
+offset_bottom = 93.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FinnStuff" type="RichTextLabel" parent="CreditsButton/Credits"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 27.0
+offset_right = 925.0
+offset_bottom = 505.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.286275, 0.00784314, 1)
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[center]Credits
+[wave]
+A Game By
+Finn Tanguay
+(@Karbonicc)
+Contact:
+FadingClubGames@gmail.com
+"
+
+[node name="PatronTitle" type="RichTextLabel" parent="CreditsButton/Credits"]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 157.0
+offset_right = 868.0
+offset_bottom = 227.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[center][wave]
+----------------------------------------------------------
+Patreon Supporters
+----------------------------------------------------------
+"
+
+[node name="PatronCredits" type="RichTextLabel" parent="CreditsButton/Credits"]
+layout_mode = 0
+offset_left = 516.0
+offset_top = 222.0
+offset_right = 702.0
+offset_bottom = 510.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[center][wave]
+RandolfTheMediocre
+Phorosys
+Spoomk
+Scott Steffes
+Avagant
+Evan Delagardelle
+Anonicus
+Batworks Software
+Complete Failure
+Fignuts21
+Hank Johnson
+Indecisive Yama
+Just Ethan Tbh
+Locket
+Nyx of Wind
+"
+
+[node name="PatronCredits2" type="RichTextLabel" parent="CreditsButton/Credits"]
+layout_mode = 0
+offset_left = 674.0
+offset_top = 222.0
+offset_right = 860.0
+offset_bottom = 510.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[center][wave]
+Lucio Rodriguez
+Ame Abyssal
+RoboticAlienDude
+Mishrock
+Shy_Ninja
+Yioskamt
+Oneiromoon
+Sincore777
+Yuvin!
+BrainBlast
+Jagd_Katze
+Tsuskido
+Kahoona
+frogmanroswell "
+
+[node name="LocalTitle" type="RichTextLabel" parent="CreditsButton/Credits"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 160.0
+offset_right = 428.0
+offset_bottom = 230.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[center][wave]
+----------------------------------------------------------
+Localisation Teams
+----------------------------------------------------------
+"
+
+[node name="LocalCredits" type="RichTextLabel" parent="CreditsButton/Credits"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 200.0
+offset_right = 449.0
+offset_bottom = 836.0
+theme_override_colors/default_color = Color(0.392157, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center][wave]
+----------------------------------------------------------
+Japanese Localisation       ローカリゼーション (日本語)
+Kurono Studios        クロノ・スタジオ
+Sam Lewis Kurono      クロノ サム
+Hishiai                          ひしあい
+Miyuka Yamauchi     山内 美優香
+Alexander Golding       ゴールディン アレックス
+Samuel Ruddy        ィー サムエル
+----------------------------------------------------------
+Russian Localisation
+Script Translation - Poptepip (vk.com/poptepip)
+Cyrillic Font and Texture Translation - Birzavr
+----------------------------------------------------------
+Portuguese Localisation
+Script Translation
+Uneven Prankster & Sarqueen
+----------------------------------------------------------"
+
+[node name="TextureButton" type="TextureButton" parent="CreditsButton/Credits"]
+modulate = Color(0.431301, 0.255126, 0.101887, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 618.0
+offset_top = 27.0
+offset_right = 650.0
+offset_bottom = 59.0
+texture_normal = ExtResource("8_5yqjl")
+script = ExtResource("9_p6a0e")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CreditsButton"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 24.0
+offset_right = 106.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_xuscy")
+bbcode_enabled = true
+text = "[wave]Credits"
+scroll_active = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = -104.0
+offset_top = 39.0
+offset_right = 86.0
+offset_bottom = 58.0
+text = "©2024 Fading Club Games"
+label_settings = SubResource("12")
+
+[connection signal="pressed" from="NewGameButton" to="NewGameButton/ButtonPlayer" method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="NewGameButton/Warning/Confirm" to="NewGameButton" method="start"]
+[connection signal="pressed" from="CreditsButton" to="CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="CreditsButton/Credits/TextureButton" to="CreditsButton" method="_on_texture_button_pressed"]

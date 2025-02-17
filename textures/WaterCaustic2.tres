@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://Shaders/CheapWater.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://bxy3bf6wykvxa" path="res://textures/Water.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/tint_color = Color(0, 0.3607839941978455, 0.2941179871559143, 0.4156860113143921)
+shader_parameter/slowdown = 7.2
+shader_parameter/time_caust = 0.13
+shader_parameter/caust_form = 0.15
+shader_parameter/tile = 3.6
+shader_parameter/caustics = ExtResource("2")

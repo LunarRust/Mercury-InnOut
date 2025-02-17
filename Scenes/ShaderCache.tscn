@@ -1,0 +1,98 @@
+[gd_scene load_steps=19 format=3]
+
+[ext_resource type="Material" uid="uid://edqxmopamwb4" path="res://Quantize.tres" id="1"]
+[ext_resource type="Script" path="res://Scripts/ShaderCacher.cs" id="2"]
+[ext_resource type="PackedScene" uid="uid://cng70ayuj5f2x" path="res://prefabs/blood_splatter.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://5e4ac5wixchi" path="res://prefabs/blood_splatter2.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://c4fa11slb62tt" path="res://prefabs/blood_splatter3.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dtvdikulb7f2i" path="res://prefabs/projectile.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://cmfcl3sgb78vy" path="res://prefabs/blood_splatter_No_Puddle.tscn" id="7"]
+[ext_resource type="Theme" uid="uid://ckrtgyu34240c" path="res://Fonts/DBStyles.tres" id="8"]
+[ext_resource type="Texture2D" uid="uid://wdhg47n600hc" path="res://Sprites/UI/PsychopompFaceSmile.png" id="9"]
+[ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="10"]
+[ext_resource type="PackedScene" uid="uid://c04kuoputmjkn" path="res://Models/PsychopompPlayerModel.blend" id="11"]
+[ext_resource type="AudioStream" uid="uid://uwemj4k5wg0a" path="res://Music/ToeWalker Vocal Broken.ogg" id="12"]
+[ext_resource type="Material" uid="uid://behok70s57apq" path="res://textures/WaterCaustic.tres" id="13"]
+[ext_resource type="Material" uid="uid://xnbmx3rbdgnc" path="res://textures/WaterCaustic2.tres" id="14"]
+[ext_resource type="Material" uid="uid://bvwq24jl4x8r4" path="res://textures/WaterCaustic3.tres" id="15"]
+[ext_resource type="Material" uid="uid://ch3d5jdmh77hd" path="res://Material/FogPlane.tres" id="16"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_52j68"]
+material = ExtResource("13")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mdd12"]
+
+[node name="Node2D" type="Node3D"]
+
+[node name="Filter2" type="ColorRect" parent="."]
+material = ExtResource("1")
+offset_right = 969.0
+offset_bottom = 538.0
+mouse_filter = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true
+
+[node name="ShaderCacher" type="Node3D" parent="."]
+script = ExtResource("2")
+prefabs = [ExtResource("3"), ExtResource("4"), ExtResource("5"), ExtResource("6"), ExtResource("7")]
+destinationScene = "title_screen"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 983.0
+offset_bottom = 610.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 505.0
+offset_right = 963.0
+offset_bottom = 546.0
+theme = ExtResource("8")
+theme_override_colors/default_color = Color(0.7725489735603333, 0.3725489974021912, 0.003921569790691137, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]Caching Shaders, please wait..."
+
+[node name="PsychopompFaceSmile" type="Sprite2D" parent="."]
+modulate = Color(0.0823528990149498, 0.0823528990149498, 0.0823528990149498, 1)
+position = Vector2(918, 472)
+rotation = 0.3044889867305756
+texture = ExtResource("9")
+script = ExtResource("10")
+
+[node name="PsychopompFaceSmile2" type="Sprite2D" parent="."]
+modulate = Color(0.0823528990149498, 0.0823528990149498, 0.0823528990149498, 1)
+position = Vector2(15, 52)
+rotation = -0.2519730031490326
+texture = ExtResource("9")
+script = ExtResource("10")
+
+[node name="PsychopompPlayerModel" parent="." instance=ExtResource("11")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12")
+volume_db = -80.0
+autoplay = true
+
+[node name="ShaderPlane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_52j68")
+
+[node name="ShaderPlane2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.060674998909235, 0)
+material_override = ExtResource("14")
+mesh = SubResource("PlaneMesh_mdd12")
+
+[node name="ShaderPlane3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1228659972548485, 0)
+material_override = ExtResource("15")
+mesh = SubResource("PlaneMesh_mdd12")
+
+[node name="ShaderPlane4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2004390060901642, 0)
+material_override = ExtResource("16")
+mesh = SubResource("PlaneMesh_mdd12")

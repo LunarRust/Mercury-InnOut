@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvhw5ggxre7oi"]
+
+[ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_6fjcp"]
+[ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_mfohj"]
+[ext_resource type="Resource" uid="uid://ccjp1ksk00c7w" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_f8y3g"]
+[ext_resource type="Material" uid="uid://bv3iokibj6cft" path="res://textures/Door03.tres" id="3_1hywq"]
+[ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="3_hossg"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_k7m3i"]
+_surfaces = [{
+"aabb": AABB(-4, -1, 3, 1, 2.00001, 1),
+"attribute_data": PackedByteArray(126, 87, 4, 52, 1, 0, 192, 191, 254, 255, 127, 191, 2, 0, 192, 191, 255, 255, 127, 191, 3, 0, 128, 191, 179, 239, 138, 49, 1, 0, 128, 191, 255, 255, 191, 191, 0, 0, 128, 180, 255, 255, 255, 191, 0, 0, 192, 180, 0, 0, 0, 192, 250, 255, 127, 63, 1, 0, 192, 191, 252, 255, 127, 63, 254, 255, 191, 191, 2, 0, 128, 191, 253, 255, 191, 191, 2, 0, 192, 191, 253, 255, 255, 191, 2, 0, 192, 191, 254, 255, 255, 191, 3, 0, 128, 191, 2, 0, 192, 63, 252, 255, 127, 191, 1, 0, 0, 64, 250, 255, 127, 191, 1, 0, 0, 64, 253, 255, 191, 191, 3, 0, 192, 63, 254, 255, 191, 191, 1, 0, 192, 63, 0, 0, 144, 52, 255, 255, 191, 63, 2, 0, 128, 63, 255, 255, 255, 63, 3, 0, 128, 63, 0, 0, 0, 64, 0, 0, 192, 52, 126, 87, 4, 52, 254, 255, 191, 191, 246, 93, 17, 51, 254, 255, 127, 191, 0, 0, 128, 63, 250, 255, 127, 191, 1, 0, 128, 63, 253, 255, 191, 191),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"material": ExtResource("3_1hywq"),
+"name": "Door01",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 128, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 128, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 128, 192, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 64, 64, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 64, 64, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 64, 192, 0, 0, 128, 63, 0, 0, 128, 64, 0, 0, 64, 192, 0, 0, 128, 191, 0, 0, 128, 64, 0, 0, 128, 192, 0, 0, 128, 191, 0, 0, 128, 64, 255, 255, 255, 255, 255, 127, 0, 128, 255, 255, 255, 255, 255, 127, 0, 128, 255, 255, 255, 255, 255, 127, 0, 128, 255, 255, 255, 255, 255, 127, 0, 128, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 191, 255, 127, 255, 255, 255, 255, 0, 128, 255, 127, 255, 255, 255, 255, 0, 128, 255, 127, 255, 255, 255, 255, 0, 128, 255, 127, 255, 255, 255, 255, 0, 128, 255, 255, 255, 127, 0, 0, 0, 128, 255, 255, 255, 127, 0, 0, 0, 128, 255, 255, 255, 127, 0, 0, 0, 128, 255, 255, 255, 127, 0, 0, 0, 128, 255, 127, 255, 127, 255, 127, 255, 255, 255, 127, 255, 127, 255, 127, 255, 255, 255, 127, 255, 127, 255, 127, 255, 255, 255, 127, 255, 127, 255, 127, 255, 255)
+}]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_ki5wj"]
+vertices = PackedVector3Array(-4, 1, 3, -4, -1, 3, -3, -1, 3, -3, 1, 3, -4, 1, 3, -4, 1, 4, -4, -1, 4, -4, -1, 3, -3, -1, 3, -4, -1, 3, -4, -1, 4, -3, -1, 4, -3, 1, 3, -3, 1, 4, -4, 1, 4, -4, 1, 3, -3, 1, 3, -3, -1, 3, -3, -1, 4, -3, 1, 4, -4, 1, 4, -3, 1, 4, -3, -1, 4, -4, -1, 4)
+indices = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 2, 3, 4, 5, 6, 4, 6, 7, 8, 9, 10, 8, 10, 11, 12, 13, 14, 12, 14, 15, 16, 17, 18, 16, 18, 19, 20, 21, 22, 20, 22, 23)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kjuqt"]
+points = PackedVector3Array(-4, 1, 3, -4, -1, 3, -3, -1, 3, -3, 1, 3, -4, 1, 4, -4, -1, 4, -3, -1, 4, -3, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q5etx"]
+size = Vector3(1.01636, 1.01807, 0.207581)
+
+[node name="Door" type="StaticBody3D"]
+
+[node name="FuncGodotMap" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.43364, -0.00649738, -3.52955)
+script = ExtResource("1_6fjcp")
+global_map_file = "res://CustomMaps/door.map"
+map_settings = ExtResource("2_f8y3g")
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="FuncGodotMap"]
+collision_mask = 0
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
+mesh = SubResource("ArrayMesh_k7m3i")
+
+[node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="FuncGodotMap/entity_0_worldspawn"]
+transform = Transform3D(0.250722, 0, 0, 0, 1, 0, 0, 0, 0.249238, -2.98948, 0, 3.00057)
+occluder = SubResource("ArrayOccluder3D_ki5wj")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="FuncGodotMap/entity_0_worldspawn"]
+shape = SubResource("ConvexPolygonShape3D_kjuqt")
+
+[node name="GenericDiologueBody" type="StaticBody3D" parent="FuncGodotMap"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8819, -0.0888317, 3.44153)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FuncGodotMap/GenericDiologueBody"]
+transform = Transform3D(1, 0, 0, 0, 1.94491, 0, 0, 0, 1, 0.0549771, 0.108235, 0.159332)
+shape = SubResource("BoxShape3D_q5etx")
+
+[node name="DialogueSystem" type="Node3D" parent="FuncGodotMap/GenericDiologueBody"]
+script = ExtResource("1_mfohj")
+npcName = "Door"
+Dialogue = "Why are you talking to a door?"
+LookDescription = "It's a door."
+TouchDescription = "Locked."
+looking = false
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="FuncGodotMap/GenericDiologueBody"]
+
+[node name="Interactable" type="Node" parent="FuncGodotMap/GenericDiologueBody"]
+script = ExtResource("3_hossg")

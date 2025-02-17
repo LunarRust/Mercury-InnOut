@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0ylp55wubpr8"]
+
+[ext_resource type="Shader" path="res://KOMMaterials/Background.gdshader" id="1_3e7ea"]
+[ext_resource type="Texture2D" uid="uid://0eyk37hoo024" path="res://KOMMaterials/green.PNG" id="2_fqhr5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enb2u"]
+shader = ExtResource("1_3e7ea")
+shader_parameter/basecolor = Color(0.12549, 0.152941, 0.286275, 1)
+shader_parameter/animate_speed = 0.009
+shader_parameter/resolution = 1.0
+
+[node name="Green" type="Sprite2D"]
+material = SubResource("ShaderMaterial_enb2u")
+position = Vector2(399.25, 300)
+scale = Vector2(6.11832, 5.76923)
+texture = ExtResource("2_fqhr5")

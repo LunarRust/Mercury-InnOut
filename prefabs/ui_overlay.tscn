@@ -1,0 +1,1223 @@
+[gd_scene load_steps=97 format=3 uid="uid://chxb5075ck4r"]
+
+[ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="1_0uqbg"]
+[ext_resource type="Script" path="res://prefabs/hudmanager.cs" id="2_0hgpy"]
+[ext_resource type="Texture2D" uid="uid://i22sptxj8tse" path="res://Sprites/UI/HurtOverlay.png" id="3_3228y"]
+[ext_resource type="Texture2D" uid="uid://cntqn1mfpul74" path="res://Sprites/UI/UIBaseAnimated.png" id="4_iv5gm"]
+[ext_resource type="Script" path="res://UISystem.cs" id="5_stfna"]
+[ext_resource type="Texture2D" uid="uid://dwaai7jw4qdjr" path="res://Sprites/HUDFACESHEET.png" id="6_4keuf"]
+[ext_resource type="Texture2D" uid="uid://d0xe5p1yx5ggi" path="res://Sprites/CompassNSEW.png" id="7_okux4"]
+[ext_resource type="Script" path="res://Scripts/CompassArrow.cs" id="8_kdrra"]
+[ext_resource type="Texture2D" uid="uid://bs3vk6f87r1s4" path="res://Sprites/CompassArrow.png" id="9_g0sxa"]
+[ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="10_8a7je"]
+[ext_resource type="Texture2D" uid="uid://j4efkjdf64wi" path="res://Sprites/UI/Hammer.png" id="11_vdc36"]
+[ext_resource type="Script" path="res://Scripts/PlayerHealthHandler.cs" id="12_hnd6i"]
+[ext_resource type="Material" path="res://Material/PlayerSkin.tres" id="13_7eogi"]
+[ext_resource type="Material" path="res://Material/PlayerSkin2.tres" id="14_0su1o"]
+[ext_resource type="Material" path="res://Material/PlayerSkin3.tres" id="15_qejpa"]
+[ext_resource type="Texture2D" uid="uid://v0e7ykeyan8d" path="res://Sprites/UI/HealthBar.png" id="16_72d1g"]
+[ext_resource type="Texture2D" uid="uid://caiyqjka7dgl0" path="res://Sprites/UI/BarMask.png" id="17_f8agr"]
+[ext_resource type="Shader" path="res://Shaders/Scroll2D.gdshader" id="18_6x8nk"]
+[ext_resource type="Texture2D" uid="uid://4fs2bnwo7qfl" path="res://textures/Noise.png" id="19_44y6g"]
+[ext_resource type="Texture2D" uid="uid://kftffky0mqxa" path="res://Sprites/UI/ManaBar.png" id="20_oe5lb"]
+[ext_resource type="AudioStream" uid="uid://70r0i5t04ita" path="res://Sounds/Death.ogg" id="21_npupe"]
+[ext_resource type="Texture2D" uid="uid://co8uojq13rdxg" path="res://Sprites/UI/Hotbar.png" id="22_hc0uh"]
+[ext_resource type="Script" path="res://Scripts/InteractionButtonMaster.cs" id="23_1y0af"]
+[ext_resource type="Texture2D" uid="uid://dott0ddy3rq5x" path="res://Sprites/Eye1.png" id="24_126eq"]
+[ext_resource type="Texture2D" uid="uid://cgjvgyrqogqhs" path="res://Sprites/Eye2.png" id="25_8vois"]
+[ext_resource type="Texture2D" uid="uid://ct1aiwwywc3s4" path="res://Sprites/Eye3.png" id="26_jls7x"]
+[ext_resource type="Script" path="res://Scripts/InteractionButton.cs" id="27_oqxtx"]
+[ext_resource type="AudioStream" uid="uid://bm6e1a7lhbguv" path="res://Sounds/tick2.ogg" id="28_5e3kj"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="29_7xgah"]
+[ext_resource type="Texture2D" uid="uid://cq1g0r5ketc72" path="res://Sprites/Speak1.png" id="30_kqnn7"]
+[ext_resource type="Texture2D" uid="uid://bn030tg8lovt0" path="res://Sprites/Speak2.png" id="31_q55eg"]
+[ext_resource type="Texture2D" uid="uid://fpjyw8ttbo8r" path="res://Sprites/Speak3.png" id="32_uj6jp"]
+[ext_resource type="Texture2D" uid="uid://kfcx3jcdj4ch" path="res://Sprites/Touch1.png" id="33_5hd1m"]
+[ext_resource type="Texture2D" uid="uid://tg4oq0hyqob" path="res://Sprites/Touch2.png" id="34_dbpel"]
+[ext_resource type="Texture2D" uid="uid://det8lqyjr0j53" path="res://Sprites/Touch3.png" id="35_1lags"]
+[ext_resource type="Texture2D" uid="uid://b2liegp0rygoe" path="res://Sprites/Hammer1.png" id="36_chhmg"]
+[ext_resource type="Texture2D" uid="uid://c3u4fnhdbcvh6" path="res://Sprites/Hammer2.png" id="37_ux81k"]
+[ext_resource type="Texture2D" uid="uid://ca2hvj0tkm5nl" path="res://Sprites/Hammer3.png" id="38_8buhx"]
+[ext_resource type="Texture2D" uid="uid://tprra8w4fh0e" path="res://Sprites/UI/Blip.png" id="39_c5445"]
+[ext_resource type="Texture2D" uid="uid://btvpb7n6x5kgn" path="res://Sprites/Inv1.png" id="40_nslqh"]
+[ext_resource type="Texture2D" uid="uid://dh07prd0atxwf" path="res://Sprites/Inv2.png" id="41_l0hr1"]
+[ext_resource type="Texture2D" uid="uid://bcbwi430lcfi1" path="res://Sprites/Inv3.png" id="42_apdh1"]
+[ext_resource type="Script" path="res://Scripts/InventoryButton.cs" id="43_tn14a"]
+[ext_resource type="Texture2D" uid="uid://bdprua1xq1wim" path="res://Sprites/UI/Gear.png" id="44_2okpu"]
+[ext_resource type="Script" path="res://prefabs/InventoryManager.gd" id="45_hus3w"]
+[ext_resource type="Texture2D" uid="uid://0i4iha5ir3i1" path="res://Sprites/UI/ButtonEmpty.png" id="46_mko4e"]
+[ext_resource type="FontFile" uid="uid://1mk6dr4ng8sv" path="res://Fonts/GlasstownNbpRegular-RyMM.ttf" id="47_a2hj2"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory_grid.gd" id="48_5x8uo"]
+[ext_resource type="Resource" path="res://ItemsNew.tres" id="49_cew8n"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="50_wug57"]
+[ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="51_pew0i"]
+[ext_resource type="Texture2D" uid="uid://cy2vqc8pk5ygw" path="res://Sprites/UI/Fullscreen1.png" id="52_jwqxk"]
+[ext_resource type="Texture2D" uid="uid://be3jf3qr3gbmy" path="res://Sprites/UI/Fullscreen2.png" id="53_j3mq7"]
+[ext_resource type="Script" path="res://Scripts/Fullscreen.gd" id="54_eircn"]
+[ext_resource type="Texture2D" uid="uid://bof065382w2pb" path="res://Sprites/UI/GlobeButton1.png" id="55_tyjbd"]
+[ext_resource type="Texture2D" uid="uid://cmpj3v4140gc0" path="res://Sprites/UI/GlobeButton2.png" id="56_0mxc0"]
+[ext_resource type="Script" path="res://Scripts/LanguageButton.cs" id="57_71w07"]
+[ext_resource type="FontFile" uid="uid://dc2g2wno6tfur" path="res://Fonts/DBStylezButtons.ttf" id="58_bsan0"]
+[ext_resource type="Texture2D" uid="uid://blvh4wr7lpjma" path="res://Sprites/UI/Flashlight1.png" id="59_ltuht"]
+[ext_resource type="Texture2D" uid="uid://blcb86m67vhwu" path="res://Sprites/UI/Flashlight3.png" id="60_yh7fs"]
+[ext_resource type="Texture2D" uid="uid://b140iif6mdmye" path="res://Sprites/UI/Flashlight2.png" id="61_qiq4j"]
+[ext_resource type="Script" path="res://Scripts/FlashLight.cs" id="62_nfisk"]
+[ext_resource type="AudioStream" uid="uid://d0smcgxv4cke5" path="res://Sounds/FlashLight.ogg" id="63_pw45a"]
+[ext_resource type="Texture2D" uid="uid://neas634pjtgp" path="res://Sprites/UI/EmptyButton.png" id="64_4cx0l"]
+[ext_resource type="Script" path="res://Scripts/Usebutton.cs" id="65_xnfer"]
+[ext_resource type="Script" path="res://Scenes/TPSUnlocker.gd" id="66_iq37b"]
+[ext_resource type="Texture2D" uid="uid://4rl20qwu2v3u" path="res://Sprites/UI/View1.png" id="67_p7c1t"]
+[ext_resource type="Texture2D" uid="uid://dvctn6ru26fyl" path="res://Sprites/UI/View2.png" id="68_y6bu2"]
+[ext_resource type="Script" path="res://Scripts/ViewButton.cs" id="69_stkha"]
+[ext_resource type="Texture2D" uid="uid://ym8xvbx2r8dx" path="res://Sprites/UI/InventoryCursor.png" id="70_7f6rp"]
+[ext_resource type="Script" path="res://Scripts/InventoryCursor.cs" id="71_x5hx0"]
+[ext_resource type="Texture2D" uid="uid://d08uqmhpg2wkn" path="res://Sprites/DialogueBox.png" id="72_ftw18"]
+[ext_resource type="Script" path="res://Scripts/DialogueBox.cs" id="73_qiolq"]
+[ext_resource type="Texture2D" uid="uid://be70mwavslv7m" path="res://Sprites/Faces/Psychopomp FaceSprite.png" id="74_oypcs"]
+[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="75_0uq28"]
+[ext_resource type="Script" path="res://Scripts/XButton.cs" id="76_ctloo"]
+[ext_resource type="Script" path="res://Scripts/CursorFollower.cs" id="77_4616y"]
+
+[sub_resource type="Animation" id="Animation_0c6t2"]
+resource_name = "BaseAnim"
+length = 9.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_5rsx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_opi5v"]
+_data = {
+"BaseAnim": SubResource("Animation_0c6t2"),
+"RESET": SubResource("Animation_5rsx1")
+}
+
+[sub_resource type="Animation" id="Animation_ayy83"]
+resource_name = "Attack"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0]
+}
+
+[sub_resource type="Animation" id="Animation_g3k7e"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_136p1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vbtja"]
+_data = {
+"Attack": SubResource("Animation_ayy83"),
+"Idle": SubResource("Animation_g3k7e"),
+"RESET": SubResource("Animation_136p1")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q865t"]
+shader = ExtResource("18_6x8nk")
+shader_parameter/speed = 0.03
+
+[sub_resource type="Animation" id="Animation_jgyvx"]
+resource_name = "Death"
+length = 5.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%2DSound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("21_npupe")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../../Head/SpringArm3D Z/MainCamera:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [70.0, 110.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../../Head/SpringArm3D Z/MainCamera:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.645772, 0, -0.246091)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../../../RedFilterDeath:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.784314)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%MainCamera:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(-0.5, -0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d0y04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../Head/SpringArm3D Z/MainCamera:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [70.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../../Head/SpringArm3D Z/MainCamera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../../RedFilterDeath:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%MainCamera:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mvho"]
+_data = {
+"Death": SubResource("Animation_jgyvx"),
+"RESET": SubResource("Animation_d0y04")
+}
+
+[sub_resource type="Animation" id="Animation_ot4dk"]
+resource_name = "HealthAnim"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.607843, 0.607843, 0.607843, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ManaBar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.729412, 0.729412, 0.729412, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jl1ds"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ManaBar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0j03"]
+_data = {
+"HealthAnim": SubResource("Animation_ot4dk"),
+"RESET": SubResource("Animation_jl1ds")
+}
+
+[sub_resource type="Gradient" id="Gradient_tamif"]
+offsets = PackedFloat32Array(0, 0.484277, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e8gcl"]
+gradient = SubResource("Gradient_tamif")
+
+[sub_resource type="Curve" id="Curve_42wjx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.30632, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1d6ld"]
+curve = SubResource("Curve_42wjx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dvdt2"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.15
+scale_curve = SubResource("CurveTexture_1d6ld")
+color_ramp = SubResource("GradientTexture1D_e8gcl")
+turbulence_enabled = true
+
+[node name="UI Overlay" type="SubViewportContainer"]
+material = ExtResource("1_0uqbg")
+offset_right = 40.0
+offset_bottom = 40.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(40, 40)
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_0hgpy")
+backupFilter = Object(ColorRect,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":ExtResource("1_0uqbg"),"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":3,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":0.0,"offset_top":0.0,"offset_right":969.0,"offset_bottom":538.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":1,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","color":Color(1, 1, 1, 1),"script":null)
+
+
+[node name="Hurt Overlay" type="Sprite2D" parent="CanvasLayer"]
+process_mode = 4
+modulate = Color(1, 1, 1, 0)
+top_level = true
+position = Vector2(480, 270)
+texture = ExtResource("3_3228y")
+
+[node name="DitherFilter" type="ColorRect" parent="CanvasLayer"]
+material = ExtResource("1_0uqbg")
+offset_right = 969.0
+offset_bottom = 538.0
+mouse_filter = 2
+
+[node name="UIPARENT" type="Node2D" parent="CanvasLayer"]
+position = Vector2(0, 4)
+
+[node name="UI" type="Sprite2D" parent="CanvasLayer/UIPARENT"]
+unique_name_in_owner = true
+offset = Vector2(480, 270)
+
+[node name="Base" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI"]
+z_index = -2
+texture = ExtResource("4_iv5gm")
+offset = Vector2(480, 270)
+hframes = 3
+vframes = 4
+script = ExtResource("5_stfna")
+faceSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 0.443137),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":2,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(129, 344),"rotation":0.0,"scale":Vector2(0.632, 0.632),"skew":0.0,"texture":ExtResource("6_4keuf"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":4,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="BaseAnim" type="AnimationPlayer" parent="CanvasLayer/UIPARENT/UI/Base"]
+libraries = {
+"": SubResource("AnimationLibrary_opi5v")
+}
+autoplay = "BaseAnim"
+
+[node name="Psychopompface" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Base"]
+modulate = Color(1, 1, 1, 0.443137)
+z_index = 2
+position = Vector2(147, 381)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_4keuf")
+hframes = 4
+
+[node name="CompassArrow2" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Base"]
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
+texture_filter = 1
+position = Vector2(833, 342)
+scale = Vector2(1.56, 1.56)
+texture = ExtResource("7_okux4")
+script = ExtResource("8_kdrra")
+playerNode = Object(Camera3D,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"keep_aspect":1,"cull_mask":1048559,"environment":null,"attributes":null,"h_offset":0.0,"v_offset":0.0,"doppler_tracking":0,"projection":0,"current":false,"fov":70.0,"size":1.0,"frustum_offset":Vector2(0, 0),"near":0.05,"far":700.0,"script":Resource("res://Scripts/CameraCast.cs"),"playerAnim":Object(AnimationTree,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":true,"reset_on_save":true,"root_node":NodePath("../Player Model"),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{},"tree_root":null,"advance_expression_base_node":NodePath("."),"anim_player":NodePath("../Player Model/AnimationPlayer"),"script":null)
+,"anim":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": SubResource("AnimationLibrary_vbtja")
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+,"soundSource":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+)
+
+
+[node name="CompassArrow" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Base"]
+texture_filter = 1
+position = Vector2(833, 342)
+rotation = 3.03804
+scale = Vector2(0.856, 1.186)
+texture = ExtResource("9_g0sxa")
+script = ExtResource("10_8a7je")
+Time = 0.5
+tweenRotation = true
+endrotation = 0.2
+
+[node name="Hammer" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI"]
+z_index = -3
+texture = ExtResource("11_vdc36")
+offset = Vector2(480, 270)
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/UIPARENT/UI/Hammer"]
+libraries = {
+"": SubResource("AnimationLibrary_vbtja")
+}
+
+[node name="HealthHandler" type="Node2D" parent="CanvasLayer/UIPARENT/UI"]
+script = ExtResource("12_hnd6i")
+skin1 = ExtResource("13_7eogi")
+skin2 = ExtResource("14_0su1o")
+skin3 = ExtResource("15_qejpa")
+manaTimer = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":1.0,"one_shot":false,"autostart":true,"script":null)
+
+playerAnim = Object(AnimationTree,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":true,"reset_on_save":true,"root_node":NodePath("../Player Model"),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{},"tree_root":null,"advance_expression_base_node":NodePath("."),"anim_player":NodePath("../Player Model/AnimationPlayer"),"script":null)
+
+healthBar = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":-1,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(701, 447),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("16_72d1g"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":4,"vframes":3,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+manaBar = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":-1,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(258, 447),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("20_oe5lb"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":4,"vframes":3,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+lowHealthOverlay = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":4,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 0),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":true,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(480, 270),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("3_3228y"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+faceSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 0.443137),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":2,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(129, 344),"rotation":0.0,"scale":Vector2(0.632, 0.632),"skew":0.0,"texture":ExtResource("6_4keuf"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":4,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+label = Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":3,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":85.0,"offset_top":129.0,"offset_right":125.0,"offset_bottom":155.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_colors/font_color":Color(1, 0, 0, 1),"theme_override_fonts/font":ExtResource("29_7xgah"),"text":"00","label_settings":null,"horizontal_alignment":0,"vertical_alignment":0,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+
+manaLabel = Object(Label,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"clip_contents":false,"custom_minimum_size":Vector2(0, 0),"layout_direction":0,"layout_mode":3,"anchors_preset":0,"anchor_left":0.0,"anchor_top":0.0,"anchor_right":0.0,"anchor_bottom":0.0,"offset_left":-74.0,"offset_top":129.0,"offset_right":-34.0,"offset_bottom":155.0,"grow_horizontal":1,"grow_vertical":1,"rotation":0.0,"scale":Vector2(1, 1),"pivot_offset":Vector2(0, 0),"size_flags_horizontal":1,"size_flags_vertical":4,"size_flags_stretch_ratio":1.0,"auto_translate":true,"localize_numeral_system":true,"tooltip_text":"","focus_neighbor_left":NodePath(""),"focus_neighbor_top":NodePath(""),"focus_neighbor_right":NodePath(""),"focus_neighbor_bottom":NodePath(""),"focus_next":NodePath(""),"focus_previous":NodePath(""),"focus_mode":0,"mouse_filter":2,"mouse_force_pass_scroll_events":true,"mouse_default_cursor_shape":0,"shortcut_context":null,"theme":null,"theme_type_variation":&"","theme_override_colors/font_color":Color(0.870588, 0.192157, 0.721569, 1),"theme_override_fonts/font":ExtResource("29_7xgah"),"text":"00","label_settings":null,"horizontal_alignment":0,"vertical_alignment":0,"autowrap_mode":0,"justification_flags":163,"clip_text":false,"text_overrun_behavior":0,"uppercase":false,"tab_stops":PackedFloat32Array(),"lines_skipped":0,"max_lines_visible":-1,"visible_characters":-1,"visible_characters_behavior":0,"visible_ratio":1.0,"text_direction":0,"language":"","structured_text_bidi_override":0,"structured_text_bidi_override_options":[],"script":null)
+
+deathAnim = Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": SubResource("AnimationLibrary_6mvho")
+},"autoplay":"","playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+
+soundSource = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+
+
+[node name="HealthBar" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/HealthHandler"]
+z_index = -2
+position = Vector2(836, 403)
+texture = ExtResource("16_72d1g")
+hframes = 4
+vframes = 3
+
+[node name="Mask" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/HealthHandler/HealthBar"]
+clip_children = 1
+texture_filter = 1
+position = Vector2(2.50003, 10)
+scale = Vector2(1.17553, 1.09497)
+texture = ExtResource("17_f8agr")
+
+[node name="Noise" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/HealthHandler/HealthBar/Mask"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_q865t")
+texture = ExtResource("19_44y6g")
+
+[node name="ManaBar" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/HealthHandler"]
+z_index = -1
+position = Vector2(868, 291)
+texture = ExtResource("20_oe5lb")
+hframes = 4
+vframes = 3
+
+[node name="Mask" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/HealthHandler/ManaBar"]
+clip_children = 1
+texture_filter = 1
+position = Vector2(-11, 7.50001)
+scale = Vector2(1.19149, 1.08939)
+texture = ExtResource("17_f8agr")
+flip_h = true
+
+[node name="Noise" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/HealthHandler/ManaBar/Mask"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_q865t")
+texture = ExtResource("19_44y6g")
+
+[node name="DeathAnim" type="AnimationPlayer" parent="CanvasLayer/UIPARENT/UI/HealthHandler"]
+libraries = {
+"": SubResource("AnimationLibrary_6mvho")
+}
+
+[node name="Timer" type="Timer" parent="CanvasLayer/UIPARENT/UI/HealthHandler"]
+autostart = true
+
+[node name="HealthAnim" type="AnimationPlayer" parent="CanvasLayer/UIPARENT/UI/HealthHandler"]
+libraries = {
+"": SubResource("AnimationLibrary_u0j03")
+}
+autoplay = "HealthAnim"
+
+[node name="Hotbar" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI"]
+position = Vector2(480, 560)
+texture = ExtResource("22_hc0uh")
+script = ExtResource("23_1y0af")
+blipSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(0.384314, 0.709804, 0.898039, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-123, -71),"rotation":0.0,"scale":Vector2(0.527482, 0.527482),"skew":0.0,"texture":ExtResource("39_c5445"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="LookButton" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+texture_filter = 1
+offset_left = -155.0
+offset_top = -74.0
+offset_right = -123.0
+offset_bottom = -42.0
+texture_normal = ExtResource("24_126eq")
+texture_pressed = ExtResource("25_8vois")
+texture_hover = ExtResource("26_jls7x")
+script = ExtResource("27_oqxtx")
+buttonMode = 1
+cursorSprite = ExtResource("24_126eq")
+clickSound = ExtResource("28_5e3kj")
+keyCode = 49
+particle = Object(GPUParticles2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"emitting":true,"amount":8,"amount_ratio":1.0,"sub_emitter":NodePath(""),"process_material":SubResource("ParticleProcessMaterial_dvdt2"),"texture":ExtResource("24_126eq"),"lifetime":1.0,"one_shot":false,"preprocess":0.0,"speed_scale":1.0,"explosiveness":0.0,"randomness":0.0,"fixed_fps":30,"interpolate":true,"fract_delta":true,"interp_to_end":0.0,"collision_base_size":1.0,"visibility_rect":Rect2(-100, -100, 200, 200),"local_coords":true,"draw_order":1,"trail_enabled":false,"trail_lifetime":0.3,"trail_sections":8,"trail_section_subdivisions":4,"script":null)
+
+soundSource = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+
+blipSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(0.384314, 0.709804, 0.898039, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-123, -71),"rotation":0.0,"scale":Vector2(0.527482, 0.527482),"skew":0.0,"texture":ExtResource("39_c5445"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="Label" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar/LookButton"]
+modulate = Color(1, 1, 1, 0.407843)
+layout_mode = 0
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0.382813, 0.707031, 0.894531, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+theme_override_font_sizes/font_size = 11
+text = "1"
+
+[node name="SpeakButton" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+texture_filter = 1
+offset_left = -86.0
+offset_top = -75.0
+offset_right = -54.0
+offset_bottom = -43.0
+texture_normal = ExtResource("30_kqnn7")
+texture_pressed = ExtResource("31_q55eg")
+texture_hover = ExtResource("32_uj6jp")
+script = ExtResource("27_oqxtx")
+buttonMode = 2
+cursorSprite = ExtResource("30_kqnn7")
+clickSound = ExtResource("28_5e3kj")
+keyCode = 50
+particle = Object(GPUParticles2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"emitting":true,"amount":8,"amount_ratio":1.0,"sub_emitter":NodePath(""),"process_material":SubResource("ParticleProcessMaterial_dvdt2"),"texture":ExtResource("24_126eq"),"lifetime":1.0,"one_shot":false,"preprocess":0.0,"speed_scale":1.0,"explosiveness":0.0,"randomness":0.0,"fixed_fps":30,"interpolate":true,"fract_delta":true,"interp_to_end":0.0,"collision_base_size":1.0,"visibility_rect":Rect2(-100, -100, 200, 200),"local_coords":true,"draw_order":1,"trail_enabled":false,"trail_lifetime":0.3,"trail_sections":8,"trail_section_subdivisions":4,"script":null)
+
+soundSource = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+
+blipSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(0.384314, 0.709804, 0.898039, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-123, -71),"rotation":0.0,"scale":Vector2(0.527482, 0.527482),"skew":0.0,"texture":ExtResource("39_c5445"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="Label" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar/SpeakButton"]
+modulate = Color(1, 1, 1, 0.407843)
+layout_mode = 0
+offset_left = -3.0
+offset_top = 2.0
+offset_right = 4.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.382813, 0.707031, 0.894531, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+theme_override_font_sizes/font_size = 11
+text = "2"
+
+[node name="TouchButton" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+texture_filter = 1
+offset_left = -15.0
+offset_top = -78.0
+offset_right = 17.0
+offset_bottom = -46.0
+texture_normal = ExtResource("33_5hd1m")
+texture_pressed = ExtResource("34_dbpel")
+texture_hover = ExtResource("35_1lags")
+script = ExtResource("27_oqxtx")
+buttonMode = 3
+cursorSprite = ExtResource("33_5hd1m")
+clickSound = ExtResource("28_5e3kj")
+keyCode = 51
+particle = Object(GPUParticles2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"emitting":true,"amount":8,"amount_ratio":1.0,"sub_emitter":NodePath(""),"process_material":SubResource("ParticleProcessMaterial_dvdt2"),"texture":ExtResource("24_126eq"),"lifetime":1.0,"one_shot":false,"preprocess":0.0,"speed_scale":1.0,"explosiveness":0.0,"randomness":0.0,"fixed_fps":30,"interpolate":true,"fract_delta":true,"interp_to_end":0.0,"collision_base_size":1.0,"visibility_rect":Rect2(-100, -100, 200, 200),"local_coords":true,"draw_order":1,"trail_enabled":false,"trail_lifetime":0.3,"trail_sections":8,"trail_section_subdivisions":4,"script":null)
+
+soundSource = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+
+blipSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(0.384314, 0.709804, 0.898039, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-123, -71),"rotation":0.0,"scale":Vector2(0.527482, 0.527482),"skew":0.0,"texture":ExtResource("39_c5445"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="Label" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar/TouchButton"]
+modulate = Color(1, 1, 1, 0.407843)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 6.0
+offset_right = 2.0
+offset_bottom = 21.0
+theme_override_colors/font_color = Color(0.382813, 0.707031, 0.894531, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+theme_override_font_sizes/font_size = 11
+text = "3"
+
+[node name="AttackButton" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+texture_filter = 1
+offset_left = 54.0
+offset_top = -75.0
+offset_right = 86.0
+offset_bottom = -43.0
+texture_normal = ExtResource("36_chhmg")
+texture_pressed = ExtResource("37_ux81k")
+texture_hover = ExtResource("38_8buhx")
+script = ExtResource("27_oqxtx")
+buttonMode = 4
+cursorSprite = ExtResource("36_chhmg")
+clickSound = ExtResource("28_5e3kj")
+keyCode = 52
+particle = Object(GPUParticles2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"emitting":true,"amount":8,"amount_ratio":1.0,"sub_emitter":NodePath(""),"process_material":SubResource("ParticleProcessMaterial_dvdt2"),"texture":ExtResource("24_126eq"),"lifetime":1.0,"one_shot":false,"preprocess":0.0,"speed_scale":1.0,"explosiveness":0.0,"randomness":0.0,"fixed_fps":30,"interpolate":true,"fract_delta":true,"interp_to_end":0.0,"collision_base_size":1.0,"visibility_rect":Rect2(-100, -100, 200, 200),"local_coords":true,"draw_order":1,"trail_enabled":false,"trail_lifetime":0.3,"trail_sections":8,"trail_section_subdivisions":4,"script":null)
+
+soundSource = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+
+blipSprite = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(0.384314, 0.709804, 0.898039, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-123, -71),"rotation":0.0,"scale":Vector2(0.527482, 0.527482),"skew":0.0,"texture":ExtResource("39_c5445"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="Label" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar/AttackButton"]
+modulate = Color(1, 1, 1, 0.407843)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 17.0
+theme_override_colors/font_color = Color(0.761719, 0.257813, 0.257813, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+theme_override_font_sizes/font_size = 11
+text = "4"
+
+[node name="Blip" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+visible = false
+modulate = Color(0.384314, 0.709804, 0.898039, 1)
+position = Vector2(-123, -71)
+scale = Vector2(0.527482, 0.527482)
+texture = ExtResource("39_c5445")
+
+[node name="Inventory Button" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+texture_filter = 1
+offset_left = 123.0
+offset_top = -76.0
+offset_right = 155.0
+offset_bottom = -44.0
+texture_normal = ExtResource("40_nslqh")
+texture_pressed = ExtResource("41_l0hr1")
+texture_hover = ExtResource("42_apdh1")
+script = ExtResource("43_tn14a")
+hotbar = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(480, 560),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("22_hc0uh"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":ExtResource("23_1y0af"),"blipSprite":Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":false,"modulate":Color(0.384314, 0.709804, 0.898039, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-123, -71),"rotation":0.0,"scale":Vector2(0.527482, 0.527482),"skew":0.0,"texture":ExtResource("39_c5445"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+)
+
+gear1 = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":-1,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(170, 84),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("44_2okpu"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+gear2 = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":-1,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-168, 84),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("44_2okpu"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+soundSource = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+
+
+[node name="HP Number" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = 85.0
+offset_top = 129.0
+offset_right = 125.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+text = "00"
+
+[node name="HP Label" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = 63.0
+offset_top = 129.0
+offset_right = 81.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+text = "HP"
+
+[node name="SN Number" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = -74.0
+offset_top = 129.0
+offset_right = -34.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0.870588, 0.192157, 0.721569, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+text = "00"
+
+[node name="SN Label" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = -98.0
+offset_top = 129.0
+offset_right = -77.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(0.870588, 0.192157, 0.721569, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+text = "ST"
+
+[node name="Gear1" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+z_index = -1
+position = Vector2(170, 84)
+texture = ExtResource("44_2okpu")
+
+[node name="Gear2" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+z_index = -1
+position = Vector2(-168, 84)
+texture = ExtResource("44_2okpu")
+
+[node name="InventoryManager" type="Node3D" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -480, -560, 0)
+script = ExtResource("45_hus3w")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+position = Vector2(-3, 189.5)
+scale = Vector2(1.20313, 1.20313)
+texture = ExtResource("46_mko4e")
+
+[node name="ItemName" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = -153.0
+offset_top = 153.0
+offset_right = -102.0
+offset_bottom = 171.0
+theme_override_colors/font_color = Color(0.494118, 0.415686, 0, 1)
+theme_override_fonts/font = ExtResource("47_a2hj2")
+text = "Name
+"
+
+[node name="ItemDescription" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = -153.0
+offset_top = 172.0
+offset_right = 144.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0.494118, 0.415686, 0, 1)
+theme_override_fonts/font = ExtResource("47_a2hj2")
+text = "Description"
+autowrap_mode = 3
+text_overrun_behavior = 1
+
+[node name="InventoryGrid" type="Node" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+script = ExtResource("48_5x8uo")
+size = Vector2i(6, 4)
+item_protoset = ExtResource("49_cew8n")
+
+[node name="s" type="Control" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+custom_minimum_size = Vector2(202, 134)
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = -98.0
+offset_top = -9.0
+offset_right = 104.0
+offset_bottom = 125.0
+script = ExtResource("50_wug57")
+item_spacing = 2
+grid_color = Color(0.494118, 0.415686, 0, 1)
+draw_selections = true
+selection_color = Color(0.492188, 0.414063, 0, 1)
+inventory_path = NodePath("../InventoryGrid")
+default_item_texture = ExtResource("51_pew0i")
+
+[node name="_Control_23745" type="Control" parent="CanvasLayer/UIPARENT/UI/Hotbar/s"]
+anchors_preset = 0
+
+[node name="_Panel_23746" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="_Panel_23747" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_top = 34.0
+offset_right = 32.0
+offset_bottom = 66.0
+
+[node name="_Panel_23748" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_top = 68.0
+offset_right = 32.0
+offset_bottom = 100.0
+
+[node name="_Panel_23749" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_top = 102.0
+offset_right = 32.0
+offset_bottom = 134.0
+
+[node name="_Panel_23750" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_right = 66.0
+offset_bottom = 32.0
+
+[node name="_Panel_23751" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 66.0
+offset_bottom = 66.0
+
+[node name="_Panel_23752" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 68.0
+offset_right = 66.0
+offset_bottom = 100.0
+
+[node name="_Panel_23753" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = 102.0
+offset_right = 66.0
+offset_bottom = 134.0
+
+[node name="_Panel_23754" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_right = 100.0
+offset_bottom = 32.0
+
+[node name="_Panel_23755" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_top = 34.0
+offset_right = 100.0
+offset_bottom = 66.0
+
+[node name="_Panel_23756" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_top = 68.0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="_Panel_23757" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 68.0
+offset_top = 102.0
+offset_right = 100.0
+offset_bottom = 134.0
+
+[node name="_Panel_23758" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_right = 134.0
+offset_bottom = 32.0
+
+[node name="_Panel_23759" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_top = 34.0
+offset_right = 134.0
+offset_bottom = 66.0
+
+[node name="_Panel_23760" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_top = 68.0
+offset_right = 134.0
+offset_bottom = 100.0
+
+[node name="_Panel_23761" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 102.0
+offset_top = 102.0
+offset_right = 134.0
+offset_bottom = 134.0
+
+[node name="_Panel_23762" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_right = 168.0
+offset_bottom = 32.0
+
+[node name="_Panel_23763" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_top = 34.0
+offset_right = 168.0
+offset_bottom = 66.0
+
+[node name="_Panel_23764" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_top = 68.0
+offset_right = 168.0
+offset_bottom = 100.0
+
+[node name="_Panel_23765" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 136.0
+offset_top = 102.0
+offset_right = 168.0
+offset_bottom = 134.0
+
+[node name="_Panel_23766" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 170.0
+offset_right = 202.0
+offset_bottom = 32.0
+
+[node name="_Panel_23767" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 170.0
+offset_top = 34.0
+offset_right = 202.0
+offset_bottom = 66.0
+
+[node name="_Panel_23768" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 170.0
+offset_top = 68.0
+offset_right = 202.0
+offset_bottom = 100.0
+
+[node name="_Panel_23769" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s/_Control_23745"]
+visible = false
+layout_mode = 0
+offset_left = 170.0
+offset_top = 102.0
+offset_right = 202.0
+offset_bottom = 134.0
+
+[node name="_Control_23742" type="Control" parent="CanvasLayer/UIPARENT/UI/Hotbar/s"]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="_Sprite2D_23743" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Hotbar/s"]
+visible = false
+z_index = 1
+centered = false
+
+[node name="_Panel_23744" type="Panel" parent="CanvasLayer/UIPARENT/UI/Hotbar/s"]
+visible = false
+layout_mode = 0
+mouse_filter = 2
+
+[node name="FullscreenButton" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = 107.0
+offset_top = 93.0
+offset_right = 139.0
+offset_bottom = 125.0
+texture_normal = ExtResource("52_jwqxk")
+texture_pressed = ExtResource("53_j3mq7")
+script = ExtResource("54_eircn")
+
+[node name="Language Button" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = 107.0
+offset_top = 54.0
+offset_right = 139.0
+offset_bottom = 86.0
+texture_normal = ExtResource("55_tyjbd")
+texture_pressed = ExtResource("56_0mxc0")
+script = ExtResource("57_71w07")
+languages = PackedStringArray("en", "ja", "ru", "pt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UIPARENT/UI/Hotbar/Language Button"]
+layout_mode = 0
+offset_top = -31.0
+offset_right = 48.0
+offset_bottom = -1.0
+theme_override_colors/default_color = Color(0.494118, 0.415686, 0, 1)
+theme_override_fonts/normal_font = ExtResource("58_bsan0")
+text = "English"
+scroll_active = false
+
+[node name="FlashLightButton" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = -150.0
+offset_top = 93.0
+offset_right = -102.0
+offset_bottom = 125.0
+texture_normal = ExtResource("59_ltuht")
+texture_pressed = ExtResource("60_yh7fs")
+texture_hover = ExtResource("61_qiq4j")
+script = ExtResource("62_nfisk")
+sound = ExtResource("63_pw45a")
+flashlight = Object(SpotLight3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":32,"light_color":Color(1, 0.929412, 0.74902, 1),"light_energy":1.0,"light_indirect_energy":1.0,"light_volumetric_fog_energy":1.0,"light_projector":null,"light_size":0.0,"light_negative":false,"light_specular":0.5,"light_bake_mode":2,"light_cull_mask":4294967295,"shadow_enabled":true,"shadow_bias":0.03,"shadow_normal_bias":1.0,"shadow_reverse_cull_face":false,"shadow_transmittance_bias":0.05,"shadow_opacity":1.0,"shadow_blur":1.0,"distance_fade_enabled":false,"distance_fade_begin":40.0,"distance_fade_shadow":50.0,"distance_fade_length":10.0,"editor_only":false,"spot_range":5.0,"spot_attenuation":1.0,"spot_angle":45.0,"spot_angle_attenuation":1.0,"script":null)
+
+flashlight2 = Object(SpotLight3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.78814e-07, 0.371, -0.311129),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":16,"light_color":Color(1, 0.929412, 0.74902, 1),"light_energy":1.0,"light_indirect_energy":1.0,"light_volumetric_fog_energy":1.0,"light_projector":null,"light_size":0.0,"light_negative":false,"light_specular":0.5,"light_bake_mode":2,"light_cull_mask":4294967295,"shadow_enabled":true,"shadow_bias":0.03,"shadow_normal_bias":1.0,"shadow_reverse_cull_face":false,"shadow_transmittance_bias":0.05,"shadow_opacity":1.0,"shadow_blur":1.0,"distance_fade_enabled":false,"distance_fade_begin":40.0,"distance_fade_shadow":50.0,"distance_fade_length":10.0,"editor_only":false,"spot_range":5.0,"spot_attenuation":1.0,"spot_angle":45.0,"spot_angle_attenuation":1.0,"script":null)
+
+playerAnim = Object(AnimationTree,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":true,"deterministic":true,"reset_on_save":true,"root_node":NodePath("../Player Model"),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{},"tree_root":null,"advance_expression_base_node":NodePath("."),"anim_player":NodePath("../Player Model/AnimationPlayer"),"script":null)
+
+soundSource = Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","stream":null,"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","script":null)
+
+
+[node name="Usebutton" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+offset_left = -42.0
+offset_top = 128.0
+offset_right = 49.0
+offset_bottom = 147.0
+texture_normal = ExtResource("64_4cx0l")
+texture_pressed = ExtResource("64_4cx0l")
+texture_hover = ExtResource("46_mko4e")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("65_xnfer")
+
+[node name="Label" type="Label" parent="CanvasLayer/UIPARENT/UI/Hotbar/Usebutton"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 1.0
+offset_right = 73.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.494118, 0.415686, 0, 1)
+theme_override_fonts/font = ExtResource("29_7xgah")
+text = "use"
+
+[node name="Checker" type="Node2D" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+script = ExtResource("66_iq37b")
+checker = true
+
+[node name="View Button" type="TextureButton" parent="CanvasLayer/UIPARENT/UI/Hotbar/Checker"]
+offset_left = -135.0
+offset_top = 54.0
+offset_right = -103.0
+offset_bottom = 86.0
+texture_normal = ExtResource("67_p7c1t")
+texture_pressed = ExtResource("68_y6bu2")
+script = ExtResource("69_stkha")
+viewPos1 = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-07, 0.371, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
+
+viewPos2 = Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42, 0.371, -0.045),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":null)
+
+cameraParent = Object(SpringArm3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57628e-07, 0.371, 2.98023e-08),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"collision_mask":1,"shape":null,"spring_length":0.0,"margin":0.5,"script":null)
+
+uiElements = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":-2,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("4_iv5gm"),"centered":true,"offset":Vector2(480, 270),"flip_h":false,"flip_v":false,"hframes":3,"vframes":4,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":ExtResource("5_stfna"),"faceSprite":Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 0.443137),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":2,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(129, 344),"rotation":0.0,"scale":Vector2(0.632, 0.632),"skew":0.0,"texture":ExtResource("6_4keuf"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":4,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+)
+
+uiElements2 = Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 4),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+
+uiHammer = Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":-3,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":ExtResource("11_vdc36"),"centered":true,"offset":Vector2(480, 270),"flip_h":false,"flip_v":false,"hframes":4,"vframes":4,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+
+
+[node name="InventoryCursor" type="Sprite2D" parent="CanvasLayer/UIPARENT/UI/Hotbar"]
+position = Vector2(-122, 17)
+texture = ExtResource("70_7f6rp")
+script = ExtResource("71_x5hx0")
+
+[node name="DialogueParent" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("10_8a7je")
+Time = 7.0
+tweenPosition = true
+endPosition = Vector2(0, 20)
+
+[node name="DialogueBox" type="Sprite2D" parent="CanvasLayer/DialogueParent"]
+unique_name_in_owner = true
+texture_filter = 1
+texture = ExtResource("72_ftw18")
+offset = Vector2(480, 270)
+script = ExtResource("73_qiolq")
+
+[node name="NameText" type="Label" parent="CanvasLayer/DialogueParent/DialogueBox"]
+modulate = Color(0.658824, 0.658824, 0.658824, 1)
+self_modulate = Color(0.654902, 0.403922, 0.647059, 1)
+offset_left = 172.0
+offset_top = 23.0
+offset_right = 534.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("29_7xgah")
+text = "NAME:"
+autowrap_mode = 3
+
+[node name="MainText" type="RichTextLabel" parent="CanvasLayer/DialogueParent/DialogueBox"]
+offset_left = 170.0
+offset_top = 52.0
+offset_right = 701.0
+offset_bottom = 133.0
+theme_override_colors/default_color = Color(0.613281, 0.5625, 0.605469, 1)
+theme_override_fonts/normal_font = ExtResource("29_7xgah")
+bbcode_enabled = true
+text = "Dialogue goes here."
+
+[node name="FaceSprite" type="Sprite2D" parent="CanvasLayer/DialogueParent/DialogueBox"]
+position = Vector2(746, 91)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("74_oypcs")
+
+[node name="X Button" type="TextureButton" parent="CanvasLayer/DialogueParent/DialogueBox"]
+offset_left = 124.0
+offset_top = 141.0
+offset_right = 156.0
+offset_bottom = 173.0
+texture_normal = ExtResource("75_0uq28")
+script = ExtResource("76_ctloo")
+
+[node name="Gear1" type="Sprite2D" parent="CanvasLayer/DialogueParent/DialogueBox"]
+visible = false
+modulate = Color(0.666667, 0.639216, 0.760784, 1)
+z_index = -1
+position = Vector2(828, 94)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("44_2okpu")
+script = ExtResource("10_8a7je")
+Time = 5.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="Gear2" type="Sprite2D" parent="CanvasLayer/DialogueParent/DialogueBox"]
+visible = false
+modulate = Color(0.666667, 0.639216, 0.760784, 1)
+z_index = -1
+position = Vector2(135, 94)
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("44_2okpu")
+script = ExtResource("10_8a7je")
+Time = 5.0
+tweenRotation = true
+endrotation = -2.0
+
+[node name="CursorFollower" type="Node2D" parent="CanvasLayer"]
+position = Vector2(834, 345)
+script = ExtResource("77_4616y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer/CursorFollower"]
+process_material = SubResource("ParticleProcessMaterial_dvdt2")
+texture = ExtResource("24_126eq")
+local_coords = true
+
+[node name="2DSound" type="AudioStreamPlayer" parent="CanvasLayer"]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="CanvasLayer/UIPARENT/UI/HealthHandler/Timer" to="CanvasLayer/UIPARENT/UI/HealthHandler" method="AddMana"]
+[connection signal="inventory_item_activated" from="CanvasLayer/UIPARENT/UI/Hotbar/s" to="CanvasLayer/UIPARENT/UI/Hotbar/InventoryManager" method="OnItemActivate"]
+[connection signal="item_dropped" from="CanvasLayer/UIPARENT/UI/Hotbar/s" to="CanvasLayer/UIPARENT/UI/Hotbar/InventoryManager" method="OnItemDrop"]
+[connection signal="item_mouse_entered" from="CanvasLayer/UIPARENT/UI/Hotbar/s" to="CanvasLayer/UIPARENT/UI/Hotbar/InventoryManager" method="OnItemLook"]
+[connection signal="item_mouse_exited" from="CanvasLayer/UIPARENT/UI/Hotbar/s" to="CanvasLayer/UIPARENT/UI/Hotbar/InventoryManager" method="OnItemLeave"]
+[connection signal="pressed" from="CanvasLayer/UIPARENT/UI/Hotbar/Usebutton" to="CanvasLayer/UIPARENT/UI/Hotbar/InventoryManager" method="UseButton"]

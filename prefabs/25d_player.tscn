@@ -1,0 +1,246 @@
+[gd_scene load_steps=22 format=3 uid="uid://cuudscu48nova"]
+
+[ext_resource type="Script" path="res://Scripts/PsychoPomp2DController.cs" id="1"]
+[ext_resource type="Texture2D" uid="uid://bsbwemp8uck4w" path="res://Sprites/PsychopompInHouseSheet2.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://da8neu2a6q8s4" path="res://Sprites/PsychopompInHouseSheet.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://j5mbsy824nnd" path="res://Sounds/2DStep2.ogg" id="4"]
+[ext_resource type="AudioStream" uid="uid://c3d7quhlnw8o" path="res://Sounds/2DStep1.ogg" id="5"]
+[ext_resource type="Texture2D" uid="uid://bbn30ijxx7tvt" path="res://Sprites/Particles/GenericPart.png" id="6"]
+[ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="7"]
+[ext_resource type="Texture2D" uid="uid://rrmmw1e2tjdp" path="res://Sprites/UI/ButtonMenu.png" id="8"]
+[ext_resource type="Script" path="res://Scripts/ReturnButton.gd" id="9"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="10"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4f0cu"]
+radius = 0.35
+height = 1.5
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_o1tls"]
+dof_blur_far_distance = 0.01
+dof_blur_far_transition = 89.46
+dof_blur_amount = 0.2
+
+[sub_resource type="Animation" id="Animation_orx6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteParent/CharSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteParent/CharSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteParent/CharSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k7yia"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteParent/CharSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0.200713), Vector3(0, 0, -0.200713), Vector3(0, 0, 0.200713)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteParent/CharSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.12, 0), Vector3(0, 0, 0), Vector3(0, 0.115, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteParent/CharSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5")
+}],
+"times": PackedFloat32Array(0.4, 0.8)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_saesi"]
+_data = {
+"RESET": SubResource("Animation_orx6o"),
+"Walk": SubResource("Animation_k7yia")
+}
+
+[sub_resource type="Curve" id="Curve_n0l8o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_18sfi"]
+curve = SubResource("Curve_n0l8o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vnre0"]
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_18sfi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhifh"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.333333)
+albedo_texture = ExtResource("6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8tnkl"]
+material = SubResource("StandardMaterial3D_uhifh")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vjet0"]
+
+[node name="25D Player" type="CharacterBody3D" node_paths=PackedStringArray("charSprite", "anim", "cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.765, 0.762878, 5)
+collision_layer = 2
+script = ExtResource("1")
+charSprite = NodePath("SpriteParent/CharSprite")
+sprite1 = ExtResource("2")
+sprite2 = ExtResource("3")
+anim = NodePath("AnimationPlayer")
+cam = NodePath("SpringArm3D/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4f0cu")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.534204, 0)
+spring_length = 3.13
+margin = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.63, 3.13)
+attributes = SubResource("CameraAttributesPractical_o1tls")
+near = 0.001
+far = 1000.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_saesi")
+}
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824861, -0.103895)
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_vnre0")
+draw_pass_1 = SubResource("QuadMesh_8tnkl")
+
+[node name="SpriteParent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292861, 0)
+
+[node name="CharSprite" type="Sprite3D" parent="SpriteParent"]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+shaded = true
+alpha_cut = 3
+texture_filter = 0
+texture = ExtResource("3")
+hframes = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="PlayerArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerArea"]
+shape = SubResource("CapsuleShape3D_vjet0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 4
+material = ExtResource("7")
+offset_right = 967.0
+offset_bottom = 546.0
+mouse_filter = 2
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -1.0
+offset_top = 490.0
+offset_right = 124.0
+offset_bottom = 545.0
+texture_normal = ExtResource("8")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("9")
+
+[node name="School Label" type="RichTextLabel" parent="TextureButton"]
+process_mode = 4
+layout_mode = 0
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 96.0
+offset_bottom = 37.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center] return."

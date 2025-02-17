@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://wva4omsp3j45"]
+
+[ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="1_0c4u3"]
+[ext_resource type="Texture2D" uid="uid://dbe3jtcyos5ex" path="res://Sprites/UI/MercFaceSmile-Expressions.png" id="2_wxcca"]
+
+[node name="FaceParent" type="Node2D"]
+position = Vector2(0, -7)
+script = ExtResource("1_0c4u3")
+power = 1.0
+
+[node name="MercFaceSmile" type="Sprite2D" parent="."]
+modulate = Color(0.227451, 0, 0.0156863, 1)
+position = Vector2(480, 341)
+scale = Vector2(0.634745, 0.634745)
+texture = ExtResource("2_wxcca")
+hframes = 8
+frame = 1

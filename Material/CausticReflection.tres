@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" path="res://Shaders/cheap_caustic.gdshader" id="1"]
+[ext_resource type="Texture2D" uid="uid://dv8brikcj0m7t" path="res://textures/WaterCaustic.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/tint_color = Color(0, 0.7333329916000366, 0.8901960253715515, 1)
+shader_parameter/alpha_amount = 0.055
+shader_parameter/slowdown = 1.0
+shader_parameter/time_caust = 0.06
+shader_parameter/tile_caust = 4.6
+shader_parameter/tile_ground = 6.4
+shader_parameter/ground_rgb = null
+shader_parameter/caustics_bw = ExtResource("2")

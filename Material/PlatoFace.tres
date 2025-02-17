@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" uid="uid://cq02ix13yo2bj" path="res://Shaders/PatientScreen.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://bd3hs4sr1c573" path="res://Sprites/TVs/Plato.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/Speed = Vector2(0, 0.2000000029802322)
+shader_parameter/Face_Texture = ExtResource("2")

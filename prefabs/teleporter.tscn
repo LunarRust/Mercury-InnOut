@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Teleporter.cs" id="1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dsx84"]
+radius = 0.75
+
+[sub_resource type="Curve" id="Curve_b2skk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5708500146865845, 0.7032970190048218), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_j8fm5"]
+curve = SubResource("Curve_b2skk")
+
+[sub_resource type="Curve" id="Curve_qjyi7"]
+_data = [Vector2(0, 0.2747249901294708), 0.0, 0.0, 0, 0, Vector2(0.2105260044336319, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uhiq4"]
+curve = SubResource("Curve_qjyi7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdhr2"]
+gravity = Vector3(0, 1, 0)
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_uhiq4")
+alpha_curve = SubResource("CurveTexture_j8fm5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i46ym"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.7764710187911987, 0, 0.121569000184536)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ayyfw"]
+material = SubResource("StandardMaterial3D_i46ym")
+inner_radius = 0.2409999966621399
+outer_radius = 0.3120000064373016
+rings = 5
+ring_segments = 3
+
+[node name="Teleporter" type="Area3D" node_paths=PackedStringArray("colorRect")]
+transform = Transform3D(0.8660249710083008, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660249710083008, 35.5, -9, 1.5)
+script = ExtResource("1")
+colorRect = NodePath("ColorRect")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_dsx84")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_vdhr2")
+draw_pass_1 = SubResource("TorusMesh_ayyfw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 965.0
+offset_bottom = 541.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3940730094909668, 0)
+light_color = Color(0.7882350087165833, 0.8352940082550049, 0, 1)
+light_energy = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+omni_range = 1.0

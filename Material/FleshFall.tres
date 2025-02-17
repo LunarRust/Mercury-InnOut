@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+
+[ext_resource type="Shader" uid="uid://bp70wl8s17gc0" path="res://Shaders/TextureScroll2.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://ccj2ey8tp6gkl" path="res://textures/Flesh2.png" id="2"]
+
+[resource]
+render_priority = 0
+next_pass = null
+shader = ExtResource("1")
+shader_parameter/AxisSpeed = Vector2(1, 1)
+shader_parameter/Speed = 1.0
+shader_parameter/UV_Scale = Vector2(1, 1)
+shader_parameter/Albedo = Color(1, 1, 1, 1)
+shader_parameter/Alpha = 1.0
+shader_parameter/Roughness = 1.0
+shader_parameter/Emission = 0.0
+shader_parameter/NormalScale = 0.0
+shader_parameter/Texture = ExtResource("2")
+shader_parameter/NormalMap = ExtResource("2")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp46x0ogan7h0"]
+
+[ext_resource type="PackedScene" uid="uid://hwn7dvmm3jm1" path="res://KOMModels/innout/food_tray.glb" id="1_pni7r"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/TrayItem.gd" id="2_olmgf"]
+[ext_resource type="PackedScene" uid="uid://cmthr6fl3qdjq" path="res://KOMPrefabs/Items/Fries_pickup.tscn" id="3_xrbes"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qwke8"]
+size = Vector3(0.981979, 0.309296, 1.02734)
+
+[node name="FoodTray" type="StaticBody3D"]
+transform = Transform3D(1.7094, 0, 0, 0, 1.7094, 0, 0, 0, 1.7094, 0.490974, 2.3959, -0.159983)
+
+[node name="Tray" parent="." instance=ExtResource("1_pni7r")]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("TargetLoc")]
+script = ExtResource("2_olmgf")
+Scene = ExtResource("3_xrbes")
+TargetLoc = NodePath("../SpawnLoc")
+
+[node name="SpawnLoc" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179992, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0144118, 0.0861363, -0.0136719)
+shape = SubResource("BoxShape3D_qwke8")

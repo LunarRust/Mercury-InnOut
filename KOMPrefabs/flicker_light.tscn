@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://chae3ii4osocs"]
+
+[sub_resource type="Animation" id="Animation_b7jbt"]
+resource_name = "Flicker"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 2.6, 2.8, 3, 3.1, 3.3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 1, 1),
+"update": 0,
+"values": [2.845, 2.195, 0.746, 2.376, 2.49835, 0.489, 1.935, 1.138, 2.845, 1.138, 2.845, 2.845]
+}
+
+[sub_resource type="Animation" id="Animation_colln"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.845]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oahmo"]
+_data = {
+"Flicker": SubResource("Animation_b7jbt"),
+"RESET": SubResource("Animation_colln")
+}
+
+[node name="PatientLight" type="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9109, 4.48336, -0.431577)
+light_color = Color(0.745098, 0.482353, 0.345098, 1)
+light_energy = 2.845
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 11.474
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oahmo")
+}
+autoplay = "Flicker"

@@ -1,0 +1,814 @@
+[gd_scene load_steps=30 format=3 uid="uid://cw5s2kuvc7dwg"]
+
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="1_jp0o5"]
+[ext_resource type="Texture2D" uid="uid://dr1ccek3pjmf7" path="res://Sprites/UI/PsychopompFaceSmile.png" id="2_d7lhw"]
+[ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="3_33o70"]
+[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="4_kjonn"]
+[ext_resource type="FontFile" uid="uid://dc2g2wno6tfur" path="res://Fonts/DBStylezButtons.ttf" id="5_ea71l"]
+[ext_resource type="Texture2D" uid="uid://rrmmw1e2tjdp" path="res://Sprites/UI/ButtonMenu.png" id="6_buchl"]
+[ext_resource type="Script" path="res://Scripts/ModFolderButton.cs" id="7_103mh"]
+[ext_resource type="Script" path="res://Scripts/MapButton.gd" id="8_6rycm"]
+[ext_resource type="AudioStream" uid="uid://pj54k8rannuj" path="res://Music/Dry and Warm.ogg" id="9_ouclb"]
+[ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="10_4mx2v"]
+[ext_resource type="Texture2D" uid="uid://2lleq8anq1s5" path="res://Sprites/UI/ControllerCursor.png" id="11_0cbcf"]
+[ext_resource type="Script" path="res://Scripts/WorldMapPlayer.cs" id="12_vve4c"]
+[ext_resource type="Script" path="res://CustomScripts/SceneLoaderButtonFullPath.gd" id="13_86ufl"]
+[ext_resource type="PackedScene" uid="uid://cr4ovc1iagi4v" path="res://CustomMercScenes/CustomScenes/SimpleButtonBase.tscn" id="13_ncu8c"]
+[ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="14_lnc80"]
+[ext_resource type="Script" path="res://Scenes/ProgressChanger.gd" id="15_y28qf"]
+[ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="16_p5oao"]
+[ext_resource type="Script" path="res://Scenes/ProgressChangerButtonType.gd" id="17_i4vjt"]
+[ext_resource type="AudioStream" uid="uid://dv0ae3ncwwdpw" path="res://Sounds/Pickup2.ogg" id="18_y5vam"]
+
+[sub_resource type="StyleBoxEmpty" id="7"]
+
+[sub_resource type="StyleBoxEmpty" id="8"]
+
+[sub_resource type="StyleBoxEmpty" id="9"]
+
+[sub_resource type="StyleBoxEmpty" id="10"]
+
+[sub_resource type="StyleBoxEmpty" id="11"]
+
+[sub_resource type="StyleBoxEmpty" id="1"]
+
+[sub_resource type="StyleBoxEmpty" id="4"]
+
+[sub_resource type="StyleBoxEmpty" id="2"]
+
+[sub_resource type="StyleBoxEmpty" id="3"]
+
+[sub_resource type="StyleBoxEmpty" id="6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="DebugLabel" type="RichTextLabel" parent="."]
+z_index = 5
+offset_left = -11.0
+offset_top = 8.0
+offset_right = 728.0
+offset_bottom = 150.0
+theme_override_colors/default_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_fonts/normal_font = ExtResource("1_jp0o5")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[shake rate=20] DEBUG MENU 2"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -5
+offset_left = -19.0
+offset_top = -15.0
+offset_right = 980.0
+offset_bottom = 555.0
+color = Color(0, 0, 0, 1)
+
+[node name="PsychopompFaceSmile5" type="Sprite2D" parent="."]
+modulate = Color(0.0238231, 0.0448261, 0.103046, 1)
+z_index = -4
+position = Vector2(608, 536)
+rotation = -0.586552
+scale = Vector2(0.484895, 0.484895)
+texture = ExtResource("2_d7lhw")
+script = ExtResource("3_33o70")
+
+[node name="PsychopompFaceSmile2" type="Sprite2D" parent="."]
+modulate = Color(0.0434478, 0.0733348, 0.14809, 1)
+z_index = -4
+position = Vector2(762, 510)
+rotation = -0.110974
+scale = Vector2(0.683505, 0.683505)
+texture = ExtResource("2_d7lhw")
+script = ExtResource("3_33o70")
+
+[node name="PsychopompFaceSmile4" type="Sprite2D" parent="."]
+modulate = Color(0.0745098, 0.113725, 0.211765, 1)
+z_index = -4
+position = Vector2(1.99999, 467)
+rotation = -0.37075
+scale = Vector2(0.683505, 0.683505)
+texture = ExtResource("2_d7lhw")
+script = ExtResource("3_33o70")
+
+[node name="PsychopompFaceSmile3" type="Sprite2D" parent="."]
+modulate = Color(0.0434478, 0.0733348, 0.14809, 1)
+z_index = -4
+position = Vector2(952, 208)
+rotation = -0.168924
+scale = Vector2(0.683505, 0.683505)
+texture = ExtResource("2_d7lhw")
+script = ExtResource("3_33o70")
+
+[node name="PsychopompFaceSmile" type="Sprite2D" parent="."]
+modulate = Color(0.0745098, 0.113725, 0.211765, 1)
+z_index = -4
+position = Vector2(925, 419)
+rotation = 0.245815
+texture = ExtResource("2_d7lhw")
+script = ExtResource("3_33o70")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 232.0
+offset_top = -103.0
+offset_right = 779.0
+offset_bottom = -49.0
+rotation = 0.000303406
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.882353, 0.694118, 0, 1)
+theme_override_fonts/font = ExtResource("5_ea71l")
+theme_override_font_sizes/font_size = 16
+text = "Warning: Only use mods from sources you trust.
+Untrustworthy mods can be dangerous to your system. Use at your own risk.
+Fading Club takes no responsibility for the content of third party modifications."
+
+[node name="TextureButton" type="TextureButton" parent="."]
+visible = false
+offset_left = 758.0
+offset_top = 7.0
+offset_right = 961.0
+offset_bottom = 104.0
+texture_normal = ExtResource("6_buchl")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_103mh")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 34.0
+offset_right = 163.0
+offset_bottom = 73.0
+theme = ExtResource("4_kjonn")
+text = "Open Mods Folder"
+autowrap_mode = 3
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 762.0
+offset_top = 11.0
+offset_right = 965.0
+offset_bottom = 108.0
+texture_normal = ExtResource("6_buchl")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("8_6rycm")
+destination = "title_screen"
+sceneLoader = "res://Scenes/TSLC.tscn"
+
+[node name="Label" type="Label" parent="TextureButton2"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 42.0
+offset_right = 163.0
+offset_bottom = 65.0
+theme = ExtResource("4_kjonn")
+text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ouclb")
+autoplay = true
+
+[node name="Load Button" type="TextureButton" parent="."]
+visible = false
+offset_left = 908.0
+offset_top = 222.0
+offset_right = 940.0
+offset_bottom = 254.0
+texture_normal = ExtResource("10_4mx2v")
+stretch_mode = 0
+
+[node name="Cursor" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(-34, 577)
+scale = Vector2(0.786072, 0.786072)
+texture = ExtResource("11_0cbcf")
+script = ExtResource("12_vve4c")
+
+[node name="WorldWarpButtonsParent" type="Node2D" parent="."]
+
+[node name="LoadWorldMap1Button" parent="WorldWarpButtonsParent" instance=ExtResource("13_ncu8c")]
+
+[node name="LoadDebugRoomButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 258.0
+offset_top = 146.0
+offset_right = 472.0
+offset_bottom = 191.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "Load Debug Room
+"
+script = ExtResource("13_86ufl")
+destination = "DebugRoom"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadDebugRoomButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadDebugRoomButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadWorldMap2Button" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 258.0
+offset_top = 96.0
+offset_right = 472.0
+offset_bottom = 144.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load World Map 2
+
+"
+script = ExtResource("13_86ufl")
+destination = "WorldMap2"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadWorldMap2Button"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadWorldMap2Button"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadWorldMap3Button" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 478.0
+offset_top = 96.0
+offset_right = 692.0
+offset_bottom = 144.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load World Map 3
+
+"
+script = ExtResource("13_86ufl")
+destination = "WorldMap3"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadWorldMap3Button"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadWorldMap3Button"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadTowerButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 478.0
+offset_top = 146.0
+offset_right = 692.0
+offset_bottom = 194.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Tower
+
+"
+script = ExtResource("13_86ufl")
+destination = "Tower"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadTowerButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadTowerButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadWorldMapMercuryButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 38.0
+offset_top = 146.0
+offset_right = 252.0
+offset_bottom = 194.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load World Map Mercury
+
+"
+script = ExtResource("13_86ufl")
+destination = "WorldMapM"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadWorldMapMercuryButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadWorldMapMercuryButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadSewerTopButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 38.0
+offset_top = 196.0
+offset_right = 252.0
+offset_bottom = 244.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Sewer Treatment Plant
+
+"
+script = ExtResource("13_86ufl")
+destination = "SewerTop"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadSewerTopButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadSewerTopButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadHospitalFloorButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 258.0
+offset_top = 196.0
+offset_right = 472.0
+offset_bottom = 244.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Children's Hospital
+
+"
+script = ExtResource("13_86ufl")
+destination = "SewerTop"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadHospitalFloorButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadHospitalFloorButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadSchool2Button" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 478.0
+offset_top = 196.0
+offset_right = 692.0
+offset_bottom = 244.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Public School
+
+"
+script = ExtResource("13_86ufl")
+destination = "School 2"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadSchool2Button"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadSchool2Button"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadBuildingBedButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 38.0
+offset_top = 246.0
+offset_right = 252.0
+offset_bottom = 294.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Building Bed
+
+"
+script = ExtResource("13_86ufl")
+destination = "BuildingBedTop"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadBuildingBedButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadBuildingBedButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadGearHallButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 38.0
+offset_top = 296.0
+offset_right = 252.0
+offset_bottom = 344.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Gear Hall
+
+"
+script = ExtResource("13_86ufl")
+destination = "GearHall"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadGearHallButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadGearHallButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadDNAButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 258.0
+offset_top = 246.0
+offset_right = 472.0
+offset_bottom = 294.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load DNA
+
+"
+script = ExtResource("13_86ufl")
+destination = "DNATop"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadDNAButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadDNAButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadEyeballButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 258.0
+offset_top = 296.0
+offset_right = 472.0
+offset_bottom = 344.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Eyeball
+
+"
+script = ExtResource("13_86ufl")
+destination = "Eyeball"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadEyeballButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadEyeballButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadCustomTestButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 515.0
+offset_top = 17.0
+offset_right = 729.0
+offset_bottom = 65.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Test Scene
+
+"
+script = ExtResource("13_86ufl")
+destination = "SceneMenuTest"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadCustomTestButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadCustomTestButton"]
+script = ExtResource("14_lnc80")
+
+[node name="LoadAbstractButton" type="Button" parent="WorldWarpButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 478.0
+offset_top = 246.0
+offset_right = 692.0
+offset_bottom = 294.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Load Abstract
+
+"
+script = ExtResource("13_86ufl")
+destination = "AbstractTower"
+
+[node name="ColorRect3" type="ColorRect" parent="WorldWarpButtonsParent/LoadAbstractButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="WorldWarpButtonsParent/LoadAbstractButton"]
+script = ExtResource("14_lnc80")
+
+[node name="SaveDataButtonsParent" type="Node2D" parent="."]
+
+[node name="CheckBox" type="Button" parent="SaveDataButtonsParent"]
+offset_left = 740.0
+offset_top = 189.0
+offset_right = 947.0
+offset_bottom = 216.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("1")
+theme_override_styles/hover = SubResource("4")
+theme_override_styles/pressed = SubResource("2")
+theme_override_styles/disabled = SubResource("3")
+theme_override_styles/focus = SubResource("6")
+toggle_mode = true
+text = "Toggle \"WonGame\" variable"
+text_overrun_behavior = 3
+script = ExtResource("15_y28qf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SaveDataButtonsParent/CheckBox"]
+stream = ExtResource("16_p5oao")
+max_polyphony = 2
+script = ExtResource("14_lnc80")
+
+[node name="ColorRect2" type="ColorRect" parent="SaveDataButtonsParent/CheckBox"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -1.0
+offset_right = 205.0
+offset_bottom = 27.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="ProgressClearButton" type="Button" parent="SaveDataButtonsParent"]
+top_level = true
+z_as_relative = false
+offset_left = 737.0
+offset_top = 114.0
+offset_right = 951.0
+offset_bottom = 162.0
+theme = ExtResource("4_kjonn")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "
+Clear Progression Data
+
+"
+script = ExtResource("17_i4vjt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SaveDataButtonsParent/ProgressClearButton"]
+stream = ExtResource("18_y5vam")
+volume_db = 5.0
+script = ExtResource("14_lnc80")
+
+[node name="ColorRect3" type="ColorRect" parent="SaveDataButtonsParent/ProgressClearButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadDebugRoomButton" to="WorldWarpButtonsParent/LoadDebugRoomButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadWorldMap2Button" to="WorldWarpButtonsParent/LoadWorldMap2Button/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadWorldMap3Button" to="WorldWarpButtonsParent/LoadWorldMap3Button/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadTowerButton" to="WorldWarpButtonsParent/LoadTowerButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadWorldMapMercuryButton" to="WorldWarpButtonsParent/LoadWorldMapMercuryButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadSewerTopButton" to="WorldWarpButtonsParent/LoadSewerTopButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadHospitalFloorButton" to="WorldWarpButtonsParent/LoadHospitalFloorButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadSchool2Button" to="WorldWarpButtonsParent/LoadSchool2Button/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadBuildingBedButton" to="WorldWarpButtonsParent/LoadBuildingBedButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadGearHallButton" to="WorldWarpButtonsParent/LoadGearHallButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadDNAButton" to="WorldWarpButtonsParent/LoadDNAButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadEyeballButton" to="WorldWarpButtonsParent/LoadEyeballButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadCustomTestButton" to="WorldWarpButtonsParent/LoadCustomTestButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="WorldWarpButtonsParent/LoadAbstractButton" to="WorldWarpButtonsParent/LoadAbstractButton/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="SaveDataButtonsParent/CheckBox" to="SaveDataButtonsParent/CheckBox" method="_on_pressed"]
+[connection signal="pressed" from="SaveDataButtonsParent/CheckBox" to="SaveDataButtonsParent/CheckBox/AudioStreamPlayer" method="_on_check_box_pressed"]
+[connection signal="toggled" from="SaveDataButtonsParent/CheckBox" to="SaveDataButtonsParent/CheckBox" method="_on_toggled"]
+[connection signal="pressed" from="SaveDataButtonsParent/ProgressClearButton" to="SaveDataButtonsParent/ProgressClearButton" method="_on_pressed"]
+[connection signal="pressed" from="SaveDataButtonsParent/ProgressClearButton" to="SaveDataButtonsParent/ProgressClearButton/AudioStreamPlayer" method="_on_button_pressed"]

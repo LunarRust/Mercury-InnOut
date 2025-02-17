@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" uid="uid://b5pk8llkl7l7f" path="res://Sprites/Paper/OverworldPage.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/tabletpage.cs" id="2"]
+[ext_resource type="Texture2D" uid="uid://c7xo46hnsx4re" path="res://Sprites/Paper/Page1.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://uoct5ltxpx3u" path="res://Sounds/Bookturn.wav" id="4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i24ig"]
+size = Vector3(0.6895930171012878, 0.8057370185852051, 0.1550859957933426)
+
+[node name="PageObject" type="Sprite3D"]
+shaded = true
+texture = ExtResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_i24ig")
+
+[node name="Behavior" type="Node3D" parent="StaticBody3D" node_paths=PackedStringArray("pageSprite", "soundSource")]
+script = ExtResource("2")
+pageSprite = NodePath("../../Sprite2D")
+soundSource = NodePath("../../AudioStreamPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(478, 274)
+texture = ExtResource("3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4")

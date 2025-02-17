@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://untrnqh2eqkn"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_cxfha"]
+[ext_resource type="AudioStream" uid="uid://kn7tcqpdwy3a" path="res://Sounds/Itadakimasu.ogg" id="2_2r3nx"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="3_2of72"]
+[ext_resource type="PackedScene" uid="uid://b1hj5csrgmv67" path="res://Models/AnimeStalk.blend" id="4_101by"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="4_bn2tl"]
+[ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="6_rrbmv"]
+[ext_resource type="Script" path="res://Scripts/AnimeStalkBehavior.cs" id="7_1k6c2"]
+[ext_resource type="PackedScene" uid="uid://db6g3h73daw5r" path="res://Models/AnimeStalk3.blend" id="8_gh4w5"]
+[ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="9_peouv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hqa23"]
+
+[node name="Anime Stalk" type="StaticBody3D"]
+transform = Transform3D(-0.866025, 9.77889e-09, 0.5, 0, 1, 0, -0.5, 2.98023e-08, -0.866025, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hqa23")
+
+[node name="DialogueSystem" type="Node3D" parent="."]
+script = ExtResource("1_cxfha")
+npcName = "Kawaii Stalk"
+Dialogue = "Oh hello! My, aren't you a cute one.
+Say, isn't there nothing better than being tangled up?
+[wave amp=20.0]Would you like to be tangled up?[/wave]"
+LookDescription = "The double stalked thing looks at you with all of its eyes.
+It seems to beckon you."
+TouchDescription = "You try to touch the Stalked Thing, but it grabs your hand.
+You just barely manage to pull your hand free at the last moment."
+DialogueSound = ExtResource("2_2r3nx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="."]
+script = ExtResource("3_2of72")
+
+[node name="NpcToNpcHealthHandler" type="Node3D" parent="." node_paths=PackedStringArray("CoreHealthHandler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.648e-08, 0.294819, -1.47525e-08)
+script = ExtResource("4_bn2tl")
+CoreHealthHandler = NodePath("../HealthHandler")
+
+[node name="AnimeStalk" parent="." instance=ExtResource("4_101by")]
+transform = Transform3D(0.545, 0, 1.49012e-08, 0, 0.545, 0, -1.49012e-08, 0, 0.545, 0, -0.918545, 0)
+visible = false
+
+[node name="Interactable" type="Node" parent="." node_paths=PackedStringArray("BehaviorNode")]
+script = ExtResource("6_rrbmv")
+BehaviorNode = NodePath("../Behavior")
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("anim")]
+script = ExtResource("7_1k6c2")
+anim = NodePath("../AnimeStalk3/AnimationPlayer")
+
+[node name="AnimeStalk3" parent="." instance=ExtResource("8_gh4w5")]
+transform = Transform3D(0.624168, 0, 1.19209e-07, 0, 0.624168, 0, -1.19209e-07, 0, 0.624168, -0.0168839, -0.628292, 0)
+
+[node name="Skeleton3D" parent="AnimeStalk3/DoubleArm" index="0"]
+bones/0/position = Vector3(0.228033, -0.0225556, -3.03055e-09)
+bones/1/rotation = Quaternion(-0.308502, -0.0208382, 0.401273, 0.862191)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.0435578, -0.0449084, 0.0991553, 0.993103)
+bones/3/rotation = Quaternion(0.206454, 0.0746389, 0.120358, 0.968153)
+bones/4/rotation = Quaternion(0.533825, -0.497111, -0.0194567, 0.683764)
+bones/5/rotation = Quaternion(0.104114, -0.0217787, -0.431911, 0.895622)
+bones/6/rotation = Quaternion(0.164742, 0.0756637, 0.0302079, 0.982966)
+bones/7/position = Vector3(-0.228033, -0.0225556, -3.03055e-09)
+bones/8/rotation = Quaternion(0.0475718, 0.000326058, -0.0317939, 0.998362)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.126812, -0.050824, -0.261349, 0.955527)
+bones/11/rotation = Quaternion(0.411119, 0.257797, 0.145221, 0.862226)
+bones/12/rotation = Quaternion(0.314385, -0.152566, -0.0480337, 0.935724)
+bones/13/rotation = Quaternion(0.0459659, 0.00244371, -0.00293682, 0.998936)
+
+[node name="AnimationPlayer" parent="AnimeStalk3" index="1"]
+autoplay = "Idle"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.7, 0, 3.55271e-15, 0, -7.43094e-08, 1.7, 0, -1.7, -7.43094e-08, 0, -0.674753, 0)
+shaded = true
+texture = ExtResource("9_peouv")
+
+[editable path="AnimeStalk3"]

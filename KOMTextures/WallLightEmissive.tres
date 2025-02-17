@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://btkm0tktgegs3"]
+
+[ext_resource type="Texture2D" uid="uid://bgejn1171i21i" path="res://Models/WallLight_0.png" id="1_6x8cn"]
+
+[resource]
+albedo_texture = ExtResource("1_6x8cn")
+emission_enabled = true
+emission_texture = ExtResource("1_6x8cn")

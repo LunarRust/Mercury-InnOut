@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dktrgmgigic6t"]
+
+[ext_resource type="Texture2D" uid="uid://c2r0pyp8qkv4s" path="res://textures/LockGate.png" id="1"]
+[ext_resource type="Script" path="res://Scenes/LockDoor.cs" id="2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hjrld"]
+size = Vector3(3, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lpwp"]
+albedo_texture = ExtResource("1")
+uv1_scale = Vector3(3.01, 2.04, 1.922)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sited"]
+size = Vector3(3, 3, 1)
+
+[node name="Door" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_hjrld")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_3lpwp")
+mesh = SubResource("BoxMesh_sited")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("2")
+itemMatch = "Basic Key"
+
+[node name="SoundSource" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true

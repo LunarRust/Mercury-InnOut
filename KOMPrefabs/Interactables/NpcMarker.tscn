@@ -1,0 +1,256 @@
+[gd_scene load_steps=12 format=3 uid="uid://bfi7rk6kntbbc"]
+
+[ext_resource type="Script" path="res://CustomScripts/MouseInteraction/AttachToMouse3D.gd" id="1_g4vsn"]
+[ext_resource type="Texture2D" uid="uid://da8neu2a6q8s4" path="res://Sprites/PsychopompInHouseSheet.png" id="2_csibs"]
+[ext_resource type="AudioStream" uid="uid://csujfrs8e4680" path="res://Sounds/2DStep2.ogg" id="2_uuwnf"]
+[ext_resource type="AudioStream" uid="uid://c8ol0c64tlngb" path="res://Sounds/2DStep1.ogg" id="3_8m25n"]
+[ext_resource type="Script" path="res://CustomScripts/MouseInteraction/RayCastSystem.gd" id="5_et6ch"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_egcki"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fr7nv"]
+
+[sub_resource type="Animation" id="Animation_orx6o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteParent/CharSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteParent/CharSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteParent/CharSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k41qg"]
+resource_name = "Spin"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteParent/CharSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0.200713), Vector3(0, 3.14159, 0.200713), Vector3(0, 6.28319, 0.200713)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteParent/CharSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.12, 0), Vector3(0, 0, 0), Vector3(0, 0.115, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteParent/CharSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_uuwnf")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_8m25n")
+}],
+"times": PackedFloat32Array(0.4, 0.8)
+}
+tracks/4/use_blend = true
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("SpriteParent/CharSprite")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_k7yia"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteParent/CharSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0.200713), Vector3(0, 0, -0.200713), Vector3(0, 0, 0.200713)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteParent/CharSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.12, 0), Vector3(0, 0, 0), Vector3(0, 0.115, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteParent/CharSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 2]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_uuwnf")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_8m25n")
+}],
+"times": PackedFloat32Array(0.4, 0.8)
+}
+tracks/4/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_saesi"]
+_data = {
+"RESET": SubResource("Animation_orx6o"),
+"Spin": SubResource("Animation_k41qg"),
+"Walk": SubResource("Animation_k7yia")
+}
+
+[node name="NpcMarker" type="StaticBody3D" node_paths=PackedStringArray("RCS", "CharParent") groups=["NpcMarker"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_g4vsn")
+RCS = NodePath("RayCastSystem")
+CharParent = NodePath("SpriteParent/CharSprite")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.74, 0, 8.82147e-08, 0, 0.74, 0, -8.82147e-08, 0, -0.74, 0, 0.757715, 0)
+shape = SubResource("CapsuleShape3D_egcki")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, 0.0769139, 0)
+visible = false
+mesh = SubResource("BoxMesh_fr7nv")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.909876, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_saesi")
+}
+autoplay = "Walk"
+
+[node name="SpriteParent" type="Node3D" parent="."]
+transform = Transform3D(0.485, 0, 0, 0, 0.485, 0, 0, 0, 0.485, 0, 0.618197, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SpriteParent"]
+transform = Transform3D(2.06186, 0, 0, 0, -9.01266e-08, 2.06186, 0, -2.06186, -9.01266e-08, 0, 1.84887, 0)
+visible = false
+light_energy = 1.315
+spot_range = 1.788
+spot_angle = 23.47
+
+[node name="CharSprite" type="Sprite3D" parent="SpriteParent"]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+billboard = 2
+shaded = true
+alpha_cut = 3
+texture_filter = 0
+texture = ExtResource("2_csibs")
+hframes = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+max_distance = 3.0
+
+[node name="RayCastSystem" type="Node3D" parent="."]
+script = ExtResource("5_et6ch")

@@ -1,0 +1,108 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=22 format=3 uid="uid://bhewspng8q8xo"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2a0ve"]
+animation = &"Angry"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b5eai"]
+animation = &"Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wkhgr"]
+animation = &"Block"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7sgk2"]
+animation = &"Idle3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_whl7h"]
+animation = &"Scared"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvdrr"]
+animation = &"Slap"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_beiil"]
+animation = &"Talking"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54w2e"]
+animation = &"WalkAggro"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tra67"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mcu5h"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"Touch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mel60"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"Talk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pgq82"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"Scared"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2oeed"]
+advance_mode = 2
+advance_condition = &"Hurt"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bo34a"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wk3kf"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0x4gf"]
+advance_mode = 2
+advance_condition = &"Attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lhmpq"]
+xfade_time = 0.5
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_at73s"]
+xfade_time = 0.1
+priority = 2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_am2sg"]
+xfade_time = 1.0
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vgly7"]
+xfade_time = 1.0
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_15j3b"]
+advance_mode = 2
+advance_condition = &"Hurt"
+
+[resource]
+states/Angry/node = SubResource("AnimationNodeAnimation_2a0ve")
+states/Angry/position = Vector2(616, 221)
+states/Attack/node = SubResource("AnimationNodeAnimation_b5eai")
+states/Attack/position = Vector2(774, 121)
+states/Block/node = SubResource("AnimationNodeAnimation_wkhgr")
+states/Block/position = Vector2(459, 221)
+states/End/position = Vector2(892, 121)
+states/Idle/node = SubResource("AnimationNodeAnimation_7sgk2")
+states/Idle/position = Vector2(329, 116)
+states/Scared/node = SubResource("AnimationNodeAnimation_whl7h")
+states/Scared/position = Vector2(329, 221)
+states/Slap/node = SubResource("AnimationNodeAnimation_uvdrr")
+states/Slap/position = Vector2(329, 27)
+states/Start/position = Vector2(211, 120)
+states/Talking/node = SubResource("AnimationNodeAnimation_beiil")
+states/Talking/position = Vector2(439, 116)
+states/WalkAggro/node = SubResource("AnimationNodeAnimation_54w2e")
+states/WalkAggro/position = Vector2(616, 121)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_tra67"), "Idle", "Slap", SubResource("AnimationNodeStateMachineTransition_mcu5h"), "Idle", "Talking", SubResource("AnimationNodeStateMachineTransition_mel60"), "Idle", "Scared", SubResource("AnimationNodeStateMachineTransition_pgq82"), "Scared", "Block", SubResource("AnimationNodeStateMachineTransition_2oeed"), "Block", "Angry", SubResource("AnimationNodeStateMachineTransition_bo34a"), "Angry", "WalkAggro", SubResource("AnimationNodeStateMachineTransition_wk3kf"), "WalkAggro", "Attack", SubResource("AnimationNodeStateMachineTransition_0x4gf"), "Attack", "WalkAggro", SubResource("AnimationNodeStateMachineTransition_lhmpq"), "Scared", "Idle", SubResource("AnimationNodeStateMachineTransition_at73s"), "Talking", "Idle", SubResource("AnimationNodeStateMachineTransition_am2sg"), "Slap", "Idle", SubResource("AnimationNodeStateMachineTransition_vgly7"), "Idle", "Block", SubResource("AnimationNodeStateMachineTransition_15j3b")]
+graph_offset = Vector2(121, 21)

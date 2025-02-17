@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://wxpg270pix30"]
+
+[ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_cptg5"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2_kr6ki"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="3_fmluy"]
+[ext_resource type="Script" path="res://Scripts/FamilyBehavior.cs" id="3_wejn8"]
+[ext_resource type="PackedScene" uid="uid://cmn86lg6kavv1" path="res://Models/Mother.blend" id="4_7ox80"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
+
+[node name="Family2" type="StaticBody3D"]
+transform = Transform3D(-2.98023e-07, 0, -1, 0, 1, 0, 1, 0, -2.98023e-07, 65.5, 3, -32.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a2lqy")
+
+[node name="DialogueSystem" type="Node3D" parent="."]
+script = ExtResource("1_cptg5")
+npcName = "Mother"
+Dialogue = "Oh hello, I've been expecting you.
+Tell me, do you prefer pythons, or constrictors?
+There are so many kinds of snakes, each more wonderful than the last.
+Hm, am I needed? I will head there now."
+LookDescription = "The woman wears a flowing cloak.
+Under the fabric, you can hear the sounds of taught, slick leathery skin surfaces running against each other."
+TouchDescription = "A handshake that flows through your hands."
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HealthHandler" type="Node3D" parent="."]
+script = ExtResource("2_kr6ki")
+HP = 99999
+
+[node name="NpcToNpcHealthHandler" type="Node3D" parent="." node_paths=PackedStringArray("CoreHealthHandler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_fmluy")
+CoreHealthHandler = NodePath("")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("3_wejn8")
+
+[node name="Mother" parent="." instance=ExtResource("4_7ox80")]
+transform = Transform3D(0.3024, 0, 0, 0, 0.3024, 0, 0, 0, 0.3024, 0, -0.997793, 0)
+
+[node name="Skeleton3D" parent="Mother/Armature" index="0"]
+bones/0/rotation = Quaternion(0.304013, 1.13567e-07, 3.62411e-08, 0.952668)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(-0.201956, -5.0331e-14, -4.81502e-08, 0.979394)
+bones/2/rotation = Quaternion(0.101532, 3.45957e-15, 2.4207e-08, 0.994832)
+
+[node name="AnimationPlayer" parent="Mother" index="1"]
+autoplay = "Idle"
+
+[editable path="Mother"]

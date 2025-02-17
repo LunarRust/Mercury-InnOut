@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://blctc3ku4ht7n"]
+
+[ext_resource type="Texture2D" uid="uid://8ur1jgynw4b3" path="res://textures/Flour.png" id="1"]
+
+[resource]
+albedo_texture = ExtResource("1")
+metallic_specular = 0.0
+emission = Color(0.282353, 0.301961, 0.364706, 1)
+emission_texture = ExtResource("1")
+texture_filter = 2

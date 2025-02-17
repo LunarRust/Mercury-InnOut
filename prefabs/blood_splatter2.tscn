@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://bw7oavbfwucoy"]
+
+[ext_resource type="Material" path="res://Material/BloodParticle.tres" id="1"]
+[ext_resource type="Script" path="res://Scripts/bloodsplatter.cs" id="2"]
+[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="3"]
+
+[sub_resource type="Curve" id="Curve_kkwtc"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(0.997024, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jcv36"]
+curve = SubResource("Curve_kkwtc")
+
+[sub_resource type="Curve" id="Curve_q0gba"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5srnp"]
+curve = SubResource("Curve_q0gba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rqlxh"]
+angle_curve = SubResource("CurveTexture_jcv36")
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5srnp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_i0uvj"]
+material = ExtResource("1")
+size = Vector2(0.75, 0.75)
+
+[node name="BloodSplatter" type="GPUParticles3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+cast_shadow = 0
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_rqlxh")
+draw_pass_1 = SubResource("QuadMesh_i0uvj")
+script = ExtResource("2")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3")
+autoplay = true

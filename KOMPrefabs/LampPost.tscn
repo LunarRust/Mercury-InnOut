@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhbdx4ulswiu1"]
+
+[ext_resource type="PackedScene" uid="uid://b4q5mjpig1iin" path="res://Models/LampPost.glb" id="1_0dxdy"]
+
+[node name="LampPost" type="Node3D"]
+
+[node name="LampPost" parent="." instance=ExtResource("1_0dxdy")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="LampPost"]
+transform = Transform3D(1.42857, 0, 0, 0, 1.42857, 0, 0, 0, 1.42857, 0, 3.22678, 0.0281112)
+light_color = Color(0.960784, 0.580392, 0.14902, 1)
+light_energy = 0.5
+shadow_blur = 4.433
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+omni_range = 3.331

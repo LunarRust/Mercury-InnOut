@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://chlkqbr5e5lkd"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_owxpm"]
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2"]
+[ext_resource type="PackedScene" uid="uid://d0i7rcmvtb2uy" path="res://Models/Syringe.blend" id="3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7sm0"]
+size = Vector3(0.446385, 0.812319, 0.210897)
+
+[node name="Syringe Pickup" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.271321, 0)
+shape = SubResource("BoxShape3D_d7sm0")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("1_owxpm")
+ItemID = "Syringe1"
+
+[node name="ModelRoot" type="Node3D" parent="."]
+script = ExtResource("2")
+
+[node name="Syringe" parent="ModelRoot" instance=ExtResource("3")]
+transform = Transform3D(0.433431, 0.244363, -0.0492385, -0.246228, 0.435092, -0.00816481, 0.0388562, 0.0313255, 0.497503, 0, 0.251307, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0292557, 0)
+light_color = Color(0.678431, 0, 0, 1)
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+omni_range = 1.09562

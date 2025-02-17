@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Texture2D" uid="uid://ccsw8vb3354xp" path="res://textures/Metal3.png" id="1"]
+[ext_resource type="AudioStream" uid="uid://bdt3u2074ce1n" path="res://Sounds/ElevatorSlide.ogg" id="2"]
+[ext_resource type="AudioStream" uid="uid://or04w0jley8y" path="res://Sounds/ElevatorRebound.ogg" id="3"]
+[ext_resource type="PackedScene" uid="uid://csk2nj17wcquw" path="res://Models/ElevatorDoors.blend" id="4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_brlxg"]
+size = Vector3(2.62158989906311, 5.186880111694336, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73ddy"]
+albedo_texture = ExtResource("1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_df2f0"]
+
+[sub_resource type="Animation" id="Animation_tvvg8"]
+resource_name = "ElevatorOpen"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 5.099999904632568),
+"transitions": PackedFloat32Array(1, 1, 0.2253129929304123),
+"update": 0,
+"values": [Vector3(1.25, 0, 0), Vector3(1.25, 0, 0), Vector3(2.685669898986816, 0, 4.768369876728684e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.5, 5.099999904632568),
+"transitions": PackedFloat32Array(1, 1, 0.2588169872760773),
+"update": 0,
+"values": [Vector3(-1.25, 0, 0), Vector3(-1.25, 0, 0), Vector3(-2.60233998298645, 0, 9.536739753457368e-07)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioSource")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3")
+}],
+"times": PackedFloat32Array(2.099999904632568, 2.700000047683716, 3.299999952316284, 3.900000095367432)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="Animation" id="Animation_luo1k"]
+length = 0.001000000047497451
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.25, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.25, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iqe67"]
+_data = {
+"ElevatorOpen": SubResource("Animation_tvvg8"),
+"RESET": SubResource("Animation_luo1k")
+}
+
+[node name="ElevatorDoor" type="Node3D"]
+transform = Transform3D(-1, 0, 8.742279788975793e-08, 0, 1, 0, -8.742279788975793e-08, 0, -1, 16.5, 7, -6.272550106048584)
+
+[node name="Door1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door1"]
+shape = SubResource("BoxShape3D_brlxg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door1/CollisionShape3D"]
+transform = Transform3D(2.431339979171753, 0, 3.552710078910475e-15, 0, 5.196330070495605, 0, 0, 0, 0.5124300122261047, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_73ddy")
+mesh = SubResource("BoxMesh_df2f0")
+skeleton = NodePath("../..")
+
+[node name="Door2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0, 0)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2"]
+shape = SubResource("BoxShape3D_brlxg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door2/CollisionShape3D"]
+transform = Transform3D(2.431339979171753, 0, 3.552710078910475e-15, 0, 5.196330070495605, 0, 0, 0, 0.5124300122261047, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_73ddy")
+mesh = SubResource("BoxMesh_df2f0")
+skeleton = NodePath("../..")
+
+[node name="AudioSource" type="AudioStreamPlayer" parent="."]
+
+[node name="DoorAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iqe67")
+}
+autoplay = "ElevatorOpen"
+
+[node name="ElevatorDoors" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0145779000595212, 0.4011609852313995, -0.3247239887714386)
+
+[node name="Skeleton3D" parent="ElevatorDoors/Armature" index="0"]
+bones/1/position = Vector3(1.883880019187927, 1.511790037155151, 0.3117420077323914)
+bones/1/rotation = Quaternion(-7.937610035924081e-08, 2.599099957478757e-08, -0.7071070075035095, 0.7071070075035095)
+bones/2/rotation = Quaternion(-7.937610035924081e-08, 2.599099957478757e-08, -0.7071070075035095, 0.7071070075035095)
+bones/3/position = Vector3(-1.883880019187927, 1.511790037155151, 0.3117420077323914)
+bones/3/rotation = Quaternion(-7.937610035924081e-08, -2.599099957478757e-08, 0.7071070075035095, 0.7071070075035095)
+bones/4/rotation = Quaternion(-7.937610035924081e-08, -2.599099957478757e-08, 0.7071070075035095, 0.7071070075035095)
+
+[node name="AnimationPlayer" parent="ElevatorDoors" index="1"]
+autoplay = "Open"
+
+[editable path="ElevatorDoors"]

@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://jy8x8s03u4ar"]
+
+[ext_resource type="Script" path="res://CustomScripts/NPC/AutoNavManager.gd" id="1_3nxdc"]
+[ext_resource type="Texture2D" uid="uid://da8neu2a6q8s4" path="res://Sprites/PsychopompInHouseSheet.png" id="4_eg4dt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_egcki"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fr7nv"]
+
+[node name="NavNode" type="StaticBody3D" groups=["NavNode"]]
+script = ExtResource("1_3nxdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.74, 0, 8.82147e-08, 0, 0.74, 0, -8.82147e-08, 0, -0.74, 0, 0.757715, 0)
+shape = SubResource("CapsuleShape3D_egcki")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, 0.0769139, 0)
+visible = false
+mesh = SubResource("BoxMesh_fr7nv")
+skeleton = NodePath("")
+
+[node name="SpriteParent" type="Node3D" parent="."]
+transform = Transform3D(0.485, 0, 0, 0, 0.485, 0, 0, 0, 0.485, 0, 0.618197, 0)
+visible = false
+
+[node name="CharSprite" type="Sprite3D" parent="SpriteParent"]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+billboard = 2
+shaded = true
+alpha_cut = 3
+texture_filter = 0
+texture = ExtResource("4_eg4dt")
+hframes = 3

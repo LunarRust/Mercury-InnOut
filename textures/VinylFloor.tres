@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://ufcdnh2y5p18" path="res://textures/VinylFloor.png" id="1"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1")
+metallic_specular = 0.0
+roughness = 0.0
+uv1_scale = Vector3(10.10999965667725, 10.10999965667725, 10.10999965667725)
+texture_filter = 2

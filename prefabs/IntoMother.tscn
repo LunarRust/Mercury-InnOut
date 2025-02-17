@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://nnrwx318dsji"]
+
+[ext_resource type="Script" path="res://Scripts/BasicEnemy.gd" id="1"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2"]
+[ext_resource type="AudioStream" uid="uid://c2vvsemok0qlx" path="res://Sounds/GuardSound.ogg" id="3"]
+[ext_resource type="PackedScene" uid="uid://cy3jvwoa8sovi" path="res://Models/IntoMother.blend" id="4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1nxb4"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nkj6s"]
+
+[node name="BloodyGuard" type="CharacterBody3D" node_paths=PackedStringArray("nav_agent", "anim")]
+script = ExtResource("1")
+nav_agent = NodePath("NavigationAgent3D")
+speed = 2.5
+anim = NodePath("IntoMother/AnimationPlayer")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_1nxb4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_nkj6s")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5
+avoidance_enabled = true
+radius = 1.0
+
+[node name="HealthHandler" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("2")
+HP = 3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+stream = ExtResource("3")
+pitch_scale = 0.24
+autoplay = true
+max_distance = 5.0
+
+[node name="IntoMother" parent="." instance=ExtResource("4")]
+transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, -0.197086)
+
+[node name="Skeleton3D" parent="IntoMother/Armature" index="0"]
+bones/0/position = Vector3(5.23477e-16, 2.34318, -0.181974)
+bones/0/rotation = Quaternion(0.11434, 1.42051e-16, 1.40963e-16, 0.993442)
+bones/1/rotation = Quaternion(0.268163, -3.43186e-16, -2.07455e-16, 0.963374)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.325852, 1.12703e-07, 3.88445e-08, 0.945421)
+bones/3/position = Vector3(0.867298, 0.192596, 1.29677)
+bones/3/rotation = Quaternion(0.740967, 0.0590031, -0.0237763, 0.668522)
+bones/4/position = Vector3(-0.867298, 0.192596, 1.29677)
+bones/4/rotation = Quaternion(0.740967, -0.0590031, 0.0237763, 0.668522)
+bones/5/position = Vector3(0.593353, -0.0856847, 0.315996)
+bones/5/rotation = Quaternion(0.945544, 0.0378136, -0.0693737, 0.31576)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.397822, 0.000226797, 0.000365028, 0.917462)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.24549, 1.97713e-08, 0.0935556, 0.964874)
+bones/8/position = Vector3(-0.593353, -0.0856847, 0.315996)
+bones/8/rotation = Quaternion(0.945544, -0.0378136, 0.0693737, 0.31576)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(0.397822, -0.000226797, -0.000365028, 0.917462)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(-0.24549, -1.97713e-08, -0.0935556, 0.964874)
+
+[editable path="IntoMother"]

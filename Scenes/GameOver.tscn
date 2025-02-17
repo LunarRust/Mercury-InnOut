@@ -1,0 +1,340 @@
+[gd_scene load_steps=28 format=3 uid="uid://doue7qqfh7rmr"]
+
+[ext_resource type="PackedScene" uid="uid://bnsu4yxokloka" path="res://Models/Dragonfly.blend" id="1"]
+[ext_resource type="Texture2D" uid="uid://cjicenol0xntw" path="res://Models/DragonflyText.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cpw0lwuh6atd4" path="res://Models/textures/DflyWing.png" id="3"]
+[ext_resource type="Material" path="res://textures/Wood3.tres" id="4"]
+[ext_resource type="Script" path="res://Scripts/Tweener3D.cs" id="5"]
+[ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://3gl5rnx426t4" path="res://Sprites/UI/Gear2.png" id="7"]
+[ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="8"]
+[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="9"]
+[ext_resource type="FontFile" uid="uid://cntbynsr5ro4s" path="res://Fonts/JF-Dot-MPlus12.ttf" id="10"]
+[ext_resource type="AudioStream" uid="uid://chqtpy1e2uv0u" path="res://Music/Sweet Alibi.ogg" id="11"]
+[ext_resource type="Texture2D" uid="uid://cx5jgfnejbnbb" path="res://textures/Metal5.png" id="12"]
+[ext_resource type="PackedScene" uid="uid://ddj4w67si7crn" path="res://Models/Tweezer.blend" id="13"]
+[ext_resource type="Material" path="res://textures/Metal1.tres" id="14"]
+[ext_resource type="Texture2D" uid="uid://b5pk8llkl7l7f" path="res://Sprites/Paper/OverworldPage.png" id="15"]
+[ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="16"]
+[ext_resource type="Script" path="res://Scripts/GameOver.cs" id="17"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxlop"]
+shading_mode = 0
+albedo_color = Color(0.635294, 0.580392, 0.556863, 1)
+albedo_texture = ExtResource("2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogxms"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("3")
+emission_enabled = true
+emission = Color(0.341176, 0.294118, 0.239216, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_q741c"]
+
+[sub_resource type="Environment" id="Environment_omgqm"]
+background_mode = 1
+tonemap_white = 5.82
+adjustment_enabled = true
+adjustment_contrast = 1.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ff8i"]
+radial_segments = 6
+rings = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unjng"]
+albedo_texture = ExtResource("12")
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2xr3"]
+
+[sub_resource type="Animation" id="Animation_lngtg"]
+resource_name = "Fade In"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.4, 7.4),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-80.0, -10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver:canChange")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_o773a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3uqn"]
+_data = {
+"Fade In": SubResource("Animation_lngtg"),
+"RESET": SubResource("Animation_o773a")
+}
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Dragonfly" parent="." instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151997, 0.605722, 0.487178)
+
+[node name="Skeleton3D" parent="Dragonfly/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, 7.85046e-17, 7.85046e-17, 0.707107)
+bones/1/rotation = Quaternion(7.54962e-08, -0.00675629, 0.999977, -5.10086e-10)
+bones/1/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.00685883, 5.29521e-25, 1.52296e-18, 0.999976)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0305612, -9.69805e-26, 6.78596e-18, 0.999533)
+bones/5/rotation = Quaternion(0.00626885, 2.78694e-26, -1.39197e-18, 0.99998)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.0208247, -0.0431325, -0.574614, 0.817022)
+bones/7/rotation = Quaternion(0.0254038, -0.0397486, -0.668082, 0.742591)
+bones/8/rotation = Quaternion(0.0208247, 0.0431325, 0.574614, 0.817022)
+bones/9/rotation = Quaternion(0.0254038, 0.0397486, 0.668082, 0.742591)
+
+[node name="Cube" parent="Dragonfly/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_rxlop")
+surface_material_override/1 = SubResource("StandardMaterial3D_ogxms")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(16.4, 0, 0, 0, 16.4, 0, 0, 0, 16.4, 0, -0.481187, 0)
+material_override = ExtResource("4")
+mesh = SubResource("PlaneMesh_q741c")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(3.95296, -1.99008, 2.32674, 1.91258, 4.57217, 0.661282, -2.39085, 0.367211, 4.37596, 5.015, 3.755, 5.245)
+script = ExtResource("5")
+Time = 5.0
+tweenPosition = true
+endPosition = Vector3(0, -0.25, 0)
+tweenRotation = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_omgqm")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 5.66534, 0)
+light_color = Color(1, 0.223529, 0.317647, 1)
+shadow_enabled = true
+omni_range = 2.5
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 5.66534, 0)
+light_color = Color(0.803922, 0.462745, 0.368627, 1)
+shadow_enabled = true
+omni_range = 2.5
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2.6928, 4.66407, 2.03873e-07, 0, -2.35412e-07, 5.3856, 4.66407, -2.6928, -1.17706e-07, 0, -0.424196, 0)
+visible = false
+shaded = true
+texture = ExtResource("6")
+
+[node name="Gear2" type="Sprite2D" parent="."]
+modulate = Color(0.133333, 0.133333, 0.133333, 1)
+position = Vector2(937, 532)
+scale = Vector2(0.767374, 0.767374)
+texture = ExtResource("7")
+script = ExtResource("8")
+Time = 5.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="Gear3" type="Sprite2D" parent="."]
+modulate = Color(0.133333, 0.133333, 0.133333, 1)
+position = Vector2(9.00012, 6.00012)
+scale = Vector2(0.767374, 0.767374)
+texture = ExtResource("7")
+script = ExtResource("8")
+Time = 5.0
+tweenRotation = true
+endrotation = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.521569)
+position = Vector2(-7, 518)
+scale = Vector2(4.58118, 4.58118)
+texture = ExtResource("6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.521569)
+position = Vector2(-157, -37)
+scale = Vector2(4.58118, 4.58118)
+texture = ExtResource("6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.521569)
+position = Vector2(901, 693)
+scale = Vector2(4.58118, 4.58118)
+texture = ExtResource("6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.521569)
+position = Vector2(904, -24)
+rotation = 0.523302
+scale = Vector2(4.58118, 4.58118)
+texture = ExtResource("6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 365.0
+offset_top = 210.0
+offset_right = 914.0
+offset_bottom = 633.0
+theme = ExtResource("9")
+theme_override_colors/default_color = Color(0.65098, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][wave]GAME OVER."
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11")
+volume_db = -80.0
+autoplay = true
+
+[node name="Nail" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 2.04293, 0)
+mesh = SubResource("SphereMesh_2ff8i")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nail"]
+transform = Transform3D(0.1312, 0, -0.227245, 0, 9.38353, 0, 0.227245, 0, 0.1312, 0, -4.61215, 0)
+mesh = SubResource("BoxMesh_h2xr3")
+skeleton = NodePath("../../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="Nail2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -6.65, 2.50744, 0)
+mesh = SubResource("SphereMesh_2ff8i")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nail2"]
+transform = Transform3D(0.1312, 0, -0.227245, 0, 9.38353, 0, 0.227245, 0, 0.1312, 0, -4.61215, 0)
+mesh = SubResource("BoxMesh_h2xr3")
+skeleton = NodePath("../../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="Nail3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -6.65, 2.50744, -2.5)
+mesh = SubResource("SphereMesh_2ff8i")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nail3"]
+transform = Transform3D(0.1312, 0, -0.227245, 0, 9.38353, 0, 0.227245, 0, 0.1312, 0, -4.61215, 0)
+mesh = SubResource("BoxMesh_h2xr3")
+skeleton = NodePath("../../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="Nail4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 6.11187, 2.50744, 0)
+mesh = SubResource("SphereMesh_2ff8i")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nail4"]
+transform = Transform3D(0.1312, 0, -0.227245, 0, 9.38353, 0, 0.227245, 0, 0.1312, 0, -4.61215, 0)
+mesh = SubResource("BoxMesh_h2xr3")
+skeleton = NodePath("../../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="Nail5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 6.11187, 2.50744, -2.5)
+mesh = SubResource("SphereMesh_2ff8i")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nail5"]
+transform = Transform3D(0.1312, 0, -0.227245, 0, 9.38353, 0, 0.227245, 0, 0.1312, 0, -4.61215, 0)
+mesh = SubResource("BoxMesh_h2xr3")
+skeleton = NodePath("../../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_unjng")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k3uqn")
+}
+autoplay = "Fade In"
+
+[node name="Tweezer" parent="." instance=ExtResource("13")]
+transform = Transform3D(0.312643, 0, 0.77965, 0, 0.84, 0, -0.77965, 0, 0.312643, -2.02204, -0.315748, 3.4552)
+
+[node name="Cube" parent="Tweezer" index="0"]
+surface_material_override/0 = ExtResource("14")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(12.324, 12.2832, 5.36918e-07, 0, -7.60578e-07, 17.4, 12.2832, -12.324, -5.38701e-07, -6.22643, -0.344699, 7.57135)
+visible = false
+shaded = true
+texture_filter = 0
+texture = ExtResource("15")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(2.99067, 11.0878, 3.54366e-07, 2.50991e-07, -4.34729e-07, 11.484, 11.0878, -2.99067, -3.55543e-07, -5.43831, -0.478519, 5.22829)
+shaded = true
+texture_filter = 0
+texture = ExtResource("15")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 970.0
+offset_bottom = 556.0
+color = Color(0, 0, 0, 1)
+
+[node name="DitherFilter" type="ColorRect" parent="."]
+material = ExtResource("16")
+offset_right = 969.0
+offset_bottom = 538.0
+mouse_filter = 2
+
+[node name="GameOver" type="Node" parent="."]
+script = ExtResource("17")
+
+[editable path="Dragonfly"]
+[editable path="Tweezer"]

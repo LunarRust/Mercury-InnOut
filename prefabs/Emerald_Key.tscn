@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://be6hrc7d6nisu"]
+
+[ext_resource type="PackedScene" uid="uid://bscf6orgycg7l" path="res://Models/EmeraldKey.blend" id="1"]
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2"]
+[ext_resource type="Texture2D" uid="uid://bwt804mgj6sf3" path="res://Sprites/Sigil.png" id="3"]
+[ext_resource type="Script" path="res://Scripts/EmeraldKeyBehavior.cs" id="4"]
+[ext_resource type="AudioStream" uid="uid://dv0ae3ncwwdpw" path="res://Sounds/Pickup2.ogg" id="5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m2qga"]
+size = Vector3(1, 2, 1)
+
+[node name="EmeraldKey" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_m2qga")
+
+[node name="Model" parent="." instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Sprite3D" type="Sprite3D" parent="Model"]
+transform = Transform3D(0.06, 0, 0, 0, -2.62268e-09, 0.06, 0, -0.06, -2.62268e-09, 0, 0.141676, 0)
+modulate = Color(0, 0.870588, 0.596078, 1)
+texture = ExtResource("3")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.419055, 0)
+light_color = Color(0.662745, 0.847059, 0, 1)
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("sigil", "model", "soundSource", "light")]
+script = ExtResource("4")
+sigil = NodePath("../Model/Sprite3D")
+model = NodePath("../Model")
+soundSource = NodePath("../AudioStreamPlayer3D")
+light = NodePath("../OmniLight3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5")

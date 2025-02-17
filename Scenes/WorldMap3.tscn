@@ -1,0 +1,647 @@
+[gd_scene load_steps=34 format=3 uid="uid://dkcwa175xmqqh"]
+
+[ext_resource type="Texture2D" uid="uid://bf472w8i4jrg3" path="res://Sprites/MapBack3.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="2"]
+[ext_resource type="Texture2D" uid="uid://bbn30ijxx7tvt" path="res://Sprites/Particles/GenericPart.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://da67tipu24hod" path="res://Sprites/UI/meatchunk.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://ns1tb2tuvio6" path="res://Sprites/MapPsych1.png" id="5"]
+[ext_resource type="Script" path="res://Scripts/WorldMapPlayer.cs" id="6"]
+[ext_resource type="Shader" path="res://Shaders/WaterCanvas.gdshader" id="7"]
+[ext_resource type="Texture2D" uid="uid://4fs2bnwo7qfl" path="res://textures/Noise.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bkdy8q2tly7u2" path="res://Sprites/EyeFinal.png" id="9"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="10"]
+[ext_resource type="Script" path="res://Scripts/MapButton.gd" id="11"]
+[ext_resource type="Texture2D" uid="uid://bdq0pny5m3hri" path="res://Sprites/Symbolic.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://c45qdplmw48dy" path="res://Sprites/Trns3.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://d1fi3cabepdyq" path="res://Sprites/Forbidden.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://cvneqfae1sgjt" path="res://Sprites/EyeFinal2.png" id="15"]
+[ext_resource type="AudioStream" uid="uid://cyyedga6ypeiw" path="res://Music/Lower Lobe Clatter.ogg" id="16"]
+[ext_resource type="Script" path="res://Scripts/game_progress.gd" id="17"]
+[ext_resource type="Script" path="res://Scripts/SaveButton.gd" id="18"]
+[ext_resource type="Script" path="res://Scripts/QuitMap.gd" id="19"]
+[ext_resource type="Texture2D" uid="uid://cy2vqc8pk5ygw" path="res://Sprites/UI/Fullscreen1.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://be3jf3qr3gbmy" path="res://Sprites/UI/Fullscreen2.png" id="21"]
+[ext_resource type="Script" path="res://Scripts/Fullscreen.gd" id="22"]
+[ext_resource type="Script" path="res://Scripts/TrnsHandler.gd" id="23"]
+[ext_resource type="Texture2D" uid="uid://ba00b88k0dqmv" path="res://Sprites/Home.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://baxyvc10kwgej" path="res://Sprites/Phone.png" id="25"]
+
+[sub_resource type="Curve" id="Curve_dfd0c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4dot4"]
+curve = SubResource("Curve_dfd0c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fsxmx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 1, 1)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.4
+color = Color(0.320416, 0.418491, 0.657654, 1)
+alpha_curve = SubResource("CurveTexture_4dot4")
+
+[sub_resource type="Animation" id="Animation_pqmtr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0mcxc"]
+resource_name = "Walky"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jlwi"]
+_data = {
+"RESET": SubResource("Animation_pqmtr"),
+"Walky": SubResource("Animation_0mcxc")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r83ai"]
+shader = ExtResource("7")
+shader_parameter/strength = 20.0
+shader_parameter/uv_scaling = 1.0
+shader_parameter/movement_direction = Vector2(1, 0)
+shader_parameter/movement_speed = 0.04
+shader_parameter/NOISE_TEXTURE = ExtResource("8")
+
+[sub_resource type="Environment" id="Environment_jupbp"]
+background_mode = 3
+glow_intensity = 5.25
+glow_strength = 0.58
+glow_bloom = 0.11
+glow_blend_mode = 3
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 17.3
+adjustment_enabled = true
+adjustment_saturation = 1.21
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(480, 270)
+scale = Vector2(2, 2)
+texture = ExtResource("1")
+script = ExtResource("2")
+Time = 10.0
+tweenScale = true
+endScale = 0.05
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(479, -57)
+process_material = SubResource("ParticleProcessMaterial_fsxmx")
+texture = ExtResource("3")
+lifetime = 4.0
+
+[node name="MeatParent" type="Node2D" parent="."]
+
+[node name="MeatChunk" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(582, 10)
+scale = Vector2(1.94444, 1.94444)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.5
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk13" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(926, 35)
+scale = Vector2(1.94444, 1.94444)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.5
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk14" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(977, 92)
+scale = Vector2(1.94444, 1.94444)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.5
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk15" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(21, 66)
+scale = Vector2(3.62037, 3.62037)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.5
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk16" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(942, 125)
+scale = Vector2(3.62037, 3.62037)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.5
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk2" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(493, -19)
+scale = Vector2(-2, -2)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.2
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk12" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(493, -19)
+scale = Vector2(-2, -2)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.2
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk8" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(205, -15)
+scale = Vector2(-2, -2)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.2
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk3" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(665, -14)
+scale = Vector2(-2, -2)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.9
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk10" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(840, -18)
+scale = Vector2(-2, -2)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.9
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk11" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(840, -18)
+scale = Vector2(-2, -2)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 0.9
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk4" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(745, -17)
+scale = Vector2(1.94444, 1.94444)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 1.2
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk5" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(425, -19)
+scale = Vector2(2.41667, 2.41667)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 1.2
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk9" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(308, -5)
+scale = Vector2(2.41667, 2.41667)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 1.2
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk6" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(29, 23)
+scale = Vector2(2.18981, 2.18981)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 1.2
+tweenScale = true
+endScale = 0.1
+
+[node name="MeatChunk7" type="Sprite2D" parent="MeatParent"]
+modulate = Color(0.478431, 0.478431, 0.478431, 1)
+position = Vector2(125, -5)
+scale = Vector2(2.18981, 2.18981)
+texture = ExtResource("4")
+script = ExtResource("2")
+Time = 1.2
+tweenScale = true
+endScale = 0.1
+
+[node name="Player" type="Sprite2D" parent="."]
+modulate = Color(0.643137, 0.415686, 0.223529, 1)
+position = Vector2(482, 321)
+scale = Vector2(2, 2)
+texture = ExtResource("5")
+hframes = 4
+script = ExtResource("6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_1jlwi")
+}
+autoplay = "Walky"
+
+[node name="Filter2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_r83ai")
+offset_top = 2.0
+offset_right = 969.0
+offset_bottom = 540.0
+mouse_filter = 2
+
+[node name="Eye" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(480, 441)
+scale = Vector2(2, 2)
+texture = ExtResource("9")
+script = ExtResource("2")
+Time = 2.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="Eye label" type="RichTextLabel" parent="Eye"]
+offset_left = -19.5
+offset_top = 23.0
+offset_right = 65.5
+offset_bottom = 52.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave]Entrance"
+
+[node name="TextureButton" type="TextureButton" parent="Eye"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "EyeScene"
+
+[node name="Symbol" type="Sprite2D" parent="."]
+position = Vector2(484, 152)
+scale = Vector2(2, 2)
+texture = ExtResource("12")
+script = ExtResource("2")
+Time = 2.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="School Label" type="RichTextLabel" parent="Symbol"]
+offset_left = -53.0
+offset_top = 23.0
+offset_right = 57.0
+offset_bottom = 50.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave][center]Symbols"
+
+[node name="TextureButton" type="TextureButton" parent="Symbol"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "AbstractTower"
+
+[node name="Transient 1" type="Sprite2D" parent="."]
+modulate = Color(0, 0.709804, 0.443137, 1)
+position = Vector2(183, 191)
+scale = Vector2(2, 2)
+texture = ExtResource("13")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Transient 1"]
+offset_left = -41.0
+offset_top = 23.0
+offset_right = 49.0
+offset_bottom = 53.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave]Aberrant Location"
+
+[node name="TextureButton" type="TextureButton" parent="Transient 1"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "t_quadspiral"
+
+[node name="Transient 2" type="Sprite2D" parent="."]
+modulate = Color(0.890196, 0.4, 0.0941176, 1)
+position = Vector2(761, 156)
+scale = Vector2(2, 2)
+texture = ExtResource("13")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Transient 2"]
+offset_left = -41.0
+offset_top = 23.0
+offset_right = 49.0
+offset_bottom = 62.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave]Aberrant Location"
+
+[node name="TextureButton" type="TextureButton" parent="Transient 2"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "t_bath"
+
+[node name="Transient 3" type="Sprite2D" parent="."]
+modulate = Color(0.831373, 0.188235, 1, 1)
+position = Vector2(768, 347)
+scale = Vector2(2, 2)
+texture = ExtResource("13")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Transient 3"]
+offset_left = -41.0
+offset_top = 23.0
+offset_right = 49.0
+offset_bottom = 55.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave]Aberrant Location"
+
+[node name="TextureButton" type="TextureButton" parent="Transient 3"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "t_museum"
+
+[node name="Transient 4" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.454902, 1)
+position = Vector2(227, 403)
+scale = Vector2(2, 2)
+texture = ExtResource("13")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Transient 4"]
+offset_left = -41.0
+offset_top = 23.0
+offset_right = 49.0
+offset_bottom = 60.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave]Aberrant Location"
+
+[node name="TextureButton" type="TextureButton" parent="Transient 4"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "t_birds"
+
+[node name="Forbidden 1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(483, 194)
+scale = Vector2(2, 2)
+texture = ExtResource("14")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Forbidden 1"]
+offset_left = -41.0
+offset_top = 23.0
+offset_right = 49.0
+offset_bottom = 56.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave]Forbidden Location"
+
+[node name="TextureButton" type="TextureButton" parent="Forbidden 1"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "t_library"
+
+[node name="Forbidden 2" type="Sprite2D" parent="."]
+position = Vector2(480, 443)
+scale = Vector2(2, 2)
+texture = ExtResource("15")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="TrnsLabel" type="RichTextLabel" parent="Forbidden 2"]
+offset_left = -38.0
+offset_top = 29.0
+offset_right = 40.0
+offset_bottom = 61.0
+theme_override_colors/default_color = Color(1, 0.133333, 0.145098, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+text = "[wave][center]Exit"
+
+[node name="TextureButton" type="TextureButton" parent="Forbidden 2"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "angelescape"
+metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16")
+volume_db = -11.556
+autoplay = true
+
+[node name="Progression" type="Node" parent="." node_paths=PackedStringArray("symbolButton", "FinalButton3")]
+script = ExtResource("17")
+symbolButton = NodePath("../Symbol")
+FinalButton3 = NodePath("../Eye")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 863.0
+offset_top = 2.0
+offset_right = 957.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.683594, 0.246094, 0.246094, 1)
+theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 16
+text = "Save Game"
+script = ExtResource("18")
+MapLayer = 3
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 97.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.683594, 0.246094, 0.246094, 1)
+theme_override_fonts/font = ExtResource("10")
+theme_override_font_sizes/font_size = 16
+text = "Quit Game"
+script = ExtResource("19")
+
+[node name="SoundSource" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="FullscreenButton" type="TextureButton" parent="."]
+offset_left = 923.0
+offset_top = 37.0
+offset_right = 955.0
+offset_bottom = 69.0
+texture_normal = ExtResource("20")
+texture_pressed = ExtResource("21")
+script = ExtResource("22")
+
+[node name="TrnsHandler" type="Node" parent="."]
+script = ExtResource("23")
+
+[node name="Home" type="Sprite2D" parent="."]
+position = Vector2(54, 476)
+scale = Vector2(1.07831, 1.07868)
+texture = ExtResource("24")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="School Label" type="RichTextLabel" parent="Home"]
+offset_left = -34.0
+offset_top = 23.0
+offset_right = 38.0
+offset_bottom = 86.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave][center]Home"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Home"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "House1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Phone" type="Sprite2D" parent="."]
+position = Vector2(906, 476)
+scale = Vector2(1.07831, 1.07868)
+texture = ExtResource("25")
+script = ExtResource("2")
+Time = 3.0
+tweenPosition = true
+endPosition = Vector2(0, 10)
+
+[node name="Phone Label" type="RichTextLabel" parent="Phone"]
+offset_left = -34.0
+offset_top = 23.0
+offset_right = 38.0
+offset_bottom = 86.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("10")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[wave][center]Call"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Phone"]
+offset_left = -33.0
+offset_top = -30.0
+offset_right = 32.0
+offset_bottom = 34.0
+script = ExtResource("11")
+destination = "Phone"
+metadata/_edit_use_anchors_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jupbp")

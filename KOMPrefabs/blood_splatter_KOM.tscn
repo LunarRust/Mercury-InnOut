@@ -1,0 +1,163 @@
+[gd_scene load_steps=16 format=3 uid="uid://dbrrtfnihdheq"]
+
+[ext_resource type="Material" path="res://Material/BloodParticle.tres" id="1_rlnbw"]
+[ext_resource type="Script" path="res://Scripts/bloodsplatter.cs" id="2_16a6b"]
+[ext_resource type="PackedScene" path="res://prefabs/gib.tscn" id="3_62s37"]
+[ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="4_2shob"]
+[ext_resource type="AudioStream" uid="uid://c8iqhpsgxqd4g" path="res://Sounds/Scream-03.ogg" id="5_cksfy"]
+[ext_resource type="AudioStream" uid="uid://doojuqynft083" path="res://Sounds/Gore01.ogg" id="6_f5yxu"]
+
+[sub_resource type="Curve" id="Curve_kkwtc"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(0.997024, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jcv36"]
+curve = SubResource("Curve_kkwtc")
+
+[sub_resource type="Curve" id="Curve_q0gba"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5srnp"]
+curve = SubResource("Curve_q0gba")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rqlxh"]
+angle_curve = SubResource("CurveTexture_jcv36")
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5srnp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_i0uvj"]
+material = ExtResource("1_rlnbw")
+
+[sub_resource type="Animation" id="Animation_7064k"]
+resource_name = "BloodFade"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(5.1, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.533333, 0, 0.0313726, 1), Color(0.533333, 0, 0.0313726, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BloodDecal:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.1, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.533333, 0, 0.0313726, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6xbcq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.533333, 0, 0.0313726, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodDecal:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.533333, 0, 0.0313726, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vluet"]
+_data = {
+"BloodFade": SubResource("Animation_7064k"),
+"RESET": SubResource("Animation_6xbcq")
+}
+
+[node name="BloodSplatter" type="GPUParticles3D" node_paths=PackedStringArray("bloodMark")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+cast_shadow = 0
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_rqlxh")
+draw_pass_1 = SubResource("QuadMesh_i0uvj")
+script = ExtResource("2_16a6b")
+bloodMark = NodePath("BloodDecal")
+
+[node name="Gib" parent="." instance=ExtResource("3_62s37")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -0.0356801, 0.412851, 0.193209)
+collision_layer = 8
+
+[node name="Gib2" parent="." instance=ExtResource("3_62s37")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -0.106119, 0.412851, -0.0412618)
+collision_layer = 8
+
+[node name="Gib3" parent="." instance=ExtResource("3_62s37")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0.175053, 0.412851, 0.0323271)
+collision_layer = 8
+
+[node name="Blood" type="Sprite3D" parent="."]
+transform = Transform3D(3.12444, 0, 0, 0, -1.36574e-07, 3.12444, 0, -3.12444, -1.36573e-07, 0, -0.969046, 0)
+visible = false
+modulate = Color(0.533333, 0, 0.0313726, 1)
+shaded = true
+texture_filter = 0
+texture = ExtResource("4_2shob")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_cksfy")
+autoplay = true
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_f5yxu")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vluet")
+}
+autoplay = "BloodFade"
+
+[node name="BloodDecal" type="Decal" parent="."]
+transform = Transform3D(1.53309, 0, 0, 0, 1.53309, 0, 0, 0, 1.53309, 0, -0.250147, 0)
+texture_albedo = ExtResource("4_2shob")
+emission_energy = 0.0
+modulate = Color(0.533333, 0, 0.0313726, 1)

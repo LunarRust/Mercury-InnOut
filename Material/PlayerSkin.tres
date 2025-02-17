@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bw78j1pb1yth8"]
+
+[ext_resource type="Texture2D" uid="uid://dd0v6opyk4v0e" path="res://Models/textures/PompTexture.png" id="1"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1")
+emission_enabled = true
+rim = 0.42
+rim_tint = 0.1
+subsurf_scatter_strength = 0.67
+texture_filter = 0

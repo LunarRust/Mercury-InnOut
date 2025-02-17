@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://cr4ovc1iagi4v"]
+
+[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="1_dax7c"]
+[ext_resource type="Script" path="res://CustomScripts/SceneLoaderButton.gd" id="2_7ag2b"]
+[ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="3_5jp2f"]
+
+[sub_resource type="StyleBoxEmpty" id="7"]
+
+[sub_resource type="StyleBoxEmpty" id="8"]
+
+[sub_resource type="StyleBoxEmpty" id="9"]
+
+[sub_resource type="StyleBoxEmpty" id="10"]
+
+[sub_resource type="StyleBoxEmpty" id="11"]
+
+[node name="LoadWorldMap1Button" type="Button"]
+top_level = true
+z_as_relative = false
+offset_left = 38.0
+offset_top = 96.0
+offset_right = 252.0
+offset_bottom = 141.0
+theme = ExtResource("1_dax7c")
+theme_override_colors/font_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.320416, 0.418491, 0.657654, 1)
+theme_override_styles/normal = SubResource("7")
+theme_override_styles/hover = SubResource("8")
+theme_override_styles/pressed = SubResource("9")
+theme_override_styles/disabled = SubResource("10")
+theme_override_styles/focus = SubResource("11")
+action_mode = 0
+text = "Load World Map 1
+"
+script = ExtResource("2_7ag2b")
+destination = "WorldMap"
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 210.0
+offset_bottom = 41.0
+mouse_filter = 2
+color = Color(0.0745098, 0.113725, 0.211765, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_5jp2f")
+
+[connection signal="pressed" from="." to="AudioStreamPlayer" method="_on_button_pressed"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://jur7vxccf5uw"]
+
+[ext_resource type="Texture2D" uid="uid://cvu28dwc8s2y5" path="res://KOMSprites/innout/Register.png" id="1_24lo2"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/RegisterCon.gd" id="2_xxd42"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="3_pdmdl"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="4_kpyi6"]
+[ext_resource type="Curve" uid="uid://iwl6freusb4t" path="res://KOMResources/Curves/CamGrabberCurve.tres" id="5_4wvn6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v3qml"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s47yy"]
+size = Vector3(3.12469, 2.60184, 0.765625)
+
+[node name="CamGrabber" type="StaticBody3D"]
+transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Register2" type="TextureButton" parent="CanvasLayer"]
+offset_left = 270.0
+offset_top = 254.0
+offset_right = 720.0
+offset_bottom = 704.0
+texture_normal = ExtResource("1_24lo2")
+script = ExtResource("2_xxd42")
+sound = ExtResource("3_pdmdl")
+
+[node name="Sound" type="AudioStreamPlayer" parent="CanvasLayer"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.77, 0, 2.84217e-14, 0, 0.415, 0, -1.42109e-14, 0, 0.785, 0, -0.125684, 0.132416)
+visible = false
+mesh = SubResource("BoxMesh_v3qml")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 3.56692e-12, 0, 1, 0, -3.56692e-12, 0, 1, 0.00152636, -0.218689, 0.117188)
+shape = SubResource("BoxShape3D_s47yy")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1.42857, 0, 2.84217e-14, 0, 1.42857, 0, -2.84217e-14, 0, 1.42857, 2.38419e-07, 0.268545, 1.17346)
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("MenuCam", "UIToShow", "CollisionShape", "MeshInstance")]
+script = ExtResource("4_kpyi6")
+MenuCam = NodePath("../Camera3D")
+UIToShow = NodePath("../CanvasLayer")
+CamCurve = ExtResource("5_4wvn6")
+CollisionShape = NodePath("../CollisionShape3D")
+MeshInstance = NodePath("../MeshInstance3D")
+
+[node name="SoundSource" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_pdmdl")
+
+[connection signal="pressed" from="CanvasLayer/Register2" to="CanvasLayer/Register2" method="_on_pressed"]
