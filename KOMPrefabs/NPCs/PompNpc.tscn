@@ -6265,7 +6265,7 @@ spot_range = 8.0
 libraries = {
 "": SubResource("AnimationLibrary_17qq7")
 }
-blend_times = [&"Attack", &"Shrug", 0.2, &"Attack", &"Walk", 0.5, &"Attack", &"Talk", 0.2, &"Attack", &"Touch", 0.2, &"Attack", &"Idle", 0.5, &"Attack", &"Hurt", 0.2, &"Idle", &"Attack", 0.3, &"Idle", &"Shrug", 0.2, &"Idle", &"Walk", 0.5, &"Idle", &"Talk", 0.2, &"Idle", &"Touch", 0.2, &"Idle", &"Idle", 0.5]
+blend_times = [&"Attack", &"Walk", 0.5, &"Attack", &"Shrug", 0.2, &"Attack", &"Idle", 0.5, &"Attack", &"Hurt", 0.2, &"Attack", &"Talk", 0.2, &"Attack", &"Touch", 0.2, &"Idle", &"Attack", 0.3, &"Idle", &"Walk", 0.5, &"Idle", &"Shrug", 0.2, &"Idle", &"Idle", 0.5, &"Idle", &"Talk", 0.2, &"Idle", &"Touch", 0.2]
 
 [node name="Sprite3D" type="Sprite3D" parent="VenusModel"]
 transform = Transform3D(-1.18672, -1.03747e-07, 4.53491e-15, 0, -5.18733e-08, -1.18672, 1.03747e-07, -1.18672, 5.18733e-08, 0, 0.811643, 0.264255)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ukgfvuqmgmx6"]
+[gd_scene load_steps=37 format=3 uid="uid://ukgfvuqmgmx6"]
 
 [ext_resource type="Texture2D" uid="uid://fnur461jyc4e" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_lqmyy"]
 [ext_resource type="AudioStream" uid="uid://dpdoe14tukan8" path="res://Sounds/Droplet.ogg" id="2_pp7sf"]
@@ -9,6 +9,9 @@
 [ext_resource type="SpriteFrames" uid="uid://bwwe0yu1rhfcs" path="res://KOMSprites/innout/FFriesFire.tres" id="7_ljurn"]
 [ext_resource type="Texture2D" uid="uid://ctdyh27w12rb4" path="res://KOMSprites/innout/cooked-patty.png" id="7_sox1w"]
 [ext_resource type="Texture2D" uid="uid://dxdbgpdskrtjp" path="res://KOMSprites/innout/friesBurnt.png" id="8_rhgwp"]
+[ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="10_0j84d"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="11_00qx1"]
+[ext_resource type="Texture2D" uid="uid://0i4iha5ir3i1" path="res://Sprites/UI/ButtonEmpty.png" id="12_kau7w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sa5h"]
 resource_name = "grill"
@@ -204,6 +207,27 @@ states/Up/position = Vector2(375, 36)
 transitions = ["Down", "Up", SubResource("AnimationNodeStateMachineTransition_1hma1"), "Up", "Down", SubResource("AnimationNodeStateMachineTransition_i58aq"), "Default", "Up", SubResource("AnimationNodeStateMachineTransition_g6d3n"), "Default", "Down", SubResource("AnimationNodeStateMachineTransition_k62g3"), "Start", "Default", SubResource("AnimationNodeStateMachineTransition_pm4id")]
 graph_offset = Vector2(-310, -37)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4hw7"]
+texture = ExtResource("12_kau7w")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhufb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_y3prw"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_d0pt8"]
+viewport_path = NodePath("GUI/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s21xa"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_d0pt8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqxtd"]
+size = Vector3(3, 2, 0.1)
+
 [node name="Fryer_basket" type="Node3D"]
 
 [node name="fryer basket1 " type="MeshInstance3D" parent="."]
@@ -221,10 +245,12 @@ transform = Transform3D(1, -2.84217e-14, -3.38814e-21, 2.84217e-14, 1, -2.84217e
 transform = Transform3D(1, -1.42109e-14, -1.69409e-21, 1.42109e-14, 1, -1.42109e-14, -1.69407e-21, 1.42109e-14, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_liu8w")
 
-[node name="Behavior" type="Node" parent="fryer basket1 /StaticBody3D" node_paths=PackedStringArray("FryBasketAnim", "FryerSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject", "DebugLabels")]
+[node name="Behavior" type="Node" parent="fryer basket1 /StaticBody3D" node_paths=PackedStringArray("FryBasketAnim", "FryerSound", "progressBar", "GUI", "TargetLoc", "SpriteObject", "AnimatedSpriteObject", "DebugLabels")]
 script = ExtResource("3_ikwmq")
 FryBasketAnim = NodePath("../../AnimationTree")
 FryerSound = NodePath("../../FryerSound")
+progressBar = NodePath("../../../GUI/SubViewport/ProgressBar")
+GUI = NodePath("../../../GUI")
 TargetLoc = NodePath("../../TargetLoc")
 SpriteObject = NodePath("../../Sprite3D")
 AnimatedSpriteObject = NodePath("../../AnimatedSprite3D")
@@ -286,3 +312,37 @@ tree_root = SubResource("AnimationNodeStateMachine_o2uup")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/Down = false
 parameters/conditions/Up = false
+
+[node name="GUI" type="Node3D" parent="." node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+visible = false
+script = ExtResource("10_0j84d")
+node_viewport = NodePath("SubViewport")
+node_quad = NodePath("Quad")
+node_area = NodePath("Quad/Area3D")
+
+[node name="SubViewport" type="SubViewport" parent="GUI"]
+size = Vector2i(512, 50)
+
+[node name="ProgressBar" type="ProgressBar" parent="GUI/SubViewport"]
+offset_right = 512.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("11_00qx1")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/background = SubResource("StyleBoxTexture_m4hw7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lhufb")
+allow_greater = true
+allow_lesser = true
+
+[node name="Quad" type="MeshInstance3D" parent="GUI"]
+process_mode = 3
+transform = Transform3D(-1.11464e-08, 0, 0.875, 0, 0.045, 0, -0.255, 0, -3.82475e-08, -0.93313, 2.34503, -0.383956)
+mesh = SubResource("QuadMesh_y3prw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_s21xa")
+
+[node name="Area3D" type="Area3D" parent="GUI/Quad"]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GUI/Quad/Area3D"]
+shape = SubResource("BoxShape3D_sqxtd")

@@ -1,6 +1,8 @@
 extends Node
 @export var FryBasketAnim : AnimationTree
 @export var FryerSound : AudioStreamPlayer
+@export var progressBar : ProgressBar
+@export var GUI : Node3D
 var up = false
 var ItemInBasket : bool = false
 var ItemInBasketName : String
@@ -21,6 +23,7 @@ var used : bool = false
 var Cooking : bool = false
 var CookTime : float
 var SpriteNum : int
+var sb
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	inv = get_tree().get_first_node_in_group("KOMInventoryManager").inv
@@ -28,6 +31,9 @@ func _ready():
 		inv = InventoryManager.inventoryInstance
 	animTrigger("Down")
 	up = false
+	progressBar.max_value = CookedTime
+	sb = StyleBoxFlat.new()
+	progressBar.add_theme_stylebox_override("fill", sb)
 	pass # Replace with function body.
 	
 
@@ -48,6 +54,9 @@ func _process(delta):
 		up = false
 	if Cooking:
 		CookTime += delta
+		progressBar.value = CookTime 
+		#if CookTime >=  CookedTime * 0.70:
+		sb.bg_color = Color.DARK_RED.lerp(Color.DARK_GREEN, CookTime / CookedTime)
 		if CookTime >= CookedTime && CookTime <= BurnTime:
 			SpriteObject.texture = CookedSprites[SpriteNum]
 		elif CookTime >= BurnTime:
@@ -67,6 +76,7 @@ func Item(item : String):
 				animTrigger("Down")
 			if ItemInBasket:
 				Cooking = true
+			GUI.show()
 			up = false
 			return true
 		"Fries":
@@ -81,6 +91,7 @@ func Item(item : String):
 				animTrigger("Down")
 			if ItemInBasket:
 				Cooking = true
+			GUI.show()
 			up = false
 			return true
 		_:
@@ -120,6 +131,8 @@ func Touch(AmNpc = false):
 						up = true
 						ItemInBasket = false
 						Cooking = false
+						GUI.hide()
+						progressBar.value = 0
 						CookTime = 0.0
 					else:
 						print("Cannot Add Item, not enough Room")
@@ -133,6 +146,8 @@ func Touch(AmNpc = false):
 						animTrigger("Up")
 						up = true
 						ItemInBasket = false
+						GUI.hide()
+						progressBar.value = 0
 						Cooking = false
 		else :
 			if CookTime >= BurnTime:
@@ -147,6 +162,8 @@ func Touch(AmNpc = false):
 					up = true
 					ItemInBasket = false
 					Cooking = false
+					GUI.hide()
+					progressBar.value = 0
 					CookTime = 0.0
 				else:
 					print("Cannot Add Item, not enough Room")
@@ -161,6 +178,8 @@ func Touch(AmNpc = false):
 						up = true
 						ItemInBasket = false
 						Cooking = false
+						GUI.hide()
+						progressBar.value = 0
 						CookTime = 0.0
 				
 

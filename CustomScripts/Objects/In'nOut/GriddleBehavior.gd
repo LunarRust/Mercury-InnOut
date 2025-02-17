@@ -1,5 +1,7 @@
 extends Node
 @export var Spatula : Node3D
+@export var GUI : Node3D
+var progressBar : ProgressBar
 @export var GriddleSound : AudioStreamPlayer
 var up = false
 var ItemOnSpatula : bool = false
@@ -11,19 +13,25 @@ var RecivedItem : String
 @export var Sprites : Array[Resource]
 @export var AltSprites : Array[Texture2D]
 @export var DebugLabels : Node3D
+@export var CookedTime : float = 15
 var inv : Inventory
 var NpcInv : Inventory
 var used : bool = false
 var Cooking : bool = false
 var CookTime : float
+var sb
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	progressBar = GUI.get_node("SubViewport/ProgressBar")
 	CookTime = 0
 	ItemOnSpatula = false
 	inv = get_tree().get_first_node_in_group("KOMInventoryManager").inv
 	if inv == null:
 		inv = InventoryManager.inventoryInstance
 	animTrigger("Down")
+	progressBar.max_value = CookedTime
+	sb = StyleBoxFlat.new()
+	progressBar.add_theme_stylebox_override("fill", sb)
 	up = false
 	
 
@@ -48,7 +56,10 @@ func _process(delta):
 			Cooking = true
 	if Cooking:
 		CookTime += delta
-		if CookTime >= 15 && ItemOnSpatula:
+		progressBar.value = CookTime 
+		#if CookTime >=  CookedTime * 0.70:
+		sb.bg_color = Color.DARK_RED.lerp(Color.DARK_GREEN, CookTime / CookedTime)
+		if CookTime >= CookedTime && ItemOnSpatula:
 			if RecivedItem == "RawPatty":
 				SpriteObject.texture = AltSprites[3]
 		
@@ -63,6 +74,7 @@ func Item(item : String):
 				ItemOnSpatulaName = "RawPatty"
 				Spatula.get_parent().show()
 				SpriteObject.show()
+				GUI.show()
 				return true
 			"Raw Patty":
 				SpriteObject.texture = Sprites[3]
@@ -72,6 +84,7 @@ func Item(item : String):
 				ItemOnSpatulaName = "Burger"
 				Spatula.get_parent().show()
 				SpriteObject.show()
+				GUI.show()
 				return true
 			_:
 				if item == "Raw Patty":
@@ -100,7 +113,7 @@ func Touch(AmNpc = false):
 			up = false
 		
 	else:
-		if CookTime >= 15:
+		if CookTime >= CookedTime:
 			if get_tree().get_first_node_in_group("PompNPC") != null:
 				NpcInv = get_tree().get_first_node_in_group("PompNPC").get_node("InventoryGrid")
 				if AmNpc && NpcInv != null:
@@ -115,6 +128,8 @@ func Touch(AmNpc = false):
 							Spatula.get_parent().hide()
 							ItemOnSpatula = false
 							Cooking = false
+							GUI.hide()
+							progressBar.value = 0
 							CookTime = 0
 						else:
 							print("Cannot Add Item, not enough Room")
@@ -126,6 +141,8 @@ func Touch(AmNpc = false):
 						SpriteObject.hide()
 						Spatula.get_parent().hide()
 						ItemOnSpatula = false
+						GUI.hide()
+						progressBar.value = 0
 						Cooking = false
 						CookTime = 0
 		else:
