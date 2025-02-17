@@ -135,7 +135,7 @@ func running_handling(delta):
 			velocity = velocity.lerp(Vector3.ZERO, delta)
 		
 		if NavNodeTarget == null:
-			NavNodeTarget = get_tree().get_first_node_in_group("NavMark" + str(InstID))
+			NavNodeTarget = PreviousNavNodeTarget
 		if position.distance_to(TargetEntity.position) < AttackDistance:
 			ArrivalAction(ActionOnArrive)
 			if NavNodeTarget != null:
@@ -264,6 +264,7 @@ func GrabItem():
 	hostile = false
 	TargetIsItem = false
 	TargetEntity = PreviousTarget
+	NavNodeTarget = PreviousNavNodeTarget
 	LookTarget = player
 	#########################
 
@@ -327,10 +328,11 @@ func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distanc
 			DoLookAt = false
 		
 func NavToItem(id : int,NavNodeTargetFromSignalBus : Node,Action : int):
-	NavNodeTarget = NavNodeTargetFromSignalBus
-	ActionOnArrive = Action
-	MaxDistance = 1
 	if id == InstID:
+		PreviousNavNodeTarget = NavNodeTarget
+		NavNodeTarget = NavNodeTargetFromSignalBus
+		ActionOnArrive = Action
+		MaxDistance = 1
 		TargetEntity = ItemLocator()
 
 func ArrivalAction(action : int):
