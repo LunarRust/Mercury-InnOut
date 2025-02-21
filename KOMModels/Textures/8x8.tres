@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bpeflgdmq3es7"]
+
+[ext_resource type="Texture2D" uid="uid://bj15xth2ihaqr" path="res://KOMModels/Textures/Texture8x8.png" id="1_ti47s"]
+
+[resource]
+albedo_texture = ExtResource("1_ti47s")

@@ -12,6 +12,7 @@ var NpcInventory
 @export var PosRefrence : Node3D
 @export var ItemGen : Node
 var NeededTotal : int
+var TotalItems = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
@@ -46,7 +47,7 @@ func NpcInvCheck():
 					print("Match!")
 					ItemGen.RelevantItems[ItemGen.RelevantItems.keys()[iterant]] += 1
 					print(str(ItemGen.RelevantItems.values()))
-	var TotalItems = 0
+	TotalItems = 0
 	for i in ItemGen.RelevantItems:
 		TotalItems += ItemGen.RelevantItems[i]
 		#if ItemGen.RelevantItems[i] != 0:
@@ -114,12 +115,16 @@ func _on_pressed():
 		if NpcInvCheck() == true:
 			SoundSource.stream = SoundPositive
 			SoundSource.play()
+			SignalBusInnOut.Score += TotalItems
+			SignalBusInnOut.emit_signal("ScoreChanged")
 			ItemGen.Clear()
 			Task()
 		else:
 			currentNPC.get_node("InventoryGrid").clear()
 			currentNPC.animTrigger("Shrug")
 			SoundSource.stream = SoundNegative
+			SignalBusInnOut.Score -= TotalItems
+			SignalBusInnOut.emit_signal("ScoreChanged")
 			SoundSource.play()
 	else:
 		SoundSource.stream = SoundNegative

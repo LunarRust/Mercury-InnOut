@@ -1,4 +1,4 @@
-extends Node
+extends Area3D
 
 
 @export var Target : StaticBody3D
