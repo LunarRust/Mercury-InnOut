@@ -1,9 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://crlxkf7rvm4e"]
+[gd_scene load_steps=6 format=3 uid="uid://crlxkf7rvm4e"]
 
-[ext_resource type="Texture2D" uid="uid://jd44ysgb4yey" path="res://KOMSprites/innout/Register.png" id="1_mg3ye"]
-[ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/RegisterCon.gd" id="2_rkxw0"]
-[ext_resource type="AudioStream" uid="uid://wi5bbugtlb5w" path="res://Sounds/DNAstart.ogg" id="3_p2qb0"]
-[ext_resource type="AudioStream" uid="uid://cfjal7c4hnmq" path="res://Sounds/DNAfail.ogg" id="4_pin60"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="1_djp7l"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="5_u4rpg"]
 [ext_resource type="Curve" uid="uid://iwl6freusb4t" path="res://KOMResources/Curves/CamGrabberCurve.tres" id="6_83fdw"]
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="7_7ptkb"]
@@ -18,17 +15,17 @@ transform = Transform3D(0.7, 0, 1.66893e-07, 0, 0.7, 0, -1.66893e-07, 0, 0.7, 0.
 layer = 2
 visible = false
 
-[node name="Register2" type="TextureButton" parent="CanvasLayer"]
-offset_left = -451.0
-offset_top = 122.0
-offset_right = -1.0
-offset_bottom = 572.0
-texture_normal = ExtResource("1_mg3ye")
-script = ExtResource("2_rkxw0")
-SoundPositive = ExtResource("3_p2qb0")
-SoundNegative = ExtResource("4_pin60")
-
 [node name="Sound" type="AudioStreamPlayer" parent="CanvasLayer"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 10.0
+offset_top = 510.0
+offset_right = 250.0
+offset_bottom = 540.0
+theme_override_fonts/normal_font = ExtResource("1_djp7l")
+theme_override_font_sizes/normal_font_size = 23
+bbcode_enabled = true
+text = "[shake rate=1]press [color=red]space[/color] to exit."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 3.58114e-12, 0, 1, 0, -3.58114e-12, 0, 1, 0.0232935, -0.297965, -0.429907)
@@ -47,5 +44,3 @@ UIToToggle = [null, null, null, null]
 
 [node name="SoundSource" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_7ptkb")
-
-[connection signal="pressed" from="CanvasLayer/Register2" to="CanvasLayer/Register2" method="_on_pressed"]

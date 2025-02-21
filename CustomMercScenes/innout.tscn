@@ -1,9 +1,10 @@
-[gd_scene load_steps=310 format=3 uid="uid://bnsf0wmclcn8f"]
+[gd_scene load_steps=317 format=3 uid="uid://bnsf0wmclcn8f"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/InnOutSignalBus.gd" id="1_cabgq"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_edl00"]
 [ext_resource type="Resource" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_o302f"]
 [ext_resource type="Material" path="res://textures/Tile5.tres" id="3_g3xlg"]
+[ext_resource type="AudioStream" uid="uid://dlhm5drgv3c24" path="res://Music/Gutter Grate Sex Pit.ogg" id="4_jahye"]
 [ext_resource type="Material" path="res://textures/Stucco.tres" id="4_knrkr"]
 [ext_resource type="Material" path="res://textures/Concrete06.tres" id="5_uxgsx"]
 [ext_resource type="Material" uid="uid://d2mx7mk86kvkg" path="res://textures/Concrete03.tres" id="6_lp51y"]
@@ -25,21 +26,23 @@
 [ext_resource type="PackedScene" uid="uid://cnd41ygwjkosa" path="res://KOMPrefabs/Interactables/InnOut/Register.tscn" id="23_upf76"]
 [ext_resource type="PackedScene" uid="uid://crlxkf7rvm4e" path="res://KOMPrefabs/Interactables/cam_grabber.tscn" id="26_fsf04"]
 [ext_resource type="PackedScene" uid="uid://cp46x0ogan7h0" path="res://KOMPrefabs/Interactables/InnOut/food_tray.tscn" id="27_875ws"]
-[ext_resource type="Texture2D" uid="uid://beeruwf8rqvpx" path="res://KOMSprites/Keyboard/keyboard_206.png" id="28_fvikg"]
+[ext_resource type="Texture2D" uid="uid://b2n4t4eenb3cd" path="res://KOMSprites/Keyboard/keyboard_206.png" id="28_fvikg"]
 [ext_resource type="PackedScene" uid="uid://cxyisi7c13orx" path="res://KOMModels/innout/Fryer.tscn" id="28_xn888"]
 [ext_resource type="PackedScene" uid="uid://cqn0gyd1vcqh2" path="res://KOMModels/innout/Griddle.tscn" id="29_8b2gq"]
-[ext_resource type="Texture2D" uid="uid://dg5sx55iyk4m1" path="res://KOMSprites/Keyboard/keyboard_210.png" id="29_g3fsb"]
+[ext_resource type="Texture2D" uid="uid://bh6m2kfipropd" path="res://KOMSprites/Keyboard/keyboard_210.png" id="29_g3fsb"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/DriveThruCon.gd" id="30_7rwlu"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="31_nmv1o"]
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="32_fai3p"]
 [ext_resource type="PackedScene" uid="uid://ciryyfobi7dmd" path="res://KOMPrefabs/Thrait/thrait_albino.tscn" id="42_k2en5"]
-[ext_resource type="Texture2D" uid="uid://h8eiphbtudkv" path="res://textures/glass_bright.png" id="45_gstyw"]
+[ext_resource type="PackedScene" uid="uid://cj6nfviosnb4o" path="res://KOMPrefabs/Objects/wall_tv_Display.tscn" id="43_wy3wx"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Time/Date_Time.gd" id="44_ime87"]
+[ext_resource type="Texture2D" uid="uid://o7yjytajcbf2" path="res://textures/glass_bright.png" id="45_gstyw"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="49_nbb8w"]
 [ext_resource type="AudioStream" uid="uid://bwf44cbb4w1uc" path="res://KOMSounds/speaker-buzz-82989.mp3" id="50_mn1gb"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="51_nba7k"]
 [ext_resource type="Material" uid="uid://wh62y6r1qr16" path="res://KOMShaders/Fire.tres" id="52_dtbe4"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="52_scrsn"]
-[ext_resource type="Texture2D" uid="uid://bote0nnsinsvg" path="res://KOMSprites/innout/FryPile.png" id="53_ka4si"]
+[ext_resource type="Texture2D" uid="uid://driq2dafkx6o1" path="res://KOMSprites/innout/FryPile.png" id="53_ka4si"]
 [ext_resource type="PackedScene" uid="uid://cvdfk0p6gjdfs" path="res://KOMPrefabs/Player/KOM_player_object.tscn" id="54_02isy"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_m231j"]
@@ -1025,6 +1028,27 @@ transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_r2n8h")
 
+[sub_resource type="QuadMesh" id="QuadMesh_4h30c"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_emfvk"]
+viewport_path = NodePath("GUI/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rf8hv"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_emfvk")
+
+[sub_resource type="Resource" id="Resource_1nr3v"]
+script = ExtResource("44_ime87")
+seconds = 0
+minutes = 0
+hours = 0
+days = 0
+LimitHours = false
+
 [node name="Innout" type="Node3D"]
 
 [node name="InnOutSignalBus" type="Node" parent="." groups=["InnOutSignalBus"]]
@@ -1041,6 +1065,11 @@ script = ExtResource("49_nbb8w")
 key = 4194335
 OtherNodes = [NodePath("../KitchenParent/Fryer/Fryer_basket/fryer basket1 /DebugLabels"), NodePath("../KitchenParent/Fryer/Fryer_basket2/fryer basket1 /DebugLabels")]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jahye")
+volume_db = -50.0
+autoplay = true
+
 [node name="PlayerObject" parent="." instance=ExtResource("54_02isy")]
 transform = Transform3D(-1, 0, 8.74232e-08, 0, 1, 0, -8.74232e-08, 0, -1, 4.61016, 2.01855, -7.27149)
 
@@ -1048,40 +1077,35 @@ transform = Transform3D(-1, 0, 8.74232e-08, 0, 1, 0, -8.74232e-08, 0, -1, 4.6101
 visible = false
 
 [node name="Skeleton3D" parent="PlayerObject/Player Model/PompRig" index="0"]
-bones/0/position = Vector3(9.69326e-09, 0.820096, -0.158666)
-bones/1/rotation = Quaternion(-0.0628926, 0.000945223, 0.00010601, 0.99802)
-bones/2/rotation = Quaternion(-0.137884, -0.10327, -0.0116422, 0.984981)
-bones/3/rotation = Quaternion(-0.00210048, -0.00017728, -0.000423486, 0.999998)
-bones/4/rotation = Quaternion(0.0298244, 2.17346e-15, 7.11069e-09, 0.999555)
-bones/5/rotation = Quaternion(0.165684, -0.237503, 0.0487013, 0.955913)
-bones/6/position = Vector3(0.0544944, 0.0796716, 0.0817083)
-bones/7/position = Vector3(0.0230377, 0.0752618, 0.100314)
-bones/13/position = Vector3(-0.00153097, 0.0720109, -0.0206968)
-bones/14/position = Vector3(-0.0634355, 0.0847526, 0.0807911)
-bones/15/position = Vector3(-0.0228262, 0.0752988, 0.100269)
-bones/16/position = Vector3(0.0450198, 0.144393, 0.0368018)
-bones/16/scale = Vector3(0.714634, 0.714634, 0.714634)
-bones/17/position = Vector3(0.0694078, 0.121586, 0.0648058)
-bones/18/position = Vector3(-0.0694079, 0.121586, 0.0648058)
-bones/19/position = Vector3(-0.0765621, 0.139633, 0.0238864)
-bones/19/scale = Vector3(0.714763, 0.714763, 0.714763)
-bones/20/position = Vector3(0.000659847, 0.0835855, 0.0942134)
-bones/21/position = Vector3(0.0689055, 0.16755, 0.0465985)
-bones/22/position = Vector3(-0.0687309, 0.166287, 0.0484038)
-bones/22/rotation = Quaternion(0.574497, -0.00427106, -0.0029976, 0.81849)
-bones/23/rotation = Quaternion(-0.535559, -0.441949, -0.458366, 0.554759)
-bones/24/rotation = Quaternion(-0.420294, 0.721897, -0.39357, 0.383823)
-bones/25/rotation = Quaternion(0.216973, -0.142172, 0.00368707, 0.965762)
-bones/28/position = Vector3(0.00349093, 0.131281, -0.0413154)
-bones/28/rotation = Quaternion(-0.415468, -0.724231, 0.395023, 0.383188)
-bones/29/rotation = Quaternion(0.219058, 0.140966, 0.00156295, 0.965474)
-bones/30/rotation = Quaternion(-0.00711013, -0.0729187, 0.0929765, 0.992969)
-bones/35/rotation = Quaternion(0.952273, -7.20993e-08, 3.4629e-07, 0.305249)
-bones/36/rotation = Quaternion(0.418927, 7.74945e-09, 2.5949e-08, 0.90802)
-bones/37/rotation = Quaternion(-0.685255, 1.73641e-07, -3.26755e-07, 0.728303)
-bones/40/rotation = Quaternion(0.953328, -7.94205e-08, 1.08309e-07, 0.301937)
-bones/41/rotation = Quaternion(0.423485, -1.08859e-08, -3.27206e-08, 0.905903)
-bones/42/rotation = Quaternion(-0.685255, -1.73641e-07, 3.26755e-07, 0.728303)
+bones/0/position = Vector3(2.73249e-09, 0.790455, -0.158666)
+bones/2/rotation = Quaternion(-0.0938899, 0.0292923, -0.0167926, 0.99501)
+bones/3/rotation = Quaternion(-0.00214429, -0.000226925, -0.000421948, 0.999998)
+bones/5/rotation = Quaternion(0.165015, -0.0610511, 0.0180738, 0.984234)
+bones/6/position = Vector3(0.0544128, 0.0794293, 0.0817914)
+bones/7/position = Vector3(0.0231642, 0.0753836, 0.100275)
+bones/13/position = Vector3(-0.00270657, 0.0706447, -0.0251857)
+bones/14/position = Vector3(-0.0701975, 0.0881877, 0.0798018)
+bones/15/position = Vector3(-0.0228321, 0.0754417, 0.100206)
+bones/16/position = Vector3(0.082838, 0.141644, 0.0186647)
+bones/16/scale = Vector3(0.714549, 0.714549, 0.714549)
+bones/17/position = Vector3(0.0693817, 0.121413, 0.064857)
+bones/18/position = Vector3(-0.0693818, 0.121413, 0.064857)
+bones/19/position = Vector3(-0.0443535, 0.147515, 0.0423495)
+bones/19/scale = Vector3(0.714751, 0.714751, 0.714751)
+bones/20/position = Vector3(0.00117028, 0.0816891, 0.0949581)
+bones/21/position = Vector3(0.0690617, 0.171249, 0.045722)
+bones/22/position = Vector3(-0.0680433, 0.152736, 0.0530477)
+bones/24/rotation = Quaternion(-0.409336, 0.701415, -0.421736, 0.403237)
+bones/25/rotation = Quaternion(0.219544, -0.14074, 0.0018992, 0.965396)
+bones/28/position = Vector3(0.00367356, 0.131297, -0.0413073)
+bones/28/rotation = Quaternion(-0.407573, -0.702912, 0.423137, 0.400942)
+bones/29/rotation = Quaternion(0.218424, 0.140348, -0.00132109, 0.965708)
+bones/35/rotation = Quaternion(0.937753, -5.21643e-08, 3.37591e-07, 0.347304)
+bones/36/rotation = Quaternion(0.517641, -1.70724e-09, 1.21246e-07, 0.855598)
+bones/37/rotation = Quaternion(-0.727191, 1.63659e-07, -3.46752e-07, 0.686436)
+bones/40/rotation = Quaternion(0.936067, -1.21523e-07, 1.09272e-07, 0.351821)
+bones/41/rotation = Quaternion(0.519337, -1.54845e-09, -1.26946e-07, 0.85457)
+bones/42/rotation = Quaternion(-0.727191, -1.63659e-07, 3.46752e-07, 0.686435)
 
 [node name="FlashLightTPS" parent="PlayerObject" index="8"]
 visible = false
@@ -2103,6 +2127,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_88ilq")
 [node name="Griddle" parent="KitchenParent" instance=ExtResource("29_8b2gq")]
 transform = Transform3D(-2.40413e-08, 0, -0.55, 0, 0.55, 0, 0.55, 0, -2.40413e-08, -0.151677, 0.144059, -0.675399)
 
+[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent" index="0"]
+transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
+
+[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent2" index="0"]
+transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
+
+[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent3" index="0"]
+transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
+
+[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent4" index="0"]
+transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
+
 [node name="Quad" parent="KitchenParent/Griddle/StaticBody3D/GUI" index="1"]
 mesh = SubResource("QuadMesh_nvitt")
 surface_material_override/0 = SubResource("StandardMaterial3D_ewgnk")
@@ -2367,46 +2403,28 @@ surface_material_override/0 = SubResource("StandardMaterial3D_xgd6l")
 transform = Transform3D(-0.60818, 0, 0.793799, 0, 1, 0, -0.793799, 0, -0.60818, -2.96705, 1, 0.34419)
 
 [node name="Skeleton3D" parent="Thrait Albino/Thrait Young/Armature" index="0"]
-bones/0/position = Vector3(-1.85226e-08, 0.974478, 0.0495094)
-bones/0/rotation = Quaternion(0.374228, -1.10547e-07, -4.46115e-08, 0.927337)
-bones/1/rotation = Quaternion(0.0368758, 1.24146e-14, -8.79186e-09, 0.99932)
-bones/2/rotation = Quaternion(0.319334, -0.0830764, 0.108706, 0.937714)
-bones/3/rotation = Quaternion(-0.023332, -1.19065e-07, 1.94036e-08, 0.999728)
-bones/4/rotation = Quaternion(0.43418, 0.0245234, 0.0972498, 0.895226)
-bones/5/rotation = Quaternion(0.100626, 0.042246, -0.0360373, 0.993374)
-bones/7/position = Vector3(0.0702588, 0.280933, 0.110727)
-bones/8/rotation = Quaternion(-0.734234, -5.60875e-09, 8.70089e-07, 0.678896)
-bones/8/scale = Vector3(1, 0.25695, 1)
-bones/9/position = Vector3(0.0684363, 0.171259, 0.00841365)
-bones/9/scale = Vector3(0.792464, 0.792464, 0.792463)
-bones/10/position = Vector3(-0.0702586, 0.280933, 0.110727)
-bones/11/rotation = Quaternion(-0.734234, 8.03699e-07, -5.18596e-09, 0.678896)
-bones/11/scale = Vector3(1, 0.25695, 1)
-bones/12/position = Vector3(-0.0684363, 0.171259, 0.00841384)
-bones/12/scale = Vector3(0.792464, 0.792464, 0.792463)
-bones/13/rotation = Quaternion(0.297837, 0.0652871, -0.729319, 0.612474)
-bones/14/rotation = Quaternion(0.38744, -0.0634587, -0.0198828, 0.919493)
-bones/15/rotation = Quaternion(0.123018, 0.307445, 0.272414, 0.903402)
-bones/16/rotation = Quaternion(0.149465, 0.0111215, 0.136538, 0.979231)
-bones/17/rotation = Quaternion(0.129105, -0.0135471, -0.011818, 0.991468)
-bones/19/rotation = Quaternion(-0.489503, 0.475102, 0.604935, -0.410754)
-bones/21/rotation = Quaternion(0.38744, 0.0634587, 0.0198828, 0.919493)
-bones/22/rotation = Quaternion(0.123018, -0.307445, -0.272414, 0.903402)
-bones/23/rotation = Quaternion(0.149465, -0.0111215, -0.136538, 0.979231)
-bones/24/rotation = Quaternion(0.129105, 0.0135471, 0.0118179, 0.991468)
-bones/26/rotation = Quaternion(0.489503, 0.475102, 0.604934, 0.410754)
-bones/28/rotation = Quaternion(-0.122532, -2.18122e-14, 5.84275e-08, 0.992465)
-bones/29/rotation = Quaternion(0.268937, 3.50274e-10, -1.30478e-07, 0.963158)
-bones/30/rotation = Quaternion(0.18805, -4.22602e-09, -4.12053e-08, 0.982159)
-bones/31/rotation = Quaternion(0.117241, -3.4768e-13, -5.59046e-08, 0.993104)
-bones/33/rotation = Quaternion(0.615165, -0.123124, -0.355675, 0.692754)
-bones/34/rotation = Quaternion(0.24688, 0.0784975, -0.744148, 0.615737)
-bones/35/rotation = Quaternion(-0.107479, -9.17353e-08, 0.500546, 0.859012)
-bones/36/rotation = Quaternion(-0.152447, 1.14553e-07, 0.709969, 0.687534)
-bones/39/rotation = Quaternion(0.615165, 0.123124, 0.355675, 0.692754)
-bones/40/rotation = Quaternion(0.24688, -0.0784975, 0.744148, 0.615737)
-bones/41/rotation = Quaternion(-0.107479, 8.14907e-08, -0.500546, 0.859012)
-bones/42/rotation = Quaternion(-0.152447, -2.79397e-09, -0.709969, 0.687534)
+bones/0/position = Vector3(-2.44176e-08, 0.975209, 0.049597)
+bones/2/rotation = Quaternion(0.317474, 0.105386, -0.137898, 0.932249)
+bones/4/rotation = Quaternion(0.432814, -0.0311933, -0.1237, 0.892411)
+bones/5/rotation = Quaternion(0.0971935, 0.0410569, -0.035023, 0.993801)
+bones/7/position = Vector3(0.0702588, 0.286601, 0.132962)
+bones/9/position = Vector3(0.0687113, 0.170964, 0.00837018)
+bones/9/scale = Vector3(0.792464, 0.792464, 0.792464)
+bones/10/position = Vector3(-0.0702586, 0.2866, 0.132963)
+bones/12/position = Vector3(-0.0687113, 0.170964, 0.00837045)
+bones/12/scale = Vector3(0.792464, 0.792464, 0.792464)
+bones/14/rotation = Quaternion(0.387514, -0.0632671, -0.0195616, 0.919482)
+bones/21/rotation = Quaternion(0.387514, 0.0632671, 0.0195616, 0.919482)
+bones/29/rotation = Quaternion(0.18073, 7.01044e-09, -1.31014e-07, 0.983533)
+bones/30/rotation = Quaternion(0.243005, -6.53738e-09, -4.09024e-08, 0.970025)
+bones/33/rotation = Quaternion(0.615193, -0.123075, -0.355712, 0.692719)
+bones/34/rotation = Quaternion(0.246871, 0.0784827, -0.744041, 0.615872)
+bones/35/rotation = Quaternion(-0.107378, -9.87202e-08, 0.500075, 0.859299)
+bones/36/rotation = Quaternion(-0.152393, 1.10827e-07, 0.709718, 0.687806)
+bones/39/rotation = Quaternion(0.615193, 0.123075, 0.355712, 0.692719)
+bones/40/rotation = Quaternion(0.246871, -0.0784827, 0.744041, 0.615872)
+bones/41/rotation = Quaternion(-0.107378, 8.89413e-08, -0.500075, 0.859299)
+bones/42/rotation = Quaternion(-0.152393, -2.23517e-08, -0.709718, 0.687806)
 
 [node name="Body" parent="Thrait Albino/Thrait Young/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = null
@@ -2416,6 +2434,33 @@ surface_material_override/0 = null
 
 [node name="Hair" parent="Thrait Albino/Thrait Young/Armature/Skeleton3D" index="2"]
 surface_material_override/0 = null
+
+[node name="WallTv" parent="." instance=ExtResource("43_wy3wx")]
+transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 10.6461, 2.21517, -5.02441)
+
+[node name="Quad" parent="WallTv/GUI" index="1"]
+mesh = SubResource("QuadMesh_4h30c")
+surface_material_override/0 = SubResource("StandardMaterial3D_rf8hv")
+
+[node name="Time_System" parent="WallTv" index="2"]
+date_time = SubResource("Resource_1nr3v")
+ticks_pr_second = 1
+
+[node name="Behavior" parent="WallTv/CamGrabber" index="4" node_paths=PackedStringArray("PlayerCam", "head", "UIToToggle")]
+PlayerCam = NodePath("../../../PlayerObject/Head/SpringArm3D Z/MainCamera")
+head = NodePath("../../../PlayerObject/Head")
+UIToToggle = [NodePath("../../../PlayerObject/UI Overlay/CanvasLayer/UIPARENT")]
+
+[node name="SpotLight3D4" type="OmniLight3D" parent="WallTv"]
+transform = Transform3D(1.42797, -0.0416024, 0.000648453, -6.6523e-10, 0.0222643, 1.4284, -0.0416074, -1.42779, 0.0222549, 0.903387, 0.566634, 0.375143)
+light_color = Color(1, 0.835294, 0.454902, 1)
+light_energy = 0.224
+light_indirect_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 1.1
+omni_attenuation = 0.0206175
+omni_shadow_mode = 0
 
 [connection signal="closed" from="FrontDoor/DoorGlass/Behavior" to="FrontDoor/AreaTrigger" method="_on_behavior_closed"]
 [connection signal="open" from="FrontDoor/DoorGlass/Behavior" to="FrontDoor/AreaTrigger" method="_on_behavior_open"]
@@ -2456,3 +2501,4 @@ surface_material_override/0 = null
 [editable path="FreezerParent/FoodSpawner"]
 [editable path="FreezerParent/FoodSpawner2"]
 [editable path="Thrait Albino"]
+[editable path="WallTv"]
