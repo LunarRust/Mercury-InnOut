@@ -6429,6 +6429,6 @@ collide_with_areas = true
 [node name="ShowDebug" type="Node" parent="." node_paths=PackedStringArray("OtherNodes")]
 script = ExtResource("20_m08pi")
 key = 4194335
-OtherNodes = [NodePath("../DebugLabels"), NodePath("../VenusModel/OrderPanel/SubViewport/InvDisplay"), NodePath("../InventoryManager"), NodePath("../InventoryManager/ItemName"), NodePath("../InventoryManager/ItemDescription"), NodePath("")]
+OtherNodes = [NodePath("../DebugLabels"), NodePath("../VenusModel/OrderPanel/SubViewport/InvDisplay"), NodePath("../InventoryManager"), NodePath("../InventoryManager/ItemName"), NodePath("../InventoryManager/ItemDescription"), null]
 
 [connection signal="pressed" from="AutoSpawer" to="AutoSpawer" method="_on_pressed"]

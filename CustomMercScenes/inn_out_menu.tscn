@@ -1,0 +1,157 @@
+[gd_scene load_steps=16 format=3 uid="uid://bx4x0vyucqmq"]
+
+[ext_resource type="PackedScene" uid="uid://cjlvvrm2owvaa" path="res://KOMPrefabs/UI/Gold_Checker_Banner.tscn" id="1_06dm0"]
+[ext_resource type="Texture2D" uid="uid://dr1ccek3pjmf7" path="res://Sprites/UI/PsychopompFaceSmile.png" id="1_i2qa5"]
+[ext_resource type="Texture2D" uid="uid://rrmmw1e2tjdp" path="res://Sprites/UI/ButtonMenu.png" id="1_imus6"]
+[ext_resource type="Script" path="res://Scripts/MapButton.gd" id="2_40jcc"]
+[ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="2_xaf11"]
+[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="3_gjmtm"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/ScoreLoader.gd" id="5_r8xen"]
+[ext_resource type="PackedScene" uid="uid://ccimvk3bfhkf7" path="res://KOMPrefabs/UI/Score_Container.tscn" id="6_7bl40"]
+[ext_resource type="Script" path="res://CustomScripts/SceneTransferButton.gd" id="7_7yims"]
+[ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="8_85i1u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1jls"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tgmda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p7dfr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i72c3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bd7ru"]
+
+[node name="InnOutMenu" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 2.0
+offset_top = -3.0
+offset_right = 978.0
+offset_bottom = 555.0
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_left = 13.0
+offset_top = 59.0
+offset_right = 734.0
+offset_bottom = 469.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FaceParent" type="Node2D" parent="."]
+position = Vector2(-7, -33)
+
+[node name="PsychopompFaceSmile5" type="Sprite2D" parent="FaceParent"]
+modulate = Color(0.175314, 0.142417, 2.40654e-08, 1)
+position = Vector2(608, 536)
+rotation = -0.586552
+scale = Vector2(0.484895, 0.484895)
+texture = ExtResource("1_i2qa5")
+script = ExtResource("2_xaf11")
+
+[node name="PsychopompFaceSmile2" type="Sprite2D" parent="FaceParent"]
+modulate = Color(0.175314, 0.142417, 2.40654e-08, 1)
+position = Vector2(762, 510)
+rotation = -0.110974
+scale = Vector2(0.683505, 0.683505)
+texture = ExtResource("1_i2qa5")
+script = ExtResource("2_xaf11")
+
+[node name="PsychopompFaceSmile4" type="Sprite2D" parent="FaceParent"]
+modulate = Color(0.175314, 0.142417, 2.40654e-08, 1)
+position = Vector2(1.99999, 467)
+rotation = -0.37075
+scale = Vector2(0.683505, 0.683505)
+texture = ExtResource("1_i2qa5")
+script = ExtResource("2_xaf11")
+
+[node name="PsychopompFaceSmile3" type="Sprite2D" parent="FaceParent"]
+modulate = Color(0.175314, 0.142417, 2.40654e-08, 1)
+position = Vector2(952, 208)
+rotation = -0.168924
+scale = Vector2(0.683505, 0.683505)
+texture = ExtResource("1_i2qa5")
+script = ExtResource("2_xaf11")
+
+[node name="PsychopompFaceSmile" type="Sprite2D" parent="FaceParent"]
+modulate = Color(0.175314, 0.142417, 2.40654e-08, 1)
+position = Vector2(925, 419)
+rotation = 0.245815
+scale = Vector2(1, 1)
+texture = ExtResource("1_i2qa5")
+script = ExtResource("2_xaf11")
+
+[node name="TextureRect" parent="." instance=ExtResource("1_06dm0")]
+
+[node name="TextureRect2" parent="." instance=ExtResource("1_06dm0")]
+offset_top = 4.495
+offset_bottom = 172.495
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+offset_left = 762.0
+offset_top = 11.0
+offset_right = 965.0
+offset_bottom = 108.0
+texture_normal = ExtResource("1_imus6")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_40jcc")
+destination = "title_screen"
+sceneLoader = "res://Scenes/TSLC.tscn"
+
+[node name="Label" type="Label" parent="TextureButton2"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 42.0
+offset_right = 163.0
+offset_bottom = 65.0
+theme = ExtResource("3_gjmtm")
+text = "Exit"
+
+[node name="ScoreLoader" type="Node" parent="." node_paths=PackedStringArray("listContainer")]
+script = ExtResource("5_r8xen")
+listContainer = NodePath("../ScrollContainer/VBoxContainer")
+ScoreEntryPrefabRoot = ExtResource("6_7bl40")
+
+[node name="LoadCustomDebugRoomButton" type="Button" parent="."]
+top_level = true
+z_as_relative = false
+offset_left = 725.0
+offset_top = 135.0
+offset_right = 938.999
+offset_bottom = 183.0
+theme = ExtResource("3_gjmtm")
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0.980392, 1)
+theme_override_colors/font_pressed_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
+theme_override_colors/font_hover_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q1jls")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tgmda")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p7dfr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i72c3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bd7ru")
+action_mode = 0
+text = "
+Play In'n'Out
+
+"
+script = ExtResource("7_7yims")
+destination = "res://CustomMercScenes/innout.tscn"
+
+[node name="ColorRect3" type="ColorRect" parent="LoadCustomDebugRoomButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 4.0
+offset_right = 236.0
+offset_bottom = 40.0
+scale = Vector2(0.760002, 1.05698)
+mouse_filter = 2
+color = Color(0.498039, 0.454902, 0.235294, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="LoadCustomDebugRoomButton"]
+script = ExtResource("8_85i1u")
+
+[connection signal="pressed" from="LoadCustomDebugRoomButton" to="LoadCustomDebugRoomButton/AudioStreamPlayer" method="_on_button_pressed"]

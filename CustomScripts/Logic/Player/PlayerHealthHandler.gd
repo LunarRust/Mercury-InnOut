@@ -21,6 +21,7 @@ var instance : PlayerHealthHandler
 @export var manaLabel : Label
 @export var deathAnim : AnimationPlayer
 @export var soundSource : AudioStreamPlayer
+var SignalBusKOM
 
 var Fader = load("res://addons/UniversalFade/Fade.gd")
 var MoverTestC = load("res://Scripts/MoverTest.cs") as Script
@@ -38,6 +39,7 @@ func _ready():
 	InvButton.open = false
 	instance = self
 	health = 9
+	SignalBusKOM = get_tree().get_first_node_in_group("SignalBusKOM")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -112,6 +114,7 @@ func healthCheck():
 		tween2.tween_property(lowHealthOverlay,"modulate",Color(1,1,1,0),2)
 
 func Death():
+	SignalBusKOM.emit_signal("Dead")
 	if playerAnim != null:
 		AnimTrigger("Death")
 	deathAnim.play("Death")

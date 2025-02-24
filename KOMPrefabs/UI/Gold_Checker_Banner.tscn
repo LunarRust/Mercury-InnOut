@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjlvvrm2owvaa"]
+
+[ext_resource type="Material" uid="uid://dr2o7g4ume8af" path="res://KOMShaders/Loop.tres" id="1_l64fk"]
+[ext_resource type="Texture2D" uid="uid://bvf22gaht051e" path="res://KOMTextures/goldstrip.png" id="2_tt4e4"]
+
+[node name="TextureRect" type="TextureRect"]
+material = ExtResource("1_l64fk")
+offset_left = -471.0
+offset_top = 502.0
+offset_right = 9529.0
+offset_bottom = 670.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_tt4e4")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = -23.3333
+offset_right = 8003.33
+offset_bottom = 16.6667
+scale = Vector2(42.933, 0.576)
+color = Color(0.498039, 0.454902, 0.235294, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.33333
+offset_top = 166.667
+offset_right = 8003.33
+offset_bottom = 206.667
+scale = Vector2(42.933, 0.576)
+color = Color(0.498039, 0.454902, 0.235294, 1)

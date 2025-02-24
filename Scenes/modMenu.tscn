@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://rrmmw1e2tjdp" path="res://Sprites/UI/ButtonMenu.png" id="6"]
 [ext_resource type="Script" path="res://Scripts/ModFolderButton.cs" id="7"]
 [ext_resource type="Script" path="res://Scripts/MapButton.gd" id="8"]
-[ext_resource type="AudioStream" uid="uid://bihm61xhpxq3p" path="res://Sounds/Santa Red Eyes.ogg" id="9"]
+[ext_resource type="AudioStream" uid="uid://dgixramxiyiyi" path="res://Sounds/Santa Red Eyes.ogg" id="9"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="10"]
 [ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://2lleq8anq1s5" path="res://Sprites/UI/ControllerCursor.png" id="12"]

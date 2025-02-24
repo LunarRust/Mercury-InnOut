@@ -108,10 +108,11 @@ shape = SubResource("BoxShape3D_w737o")
 script = ExtResource("4_r6pjt")
 ScoreLabel = NodePath("../GUI/SubViewport/RichTextLabel")
 
-[node name="TimeSystem" type="Node" parent="." node_paths=PackedStringArray("TimeLabel")]
+[node name="TimeSystem" type="Node" parent="." node_paths=PackedStringArray("TimeLabel") groups=["TimeSystem"]]
 script = ExtResource("5_sirc1")
 date_time = SubResource("Resource_2rhdi")
 TimeLabel = NodePath("../GUI/SubViewport/TimeLabel")
+ticks_pr_second = 1
 
 [node name="CamGrabber" type="StaticBody3D" parent="."]
 transform = Transform3D(0.515, 0, 9.53676e-09, 0, 0.365, 0, -1.22786e-07, 0, 0.04, 0.913498, 0.664424, 0.11143)

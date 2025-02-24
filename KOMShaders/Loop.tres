@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dr2o7g4ume8af"]
+
+[ext_resource type="Shader" path="res://KOMShaders/Loop.gdshader" id="1_wm6m4"]
+
+[resource]
+shader = ExtResource("1_wm6m4")
+shader_parameter/speed = 0.1
+shader_parameter/transparency = 1.0
