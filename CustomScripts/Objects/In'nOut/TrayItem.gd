@@ -3,6 +3,7 @@ extends Node
 @export var TargetLoc : Node3D
 @export var distance : float
 @export var OrderGen : Node
+@export var RegisterCon : TextureButton
 @export var NavNodeTarget : Node
 var ScenePack
 var currentID
@@ -15,6 +16,8 @@ var node
 @export var ObjectScale : Vector3 = Vector3(1,1,1)
 @export var NPCNavEnabled = true
 
+signal ItemTaken
+var emited : bool = false
 var HasItem : bool = false
 
 
@@ -27,15 +30,9 @@ func Item(item : String):
 		if HasItem == false && OrderGen.ReadyToServe == true:
 			match item:
 				"Fries":
-					Scene = load("res://KOMPrefabs/Items/Fries_pickup.tscn") as PackedScene
-					Packload()
-					HasItem = true
-					return true
+					SetItem("res://KOMPrefabs/Items/Fries_pickup.tscn")
 				"Burger":
-					Scene = load("res://KOMPrefabs/Items/Burger_pickup.tscn") as PackedScene
-					Packload()
-					HasItem = true
-					return true
+					SetItem("res://KOMPrefabs/Items/Burger_pickup.tscn")
 				_:
 					if item == "Raw Patty":
 						var newItem = inv.create_and_add_item("RawPatty")
@@ -55,15 +52,9 @@ func Item(item : String):
 	elif HasItem == false:
 			match item:
 				"Fries":
-					Scene = load("res://KOMPrefabs/Items/Fries_pickup.tscn") as PackedScene
-					Packload()
-					HasItem = true
-					return true
+					SetItem("res://KOMPrefabs/Items/Fries_pickup.tscn")
 				"Burger":
-					Scene = load("res://KOMPrefabs/Items/Burger_pickup.tscn") as PackedScene
-					Packload()
-					HasItem = true
-					return true
+					SetItem("res://KOMPrefabs/Items/Burger_pickup.tscn")
 				_:
 					if item == "Raw Patty":
 						var newItem = inv.create_and_add_item("RawPatty")
@@ -81,10 +72,22 @@ func Item(item : String):
 			var newItem = inv.create_and_add_item(item)
 		return false
 	
+func SetItem(prefab : String):
+	Scene = load(prefab) as PackedScene
+	Packload()
+	HasItem = true
+	emited = false
+	return true
 			
 func _process(delta):
 	if node == null:
+		if emited == false:
+			StatusEmit()
 		HasItem = false
+
+func StatusEmit():
+	emited = true
+	ItemTaken.emit()
 
 # Called when the node enters the scene tree for the first time.
 func Packload():

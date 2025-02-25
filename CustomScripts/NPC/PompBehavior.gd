@@ -23,9 +23,10 @@ func Look():
 func Touch(AmNpc = false):
 	AnimTrigger("Touch")
 
-func Talk():
+func Talk(DoDiolouge : bool = true):
 	AnimTrigger("Talk")
-	self.get_parent().DialogueSystem.DialogueProcessing()
+	if DoDiolouge:
+		self.get_parent().DialogueSystem.DialogueProcessing()
 	
 func Hurt():
 	AnimTrigger("Hurt")

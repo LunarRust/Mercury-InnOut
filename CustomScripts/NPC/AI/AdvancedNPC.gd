@@ -14,6 +14,7 @@ extends CharacterBody3D
 @export var DebugLabelParent : Node3D
 var TargetEntity
 var NavNodeTarget : Node
+var AcknowledgeNVT : bool = false
 var PreviousNavNodeTarget : Node
 var PreviousTarget
 var DoLookAt : bool = false
@@ -134,28 +135,28 @@ func running_handling(delta):
 			handle_Move(delta)
 		elif !hurt:
 			velocity = velocity.lerp(Vector3.ZERO, delta)
-		
-		if NavNodeTarget == null:
-			NavNodeTarget = PreviousNavNodeTarget
-		if position.distance_to(TargetEntity.position) < AttackDistance:
-			ArrivalAction(ActionOnArrive)
-			if NavNodeTarget != null:
-				if NavNodeTarget.is_in_group("ExecOnReached"):
-						if !TargetReached:
-							NavNodeTarget.Reached(InstID)
-		if attackTimer > attackThreshold:
-			if NavNodeTarget != null:
-				if NavNodeTarget.is_in_group("KillNPC"):
-					if "InstID" in TargetEntity:
-						if TargetEntity.InstID == InstID:
-							attackTimer = 0
-							var currentMark = get_tree().get_first_node_in_group("NavMark" + str(InstID))
-							currentMark.queue_free()
-							if NavNodeTarget.is_in_group("Respawn"):
-								SignalBusKOM.emit_signal("CreateNpc",SpawnerID)
-							KillSelf()
-			else:
-				print("NavNodeTarget is NULL")
+		if AcknowledgeNVT:
+			if NavNodeTarget == null:
+				NavNodeTarget = PreviousNavNodeTarget
+			if position.distance_to(TargetEntity.position) < AttackDistance:
+				ArrivalAction(ActionOnArrive)
+				if NavNodeTarget != null:
+					if NavNodeTarget.is_in_group("ExecOnReached"):
+							if !TargetReached:
+								NavNodeTarget.Reached(InstID)
+			if attackTimer > attackThreshold:
+				if NavNodeTarget != null:
+					if NavNodeTarget.is_in_group("KillNPC"):
+						if "InstID" in TargetEntity:
+							if TargetEntity.InstID == InstID:
+								attackTimer = 0
+								var currentMark = get_tree().get_first_node_in_group("NavMark" + str(InstID))
+								currentMark.queue_free()
+								if NavNodeTarget.is_in_group("Respawn"):
+									SignalBusKOM.emit_signal("CreateNpc",SpawnerID)
+								KillSelf()
+				else:
+					print("NavNodeTarget is NULL")
 				
 		if (attackTimer > attackThreshold && attacking && hostile):
 			Attack()
@@ -311,10 +312,12 @@ func CheckGlobals():
 				
 
 ###################################
-				
+###
+### Function from hell.
+###			
 func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distance : float,Action : int,LookTargetFromBus : String):
-	
-	if id == InstID:
+	if id == InstID || id == 000:
+		AcknowledgeNVT = true
 		TargetEntity = TargetLocator("NavMark" + str(InstID),distance)
 		if NavNodeTargetFromSignalBus != null:
 			PreviousNavNodeTarget = NavNodeTarget
@@ -328,9 +331,12 @@ func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distanc
 			DoLookAt = true
 		else:
 			DoLookAt = false
-
+###
+### This makes me sad, Surley there is a way around having a function with 6 required arguments.
+###
 func TargetCreature(id : int,doLook : bool,TargetEntityFromSignalBus : String,distance : float,LookTargetFromBus : String, isHostile : bool):
 	TargetEntity = TargetLocator(TargetEntityFromSignalBus)
+	AcknowledgeNVT = false
 	hostile = isHostile
 	MaxSpeed = 3
 	if doLook == true:
@@ -345,7 +351,8 @@ func TargetCreature(id : int,doLook : bool,TargetEntityFromSignalBus : String,di
 	TargetIsItem = false
 		
 func NavToItem(id : int,NavNodeTargetFromSignalBus : Node,Action : int):
-	if id == InstID:
+	if id == InstID || id == 000:
+		AcknowledgeNVT = false
 		PreviousNavNodeTarget = NavNodeTarget
 		NavNodeTarget = NavNodeTargetFromSignalBus
 		ActionOnArrive = Action
@@ -355,7 +362,7 @@ func NavToItem(id : int,NavNodeTargetFromSignalBus : Node,Action : int):
 func ArrivalAction(action : int):
 	match action:
 		1:
-			PompBehavior.Talk()
+			PompBehavior.Talk(false)
 			ActionOnArrive = 0
 		2:
 			PompBehavior.Touch()

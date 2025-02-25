@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://csoxy0mwqqiht"]
+[gd_scene load_steps=26 format=3 uid="uid://csoxy0mwqqiht"]
 
+[ext_resource type="Script" path="res://CustomScripts/Logic/DebugLoader.gd" id="1_st3hk"]
 [ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="2_xaf11"]
 [ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="3_gjmtm"]
 [ext_resource type="Texture2D" uid="uid://da3ox5bg6jjil" path="res://Sprites/UI/MercFaceSmile.png" id="4_s2twa"]
@@ -7,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ccimvk3bfhkf7" path="res://KOMPrefabs/UI/Score_Container.tscn" id="6_7bl40"]
 [ext_resource type="Material" uid="uid://cpdjiy0pv6jhf" path="res://KOMShaders/Loop.tres" id="6_fbfo8"]
 [ext_resource type="Texture2D" uid="uid://bi21ff42mpt4r" path="res://Sprites/UI/ButtonMenu3.png" id="7_lxmi6"]
-[ext_resource type="Texture2D" uid="uid://berrj78nhvecu" path="res://KOMTextures/goldstrip.png" id="7_q3ebw"]
+[ext_resource type="Texture2D" uid="uid://bvf22gaht051e" path="res://KOMTextures/goldstrip.png" id="7_q3ebw"]
 [ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="8_85i1u"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderButton.gd" id="8_u6hlf"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/WarningShow.gd" id="10_0tbnq"]
@@ -31,6 +32,11 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bd7ru"]
 
 [node name="InnOutMenu" type="Node2D"]
+
+[node name="DebugLoader" type="Node" parent="." node_paths=PackedStringArray("ItemsToShow", "TimerButton")]
+script = ExtResource("1_st3hk")
+ItemsToShow = [NodePath("../TimerDisable")]
+TimerButton = NodePath("../TimerDisable")
 
 [node name="ScoreLoader" type="Node" parent="." node_paths=PackedStringArray("listContainer", "ScoresParent", "NoScoresLabel", "BestScoreContainer")]
 script = ExtResource("5_r8xen")
@@ -186,6 +192,43 @@ color = Color(0.498039, 0.454902, 0.235294, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Play"]
 script = ExtResource("8_85i1u")
+
+[node name="TimerDisable" type="CheckButton" parent="."]
+visible = false
+top_level = true
+z_as_relative = false
+offset_left = 792.0
+offset_top = 232.0
+offset_right = 928.0
+offset_bottom = 280.0
+theme = ExtResource("3_gjmtm")
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0.980392, 1)
+theme_override_colors/font_pressed_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
+theme_override_colors/font_hover_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q1jls")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p7dfr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i72c3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tgmda")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bd7ru")
+action_mode = 0
+text = "
+Disable Timer
+
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TimerDisable"]
+script = ExtResource("8_85i1u")
+
+[node name="ColorRect3" type="ColorRect" parent="TimerDisable"]
+show_behind_parent = true
+offset_left = -11.0
+offset_top = 4.0
+offset_right = 195.0
+offset_bottom = 40.0
+scale = Vector2(0.760002, 1.05698)
+mouse_filter = 2
+color = Color(0.498039, 0.454902, 0.235294, 1)
 
 [node name="Erase" type="Button" parent="." node_paths=PackedStringArray("Warning", "ScoreLoader", "SoundPlayer")]
 top_level = true
@@ -405,6 +448,11 @@ offset_bottom = 75.0
 theme = ExtResource("3_gjmtm")
 text = "Time: "
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="Play" to="Play/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="TimerDisable" to="DebugLoader" method="_on_timer_disable_pressed"]
 [connection signal="pressed" from="Erase/Warning/Cancel" to="Erase" method="Close"]
 [connection signal="pressed" from="Erase/Warning/Confirm" to="Erase" method="start"]

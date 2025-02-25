@@ -13,11 +13,18 @@ var NpcInventory
 @export var ItemGen : Node
 var NeededTotal : int
 var TotalItems = 0
+var OrderClock : float = 0.0
+@export var ClockDisplay : RichTextLabel
+var WaitingForOrder : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
 	SignalBusInnOut = get_tree().get_first_node_in_group("InnOutSignalBus")
-	pass # Replace with function body.
+	if SignalBusInnOut.DoTimer == true:
+		ItemGen.ReadyToServeSignal.connect(BeginTimer)
+		ClockDisplay.text = "[shake rate=20][center]0"
+	else:
+		ClockDisplay.hide()
 
 
 func NpcInvCheck():
@@ -109,6 +116,24 @@ func get_all_children(in_node, array := []):
 		array = get_all_children(child, array)
 	return array
 
+func BeginTimer():
+	if SignalBusInnOut.DoTimer == true:
+		ClockDisplay.show()
+		OrderClock = 0.0
+		WaitingForOrder = true
+	else:
+		ClockDisplay.hide()
+		OrderClock = 0.0
+		WaitingForOrder = true
+	
+func _process(delta):
+	if WaitingForOrder:
+		OrderClock += delta
+		ClockDisplay.text = "[shake rate=20][center]" + str(snapped(OrderClock,1))
+		if OrderClock >= SignalBusInnOut.OrderWaitLimit:
+			ClockDisplay.add_theme_color_override("default_color",Color(1, 0.15294100344181, 0.25490200519562))
+			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+			WaitingForOrder = false
 
 func _on_pressed():
 	if ItemGen.ReadyToServe == true:
@@ -117,6 +142,9 @@ func _on_pressed():
 			SoundSource.play()
 			SignalBusInnOut.Score += TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
+			OrderClock = 0.0
+			WaitingForOrder = false
+			
 			ItemGen.Clear()
 			Task()
 		else:
@@ -125,8 +153,14 @@ func _on_pressed():
 			SoundSource.stream = SoundNegative
 			SignalBusInnOut.Score -= TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
-			SignalBusKOM.emit_signal("TargetCreature",true,currentNPC.InstID ,"player",1.5,"default",true)
+			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+			OrderClock = 0.0
+			WaitingForOrder = false
 			SoundSource.play()
 	else:
 		SoundSource.stream = SoundNegative
 		SoundSource.play()
+
+
+func _on_behavior_item_taken():
+	OrderClock -= 10

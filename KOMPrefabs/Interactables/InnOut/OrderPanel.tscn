@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2d6efsd3ij6e"]
+[gd_scene load_steps=13 format=3 uid="uid://c2d6efsd3ij6e"]
 
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1_fg8mi"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="2_51toa"]
 [ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="3_1e0lp"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="4_cqu4y"]
 
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(3, 2)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n1eij"]
-viewport_path = NodePath("VenusModel/OrderPanel/SubViewport")
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_st0yu"]
 resource_local_to_scene = true
@@ -40,7 +41,7 @@ node_area = NodePath("Quad/Area3D")
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 gui_embed_subwindows = true
-size = Vector2i(192, 157)
+size = Vector2i(400, 150)
 render_target_update_mode = 4
 
 [node name="CtrlInventoryGridEx" type="Control" parent="SubViewport"]
@@ -48,11 +49,11 @@ custom_minimum_size = Vector2(168, 66)
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = 10.0
-offset_top = 16.175
-offset_right = 178.0
-offset_bottom = 82.175
-scale = Vector2(1, 2)
+offset_left = 14.665
+offset_top = 14.815
+offset_right = 182.665
+offset_bottom = 80.815
+scale = Vector2(1.79, 1.79)
 script = ExtResource("2_51toa")
 item_spacing = 2
 grid_color = Color(0.494118, 0.415686, 0, 1)
@@ -178,8 +179,21 @@ visible = false
 layout_mode = 0
 mouse_filter = 2
 
+[node name="ClockLabel" type="RichTextLabel" parent="SubViewport"]
+offset_left = 316.465
+offset_top = 58.295
+offset_right = 366.465
+offset_bottom = 108.295
+scale = Vector2(1.4, 1.4)
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.498039, 0.454902, 0.235294, 1)
+theme_override_fonts/normal_font = ExtResource("4_cqu4y")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[shake rate=20][center] %"
+
 [node name="Quad" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.875, 0, 0, 0, 0.52, 0, 0, 0, 0.875, 0, 0, 0)
+transform = Transform3D(1.07, 0, -2.98023e-08, 0, 0.52, 0, 5.96046e-08, 0, 0.875, -0.0408268, -0.0127625, 0.0109863)
 mesh = SubResource("1")
 surface_material_override/0 = SubResource("StandardMaterial3D_st0yu")
 
@@ -191,7 +205,7 @@ input_capture_on_drag = true
 shape = SubResource("4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.44, 0, -9.89732e-15, 0, 1, 0, 2.84111e-13, 0, 0.085, -0.0417078, -0.016037, -0.0472193)
+transform = Transform3D(3.055, 0, -9.89731e-15, 0, 1, 0, 3.55721e-13, 0, 0.085, -0.0417078, -0.016037, -0.0472193)
 material_override = SubResource("StandardMaterial3D_f7007")
 mesh = SubResource("BoxMesh_2rpwp")
 

@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cs2yiyk8wt251"]
+
+[ext_resource type="Shader" path="res://KOMShaders/InvertColor.gdshader" id="1_lv54y"]
+
+[resource]
+shader = ExtResource("1_lv54y")

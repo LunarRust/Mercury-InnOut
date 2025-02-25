@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/ProgressChanger.gd" id="10_p75uo"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderButton.gd" id="11_1u0cu"]
 [ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="11_626e0"]
-[ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="11_17170"]
+[ext_resource type="AudioStream" uid="uid://cnohmfrk4pxtj" path="res://Sounds/Pickup.ogg" id="11_17170"]
 [ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="12_w86w3"]
 [ext_resource type="Script" path="res://CustomScripts/SceneTransferButton.gd" id="14_ajnv3"]
 [ext_resource type="AudioStream" uid="uid://dv0ae3ncwwdpw" path="res://Sounds/Pickup2.ogg" id="15_55hpg"]

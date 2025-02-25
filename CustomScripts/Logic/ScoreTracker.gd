@@ -60,7 +60,7 @@ func ScoreWrite():
 		ScoreFile.set_value("BestScore", "Minutes", Clock.date_time.minutes)
 		ScoreFile.set_value("BestScore", "Hours", Clock.date_time.hours)
 		ScoreFile.set_value("BestScore", "TimeTotal",Clock.formated_time)
-	elif time < best_time:
+	elif time < best_time && InnoutBus.Score == ScoreFile.get_value("BestScore","Score"):
 		print("New high score!")
 		ScoreFile.set_value("BestScore", "Entry", CountInt)
 		ScoreFile.set_value("BestScore", "Score", InnoutBus.Score)
