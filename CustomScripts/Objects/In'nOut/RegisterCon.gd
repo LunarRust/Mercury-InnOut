@@ -125,6 +125,7 @@ func _on_pressed():
 			SoundSource.stream = SoundNegative
 			SignalBusInnOut.Score -= TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
+			SignalBusKOM.emit_signal("TargetCreature",true,currentNPC.InstID ,"player",1.5,"default",true)
 			SoundSource.play()
 	else:
 		SoundSource.stream = SoundNegative

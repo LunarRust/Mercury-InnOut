@@ -1,18 +1,16 @@
-[gd_scene load_steps=41 format=3 uid="uid://x3hq5v8koylh"]
+[gd_scene load_steps=41 format=3 uid="uid://bg7f0m3aw4wds"]
 
 [ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="1_ybrmv"]
-[ext_resource type="Texture2D" uid="uid://dr1ccek3pjmf7" path="res://Sprites/UI/PsychopompFaceSmile.png" id="2_bob0l"]
 [ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="3_fobxm"]
 [ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="4_t3qcm"]
 [ext_resource type="FontFile" uid="uid://dc2g2wno6tfur" path="res://Fonts/DBStylezButtons.ttf" id="5_2glsh"]
-[ext_resource type="Texture2D" uid="uid://rrmmw1e2tjdp" path="res://Sprites/UI/ButtonMenu.png" id="6_wmyqa"]
 [ext_resource type="Script" path="res://Scripts/ModFolderButton.cs" id="7_14lvp"]
 [ext_resource type="Script" path="res://Scripts/MapButton.gd" id="8_4q1nn"]
 [ext_resource type="AudioStream" uid="uid://pj54k8rannuj" path="res://Music/Dry and Warm.ogg" id="9_b2gtu"]
 [ext_resource type="Script" path="res://Scenes/ProgressChanger.gd" id="10_p75uo"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderButton.gd" id="11_1u0cu"]
 [ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="11_626e0"]
-[ext_resource type="AudioStream" uid="uid://cnohmfrk4pxtj" path="res://Sounds/Pickup.ogg" id="11_17170"]
+[ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="11_17170"]
 [ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="12_w86w3"]
 [ext_resource type="Script" path="res://CustomScripts/SceneTransferButton.gd" id="14_ajnv3"]
 [ext_resource type="AudioStream" uid="uid://dv0ae3ncwwdpw" path="res://Sounds/Pickup2.ogg" id="15_55hpg"]
@@ -30,6 +28,12 @@
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="24_3ls6n"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="27_1kpg6"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="31_frqit"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e3uxk"]
+load_path = "res://.godot/imported/PsychopompFaceSmile.png-7ca17b8847f015f98da4b2597a9bb2cd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gkel"]
+load_path = "res://.godot/imported/ButtonMenu.png-b7efe17fa0ad712b927cbc64afccd694.ctex"
 
 [sub_resource type="StyleBoxEmpty" id="7"]
 
@@ -88,7 +92,7 @@ z_index = -4
 position = Vector2(608, 536)
 rotation = -0.586552
 scale = Vector2(0.484895, 0.484895)
-texture = ExtResource("2_bob0l")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3_fobxm")
 
 [node name="PsychopompFaceSmile2" type="Sprite2D" parent="."]
@@ -97,7 +101,7 @@ z_index = -4
 position = Vector2(762, 510)
 rotation = -0.110974
 scale = Vector2(0.683505, 0.683505)
-texture = ExtResource("2_bob0l")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3_fobxm")
 
 [node name="PsychopompFaceSmile4" type="Sprite2D" parent="."]
@@ -106,7 +110,7 @@ z_index = -4
 position = Vector2(1.99999, 467)
 rotation = -0.37075
 scale = Vector2(0.683505, 0.683505)
-texture = ExtResource("2_bob0l")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3_fobxm")
 
 [node name="PsychopompFaceSmile3" type="Sprite2D" parent="."]
@@ -115,7 +119,7 @@ z_index = -4
 position = Vector2(952, 208)
 rotation = -0.168924
 scale = Vector2(0.683505, 0.683505)
-texture = ExtResource("2_bob0l")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3_fobxm")
 
 [node name="PsychopompFaceSmile" type="Sprite2D" parent="."]
@@ -123,7 +127,7 @@ modulate = Color(0.0745098, 0.113725, 0.211765, 1)
 z_index = -4
 position = Vector2(925, 419)
 rotation = 0.245815
-texture = ExtResource("2_bob0l")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3_fobxm")
 
 [node name="Label2" type="Label" parent="."]
@@ -146,7 +150,7 @@ offset_left = 758.0
 offset_top = 7.0
 offset_right = 961.0
 offset_bottom = 104.0
-texture_normal = ExtResource("6_wmyqa")
+texture_normal = SubResource("CompressedTexture2D_2gkel")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("7_14lvp")
@@ -166,7 +170,7 @@ offset_left = 762.0
 offset_top = 11.0
 offset_right = 965.0
 offset_bottom = 108.0
-texture_normal = ExtResource("6_wmyqa")
+texture_normal = SubResource("CompressedTexture2D_2gkel")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("8_4q1nn")

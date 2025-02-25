@@ -1,6 +1,6 @@
 extends Node
 @export_category("Time System")
-@export var date_time : DateTime
+@export var date_time : Node
 @export var TimeLabel : RichTextLabel
 @export var ticks_pr_second : int = 6
 @export var formated_time : String

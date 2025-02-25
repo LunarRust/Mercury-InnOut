@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://c2d6efsd3ij6e"]
+[gd_scene load_steps=12 format=3 uid="uid://c2d6efsd3ij6e"]
 
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1_fg8mi"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory_grid_ex.gd" id="2_51toa"]
 [ext_resource type="Texture2D" uid="uid://bo7ngnq4uajfs" path="res://Sprites/Items/Generic.png" id="3_1e0lp"]
-[ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="4_c2ngu"]
 
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(3, 2)
@@ -200,8 +199,3 @@ mesh = SubResource("BoxMesh_2rpwp")
 transform = Transform3D(0.265, 0, -5.42962e-15, 0, 1.115, 0, 1.06581e-14, 0, 0.135, 1.19209e-07, -1.05388, -0.0578394)
 mesh = SubResource("BoxMesh_kcj7t")
 surface_material_override/0 = SubResource("StandardMaterial3D_m8j5n")
-
-[node name="ShowDebug" type="Node" parent="." node_paths=PackedStringArray("OtherNodes")]
-script = ExtResource("4_c2ngu")
-key = 4194335
-OtherNodes = [null]

@@ -2,7 +2,7 @@ extends Button
 
 @export var destination: String
 var loadScene: PackedScene
-@export var sceneLoader: String = "res://Scenes/TSLC.tscn"
+@export var sceneLoader: String = "res://Scenes/TipSceneLoaderM.tscn"
 
 func _ready():
 	loadScene = load(sceneLoader)

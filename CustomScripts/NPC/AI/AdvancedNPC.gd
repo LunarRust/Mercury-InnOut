@@ -63,7 +63,7 @@ var playerHealth = load("res://Scripts/PlayerHealthHandler.cs")
 var playerMover = load("res://Scripts/MoverTest.cs")
 var Interactions = load("res://Scripts/Interactions.cs")
 var InteractableObject = load("res://Scripts/InteractableObject.cs")
-var playerHealthInstance = playerHealth.new()
+@onready var playerHealthInstance = get_tree().get_first_node_in_group("PlayerHealthHandler")
 
 var LightSound = preload("res://Sounds/FlashLight.ogg")
 
@@ -85,6 +85,7 @@ func _ready():
 	SignalBusKOM.Light_Off.connect(FlashLightOff)
 	SignalBusKOM.NavToPoint.connect(NavToPoint)
 	SignalBusKOM.ItemSpef.connect(NavToItem)
+	SignalBusKOM.TargetCreature.connect(TargetCreature)
 	nav_agent.target_desired_distance = MaxDistance
 	if (TargetEntity == null):
 		print("Ouchie wawa! There's no defined player object for this enemy to chase! Trying to find one now.")
@@ -246,6 +247,7 @@ func Attack():
 	if (anim != null && TargetEntity.has_node("HealthHandler")):
 		animTrigger(attackName)
 	if (position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.is_in_group("player")):
+		animTrigger(attackName)
 		playerHealthInstance.notsostatichealth(attackPower)
 	else:
 		if position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.has_node("NpcToNpcHealthHandler"):
@@ -326,6 +328,21 @@ func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distanc
 			DoLookAt = true
 		else:
 			DoLookAt = false
+
+func TargetCreature(id : int,doLook : bool,TargetEntityFromSignalBus : String,distance : float,LookTargetFromBus : String, isHostile : bool):
+	TargetEntity = TargetLocator(TargetEntityFromSignalBus)
+	hostile = isHostile
+	MaxSpeed = 3
+	if doLook == true:
+		if LookTargetFromBus == "default":
+			LookTarget = TargetEntity
+		else:
+			LookTarget = find_closest_or_furthest(self,LookTargetFromBus)
+		DoLookAt = true
+	else:
+		DoLookAt = false
+	TargetIsCreature = true
+	TargetIsItem = false
 		
 func NavToItem(id : int,NavNodeTargetFromSignalBus : Node,Action : int):
 	if id == InstID:

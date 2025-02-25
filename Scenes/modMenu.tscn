@@ -1,11 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://b3pb7vl3nyndm"]
 
 [ext_resource type="Script" path="res://Scripts/ModLoader.cs" id="1"]
-[ext_resource type="Texture2D" uid="uid://dr1ccek3pjmf7" path="res://Sprites/UI/PsychopompFaceSmile.png" id="2"]
 [ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="3"]
 [ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="4"]
 [ext_resource type="FontFile" uid="uid://dc2g2wno6tfur" path="res://Fonts/DBStylezButtons.ttf" id="5"]
-[ext_resource type="Texture2D" uid="uid://rrmmw1e2tjdp" path="res://Sprites/UI/ButtonMenu.png" id="6"]
 [ext_resource type="Script" path="res://Scripts/ModFolderButton.cs" id="7"]
 [ext_resource type="Script" path="res://Scripts/MapButton.gd" id="8"]
 [ext_resource type="AudioStream" uid="uid://dgixramxiyiyi" path="res://Sounds/Santa Red Eyes.ogg" id="9"]
@@ -13,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://2lleq8anq1s5" path="res://Sprites/UI/ControllerCursor.png" id="12"]
 [ext_resource type="Script" path="res://Scripts/WorldMapPlayer.cs" id="13"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e3uxk"]
+load_path = "res://.godot/imported/PsychopompFaceSmile.png-7ca17b8847f015f98da4b2597a9bb2cd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gkel"]
+load_path = "res://.godot/imported/ButtonMenu.png-b7efe17fa0ad712b927cbc64afccd694.ctex"
 
 [sub_resource type="StyleBoxEmpty" id="1"]
 
@@ -57,7 +61,7 @@ modulate = Color(0.0238231, 0.0448261, 0.103046, 1)
 position = Vector2(608, 536)
 rotation = -0.586552
 scale = Vector2(0.484895, 0.484895)
-texture = ExtResource("2")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3")
 
 [node name="PsychopompFaceSmile2" type="Sprite2D" parent="."]
@@ -65,7 +69,7 @@ modulate = Color(0.0434478, 0.0733348, 0.14809, 1)
 position = Vector2(762, 510)
 rotation = -0.110974
 scale = Vector2(0.683505, 0.683505)
-texture = ExtResource("2")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3")
 
 [node name="PsychopompFaceSmile4" type="Sprite2D" parent="."]
@@ -73,7 +77,7 @@ modulate = Color(0.0745098, 0.113725, 0.211765, 1)
 position = Vector2(1.99999, 467)
 rotation = -0.37075
 scale = Vector2(0.683505, 0.683505)
-texture = ExtResource("2")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3")
 
 [node name="PsychopompFaceSmile3" type="Sprite2D" parent="."]
@@ -81,14 +85,14 @@ modulate = Color(0.0434478, 0.0733348, 0.14809, 1)
 position = Vector2(952, 208)
 rotation = -0.168924
 scale = Vector2(0.683505, 0.683505)
-texture = ExtResource("2")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3")
 
 [node name="PsychopompFaceSmile" type="Sprite2D" parent="."]
 modulate = Color(0.0745098, 0.113725, 0.211765, 1)
 position = Vector2(925, 419)
 rotation = 0.245815
-texture = ExtResource("2")
+texture = SubResource("CompressedTexture2D_e3uxk")
 script = ExtResource("3")
 
 [node name="Label" type="Label" parent="."]
@@ -131,7 +135,7 @@ offset_left = 758.0
 offset_top = 7.0
 offset_right = 961.0
 offset_bottom = 104.0
-texture_normal = ExtResource("6")
+texture_normal = SubResource("CompressedTexture2D_2gkel")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("7")
@@ -151,7 +155,7 @@ offset_left = 758.0
 offset_top = 94.0
 offset_right = 961.0
 offset_bottom = 191.0
-texture_normal = ExtResource("6")
+texture_normal = SubResource("CompressedTexture2D_2gkel")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("8")

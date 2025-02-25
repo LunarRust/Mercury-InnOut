@@ -20,6 +20,7 @@ var instance : PlayerHealthHandler
 @export var label : Label
 @export var manaLabel : Label
 @export var deathAnim : AnimationPlayer
+@export var DeathDest : PackedScene = load("res://Scenes/GameOver.tscn") as PackedScene
 @export var soundSource : AudioStreamPlayer
 var SignalBusKOM
 
@@ -124,7 +125,7 @@ func Death():
 	CamCast.rotation = Vector3(0,0,1.5)
 	await get_tree().create_timer(4.199999809265137).timeout
 	Fade.crossfade_prepare(3,"WeirdWipe",false,false)
-	get_tree().change_scene_to_packed(load("res://Scenes/GameOver.tscn") as PackedScene)
+	get_tree().change_scene_to_packed(DeathDest)
 	Fade.crossfade_execute()
 	dead = false
 	print("You died, womp womp!")

@@ -2,36 +2,67 @@ extends Node
 @export_category("Score Loader")
 var ScoreFile = ConfigFile.new()
 @export var listContainer : VBoxContainer
+@export var ScoresParent : Node2D
 @export var ScoreEntryPrefabRoot : PackedScene
+@export var NoScoresLabel : RichTextLabel
+@export var BestScoreContainer : ColorRect
 var InnoutBus
 var SignalBusKOM
 var Clock
 var Total = "0"
 var TotalInt = 0
-var Attempt : int = 1
+var Attempt : int = 0
+@export var AttemptString : String
 var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var err = ScoreFile.load("res://KOMData/Score.cfg")
-	if err != OK:
+	var err = ScoreFile.load("user://Score.cfg")
+	if err != OK || !ScoreFile.has_section("ScoreFile_Data"):
 		print("Failed to load file!")
-	Total = str(ScoreFile.get_value("Count","Amount"))
-	TotalInt = ScoreFile.get_value("Count","Amount")
-	Attempt = ScoreFile.get_value("Attempt" + str(Attempt), "Entry")
-	active = true
+		NoScoresLabel.show()
+		ScoresParent.hide()
+		BestScoreContainer.get_parent().hide()
+	else:
+		Total = str(ScoreFile.get_value("Count","Amount"))
+		TotalInt = ScoreFile.get_value("Count","Amount")
+		Attempt = TotalInt
+		AttemptString = str(ScoreFile.get_value("Attempt" + str(Attempt), "Entry"))
+		if ScoreFile.has_section_key("BestScore","Entry"):
+			loadBest()
+			BestScoreContainer.get_parent().show()
+		else:
+			BestScoreContainer.get_parent().hide()
+		active = true
+		
 		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if active:
-		if TotalInt > Attempt:
+		if Attempt >= 1:
 			loadScore()
-			Attempt += 1
+			
+	
+func loadBest():
+	var entry = ScoreFile.get_value("BestScore", "Entry")
+	var Score = ScoreFile.get_value("BestScore", "Score")
+	var seconds = ScoreFile.get_value("BestScore", "Seconds")
+	var minutes = ScoreFile.get_value("BestScore", "Minutes")
+	var hours = ScoreFile.get_value("BestScore", "Hours")
+	var formated_time = ScoreFile.get_value("BestScore", "TimeTotal")
+	var node = BestScoreContainer
+	var ScoreEntry = node.get_child(0)
+	var TotalServed = node.get_child(1)
+	var TimeTaken = node.get_child(2)
+	ScoreEntry.text = "Entry #" + str(entry)
+	TotalServed.text = "Items served: " + str(Score)
+	TimeTaken.text = "Time: " + formated_time
 	
 func loadScore():
-	ScoreFile.get_value("Attempt" + str(Attempt), "Entry")
+	
+	ScoreFile.get_value("Attempt" + str(AttemptString), "Entry")
 	var Score = ScoreFile.get_value("Attempt" + str(Attempt), "Score")
 	var seconds = ScoreFile.get_value("Attempt" + str(Attempt), "Seconds")
 	var minutes = ScoreFile.get_value("Attempt" + str(Attempt), "Minutes")
@@ -41,7 +72,16 @@ func loadScore():
 	var ScoreEntry = node.get_child(0)
 	var TotalServed = node.get_child(1)
 	var TimeTaken = node.get_child(2)
-	ScoreEntry.text = "Score #" + str(Attempt)
+	ScoreEntry.text = "Entry #" + str(Attempt)
 	TotalServed.text = "Items served: " + str(Score)
 	TimeTaken.text = "Time: " + formated_time
 	listContainer.add_child(node)
+	Attempt -= 1
+	
+func Delete():
+	ScoreFile.clear()
+	ScoreFile.save("user://Score.cfg")
+	NoScoresLabel.show()
+	ScoresParent.hide()
+	BestScoreContainer.get_parent().hide()
+	

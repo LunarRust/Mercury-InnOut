@@ -1,8 +1,15 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dr2o7g4ume8af"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cpdjiy0pv6jhf"]
 
-[ext_resource type="Shader" path="res://KOMShaders/Loop.gdshader" id="1_wm6m4"]
+[sub_resource type="Shader" id="Shader_hffv7"]
+code = "shader_type canvas_item;
+
+uniform float speed;
+uniform float transparency =1;
+void fragment () {
+	COLOR = texture(TEXTURE, vec2(UV.x + TIME * speed, UV.y)) *transparency;
+}"
 
 [resource]
-shader = ExtResource("1_wm6m4")
+shader = SubResource("Shader_hffv7")
 shader_parameter/speed = 0.1
 shader_parameter/transparency = 1.0
