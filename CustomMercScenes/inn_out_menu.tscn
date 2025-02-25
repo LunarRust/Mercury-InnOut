@@ -48,7 +48,7 @@ offset_bottom = 555.0
 color = Color(0, 0, 0, 1)
 
 [node name="FaceParent" type="Node2D" parent="."]
-position = Vector2(-7, -33)
+position = Vector2(-14, -57)
 
 [node name="PsychopompFaceSmile5" type="Sprite2D" parent="FaceParent"]
 modulate = Color(0.175314, 0.142417, 2.40654e-08, 1)
@@ -68,7 +68,7 @@ script = ExtResource("2_xaf11")
 
 [node name="PsychopompFaceSmile4" type="Sprite2D" parent="FaceParent"]
 modulate = Color(0.175314, 0.142417, 2.40654e-08, 1)
-position = Vector2(1.99999, 467)
+position = Vector2(36, 500)
 rotation = -0.37075
 scale = Vector2(0.683505, 0.683505)
 texture = ExtResource("4_s2twa")
