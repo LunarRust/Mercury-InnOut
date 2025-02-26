@@ -1,8 +1,9 @@
 extends Node
 @export_category("Time System")
-@export var date_time : DateTime
+@export var date_time : Node
 @export var TimeLabel : RichTextLabel
 @export var ticks_pr_second : int = 6
+@export var formated_time : String
 var seconds
 var minutes
 var hours
@@ -12,7 +13,8 @@ func _process(delta: float) -> void:
 	seconds = add_leading_zero(date_time.seconds)
 	minutes = add_leading_zero(date_time.minutes)
 	hours = add_leading_zero(date_time.hours)
-	TimeLabel.text = "[shake rate=10][center]" + hours + ":" + minutes + ":" + seconds
+	formated_time = hours + ":" + minutes + ":" + seconds
+	TimeLabel.text = "[shake rate=10][center]" + formated_time
 
 func add_leading_zero(value: int):
 		if value < 10:

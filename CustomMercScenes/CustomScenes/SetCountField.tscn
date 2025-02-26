@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://8r5jhp6ga36p" path="res://Sprites/UI/PlayButton.png" id="1_bii3s"]
 [ext_resource type="Texture2D" uid="uid://bv4y27x06n8a5" path="res://Sprites/UI/PlayButtonInvert.png" id="2_ndjgm"]
 [ext_resource type="Script" path="res://CustomScripts/KeysCollectedChanger.gd" id="4_01st4"]
-[ext_resource type="AudioStream" uid="uid://dtpxmcbak6rth" path="res://Sounds/tick3.ogg" id="5_rs0l2"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="5_rs0l2"]
 
 [node name="SetCountField" type="Node2D"]
 

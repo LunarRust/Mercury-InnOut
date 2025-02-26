@@ -14,8 +14,9 @@ universal_fade/patterns_directory="res://addons/UniversalFade/Patterns"
 
 [application]
 
-config/name="Mercury InnOut (Alpha 1.0)"
+config/name="Mercury InnOut (Alpha 2.0)"
 config/tags=PackedStringArray("mod")
+run/main_scene="res://CustomMercScenes/inn_out_menu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://KOMSprites/innout/InNOut_logo.png"

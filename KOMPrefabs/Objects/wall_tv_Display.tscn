@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj6nfviosnb4o"]
+[gd_scene load_steps=19 format=3 uid="uid://cj6nfviosnb4o"]
 
 [ext_resource type="Material" uid="uid://bpeflgdmq3es7" path="res://KOMModels/Textures/8x8.tres" id="1_bga2g"]
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="2_dbo6l"]
 [ext_resource type="FontFile" uid="uid://dg3h8s7di2p7v" path="res://Fonts/DBStylez2.ttf" id="3_aemic"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/ScoreTracker.gd" id="4_r6pjt"]
+[ext_resource type="Material" uid="uid://b2q8quyis51mr" path="res://KOMShaders/CRT.tres" id="4_ue66k"]
+[ext_resource type="PackedScene" uid="uid://cjlvvrm2owvaa" path="res://KOMPrefabs/UI/Gold_Checker_Banner.tscn" id="5_3qbcu"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Time/Time_System.gd" id="5_sirc1"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Time/Date_Time.gd" id="6_c61sy"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="7_v1e7p"]
@@ -41,14 +43,6 @@ albedo_texture = SubResource("ViewportTexture_d0pt8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_w737o"]
 size = Vector3(3, 2, 0.1)
 
-[sub_resource type="Resource" id="Resource_2rhdi"]
-script = ExtResource("6_c61sy")
-seconds = 0
-minutes = 0
-hours = 0
-days = 0
-LimitHours = true
-
 [sub_resource type="BoxMesh" id="BoxMesh_v3qml"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s47yy"]
@@ -80,15 +74,32 @@ bbcode_enabled = true
 text = "[shake rate=15][center]%"
 
 [node name="TimeLabel" type="RichTextLabel" parent="GUI/SubViewport"]
-offset_left = -87.12
-offset_top = 932.33
-offset_right = 871.88
-offset_bottom = 1132.33
+offset_left = -70.0
+offset_top = 900.0
+offset_right = 889.0
+offset_bottom = 1100.0
 theme_override_colors/default_color = Color(0.494118, 0.415686, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_aemic")
 theme_override_font_sizes/normal_font_size = 170
 bbcode_enabled = true
 text = "[shake rate=10][center]00:00:00"
+
+[node name="ColorRect" type="ColorRect" parent="GUI/SubViewport"]
+material = ExtResource("4_ue66k")
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" parent="GUI/SubViewport" instance=ExtResource("5_3qbcu")]
+offset_left = 0.0
+offset_top = 10.0
+offset_right = 10000.0
+offset_bottom = 178.0
+
+[node name="TextureRect2" parent="GUI/SubViewport" instance=ExtResource("5_3qbcu")]
+offset_left = 0.0
+offset_top = 1040.0
+offset_right = 10000.0
+offset_bottom = 1208.0
 
 [node name="Quad" type="MeshInstance3D" parent="GUI"]
 process_mode = 3
@@ -107,11 +118,17 @@ shape = SubResource("BoxShape3D_w737o")
 [node name="ScoreTracker" type="Node" parent="." node_paths=PackedStringArray("ScoreLabel")]
 script = ExtResource("4_r6pjt")
 ScoreLabel = NodePath("../GUI/SubViewport/RichTextLabel")
+EncryptionKey = "t4tsexnastystyle"
 
-[node name="TimeSystem" type="Node" parent="." node_paths=PackedStringArray("TimeLabel")]
+[node name="TimeSystem" type="Node" parent="." node_paths=PackedStringArray("date_time", "TimeLabel") groups=["TimeSystem"]]
 script = ExtResource("5_sirc1")
-date_time = SubResource("Resource_2rhdi")
+date_time = NodePath("DateTime")
 TimeLabel = NodePath("../GUI/SubViewport/TimeLabel")
+ticks_pr_second = 1
+
+[node name="DateTime" type="Node" parent="TimeSystem"]
+script = ExtResource("6_c61sy")
+LimitHours = false
 
 [node name="CamGrabber" type="StaticBody3D" parent="."]
 transform = Transform3D(0.515, 0, 9.53676e-09, 0, 0.365, 0, -1.22786e-07, 0, 0.04, 0.913498, 0.664424, 0.11143)
@@ -141,3 +158,6 @@ CollisionShape = NodePath("../CollisionShape3D")
 
 [node name="SoundSource" type="AudioStreamPlayer3D" parent="CamGrabber"]
 stream = ExtResource("9_mt5de")
+
+[editable path="GUI/SubViewport/TextureRect"]
+[editable path="GUI/SubViewport/TextureRect2"]

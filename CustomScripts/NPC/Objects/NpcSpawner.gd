@@ -3,6 +3,7 @@ extends Node
 @export var TargetLoc : RayCast3D
 @export var distance : float
 @export var ArrivalAction : int = 0
+@export var AcknowledgeNVT : bool = true
 @export var SpawnOnLoad : bool = false 
 @export var SpawnDelay : float = 0.0
 var ScenePack
@@ -34,6 +35,7 @@ func Packload():
 		print(node.get_tree_string_pretty())
 		TargetLoc.get_collision_point()
 		node.SpawnerID = SpawnerID
+		node.AcknowledgeNVT = AcknowledgeNVT
 
 		await get_tree().create_timer(0.1).timeout
 

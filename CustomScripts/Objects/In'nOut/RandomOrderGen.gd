@@ -21,6 +21,7 @@ var InvSize : Vector2i
 var InvFreeSpace
 var RandList : Array
 var ReadyToServe : bool = false
+signal ReadyToServeSignal
 var ItemsInInv : Array
 var ItemsInInvDictionary : Dictionary
 
@@ -38,6 +39,7 @@ func _ready():
 func ReadyForOrder(ID):
 	if ID == GenID:
 		ReadyToServe = true
+		ReadyToServeSignal.emit()
 	
 	
 func Clear():

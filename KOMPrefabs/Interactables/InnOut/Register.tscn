@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/NavNodeCon.gd" id="1_xotax"]
 [ext_resource type="PackedScene" uid="uid://jur7vxccf5uw" path="res://KOMPrefabs/Interactables/CamGrabber.tscn" id="2_i7a0y"]
-[ext_resource type="AudioStream" uid="uid://bb67bgrowip25" path="res://Sounds/DNAstart.ogg" id="3_4gt68"]
-[ext_resource type="AudioStream" uid="uid://dqx257ns6tgoe" path="res://Sounds/DNAfail.ogg" id="4_2rfeb"]
-[ext_resource type="PackedScene" uid="uid://tqaa24cqkri3" path="res://KOMModels/innout/cash_register.glb" id="5_8cdur"]
+[ext_resource type="AudioStream" uid="uid://wi5bbugtlb5w" path="res://Sounds/DNAstart.ogg" id="3_4gt68"]
+[ext_resource type="AudioStream" uid="uid://cfjal7c4hnmq" path="res://Sounds/DNAfail.ogg" id="4_2rfeb"]
+[ext_resource type="PackedScene" uid="uid://cbmb6fb7ncl8" path="res://KOMModels/innout/cash_register.glb" id="5_8cdur"]
 [ext_resource type="PackedScene" uid="uid://cp46x0ogan7h0" path="res://KOMPrefabs/Interactables/InnOut/food_tray.tscn" id="6_c3pmk"]
 [ext_resource type="PackedScene" uid="uid://cf08hharkb570" path="res://KOMPrefabs/Logic/RandomOrderGen.tscn" id="9_7lvxl"]
 [ext_resource type="PackedScene" uid="uid://c2d6efsd3ij6e" path="res://KOMPrefabs/Interactables/InnOut/OrderPanel.tscn" id="10_yb0mo"]
@@ -45,12 +45,13 @@ skeleton = NodePath("../..")
 [node name="RegisterGrabber" parent="." instance=ExtResource("2_i7a0y")]
 transform = Transform3D(-1.19658, 0, -1.80679e-07, 0, 1.19658, 0, 1.80679e-07, 0, -1.19658, -0.837778, 2.74735, -0.383419)
 
-[node name="Register2" parent="RegisterGrabber/CanvasLayer" index="0" node_paths=PackedStringArray("SoundSource", "PosRefrence", "ItemGen")]
+[node name="Register2" parent="RegisterGrabber/CanvasLayer" index="0" node_paths=PackedStringArray("SoundSource", "PosRefrence", "ItemGen", "ClockDisplay")]
 SoundSource = NodePath("../Sound")
 SoundPositive = ExtResource("3_4gt68")
 SoundNegative = ExtResource("4_2rfeb")
 PosRefrence = NodePath("../..")
 ItemGen = NodePath("../../../RandomOrderGen")
+ClockDisplay = NodePath("../../../OrderPanel/SubViewport/ClockLabel")
 
 [node name="CollisionShape3D" parent="RegisterGrabber" index="2"]
 transform = Transform3D(0.24, 0, 2.97838e-12, 0, 0.24, 0, -8.56062e-13, 0, 0.835, -0.00165892, -0.271315, 0.0449848)
@@ -67,8 +68,9 @@ transform = Transform3D(-6.9064e-08, 0, -1.58, 0, 1.58, 0, 1.58, 0, -6.9064e-08,
 
 [node name="FoodTray" parent="." instance=ExtResource("6_c3pmk")]
 
-[node name="Behavior" parent="FoodTray" index="1" node_paths=PackedStringArray("OrderGen", "NavNodeTarget")]
+[node name="Behavior" parent="FoodTray" index="1" node_paths=PackedStringArray("OrderGen", "RegisterCon", "NavNodeTarget")]
 OrderGen = NodePath("../../RandomOrderGen")
+RegisterCon = NodePath("../../RegisterGrabber/CanvasLayer/Register2")
 NavNodeTarget = NodePath("../../RegisterTarget")
 
 [node name="RandomOrderGen" parent="." groups=["OrderGen1"] instance=ExtResource("9_7lvxl")]
@@ -192,12 +194,14 @@ mouse_filter = 2
 
 [node name="OrderPanel" parent="." instance=ExtResource("10_yb0mo")]
 
+[node name="CtrlInventoryGridEx" parent="OrderPanel/SubViewport" index="0"]
+scale = Vector2(2, 2)
+
 [node name="Quad" parent="OrderPanel" index="1"]
 mesh = SubResource("QuadMesh_cisdd")
 surface_material_override/0 = SubResource("StandardMaterial3D_7xt4g")
 
-[node name="ShowDebug" parent="OrderPanel" index="4" node_paths=PackedStringArray("OtherNodes")]
-OtherNodes = [null]
+[connection signal="ItemTaken" from="FoodTray/Behavior" to="RegisterGrabber/CanvasLayer/Register2" method="_on_behavior_item_taken"]
 
 [editable path="RegisterGrabber"]
 [editable path="FoodTray"]

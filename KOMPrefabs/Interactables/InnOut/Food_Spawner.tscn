@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://gix2jhce0o2h"]
+[gd_scene load_steps=21 format=3 uid="uid://gix2jhce0o2h"]
 
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1_5jc4k"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_34j1f"]
 [ext_resource type="Resource" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_pfff6"]
 [ext_resource type="Material" path="res://textures/Plastic2.tres" id="3_amkx1"]
 [ext_resource type="Material" path="res://textures/Rust.tres" id="4_aj38o"]
+[ext_resource type="Material" uid="uid://cs2yiyk8wt251" path="res://KOMShaders/InvertColor.tres" id="4_kevsu"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/FoodSpawner.gd" id="5_y1vtp"]
 [ext_resource type="AudioStream" uid="uid://cnohmfrk4pxtj" path="res://Sounds/Pickup.ogg" id="6_8dvv0"]
 [ext_resource type="Texture2D" uid="uid://bl64mywvhcrqi" path="res://KOMSprites/innout/raw-patty.png" id="7_l2pam"]
@@ -83,6 +84,7 @@ shape = SubResource("BoxShape3D_wl11t")
 script = ExtResource("5_y1vtp")
 SoundPlayer = NodePath("../../SoundPlayer")
 FoodSprite = NodePath("../../FoodDisplay")
+FoodSpriteStretchScale = 1.1
 ItemID = "RawPatty"
 
 [node name="SoundPlayer" type="AudioStreamPlayer3D" parent="."]
@@ -93,6 +95,7 @@ max_distance = 5.0
 
 [node name="FoodDisplay" type="Sprite3D" parent="."]
 transform = Transform3D(-3.36578e-09, 0, -0.077, 0, 0.077, 0, 0.077, 0, -3.36578e-09, -0.77107, 0.376952, -0.382354)
+material_overlay = ExtResource("4_kevsu")
 visibility_range_end = 10.0
 visibility_range_end_margin = 5.0
 visibility_range_fade_mode = 1

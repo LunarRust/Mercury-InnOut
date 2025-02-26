@@ -11,6 +11,8 @@ signal Light_On
 signal NavToPoint(id : int,doLook : bool,NavNodeTarget : Node,distance : float,ActionOnArrive : int,LookTargetFromBus : String)
 signal ItemSpef(id : int,NavNodeTargetFromSignalBus : Node,Action : int)
 signal CreateNpc(ID : int)
+signal TargetCreature(id : int,doLook : bool,TargetEntityFromSignalBus : String,distance : float,LookTargetFromBus : String, isHostile : bool)
+signal Dead
 
 @export_category("Data Handles")
 @export var PompNpcInstances : Array

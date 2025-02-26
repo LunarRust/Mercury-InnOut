@@ -5,14 +5,16 @@ var NpcInv : Inventory
 @export var SoundPlayer : AudioStreamPlayer3D
 @export var FoodSprite : Sprite3D
 @export_category("Parameters")
+@export var FoodSpriteStretchScale : float
 @export var ItemID : String
-
+var FoodSpriteBeginingScale : Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	inv = get_tree().get_first_node_in_group("KOMInventoryManager").inv
 	if inv == null:
 		inv = InventoryManager.inventoryInstance
+	FoodSpriteBeginingScale = FoodSprite.scale
 
 
 func Touch(AmNpc = false):
@@ -23,6 +25,7 @@ func Touch(AmNpc = false):
 			if (newItem != null):
 				SoundPlayer.stream = load("res://Sounds/Pickup.ogg")
 				SoundPlayer.play()
+				ModifySprite()
 				return true
 		else:
 			print("Cannot Add Item, not enough Room")
@@ -35,12 +38,19 @@ func Touch(AmNpc = false):
 		if (newItem != null):
 			SoundPlayer.stream = load("res://Sounds/Pickup.ogg")
 			SoundPlayer.play()
+			ModifySprite()
 			return true
 		else:
 			print("Cannot Add Item, not enough Room")
 			SoundPlayer.stream = load("res://Sounds/DNAfail.ogg")
 			SoundPlayer.play()
 			return false
+			
+			
+func ModifySprite():
+	FoodSprite.scale = FoodSprite.scale * FoodSpriteStretchScale
+	await get_tree().create_timer(0.1).timeout
+	FoodSprite.scale = FoodSpriteBeginingScale
 			
 			
 func create_item(prototype_id: String) -> InventoryItem:

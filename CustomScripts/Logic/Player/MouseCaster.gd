@@ -34,7 +34,8 @@ func _physics_process(delta):
 		mousepos = get_viewport().get_mouse_position()
 		if mousepos == null:
 			mousepos = Vector2(0,0)
-		self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
+		if RCS.get_mouse_world_position(space_state,cam,mousepos) != null:
+			self.global_position = RCS.get_mouse_world_position(space_state,cam,mousepos)
 		CurrentIntersectedObject = RCS.get_raycast_hit_object(space_state,cam,mousepos)
 	
 func Cast():

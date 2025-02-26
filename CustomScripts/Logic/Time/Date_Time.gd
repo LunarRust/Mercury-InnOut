@@ -1,4 +1,4 @@
-class_name DateTime extends Resource
+extends Node
 @export_category("Date Time")
 @export_range(0,59) var seconds = 00
 @export_range(0,59) var minutes = 00

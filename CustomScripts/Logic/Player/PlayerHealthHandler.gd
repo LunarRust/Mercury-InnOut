@@ -20,7 +20,9 @@ var instance : PlayerHealthHandler
 @export var label : Label
 @export var manaLabel : Label
 @export var deathAnim : AnimationPlayer
+@export var DeathDest : PackedScene = load("res://Scenes/GameOver.tscn") as PackedScene
 @export var soundSource : AudioStreamPlayer
+var SignalBusKOM
 
 var Fader = load("res://addons/UniversalFade/Fade.gd")
 var MoverTestC = load("res://Scripts/MoverTest.cs") as Script
@@ -38,6 +40,7 @@ func _ready():
 	InvButton.open = false
 	instance = self
 	health = 9
+	SignalBusKOM = get_tree().get_first_node_in_group("SignalBusKOM")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,10 +50,19 @@ func _process(delta):
 		manaLabel.text = str(mana)
 	manaBar.frame = (9 - mana / 2)
 	mana = clamp(mana,1,16)
+	if Input.is_action_pressed("Run"):
+		RemoveMana()
+	else:
+		AddMana()
 	
 func AddMana():
 	if !Input.is_action_pressed("Run") && mana < 16:
 		mana += 1
+	manaTimer.start(0.3499999940395355)
+	
+func RemoveMana():
+	if Input.is_action_pressed("Run") && mana < 16:
+		mana -= 1
 	manaTimer.start(0.3499999940395355)
 	
 func changeHealth(amount : int):
@@ -78,17 +90,17 @@ func FaceCheck():
 		playerAnim["parameters/Normal2D/4/blend_position"] = health
 	if health > 6:
 		if playerBody != null:
-			playerBody.material_override = skin1
+			playerBody.mesh.surface_set_material(0,skin1)
 		faceSprite.frame = 0
 	elif health > 5:
 		if playerBody != null:
-			playerBody.material_override = skin2
+			playerBody.mesh.surface_set_material(0,skin2)
 		faceSprite.frame = 1
 	elif health > 3:
 		faceSprite.frame = 2
 	else:
 		if playerBody != null:
-			playerBody.material_override = skin3
+			playerBody.mesh.surface_set_material(0,skin3)
 		faceSprite.frame = 3
 		
 func staticHealth():
@@ -112,6 +124,7 @@ func healthCheck():
 		tween2.tween_property(lowHealthOverlay,"modulate",Color(1,1,1,0),2)
 
 func Death():
+	SignalBusKOM.emit_signal("Dead")
 	if playerAnim != null:
 		AnimTrigger("Death")
 	deathAnim.play("Death")
@@ -121,7 +134,7 @@ func Death():
 	CamCast.rotation = Vector3(0,0,1.5)
 	await get_tree().create_timer(4.199999809265137).timeout
 	Fade.crossfade_prepare(3,"WeirdWipe",false,false)
-	get_tree().change_scene_to_packed(load("res://Scenes/GameOver.tscn") as PackedScene)
+	get_tree().change_scene_to_packed(DeathDest)
 	Fade.crossfade_execute()
 	dead = false
 	print("You died, womp womp!")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cviuiq13larqe"]
+
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="1_l8w7s"]
+[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="2_0xg2o"]
+[ext_resource type="Script" path="res://Scripts/CreditsButton.gd" id="3_snmu1"]
+[ext_resource type="Texture2D" uid="uid://bwwavieqcbdar" path="res://Sprites/UI/Check.png" id="4_l6h3v"]
+
+[node name="Warning" type="ColorRect"]
+offset_left = 279.0
+offset_top = 249.0
+offset_right = 727.0
+offset_bottom = 405.0
+color = Color(0, 0, 0, 1)
+
+[node name="FinnStuff" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 27.0
+offset_right = 412.0
+offset_bottom = 113.0
+theme_override_colors/default_color = Color(1, 0.286275, 0.00784314, 1)
+theme_override_fonts/normal_font = ExtResource("1_l8w7s")
+bbcode_enabled = true
+text = "[center][wave]Warning!
+A Save File has been Detected.
+Starting a new game will delete the previous save file.
+Are you sure you want to restart?"
+
+[node name="Cancel" type="TextureButton" parent="." node_paths=PackedStringArray("creditsParent")]
+modulate = Color(0.443137, 0.262745, 0.105882, 1)
+layout_mode = 0
+offset_left = 261.0
+offset_top = 107.0
+offset_right = 301.0
+offset_bottom = 147.0
+texture_normal = ExtResource("2_0xg2o")
+script = ExtResource("3_snmu1")
+creditsParent = NodePath("..")
+
+[node name="Confirm" type="TextureButton" parent="."]
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
+layout_mode = 0
+offset_left = 149.0
+offset_top = 107.0
+offset_right = 189.0
+offset_bottom = 147.0
+texture_normal = ExtResource("4_l6h3v")
