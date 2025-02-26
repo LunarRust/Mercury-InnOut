@@ -1,6 +1,7 @@
 extends Node
 @export_category("Score Loader")
 var ScoreFile = ConfigFile.new()
+@export var EncryptionKey : String
 @export var listContainer : VBoxContainer
 @export var ScoresParent : Node2D
 @export var ScoreEntryPrefabRoot : PackedScene
@@ -17,7 +18,7 @@ var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var err = ScoreFile.load("user://Score.cfg")
+	var err = ScoreFile.load_encrypted_pass("user://Scores.Mercury",EncryptionKey)
 	if err != OK || !ScoreFile.has_section("ScoreFile_Data"):
 		print("Failed to load file!")
 		NoScoresLabel.show()
@@ -80,7 +81,7 @@ func loadScore():
 	
 func Delete():
 	ScoreFile.clear()
-	ScoreFile.save("user://Score.cfg")
+	ScoreFile.save_encrypted_pass("user://Scores.Mercury",EncryptionKey)
 	NoScoresLabel.show()
 	ScoresParent.hide()
 	BestScoreContainer.get_parent().hide()

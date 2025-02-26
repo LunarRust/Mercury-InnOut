@@ -118,6 +118,7 @@ shape = SubResource("BoxShape3D_w737o")
 [node name="ScoreTracker" type="Node" parent="." node_paths=PackedStringArray("ScoreLabel")]
 script = ExtResource("4_r6pjt")
 ScoreLabel = NodePath("../GUI/SubViewport/RichTextLabel")
+EncryptionKey = "t4tsexnastystyle"
 
 [node name="TimeSystem" type="Node" parent="." node_paths=PackedStringArray("date_time", "TimeLabel") groups=["TimeSystem"]]
 script = ExtResource("5_sirc1")

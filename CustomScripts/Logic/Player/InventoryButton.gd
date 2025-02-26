@@ -28,6 +28,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("menu_inventory"):
 		if !open:
 			Open()
+			if Speed < 1:
+				soundSource.pitch_scale = 2 + Speed
+			else:
+				soundSource.pitch_scale = Speed - 1
 		else:
 			Close()
 	if open:

@@ -50,10 +50,19 @@ func _process(delta):
 		manaLabel.text = str(mana)
 	manaBar.frame = (9 - mana / 2)
 	mana = clamp(mana,1,16)
+	if Input.is_action_pressed("Run"):
+		RemoveMana()
+	else:
+		AddMana()
 	
 func AddMana():
 	if !Input.is_action_pressed("Run") && mana < 16:
 		mana += 1
+	manaTimer.start(0.3499999940395355)
+	
+func RemoveMana():
+	if Input.is_action_pressed("Run") && mana < 16:
+		mana -= 1
 	manaTimer.start(0.3499999940395355)
 	
 func changeHealth(amount : int):
@@ -81,17 +90,17 @@ func FaceCheck():
 		playerAnim["parameters/Normal2D/4/blend_position"] = health
 	if health > 6:
 		if playerBody != null:
-			playerBody.material_override = skin1
+			playerBody.mesh.surface_set_material(0,skin1)
 		faceSprite.frame = 0
 	elif health > 5:
 		if playerBody != null:
-			playerBody.material_override = skin2
+			playerBody.mesh.surface_set_material(0,skin2)
 		faceSprite.frame = 1
 	elif health > 3:
 		faceSprite.frame = 2
 	else:
 		if playerBody != null:
-			playerBody.material_override = skin3
+			playerBody.mesh.surface_set_material(0,skin3)
 		faceSprite.frame = 3
 		
 func staticHealth():

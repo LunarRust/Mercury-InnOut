@@ -2,6 +2,7 @@ extends Node
 @export_category("Score Tracker")
 var ScoreFile = ConfigFile.new()
 @export var ScoreLabel : RichTextLabel
+@export var EncryptionKey : String
 var InnoutBus
 var SignalBusKOM
 var Clock
@@ -21,7 +22,7 @@ func ScoreUpdate():
 	ScoreLabel.text = "[shake rate=15][center]" + str(InnoutBus.Score)
 	
 func ScoreWrite():
-	var err = ScoreFile.load("user://Score.cfg")
+	var err = ScoreFile.load_encrypted_pass("user://Scores.Mercury",EncryptionKey)
 	if err != OK:
 		ScoreFile.set_value("Count","Amount",0)
 		ScoreFile.set_value("ScoreFile_Data", "Exists", true)
@@ -72,4 +73,4 @@ func ScoreWrite():
 	ScoreFile.set_value("Count","Amount",Count)
 	
 # Save it to a file (overwrite if already exists).
-	ScoreFile.save("user://Score.cfg")
+	ScoreFile.save_encrypted_pass("user://Scores.Mercury",EncryptionKey)

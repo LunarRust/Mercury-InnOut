@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1m1r3psoqh4d" path="res://CustomMercScenes/CustomScenes/MenuLabelBase.tscn" id="1_ybrmv"]
 [ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="3_fobxm"]
-[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="4_t3qcm"]
+[ext_resource type="Theme" uid="uid://bkrmgobma4l0y" path="res://Fonts/DBStyles.tres" id="4_t3qcm"]
 [ext_resource type="FontFile" uid="uid://dc2g2wno6tfur" path="res://Fonts/DBStylezButtons.ttf" id="5_2glsh"]
 [ext_resource type="Script" path="res://Scripts/ModFolderButton.cs" id="7_14lvp"]
 [ext_resource type="Script" path="res://Scripts/MapButton.gd" id="8_4q1nn"]
@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scenes/ProgressChanger.gd" id="10_p75uo"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderButton.gd" id="11_1u0cu"]
 [ext_resource type="Texture2D" uid="uid://bdhw4bysid07f" path="res://Sprites/UI/RefreshButton.png" id="11_626e0"]
-[ext_resource type="AudioStream" uid="uid://cnohmfrk4pxtj" path="res://Sounds/Pickup.ogg" id="11_17170"]
+[ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="11_17170"]
 [ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="12_w86w3"]
 [ext_resource type="Script" path="res://CustomScripts/SceneTransferButton.gd" id="14_ajnv3"]
 [ext_resource type="AudioStream" uid="uid://dv0ae3ncwwdpw" path="res://Sounds/Pickup2.ogg" id="15_55hpg"]
@@ -30,10 +30,8 @@
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="31_frqit"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e3uxk"]
-load_path = "res://.godot/imported/PsychopompFaceSmile.png-7ca17b8847f015f98da4b2597a9bb2cd.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gkel"]
-load_path = "res://.godot/imported/ButtonMenu.png-b7efe17fa0ad712b927cbc64afccd694.ctex"
 
 [sub_resource type="StyleBoxEmpty" id="7"]
 

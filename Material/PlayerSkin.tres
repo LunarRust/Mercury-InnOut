@@ -5,8 +5,5 @@
 [resource]
 cull_mode = 2
 albedo_texture = ExtResource("1")
-emission_enabled = true
-rim = 0.42
-rim_tint = 0.1
-subsurf_scatter_strength = 0.67
 texture_filter = 0
+texture_repeat = false

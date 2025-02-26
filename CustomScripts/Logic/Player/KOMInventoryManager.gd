@@ -66,12 +66,13 @@ func UseButton():
 	
 func OnItemDrop(item, offset):
 	#allows for dropping syringes on the main character's face. This wasn't originally intended, but a ton of players tried to use the syringes that way.
-	if ((offset.x > 64) && (offset.x < 180) && (offset.y < 375) && (offset.y > 250)):
-		OnItemActivate(item.get_ref())
-	else:
-		print(item.get_ref())
-		print(offset)
-		ItemCast(item)
+	###Disabled to stop getting in way of griddle
+	#if item.prototype_id == "Syringe1":
+		#if ((offset.x > 64) && (offset.x < 180) && (offset.y < 375) && (offset.y > 250)):
+			#OnItemActivate(item.get_ref())
+	print(item.get_ref())
+	print(offset)
+	ItemCast(item)
 
 	pass # Replace with function body.
 
