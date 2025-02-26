@@ -120,10 +120,15 @@ func _physics_process(delta):
 func running_handling(delta):
 	if (TargetEntity == null):
 		hostile = false
-		print("Ouchie wawa! There's no target for this enemy to chase! Trying to find one now.")
-		TargetEntity = TargetLocator("player")
+		print_rich("[color=red]" + str(self.name) + "[/color]: TargetEntity no longer present in tree. Changing target to player.")
+		if PreviousTarget != null:
+			TargetEntity = PreviousTarget
+		else:
+			TargetPlayer()
 		LookTarget = TargetEntity
 		DoLookAt = true
+		hostile = false
+		TargetIsItem = false
 		TargetIsCreature = true
 		
 	if TargetIsCreature:
@@ -133,7 +138,7 @@ func running_handling(delta):
 			attacking = true
 		if (position.distance_to(TargetEntity.position) > MaxDistance && attacking && !hurt):
 			handle_Move(delta)
-		elif !hurt:
+		elif hurt:
 			velocity = velocity.lerp(Vector3.ZERO, delta)
 		if AcknowledgeNVT:
 			if NavNodeTarget == null:
@@ -172,13 +177,14 @@ func running_handling(delta):
 		
 			
 	if TargetIsItem:
+		
 		if (position.distance_to(TargetEntity.position) > MaxDistance && !hurt):
 			handle_Move(delta)
-		elif !hurt:
+		elif hurt:
 			velocity = velocity.lerp(Vector3.ZERO, delta)
-		if (position.distance_to(TargetEntity.position) < MaxDistance):
+		if (position.distance_to(TargetEntity.position) < AttackDistance):
 			attackTimer += 1 * delta
-		if (attackTimer > attackThreshold && position.distance_to(TargetEntity.position) < MaxDistance):
+		if (attackTimer > attackThreshold && position.distance_to(TargetEntity.position) < AttackDistance):
 			GrabItem()
 			attackTimer = 0
 	
@@ -190,7 +196,6 @@ func running_handling(delta):
 	###
 	@warning_ignore("shadowed_variable")
 	var forwardVel = abs(velocity.dot(transform.basis.z)) + abs(velocity.dot(transform.basis.x))
-	forwardVel = forwardVel
 	if (position.distance_to(TargetEntity.position) < MaxDistance + 1.5):
 		speed = (nav_agent.distance_to_target() - 1)
 	else:
@@ -264,11 +269,6 @@ func GrabItem():
 	for i in get_all_children(TargetEntity):
 		if (i.has_method("Touch")):
 			i.Touch("AmNpc")
-	hostile = false
-	TargetIsItem = false
-	TargetEntity = PreviousTarget
-	NavNodeTarget = PreviousNavNodeTarget
-	LookTarget = player
 	#########################
 
 ####CHECK AND PERFORM SELF-PARAMS####
@@ -300,6 +300,7 @@ func FlashLightOn():
 func CheckGlobals():
 	if get_tree().get_first_node_in_group("NpcSceneRules") != null:
 		var NpcRules = get_tree().get_first_node_in_group("NpcSceneRules")
+		await  NpcRules.is_node_ready()
 		if !NpcRules.FlashLightsEnabled:
 			if FlashLight.visible:
 				FlashLightOff()
@@ -424,20 +425,23 @@ func ItemLocator():
 				print("Inventory is full!")
 				animTrigger("Shrug")
 				DoLookAt = false
-				NearestTarget = self
+				NearestTarget = null
+				TargetIsItem = false
 				PreviousTarget = TargetEntity
 				return NearestTarget
 	else:
 		print("Item is Null!")
 		animTrigger("Shrug")
 		hostile = false
+		TargetIsItem = false
 		DoLookAt = false
-		NearestTarget = self
+		NearestTarget = null
 		PreviousTarget = TargetEntity
 		return NearestTarget
 
 func LocateItem():
 	hostile = false
+	TargetIsItem = true
 	TargetEntity = ItemLocator()
 	
 func create_item(prototype_id: String) -> InventoryItem:
@@ -447,7 +451,11 @@ func create_item(prototype_id: String) -> InventoryItem:
 	return item
 
 func TargetEnimies():
+	attacking = true
 	Tset = true
+	TargetEntity = TargetLocator()
+	LookTarget = TargetEntity
+	DoLookAt = true
 	
 func KillSelf():
 	SignalBusKOM.PompNpcInstances.erase(InstID)
@@ -505,7 +513,8 @@ func find_closest_or_furthest(node: Object,group_name = "default",item = false, 
 		if group_name == "default" && item == true:
 			for i in get_all_children(get_tree().get_root()):
 				if "ItemID" in i:
-					PossibleTargets.append(i.get_parent())
+					if !("DoNotTarget" in i):
+						PossibleTargets.append(i.get_parent())
 			if !PossibleTargets.is_empty():
 				var target_group = PossibleTargets
 				var distance_away = node.global_transform.origin.distance_to(target_group[0].global_transform.origin)

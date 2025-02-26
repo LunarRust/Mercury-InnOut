@@ -32,7 +32,7 @@ func Packload():
 		var node : Node = Scene.instantiate()
 		get_tree().current_scene.add_child(node)
 		node.global_position = TargetLoc.get_collision_point()
-		print(node.get_tree_string_pretty())
+		#print(node.get_tree_string_pretty())
 		TargetLoc.get_collision_point()
 		node.SpawnerID = SpawnerID
 		node.AcknowledgeNVT = AcknowledgeNVT

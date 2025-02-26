@@ -20,11 +20,13 @@ var WaitingForOrder : bool = false
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
 	SignalBusInnOut = get_tree().get_first_node_in_group("InnOutSignalBus")
+	await SignalBusInnOut.is_node_ready()
 	if SignalBusInnOut.DoTimer == true:
 		ItemGen.ReadyToServeSignal.connect(BeginTimer)
 		ClockDisplay.text = "[shake rate=20][center]0"
 	else:
 		ClockDisplay.hide()
+	
 
 
 func NpcInvCheck():

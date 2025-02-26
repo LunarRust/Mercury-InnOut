@@ -27,7 +27,7 @@ func create():
 	else:
 		node.global_position = TargetLoc.global_position
 	node.position += LocOffset
-	print(node.get_tree_string_pretty())
+	#print(node.get_tree_string_pretty())
 	#TargetLoc.get_collision_point()
 	
 func Packload():
