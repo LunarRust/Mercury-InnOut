@@ -68,10 +68,15 @@ func Cast():
 			SoundSource.play()
 			await get_tree().create_timer(0.15000000596046448).timeout
 			if !dictionary.is_empty():
-				if (dictionary["collider"] as CollisionObject3D).has_node("HealthHandler"):
+				if (dictionary["collider"] as CollisionObject3D).has_node("HealthController"):
+					var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthController")
+					health.Hurt(HurtFor,true)
+					print("Hitting KOM creature")
+				elif (dictionary["collider"] as CollisionObject3D).has_node("HealthHandler"):
 					var health : Node = (dictionary["collider"] as CollisionObject3D).get_node("HealthHandler")
 					health.Hurt(HurtFor)
-					print("Hitting creature")
+					print("Hitting base game creature")
+					
 				else:
 					SoundSource.stream = ImpactSound
 					SoundSource.play()

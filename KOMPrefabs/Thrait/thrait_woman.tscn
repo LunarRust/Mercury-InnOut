@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_n7kor"]
 [ext_resource type="AudioStream" uid="uid://ceeqgi6kqmdhw" path="res://Sounds/NPCSound1.ogg" id="2_fe6yc"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="3_vdlcr"]
-[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="4_fxjlu"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="4_fxjlu"]
 [ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="4_v4p6n"]
 [ext_resource type="PackedScene" uid="uid://copi71jpyccwi" path="res://Models/Thrait.blend" id="5_23ryw"]
 [ext_resource type="Script" path="res://Scripts/ThraitBabyBehavior.cs" id="6_302xb"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xcfd"]
 

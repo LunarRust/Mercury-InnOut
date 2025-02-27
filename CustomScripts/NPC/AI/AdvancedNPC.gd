@@ -50,6 +50,9 @@ var TargetIsCreature : bool = true
 var TargetReached : bool = false
 var velV2 : Vector2
 var forwardVel : float
+@export var NewVelocity : Vector3
+@export var LastLocation : Vector3
+var direction : Vector3
 var PointNavrunning : bool
 var InstID
 var SignalBusKOM
@@ -138,7 +141,7 @@ func running_handling(delta):
 			attacking = true
 		if (position.distance_to(TargetEntity.position) > MaxDistance && attacking && !hurt):
 			handle_Move(delta)
-		elif hurt:
+		else:
 			velocity = velocity.lerp(Vector3.ZERO, delta)
 		if AcknowledgeNVT:
 			if NavNodeTarget == null:
@@ -180,7 +183,7 @@ func running_handling(delta):
 		
 		if (position.distance_to(TargetEntity.position) > MaxDistance && !hurt):
 			handle_Move(delta)
-		elif hurt:
+		else:
 			velocity = velocity.lerp(Vector3.ZERO, delta)
 		if (position.distance_to(TargetEntity.position) < AttackDistance):
 			attackTimer += 1 * delta
@@ -205,11 +208,13 @@ func running_handling(delta):
 	if (nav_agent.distance_to_target() < MaxDistance + 3.5 && nav_agent.distance_to_target() > MaxDistance):
 		if speed < 0.8:
 			speed = 0.8
-	velV2.y = forwardVel - 0.5
+	velV2.y = lerp(velV2.y,forwardVel - 0.5,delta * 2)
 	if velV2.y < 0:
 		velV2.y = 0
+	if self.position == LastLocation:
+		velocity = Vector3(0,0,0)
 	if DoLookAt:
-		velV2.x = find_rotation_to(self,LookTarget)
+		velV2.x = lerp(velV2.x,find_rotation_to(self,LookTarget),delta * 3)
 	else:
 		velV2.x = 0
 	if (animTree != null):
@@ -230,11 +235,13 @@ func update_target_location(target_location):
 	nav_agent.target_position = target_location
 	
 func handle_Move(delta):
-	var direction = Vector3()
 	nav_agent.target_position = TargetEntity.global_position
 	direction = nav_agent.get_next_path_position() - global_position
 	direction = direction.normalized()
+	
 	velocity = velocity.lerp(direction * speed, delta * acceleration)
+	NewVelocity = velocity
+	nav_agent.set_velocity_forced(NewVelocity)
 	#velocity = velocity.move_toward(direction * speed, .25)
 	var lookTarget = Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z)
 	var targetPos: Vector2 = Vector2(lookTarget.x, lookTarget.z)
@@ -245,6 +252,9 @@ func handle_Move(delta):
 	modelRoot.global_rotation.y = lerp_angle(modelRoot.global_rotation.y, atan2(modelDir.x, modelDir.y), delta * 4)
 	move_and_slide()
 ###########################
+func _on_navigation_agent_3d_velocity_computed(safe_velocity):
+	LastLocation = self.position
+	velocity = velocity + clamp(safe_velocity,Vector3(-0.15,0,-0.15),Vector3(0.15,0,0.15))
 	
 	
 ####INTERACTION METHODS####
@@ -566,3 +576,6 @@ func find_rotation_to(node1 : Node3D,node2 : Node3D,degree = false):
 		return angle_degrees
 	else:
 		return angle
+
+
+
