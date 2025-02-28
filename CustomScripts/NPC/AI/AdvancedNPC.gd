@@ -56,7 +56,7 @@ var direction : Vector3
 var PointNavrunning : bool
 var InstID
 var SignalBusKOM
-
+var instance
 var player
 var ActionOnArrive : int = 0
 @onready var SoundSource : AudioStreamPlayer3D = self.get_node("AudioStreamPlayer3D")
@@ -72,6 +72,7 @@ var InteractableObject = load("res://Scripts/InteractableObject.cs")
 var LightSound = preload("res://Sounds/FlashLight.ogg")
 
 func _ready():
+	instance = self
 	InstID = self.get_instance_id()
 	self.add_to_group(str(InstID))
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
@@ -219,7 +220,7 @@ func running_handling(delta):
 		velV2.x = 0
 	if (animTree != null):
 		animTree["parameters/Normal2D/blend_position"] = velV2
-		animTree["parameters/Normal2D/4/blend_position"] = float(HealthHandler.CoreHealthHandler.HP)
+		animTree["parameters/Normal2D/4/blend_position"] = float(HealthHandler.HP)
 		animTree["parameters/TalkBlend/blend_position"] = velV2
 	
 	DebugLabelParent.get_child(1).text = ("InstanceID " +  str(InstID))
@@ -254,7 +255,7 @@ func handle_Move(delta):
 ###########################
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	LastLocation = self.position
-	velocity = velocity + clamp(safe_velocity,Vector3(-0.15,0,-0.15),Vector3(0.15,0,0.15))
+	velocity = velocity + clamp(safe_velocity,Vector3(-0.10,0,-0.10),Vector3(0.10,0,0.10))
 	
 	
 ####INTERACTION METHODS####
@@ -279,6 +280,11 @@ func GrabItem():
 	for i in get_all_children(TargetEntity):
 		if (i.has_method("Touch")):
 			i.Touch("AmNpc")
+	hostile = false
+	TargetIsItem = false
+	TargetEntity = PreviousTarget
+	NavNodeTarget = PreviousNavNodeTarget
+	LookTarget = player
 	#########################
 
 ####CHECK AND PERFORM SELF-PARAMS####
@@ -469,7 +475,7 @@ func TargetEnimies():
 	
 func KillSelf():
 	SignalBusKOM.PompNpcInstances.erase(InstID)
-	self.get_node("NpcToNpcHealthHandler").Hurt(99999)
+	self.get_node("HealthController").Hurt(99999)
 	
 func TargetPlayer():
 	hostile = false

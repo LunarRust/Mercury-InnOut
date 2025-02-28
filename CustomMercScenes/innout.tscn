@@ -1,4 +1,4 @@
-[gd_scene load_steps=319 format=3 uid="uid://bnsf0wmclcn8f"]
+[gd_scene load_steps=325 format=3 uid="uid://bnsf0wmclcn8f"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/InnOutSignalBus.gd" id="1_cabgq"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_edl00"]
@@ -9,8 +9,11 @@
 [ext_resource type="Material" path="res://textures/Concrete06.tres" id="5_uxgsx"]
 [ext_resource type="PackedScene" uid="uid://csoxy0mwqqiht" path="res://CustomMercScenes/inn_out_menu.tscn" id="6_bceg5"]
 [ext_resource type="Material" uid="uid://d2mx7mk86kvkg" path="res://textures/Concrete03.tres" id="6_lp51y"]
+[ext_resource type="Texture2D" uid="uid://dd0v6opyk4v0e" path="res://Models/textures/PompTexture.png" id="6_tl7uy"]
+[ext_resource type="Texture2D" uid="uid://c8lgnrltnqdwj" path="res://Models/textures/PompTextureDamage1.png" id="7_k7574"]
 [ext_resource type="Material" path="res://textures/Flesh2.tres" id="7_m461l"]
 [ext_resource type="Material" path="res://textures/Grass1.tres" id="8_8tdxy"]
+[ext_resource type="Texture2D" uid="uid://cwojaxyfda0hr" path="res://Models/textures/PompTextureDamage2.png" id="8_nud8j"]
 [ext_resource type="Environment" uid="uid://dvbsbhb67hpin" path="res://CustomMercScenes/innout.tres" id="9_iiab8"]
 [ext_resource type="Material" path="res://textures/Window.tres" id="9_ij6kp"]
 [ext_resource type="PackedScene" uid="uid://dfnd2drrmwkyf" path="res://KOMPrefabs/NPCs/PompNpc.tscn" id="10_g40kn"]
@@ -27,23 +30,46 @@
 [ext_resource type="PackedScene" uid="uid://cnd41ygwjkosa" path="res://KOMPrefabs/Interactables/InnOut/Register.tscn" id="23_upf76"]
 [ext_resource type="PackedScene" uid="uid://crlxkf7rvm4e" path="res://KOMPrefabs/Interactables/cam_grabber.tscn" id="26_fsf04"]
 [ext_resource type="PackedScene" uid="uid://cp46x0ogan7h0" path="res://KOMPrefabs/Interactables/InnOut/food_tray.tscn" id="27_875ws"]
-[ext_resource type="Texture2D" uid="uid://b2n4t4eenb3cd" path="res://KOMSprites/Keyboard/keyboard_206.png" id="28_fvikg"]
+[ext_resource type="Texture2D" uid="uid://beeruwf8rqvpx" path="res://KOMSprites/Keyboard/keyboard_206.png" id="28_fvikg"]
 [ext_resource type="PackedScene" uid="uid://cxyisi7c13orx" path="res://KOMModels/innout/Fryer.tscn" id="28_xn888"]
 [ext_resource type="PackedScene" uid="uid://cqn0gyd1vcqh2" path="res://KOMModels/innout/Griddle.tscn" id="29_8b2gq"]
-[ext_resource type="Texture2D" uid="uid://bh6m2kfipropd" path="res://KOMSprites/Keyboard/keyboard_210.png" id="29_g3fsb"]
+[ext_resource type="Texture2D" uid="uid://dg5sx55iyk4m1" path="res://KOMSprites/Keyboard/keyboard_210.png" id="29_g3fsb"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/DriveThruCon.gd" id="30_7rwlu"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="31_nmv1o"]
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="32_fai3p"]
 [ext_resource type="PackedScene" uid="uid://ciryyfobi7dmd" path="res://KOMPrefabs/Thrait/thrait_albino.tscn" id="42_k2en5"]
 [ext_resource type="PackedScene" uid="uid://cj6nfviosnb4o" path="res://KOMPrefabs/Objects/wall_tv_Display.tscn" id="43_wy3wx"]
-[ext_resource type="Texture2D" uid="uid://o7yjytajcbf2" path="res://textures/glass_bright.png" id="45_gstyw"]
+[ext_resource type="Texture2D" uid="uid://h8eiphbtudkv" path="res://textures/glass_bright.png" id="45_gstyw"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="49_nbb8w"]
 [ext_resource type="AudioStream" uid="uid://bwf44cbb4w1uc" path="res://KOMSounds/speaker-buzz-82989.mp3" id="50_mn1gb"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="51_nba7k"]
 [ext_resource type="Material" uid="uid://wh62y6r1qr16" path="res://KOMShaders/Fire.tres" id="52_dtbe4"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="52_scrsn"]
-[ext_resource type="Texture2D" uid="uid://driq2dafkx6o1" path="res://KOMSprites/innout/FryPile.png" id="53_ka4si"]
+[ext_resource type="Texture2D" uid="uid://bote0nnsinsvg" path="res://KOMSprites/innout/FryPile.png" id="53_ka4si"]
 [ext_resource type="PackedScene" uid="uid://cvdfk0p6gjdfs" path="res://KOMPrefabs/Player/KOM_player_object.tscn" id="54_02isy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex6no"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = ExtResource("6_tl7uy")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43xgx"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = ExtResource("7_k7574")
+rim = 0.42
+rim_tint = 0.1
+subsurf_scatter_strength = 0.67
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sout0"]
+resource_local_to_scene = true
+cull_mode = 2
+albedo_texture = ExtResource("8_nud8j")
+rim = 0.42
+rim_tint = 0.1
+subsurf_scatter_strength = 0.67
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_m231j"]
 vertices = PackedVector3Array(0.227351, 0.928264, -2.42343, 0.227351, 0.928264, -1.32343, 4.28735, 0.928264, -1.32343, 4.28735, 0.928264, -2.42343)
@@ -1079,6 +1105,9 @@ transform = Transform3D(-1, 0, 8.74232e-08, 0, 1, 0, -8.74232e-08, 0, -1, 4.6101
 visible = false
 
 [node name="HealthHandler" parent="PlayerObject/UI Overlay/CanvasLayer/UIPARENT/UI" index="2"]
+skin1 = SubResource("StandardMaterial3D_ex6no")
+skin2 = SubResource("StandardMaterial3D_43xgx")
+skin3 = SubResource("StandardMaterial3D_sout0")
 DeathDest = ExtResource("6_bceg5")
 
 [node name="FlashLightButton" parent="PlayerObject/UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent" index="17"]
@@ -1088,42 +1117,37 @@ offset_right = -596.999
 offset_bottom = 220.996
 
 [node name="Skeleton3D" parent="PlayerObject/Player Model/PompRig" index="0"]
-bones/0/position = Vector3(7.70347e-09, 0.835259, -0.158666)
-bones/1/rotation = Quaternion(-0.0628926, 0.000945223, 0.00010601, 0.99802)
-bones/2/rotation = Quaternion(-0.143214, -0.119757, -0.0108263, 0.98236)
-bones/3/rotation = Quaternion(-0.00208961, -0.000164962, -0.000423867, 0.999998)
-bones/4/rotation = Quaternion(0.0298244, 2.17346e-15, 7.11069e-09, 0.999555)
-bones/5/rotation = Quaternion(0.164094, -0.249755, 0.0471989, 0.953136)
-bones/6/position = Vector3(0.0545147, 0.0797317, 0.0816877)
-bones/7/position = Vector3(0.0230063, 0.0752316, 0.100323)
-bones/13/position = Vector3(-0.00121736, 0.0723754, -0.0194993)
-bones/14/position = Vector3(-0.0616571, 0.0838455, 0.0810414)
-bones/15/position = Vector3(-0.0228247, 0.0752634, 0.100285)
-bones/16/position = Vector3(0.044953, 0.144398, 0.0368339)
-bones/16/scale = Vector3(0.714655, 0.714655, 0.714655)
-bones/17/position = Vector3(0.0694143, 0.121629, 0.0647931)
-bones/18/position = Vector3(-0.0694143, 0.121629, 0.0647931)
-bones/19/position = Vector3(-0.076619, 0.139619, 0.0238538)
-bones/19/scale = Vector3(0.714766, 0.714766, 0.714766)
-bones/20/position = Vector3(0.000533186, 0.0840561, 0.0940286)
-bones/21/position = Vector3(0.0688935, 0.167266, 0.0466656)
-bones/22/position = Vector3(-0.068893, 0.169481, 0.0473094)
-bones/22/rotation = Quaternion(0.574497, -0.00427106, -0.0029976, 0.81849)
-bones/23/rotation = Quaternion(-0.535559, -0.441949, -0.458366, 0.554759)
-bones/24/rotation = Quaternion(-0.415357, 0.714984, -0.404483, 0.39073)
-bones/25/rotation = Quaternion(0.195888, -0.137759, 0.00175132, 0.9709)
-bones/28/position = Vector3(0.00344562, 0.131277, -0.0413174)
-bones/28/rotation = Quaternion(-0.413034, -0.716634, 0.40587, 0.388725)
-bones/29/rotation = Quaternion(0.195369, 0.137276, -0.000454912, 0.971075)
-bones/30/rotation = Quaternion(-0.00711013, -0.0729187, 0.0929765, 0.992969)
-bones/35/rotation = Quaternion(0.960263, -6.26021e-08, 3.48131e-07, 0.279097)
-bones/36/rotation = Quaternion(0.370826, 6.49198e-09, 2.72281e-08, 0.928702)
-bones/37/rotation = Quaternion(-0.66261, 1.78567e-07, -3.15957e-07, 0.748964)
-bones/40/rotation = Quaternion(0.959275, -7.8263e-08, 1.09967e-07, 0.282475)
-bones/41/rotation = Quaternion(0.376258, -9.24343e-09, -3.42414e-08, 0.926515)
-bones/42/rotation = Quaternion(-0.66261, -1.78567e-07, 3.15957e-07, 0.748964)
+bones/0/position = Vector3(9.63205e-09, 0.820611, -0.158666)
+bones/2/rotation = Quaternion(-0.138122, -0.104005, -0.0116068, 0.984871)
+bones/3/rotation = Quaternion(-0.00210013, -0.000176881, -0.000423498, 0.999998)
+bones/5/rotation = Quaternion(0.165628, -0.238308, 0.0486127, 0.955727)
+bones/6/position = Vector3(0.0544951, 0.0796735, 0.0817077)
+bones/7/position = Vector3(0.0230367, 0.0752609, 0.100314)
+bones/13/position = Vector3(-0.00152079, 0.0720228, -0.020658)
+bones/14/position = Vector3(-0.0633778, 0.0847231, 0.0807993)
+bones/15/position = Vector3(-0.0228261, 0.0752977, 0.10027)
+bones/16/position = Vector3(0.0450176, 0.144393, 0.0368029)
+bones/16/scale = Vector3(0.714635, 0.714635, 0.714635)
+bones/17/position = Vector3(0.0694081, 0.121587, 0.0648054)
+bones/18/position = Vector3(-0.0694081, 0.121587, 0.0648054)
+bones/19/position = Vector3(-0.0765639, 0.139633, 0.0238853)
+bones/19/scale = Vector3(0.714763, 0.714763, 0.714763)
+bones/20/position = Vector3(0.000655737, 0.0836008, 0.0942074)
+bones/21/position = Vector3(0.0689051, 0.16754, 0.0466007)
+bones/22/position = Vector3(-0.0687365, 0.166396, 0.0483664)
+bones/24/rotation = Quaternion(-0.420252, 0.72193, -0.39358, 0.383797)
+bones/25/rotation = Quaternion(0.216613, -0.142097, 0.00364015, 0.965854)
+bones/28/position = Vector3(0.00348946, 0.131281, -0.0413155)
+bones/28/rotation = Quaternion(-0.415493, -0.724245, 0.395034, 0.383122)
+bones/29/rotation = Quaternion(0.21862, 0.140913, 0.00149406, 0.965581)
+bones/35/rotation = Quaternion(0.952526, -7.18117e-08, 3.4635e-07, 0.304458)
+bones/36/rotation = Quaternion(0.417463, 7.7117e-09, 2.59843e-08, 0.908694)
+bones/37/rotation = Quaternion(-0.684575, 1.73793e-07, -3.26431e-07, 0.728943)
+bones/40/rotation = Quaternion(0.953517, -7.93834e-08, 1.0836e-07, 0.30134)
+bones/41/rotation = Quaternion(0.422189, -1.08496e-08, -3.27948e-08, 0.906508)
+bones/42/rotation = Quaternion(-0.684575, -1.73793e-07, 3.26431e-07, 0.728943)
 
-[node name="FlashLightTPS" parent="PlayerObject" index="8"]
+[node name="FlashLightTPS" parent="PlayerObject" index="9"]
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -2440,46 +2464,46 @@ LookDescription = "lizard.	.."
 TouchDescription = "feels like Cane's sauce."
 
 [node name="Skeleton3D" parent="Thrait Albino/Thrait Young/Armature" index="0"]
-bones/0/position = Vector3(-1.70598e-08, 0.974297, 0.0494877)
+bones/0/position = Vector3(-1.84751e-08, 0.974473, 0.0495087)
 bones/0/rotation = Quaternion(0.374228, -1.10547e-07, -4.46115e-08, 0.927337)
 bones/1/rotation = Quaternion(0.0368758, 1.24146e-14, -8.79186e-09, 0.99932)
-bones/2/rotation = Quaternion(0.316084, -0.119291, 0.156093, 0.928168)
+bones/2/rotation = Quaternion(0.319232, -0.0844576, 0.110513, 0.937414)
 bones/3/rotation = Quaternion(-0.023332, -1.19065e-07, 1.94036e-08, 0.999728)
-bones/4/rotation = Quaternion(0.431787, 0.03538, 0.140303, 0.890294)
-bones/5/rotation = Quaternion(0.0797565, 0.0350143, -0.0298684, 0.995751)
-bones/7/position = Vector3(0.0702588, 0.279799, 0.10628)
+bones/4/rotation = Quaternion(0.434105, 0.0249346, 0.0988802, 0.895072)
+bones/5/rotation = Quaternion(0.100006, 0.0420313, -0.0358542, 0.993452)
+bones/7/position = Vector3(0.0702589, 0.280891, 0.110564)
 bones/8/rotation = Quaternion(-0.734234, -5.60875e-09, 8.70089e-07, 0.678896)
 bones/8/scale = Vector3(1, 0.25695, 1)
-bones/9/position = Vector3(0.0683681, 0.171332, 0.00842444)
+bones/9/position = Vector3(0.0684341, 0.171261, 0.008414)
 bones/9/scale = Vector3(0.792464, 0.792464, 0.792463)
-bones/10/position = Vector3(-0.0702586, 0.279799, 0.10628)
+bones/10/position = Vector3(-0.0702586, 0.280891, 0.110564)
 bones/11/rotation = Quaternion(-0.734234, 8.03699e-07, -5.18596e-09, 0.678896)
 bones/11/scale = Vector3(1, 0.25695, 1)
-bones/12/position = Vector3(-0.0683681, 0.171332, 0.0084246)
+bones/12/position = Vector3(-0.0684341, 0.171261, 0.00841419)
 bones/12/scale = Vector3(0.792464, 0.792464, 0.792463)
 bones/13/rotation = Quaternion(0.297837, 0.0652871, -0.729319, 0.612474)
-bones/14/rotation = Quaternion(0.387421, -0.0635063, -0.0199625, 0.919496)
+bones/14/rotation = Quaternion(0.387439, -0.0634603, -0.0198854, 0.919494)
 bones/15/rotation = Quaternion(0.123018, 0.307445, 0.272414, 0.903402)
 bones/16/rotation = Quaternion(0.149465, 0.0111215, 0.136538, 0.979231)
 bones/17/rotation = Quaternion(0.129105, -0.0135471, -0.011818, 0.991468)
 bones/19/rotation = Quaternion(-0.489503, 0.475102, 0.604935, -0.410754)
-bones/21/rotation = Quaternion(0.387421, 0.0635063, 0.0199625, 0.919496)
+bones/21/rotation = Quaternion(0.387439, 0.0634603, 0.0198854, 0.919494)
 bones/22/rotation = Quaternion(0.123018, -0.307445, -0.272414, 0.903402)
 bones/23/rotation = Quaternion(0.149465, -0.0111215, -0.136538, 0.979231)
 bones/24/rotation = Quaternion(0.129105, 0.0135471, 0.0118179, 0.991468)
 bones/26/rotation = Quaternion(0.489503, 0.475102, 0.604934, 0.410754)
 bones/28/rotation = Quaternion(-0.122532, -2.18122e-14, 5.84275e-08, 0.992465)
-bones/29/rotation = Quaternion(0.272811, -7.7746e-09, -8.03614e-08, 0.962068)
-bones/30/rotation = Quaternion(0.168411, -3.40281e-09, -4.12814e-08, 0.985717)
+bones/29/rotation = Quaternion(0.2693, 3.22554e-10, -1.30474e-07, 0.963056)
+bones/30/rotation = Quaternion(0.18743, -4.20002e-09, -4.12079e-08, 0.982278)
 bones/31/rotation = Quaternion(0.117241, -3.4768e-13, -5.59046e-08, 0.993104)
-bones/33/rotation = Quaternion(0.615158, -0.123136, -0.355666, 0.692762)
-bones/34/rotation = Quaternion(0.246882, 0.0785012, -0.744175, 0.615703)
-bones/35/rotation = Quaternion(-0.107504, -9.12696e-08, 0.500663, 0.858941)
-bones/36/rotation = Quaternion(-0.15246, 1.16415e-07, 0.710032, 0.687467)
-bones/39/rotation = Quaternion(0.615158, 0.123136, 0.355666, 0.692762)
-bones/40/rotation = Quaternion(0.246882, -0.0785011, 0.744175, 0.615703)
-bones/41/rotation = Quaternion(-0.107504, 8.14907e-08, -0.500663, 0.858941)
-bones/42/rotation = Quaternion(-0.15246, -6.51926e-09, -0.710032, 0.687467)
+bones/33/rotation = Quaternion(0.615165, -0.123125, -0.355675, 0.692754)
+bones/34/rotation = Quaternion(0.24688, 0.0784977, -0.744149, 0.615736)
+bones/35/rotation = Quaternion(-0.10748, -9.17353e-08, 0.500549, 0.85901)
+bones/36/rotation = Quaternion(-0.152447, 1.15484e-07, 0.709971, 0.687532)
+bones/39/rotation = Quaternion(0.615165, 0.123125, 0.355675, 0.692754)
+bones/40/rotation = Quaternion(0.24688, -0.0784976, 0.744149, 0.615736)
+bones/41/rotation = Quaternion(-0.10748, 8.5216e-08, -0.500549, 0.85901)
+bones/42/rotation = Quaternion(-0.152447, -7.45058e-09, -0.709972, 0.687532)
 
 [node name="Body" parent="Thrait Albino/Thrait Young/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = null
