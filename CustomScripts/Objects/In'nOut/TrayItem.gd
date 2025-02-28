@@ -89,7 +89,6 @@ func StatusEmit():
 	emited = true
 	ItemTaken.emit()
 
-# Called when the node enters the scene tree for the first time.
 func Packload():
 		node = Scene.instantiate()
 		get_tree().current_scene.add_child(node)

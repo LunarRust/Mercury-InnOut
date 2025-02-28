@@ -27,6 +27,7 @@ var speed : float
 @export var acceleration: float = 5
 @export var MaxDistanceDef : float = 1.5
 var MaxDistance : float
+@export var NavUpdateInterval : float = 1
 
 @export_category("Attack Data")
 @export var attackThreshold : float = 1.5
@@ -46,7 +47,7 @@ var running : bool = false
 var hurt : bool = false
 var Tset : bool = false
 var TargetIsItem : bool = false
-var TargetIsCreature : bool = true
+var TargetIsCreature : bool = false
 var TargetReached : bool = false
 var velV2 : Vector2
 var forwardVel : float
@@ -58,20 +59,17 @@ var InstID
 var SignalBusKOM
 var instance
 var player
+var RandFloat : float
+var PathFindClock : float
 var ActionOnArrive : int = 0
 @onready var SoundSource : AudioStreamPlayer3D = self.get_node("AudioStreamPlayer3D")
-
-
-
-var playerHealth = load("res://Scripts/PlayerHealthHandler.cs")
-var playerMover = load("res://Scripts/MoverTest.cs")
-var Interactions = load("res://Scripts/Interactions.cs")
-var InteractableObject = load("res://Scripts/InteractableObject.cs")
 @onready var playerHealthInstance = get_tree().get_first_node_in_group("PlayerHealthHandler")
 
 var LightSound = preload("res://Sounds/FlashLight.ogg")
 
 func _ready():
+	RandFloat = randf_range(-0.2,0.2)
+	PathFindClock = RandFloat
 	instance = self
 	InstID = self.get_instance_id()
 	self.add_to_group(str(InstID))
@@ -83,22 +81,24 @@ func _ready():
 	speed = MaxSpeed
 	SignalBusKOM.Activate_Pomp_Target.connect(TargetEnimies)
 	SignalBusKOM.Activate_Player_Target.connect(TargetPlayer)
+	SignalBusKOM.Light_Toggle.connect(FlashLightToggle)
 	SignalBusKOM.Kill_pomp.connect(KillSelf)
 	SignalBusKOM.Item_Grab.connect(LocateItem)
-	SignalBusKOM.Light_Toggle.connect(FlashLightToggle)
 	SignalBusKOM.Light_On.connect(FlashLightOn)
 	SignalBusKOM.Light_Off.connect(FlashLightOff)
 	SignalBusKOM.NavToPoint.connect(NavToPoint)
 	SignalBusKOM.ItemSpef.connect(NavToItem)
 	SignalBusKOM.TargetCreature.connect(TargetCreature)
 	nav_agent.target_desired_distance = MaxDistance
-	if (TargetEntity == null):
-		print("Ouchie wawa! There's no defined player object for this enemy to chase! Trying to find one now.")
-		TargetEntity = get_tree().get_first_node_in_group("player")
-		running = true
-	else:
-		running = true
+	#if (TargetEntity == null):
+		#print("Ouchie wawa! There's no defined player object for this enemy to chase! Trying to find one now.")
+		#TargetEntity = get_tree().get_first_node_in_group("player")
+		#running = true
+	#else:
+	running = true
 	CheckGlobals()
+	DebugLabelParent.get_child(1).text = ("InstanceID " +  str(InstID))
+		
 	
 		
 func _physics_process(delta):
@@ -115,26 +115,10 @@ func _physics_process(delta):
 				hostile = false
 				DoLookAt = false
 				TargetEntity = TargetLocator("NpcMarker",1.2)
-		#get_tree().get_first_node_in_group("PompNpcStats").get_node("TargetLabel").set_text("Target is: [color=red]" + str(TargetEntity.name) + "[/color]")
-		#get_tree().get_first_node_in_group("PompNpcStats").get_node("TargetLabel2").set_text("AttackTimer: [color=red]" + str(snapped(attackTimer,0.01)) + "[/color]")
-		#get_tree().get_first_node_in_group("PompNpcStats").get_node("TargetLabel3").set_text("Distance: [color=red]" + str(snapped(position.distance_to(TargetEntity.position),0.01)) + "[/color]")
 		running_handling(delta)
 		
 
 func running_handling(delta):
-	if (TargetEntity == null):
-		hostile = false
-		print_rich("[color=red]" + str(self.name) + "[/color]: TargetEntity no longer present in tree. Changing target to player.")
-		if PreviousTarget != null:
-			TargetEntity = PreviousTarget
-		else:
-			TargetPlayer()
-		LookTarget = TargetEntity
-		DoLookAt = true
-		hostile = false
-		TargetIsItem = false
-		TargetIsCreature = true
-		
 	if TargetIsCreature:
 		if !TargetEntity.is_in_group("player") && !TargetEntity.is_in_group("PompNPC"):
 			hostile = true
@@ -179,8 +163,7 @@ func running_handling(delta):
 			TargetReached = false
 		
 		
-			
-	if TargetIsItem:
+	elif TargetIsItem:
 		
 		if (position.distance_to(TargetEntity.position) > MaxDistance && !hurt):
 			handle_Move(delta)
@@ -191,13 +174,16 @@ func running_handling(delta):
 		if (attackTimer > attackThreshold && position.distance_to(TargetEntity.position) < AttackDistance):
 			GrabItem()
 			attackTimer = 0
+	else:
+		TargetFallback()
 	
+	AnimAndVelocity(delta)
 	
-	####MOVEMENT HANDLING####
-	###
-	### Calculations based on speed, velocity and Distance to nav target
-	### Uses these values to determine animation blend positions
-	###
+####MOVEMENT HANDLING##############
+###Calculations based on speed, velocity and Distance to nav target
+### Uses these values to determine animation blend positions
+###################################
+func AnimAndVelocity(delta):
 	@warning_ignore("shadowed_variable")
 	var forwardVel = abs(velocity.dot(transform.basis.z)) + abs(velocity.dot(transform.basis.x))
 	if (position.distance_to(TargetEntity.position) < MaxDistance + 1.5):
@@ -223,21 +209,24 @@ func running_handling(delta):
 		animTree["parameters/Normal2D/4/blend_position"] = float(HealthHandler.HP)
 		animTree["parameters/TalkBlend/blend_position"] = velV2
 	
-	DebugLabelParent.get_child(1).text = ("InstanceID " +  str(InstID))
-	DebugLabelParent.get_child(0).text = ("Speed:  " +  str(speed))
-	DebugLabelParent.get_child(2).text =("velocity: " +  str(velV2.y))
 	if speed > 1.2:
 		AttackDistance = 3
 	else:
 		AttackDistance = AttackDistanceDefault
 	
-
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 	
+###################################
+### Nav Targeting,Velocity, and modelroot rotation
+###################################
 func handle_Move(delta):
+	PathFindClock += delta
 	nav_agent.target_position = TargetEntity.global_position
-	direction = nav_agent.get_next_path_position() - global_position
+	if PathFindClock > NavUpdateInterval:
+		direction = nav_agent.get_next_path_position() - global_position
+		PathFindClock = RandFloat
+		
 	direction = direction.normalized()
 	
 	velocity = velocity.lerp(direction * speed, delta * acceleration)
@@ -252,14 +241,15 @@ func handle_Move(delta):
 	var modelDir = -(modelPos - targetPos)
 	modelRoot.global_rotation.y = lerp_angle(modelRoot.global_rotation.y, atan2(modelDir.x, modelDir.y), delta * 4)
 	move_and_slide()
-###########################
+
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	LastLocation = self.position
 	velocity = velocity + clamp(safe_velocity,Vector3(-0.10,0,-0.10),Vector3(0.10,0,0.10))
 	
 	
-####INTERACTION METHODS####
-
+###################################
+###INTERACTION METHODS
+###################################
 func Attack():
 	if (anim != null && TargetEntity.has_node("HealthHandler")):
 		animTrigger(attackName)
@@ -282,13 +272,14 @@ func GrabItem():
 			i.Touch("AmNpc")
 	hostile = false
 	TargetIsItem = false
+	TargetIsCreature = true
 	TargetEntity = PreviousTarget
 	NavNodeTarget = PreviousNavNodeTarget
 	LookTarget = player
-	#########################
 
-####CHECK AND PERFORM SELF-PARAMS####
-
+###################################
+###CHECK AND PERFORM SELF-PARAMS
+###################################
 func FlashLightToggle():
 	animTrigger("Flashlight");
 	SoundSource.stream = LightSound
@@ -305,14 +296,17 @@ func FlashLightOff():
 	SoundSource.play()
 	FlashLight.visible = false
 	print_rich("Flashlight toggled: [color=red]" + "OFF" + "[/color]")
-	
+
 func FlashLightOn():
 	animTrigger("Flashlight");
 	SoundSource.stream = LightSound
 	SoundSource.play()
 	FlashLight.visible = true
 	print_rich("Flashlight toggled: [color=red]" + "ON" + "[/color]")
-	
+
+###################################
+###
+###################################
 func CheckGlobals():
 	if get_tree().get_first_node_in_group("NpcSceneRules") != null:
 		var NpcRules = get_tree().get_first_node_in_group("NpcSceneRules")
@@ -329,9 +323,8 @@ func CheckGlobals():
 				
 
 ###################################
-###
 ### Function from hell.
-###			
+###################################	
 func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distance : float,Action : int,LookTargetFromBus : String):
 	if id == InstID || id == 000:
 		AcknowledgeNVT = true
@@ -348,9 +341,10 @@ func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distanc
 			DoLookAt = true
 		else:
 			DoLookAt = false
-###
+			
+###################################
 ### This makes me sad, Surley there is a way around having a function with 6 required arguments.
-###
+###################################
 func TargetCreature(id : int,doLook : bool,TargetEntityFromSignalBus : String,distance : float,LookTargetFromBus : String, isHostile : bool):
 	TargetEntity = TargetLocator(TargetEntityFromSignalBus)
 	AcknowledgeNVT = false
@@ -366,16 +360,23 @@ func TargetCreature(id : int,doLook : bool,TargetEntityFromSignalBus : String,di
 		DoLookAt = false
 	TargetIsCreature = true
 	TargetIsItem = false
-		
+	
+###################################
+###
+###################################
 func NavToItem(id : int,NavNodeTargetFromSignalBus : Node,Action : int):
 	if id == InstID || id == 000:
 		AcknowledgeNVT = false
 		PreviousNavNodeTarget = NavNodeTarget
+		PreviousTarget = TargetEntity
 		NavNodeTarget = NavNodeTargetFromSignalBus
 		ActionOnArrive = Action
 		MaxDistance = 1
 		TargetEntity = ItemLocator()
 
+###################################
+###
+###################################
 func ArrivalAction(action : int):
 	match action:
 		1:
@@ -395,6 +396,9 @@ func ArrivalAction(action : int):
 		_:
 			pass
 
+###################################
+###
+###################################
 func TargetLocator(SpefTarget = "default",MaxDist = MaxDistanceDef):
 	var NearestTarget
 	if MaxDist != MaxDistanceDef:
@@ -425,6 +429,25 @@ func TargetLocator(SpefTarget = "default",MaxDist = MaxDistanceDef):
 		PreviousTarget = TargetEntity
 		return NearestTarget
 
+###################################
+###
+###################################
+func TargetFallback():
+	hostile = false
+	print_rich("[color=red]" + str(self.name) + "[/color]: TargetEntity no longer present in tree. Changing target to player.")
+	if PreviousTarget != null:
+		TargetEntity = PreviousTarget
+	else:
+		TargetPlayer()
+	LookTarget = TargetEntity
+	DoLookAt = true
+	hostile = false
+	TargetIsItem = false
+	TargetIsCreature = true
+
+###################################
+###
+###################################
 func ItemLocator():
 	var NearestTarget
 	DoLookAt = true
@@ -443,6 +466,7 @@ func ItemLocator():
 				DoLookAt = false
 				NearestTarget = null
 				TargetIsItem = false
+				TargetIsCreature = false
 				PreviousTarget = TargetEntity
 				return NearestTarget
 	else:
@@ -450,33 +474,51 @@ func ItemLocator():
 		animTrigger("Shrug")
 		hostile = false
 		TargetIsItem = false
+		TargetIsCreature = false
 		DoLookAt = false
 		NearestTarget = null
 		PreviousTarget = TargetEntity
 		return NearestTarget
 
+###################################
+###
+###################################
 func LocateItem():
 	hostile = false
 	TargetIsItem = true
 	TargetEntity = ItemLocator()
-	
+
+###################################
+###
+###################################
 func create_item(prototype_id: String) -> InventoryItem:
 	var item: InventoryItem = InventoryItem.new()
 	item.protoset = InvManager.inv.item_protoset
 	item.prototype_id = prototype_id
 	return item
 
+###################################
+###
+###################################
 func TargetEnimies():
 	attacking = true
 	Tset = true
 	TargetEntity = TargetLocator()
 	LookTarget = TargetEntity
+	if TargetEntity == self:
+		LookTarget = player
 	DoLookAt = true
 	
+###################################
+###
+###################################
 func KillSelf():
 	SignalBusKOM.PompNpcInstances.erase(InstID)
 	self.get_node("HealthController").Hurt(99999)
 	
+###################################
+###
+###################################
 func TargetPlayer():
 	hostile = false
 	TargetIsCreature = true
@@ -486,6 +528,10 @@ func TargetPlayer():
 	TargetEntity = get_tree().get_first_node_in_group("player")
 	LookTarget = TargetEntity
 	
+
+###################################
+###Yikes. would like to compress this function down.
+###################################
 func find_closest_or_furthest(node: Object,group_name = "default",item = false, get_closest:= true) -> Object:
 	@warning_ignore("unassigned_variable")
 	var PossibleTargets : Array
@@ -550,7 +596,10 @@ func find_closest_or_furthest(node: Object,group_name = "default",item = false, 
 		else:
 			animTrigger("Shrug")
 			return null
-			
+
+###################################
+###
+###################################
 func animTrigger(triggername : String):
 	animTree["parameters/conditions/" + triggername] = true;
 	await get_tree().create_timer(0.1).timeout
@@ -562,6 +611,10 @@ func get_all_children(in_node, array := []):
 		array = get_all_children(child, array)
 	return array
 
+
+###################################
+###I needed chatGPT to help me write this. I have brought dishonor to my family.
+###################################
 func find_rotation_to(node1 : Node3D,node2 : Node3D,degree = false):
 	var pos1 = node1.global_transform.origin
 	var pos2 = node2.global_transform.origin

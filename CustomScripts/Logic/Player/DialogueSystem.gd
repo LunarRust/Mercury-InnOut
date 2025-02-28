@@ -1,7 +1,7 @@
 extends Node3D
 @export_category("DialogueSystem")
 @export var npcName : String
-@export_multiline var Dialogue : String
+@export_multiline var Dialogue : Array[String]
 @export_multiline var LookDescription : String
 @export_multiline var TouchDescription : String
 @export var soundSource : AudioStreamPlayer3D
@@ -15,8 +15,11 @@ var lookTarget : Vector3
 @export var Distance : bool = true
 var parentnode : Node3D
 var ActionButtonMaster : Node
+var RandNum : RandomNumberGenerator
+var num : int
 
 func _ready():
+	RandNum = RandomNumberGenerator.new()
 	DialogueBox = get_tree().get_first_node_in_group("DialogueBox")
 	PlayerObject = get_tree().get_first_node_in_group("player")
 	ActionButtonMaster = get_tree().get_first_node_in_group("InteractionButtonKOMMaster")
@@ -50,11 +53,12 @@ func  DialogueProcessing():
 			OpenDialogue()
 
 		2:
+			num = RandNum.randi_range(0,Dialogue.size() - 1)
 			if soundSource != null && DialogueSound != null:
 				soundSource.stream = DialogueSound
 				soundSource.play()
 			DialogueBox.get_node("NameText").text = npcName
-			DialogueBox.get_node("MainText").text = Dialogue
+			DialogueBox.get_node("MainText").text = Dialogue[num]
 			DialogueBox.get_node("FaceSprite").texture = faceSprite
 			OpenDialogue()
 
