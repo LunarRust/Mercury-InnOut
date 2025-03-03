@@ -42,24 +42,24 @@ func Hurt(amount : int,doShake : bool = false):
 	print(HP)
 	if doShake == true:
 		shake.Shake(0.08)
-	#SkinCheck()
+	SkinCheck()
 
-###
-###TODO: This function changes the material for all instances of the NPC.
-###
+###################################
+###Change NPC's material based on Health
+###################################
 func SkinCheck():
 	if HP > 7:
 		if Body != null:
 			Skin0 = Skin0.duplicate()
-			Body.mesh.surface_set_material(0,Skin0)
+			Body.set_surface_override_material(0,Skin0)
 	elif HP > 5:
 		if Body != null:
 			Skin1 = Skin1.duplicate()
-			Body.mesh.surface_set_material(0,Skin1)
+			Body.set_surface_override_material(0,Skin1)
 	else:
 		if Body != null:
 			Skin2 = Skin2.duplicate()
-			Body.mesh.surface_set_material(0,Skin2)
+			Body.set_surface_override_material(0,Skin2)
 
 func Death():
 	var node : Node = gibRoot.instantiate()

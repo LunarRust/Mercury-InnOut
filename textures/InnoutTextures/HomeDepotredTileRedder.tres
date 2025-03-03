@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cl7j3tjklcu38"]
+
+[ext_resource type="Texture2D" uid="uid://nctdsnh7b1at" path="res://textures/InnoutTextures/HomeDepotredTileRedder.jpg" id="1_qwaj2"]
+
+[resource]
+albedo_texture = ExtResource("1_qwaj2")
+metallic_specular = 0.0
+texture_filter = 2

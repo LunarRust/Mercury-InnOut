@@ -33,10 +33,6 @@ func Reached(id : int):
 		
 		currentMark = null
 		currentID = null
-	else:
-		if self.is_in_group("Respawn"):
-			SignalBusKOM.emit_signal("CreateNpc",currentNPC.SpawnerID)
-		currentNPC.KillSelf()
 
 func find_closest_or_furthest(node: Object,group_name,get_closest:= true) -> Object:
 	@warning_ignore("unassigned_variable")

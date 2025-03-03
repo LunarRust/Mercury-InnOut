@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bw7oavbfwucoy"]
 
 [ext_resource type="Material" path="res://Material/BloodParticle.tres" id="1"]
-[ext_resource type="Script" path="res://Scripts/bloodsplatter.cs" id="2"]
-[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="3"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/Objects/BloodSplatter.gd" id="2_db1jq"]
+[ext_resource type="AudioStream" uid="uid://cndtsa78dgq1r" path="res://Sounds/Gore02.ogg" id="3"]
 
 [sub_resource type="Curve" id="Curve_kkwtc"]
 min_value = -360.0
@@ -42,7 +42,7 @@ explosiveness = 1.0
 transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_rqlxh")
 draw_pass_1 = SubResource("QuadMesh_i0uvj")
-script = ExtResource("2")
+script = ExtResource("2_db1jq")
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3")
