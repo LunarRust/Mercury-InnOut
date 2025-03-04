@@ -125,7 +125,7 @@ func BeginTimer():
 		ClockDisplay.show()
 	else:
 		ClockDisplay.hide()
-	OrderClock = 0.0
+	OrderClock = SignalBusInnOut.OrderWaitLimit + randf_range(-10,20)
 	WaitingForOrder = true
 	FallBackSpawnClock = 0.0
 	currentNPC = find_closest_or_furthest(PosRefrence,"PompNPC")
@@ -134,7 +134,7 @@ func BeginTimer():
 func NpcLost():
 	SignalBusInnOut.Score += TotalItems
 	SignalBusInnOut.emit_signal("ScoreChanged")
-	OrderClock = 0.0
+	OrderClock = SignalBusInnOut.OrderWaitLimit + randf_range(-10,20)
 	WaitingForOrder = false
 	ItemGen.Clear()
 
@@ -142,9 +142,10 @@ func _process(delta):
 	if WaitingForOrder:
 		if currentNPC == null:
 			NpcLost()
-		OrderClock += delta
+		if SignalBusInnOut.DoTimer:
+			OrderClock -= delta
 		ClockDisplay.text = "[shake rate=20][center]" + str(snapped(OrderClock,1))
-		if OrderClock >= SignalBusInnOut.OrderWaitLimit:
+		if OrderClock <= 0.0:
 			ClockDisplay.add_theme_color_override("default_color",Color(1, 0.15294100344181, 0.25490200519562))
 			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
 			WaitingForOrder = false

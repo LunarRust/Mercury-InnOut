@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" path="res://Material/BloodParticle.tres" id="1"]
 [ext_resource type="Script" path="res://Scripts/bloodsplatter.cs" id="2_pudgv"]
-[ext_resource type="AudioStream" uid="uid://cnq4ok8ggd6bs" path="res://Sounds/Gore02.ogg" id="3"]
+[ext_resource type="AudioStream" uid="uid://cndtsa78dgq1r" path="res://Sounds/Gore02.ogg" id="3"]
 
 [sub_resource type="Curve" id="Curve_kkwtc"]
 min_value = -360.0
