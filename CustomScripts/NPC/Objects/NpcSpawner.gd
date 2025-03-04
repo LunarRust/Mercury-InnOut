@@ -16,13 +16,13 @@ var SignalBusKOM
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
+	await SignalBusKOM.is_node_ready()
 	SignalBusKOM.CreateNpc.connect(Spawn)
 	await get_tree().create_timer(0.3).timeout
 	if SpawnOnLoad:
 		await get_tree().create_timer(SpawnDelay).timeout
 		Packload()
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func Spawn(ID):
 	if ID == SpawnerID:

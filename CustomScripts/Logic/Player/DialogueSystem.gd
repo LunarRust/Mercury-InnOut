@@ -2,6 +2,7 @@ extends Node3D
 @export_category("DialogueSystem")
 @export var npcName : String
 @export_multiline var Dialogue : Array[String]
+@export var DialogueVA : Array[AudioStream]
 @export_multiline var LookDescription : String
 @export_multiline var TouchDescription : String
 @export var soundSource : AudioStreamPlayer3D
@@ -54,9 +55,11 @@ func  DialogueProcessing():
 
 		2:
 			num = RandNum.randi_range(0,Dialogue.size() - 1)
-			if soundSource != null && DialogueSound != null:
-				soundSource.stream = DialogueSound
+			if DialogueVA.size() - 1 >= num:
+				soundSource.stream = DialogueVA[num]
 				soundSource.play()
+			else:
+				soundSource.stream = null
 			DialogueBox.get_node("NameText").text = npcName
 			DialogueBox.get_node("MainText").text = Dialogue[num]
 			DialogueBox.get_node("FaceSprite").texture = faceSprite

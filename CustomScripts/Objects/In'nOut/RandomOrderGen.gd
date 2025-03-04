@@ -50,6 +50,7 @@ func Clear():
 	
 func Generate(ID):
 	if ID == GenID:
+		ReadyForOrder(GenID)
 		inv.clear()
 		ItemListGen()
 		for i in RelevantItems:

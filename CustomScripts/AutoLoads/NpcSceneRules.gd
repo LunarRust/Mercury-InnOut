@@ -11,9 +11,9 @@ func _ready():
 	err = DebugFile.load("user://KOM_Debug.cfg")
 	if err != OK || !DebugFile.has_section("NPCOptions"):
 		print("Failed to load file!")
-		DebugFile.set_value("NPCOptions","AllowPlayerControl",true)
-		DebugFile.set_value("NPCOptions","InventoryVisible",false)
-		DebugFile.set_value("NPCOptions","FlashLightsEnabled",true)
+		DebugFile.set_value("NPCOptions","AllowPlayerControl",false)
+		DebugFile.set_value("NPCOptions","InventoryVisible",true)
+		DebugFile.set_value("NPCOptions","FlashLightsEnabled",false)
 		DebugFile.save("user://KOM_Debug.cfg")
 	
 	if DebugFile.get_value("NPCOptions","AllowPlayerControl") == true:

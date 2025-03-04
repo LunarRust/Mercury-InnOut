@@ -1436,5 +1436,5 @@ stream = ExtResource("11_17170")
 [connection signal="pressed" from="SaveDataButtonsParent/ProgressClearButton" to="SaveDataButtonsParent/ProgressClearButton/AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" method="_on_pressed"]
 [connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Down" method="_down"]
-[connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" method="_on_pressed"]
 [connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" method="_up"]
+[connection signal="pressed" from="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" to="SaveDataButtonsParent/SetEmeraldCount/ColorRect/Up" method="_on_pressed"]

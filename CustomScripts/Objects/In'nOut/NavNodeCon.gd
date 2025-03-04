@@ -8,9 +8,6 @@ func _ready():
 	InnoutBus = get_tree().get_first_node_in_group("InnOutSignalBus")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func Reached(id : int):
 	RegisterOrderGen.Generate(GeneratorID)

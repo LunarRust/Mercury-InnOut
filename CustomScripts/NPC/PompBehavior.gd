@@ -1,7 +1,7 @@
 @icon("res://Sprites/iconsmile128Gold.png")
 
 extends Node
-
+var SignalBusKOM
 @export var anim : AnimationTree
 @export var PompAI : Node3D
 @export var dialogue : Node3D
@@ -11,7 +11,9 @@ extends Node
 
 var InteractionButton = load("res://Scripts/InteractionButton.cs")
 @onready var DialogueBox = get_tree().get_first_node_in_group("DialogueBox")
-
+func _ready():
+	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
+	
 func StartAttack(name : StringName):
 	print(name)
 	if name == "Angry":
@@ -36,6 +38,7 @@ func Hurt():
 		AnimTrigger("Hurt")
 		await get_tree().create_timer(1).timeout
 		#PompAI.set("hurt", false)
+		SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
 
 	
 

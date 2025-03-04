@@ -6,9 +6,11 @@ extends Node3D
 @export_category("Assignments")
 @export var CoreHealthHandler : Node3D
 @export var DialogueSystem : Node3D
+@export var SoundSource : AudioStreamPlayer3D
 var shake
 @export var gibRoot = preload("res://prefabs/blood_splatter.tscn")
 @export var gibRoot2 = preload("res://prefabs/blood_splatter2.tscn")
+@export var HurtSound : AudioStream = load("res://Sounds/Gore02.ogg") as AudioStream
 @export_category("Skins")
 @export var Body : MeshInstance3D
 @export var Skin0 : StandardMaterial3D
@@ -37,6 +39,8 @@ func Hurt(amount : int,doShake : bool = false):
 		#var node = gib2.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
 		get_node("/root").add_child(node)
 		node.global_position = self.global_position
+		SoundSource.stream = HurtSound
+		SoundSource.play()
 	print("Hurt for " + str(amount))
 	HP -= amount
 	print(HP)
