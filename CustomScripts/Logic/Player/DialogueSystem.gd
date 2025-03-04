@@ -69,6 +69,8 @@ func  DialogueProcessing():
 					soundSource.play()
 				else:
 					soundSource.stream = null
+				if DialogueVA.is_empty():
+					soundSource.stream = DialogueSound
 				DialogueBox.get_node("NameText").text = npcName
 				DialogueBox.get_node("MainText").text = Dialogue[num]
 				DialogueBox.get_node("FaceSprite").texture = faceSprite
