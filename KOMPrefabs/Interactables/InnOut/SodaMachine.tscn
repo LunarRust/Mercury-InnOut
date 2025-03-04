@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bd0bywbdswd36"]
+[gd_scene load_steps=8 format=3 uid="uid://dq76dvwj2h1p0"]
 
-[ext_resource type="Texture2D" uid="uid://dqlm1w4i5pt00" path="res://KOMSprites/innout/VendingMachineSkinsCropped.jpg" id="1_a3uil"]
+[ext_resource type="Texture2D" uid="uid://f04vp1a4pie6" path="res://KOMSprites/innout/VendingMachineSkinsCropped.jpg" id="1_a3uil"]
 [ext_resource type="Script" path="res://CustomScripts/Behavior/VendingMachineBehavior.gd" id="1_rjyhn"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_w7ucc"]
-[ext_resource type="AudioStream" uid="uid://chbbwlv8b0kby" path="res://KOMSounds/Vending.ogg" id="2_de6qb"]
+[ext_resource type="AudioStream" uid="uid://cvx8n0c3d5yjc" path="res://KOMSounds/Vending.ogg" id="2_de6qb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgkyb"]
 albedo_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
@@ -25,7 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_w7ucc")
 npcName = "Vending Machine"
 Dialogue = Array[String](["The electrical hum of the condenser is rather comforting."])
-LookDescription = Array[String](["You wonder how much money these things really make...", "Staring into the vending machine, you can feel it begin to stare back. It's gaze is icy."])
+LookDescription = Array[String](["You wonder how much money these things really make...", "Staring into the vending machine, you feel it begin to stare back. It's gaze is icy."])
 TouchDescription = Array[String](["Feels cold, dirty, and cruel.", "You can feel the contamination of every being who has ever touched this vending machine on you're hands."])
 DoTouch = false
 soundSource = NodePath("DialoguePlayer")
@@ -66,4 +66,5 @@ spot_angle = 31.15
 
 [node name="VendingSoundPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.0999382, 0.503471)
-volume_db = -15.0
+volume_db = -25.0
+max_distance = 5.0

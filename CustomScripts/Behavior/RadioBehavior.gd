@@ -12,17 +12,21 @@ func _ready():
 		DebugFile.save("user://KOM_Debug.cfg")
 	UserStream = load_mp3("user://radio.mp3")
 	SoundPlayer.stream = UserStream
-	UserStream.loop = true
-	if DebugFile.get_value("Interactables_Options","RadioPlaying") == true:
-		SoundPlayer.play()
-	else:
-		SoundPlayer.stream_paused = true
+	if SoundPlayer.stream != null:
+		UserStream.loop = true
+		if DebugFile.get_value("Interactables_Options","RadioPlaying") == true:
+			SoundPlayer.play()
+		else:
+			SoundPlayer.stream_paused = true
 
 func load_mp3(path):
 	var file = FileAccess.open(path, FileAccess.READ)
-	var sound = AudioStreamMP3.new()
-	sound.data = file.get_buffer(file.get_length())
-	return sound
+	if file != null:
+		var sound = AudioStreamMP3.new()
+		sound.data = file.get_buffer(file.get_length())
+		return sound
+	else:
+		return null
 	
 	
 func Touch():

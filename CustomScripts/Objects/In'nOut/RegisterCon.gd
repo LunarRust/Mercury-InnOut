@@ -183,4 +183,4 @@ func _on_pressed():
 
 
 func _on_behavior_item_taken():
-	OrderClock -= 10
+	OrderClock += 15
