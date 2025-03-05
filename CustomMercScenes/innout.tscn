@@ -5795,6 +5795,7 @@ autoplay = true
 
 [node name="PlayerObject" parent="." instance=ExtResource("54_02isy")]
 transform = Transform3D(-1, 0, 8.74232e-08, 0, 1, 0, -8.74232e-08, 0, -1, 4.61016, 2.01855, -7.27149)
+visible = false
 
 [node name="FlashLightFPS" parent="PlayerObject/Head/SpringArm3D Z/MainCamera" index="0"]
 visible = false
@@ -5812,40 +5813,40 @@ offset_right = -596.999
 offset_bottom = 220.996
 
 [node name="Skeleton3D" parent="PlayerObject/Player Model/PompRig" index="0"]
-bones/0/position = Vector3(4.06225e-09, 0.865848, -0.158666)
+bones/0/position = Vector3(8.932e-09, 0.824939, -0.158666)
 bones/1/rotation = Quaternion(-0.0628926, 0.000945223, 0.00010601, 0.99802)
-bones/2/rotation = Quaternion(-0.0778211, -0.00780837, 0.00154782, 0.996936)
-bones/3/rotation = Quaternion(-0.0589003, -0.0645482, 0.00283894, 0.996171)
+bones/2/rotation = Quaternion(-0.0778222, -0.00782876, 0.00155035, 0.996935)
+bones/3/rotation = Quaternion(-0.104334, -0.116043, 0.00856597, 0.987712)
 bones/4/rotation = Quaternion(0.0298244, 2.17346e-15, 7.11069e-09, 0.999555)
-bones/5/rotation = Quaternion(0.00476623, -0.229979, 0.052317, 0.971777)
-bones/6/position = Vector3(0.05067, 0.0683086, 0.0855511)
-bones/7/position = Vector3(0.028086, 0.0801224, 0.0987775)
-bones/13/position = Vector3(-3.93259e-05, 0.0737445, -0.0150011)
-bones/14/position = Vector3(-0.04988, 0.0671633, 0.0858684)
-bones/15/position = Vector3(-0.0228519, 0.0759159, 0.0999937)
-bones/16/position = Vector3(0.0539727, 0.151724, 0.0375892)
-bones/16/scale = Vector3(0.714267, 0.714267, 0.714267)
-bones/17/position = Vector3(0.0691999, 0.120207, 0.0652139)
-bones/18/position = Vector3(-0.0691999, 0.120207, 0.0652139)
-bones/19/position = Vector3(-0.0548314, 0.151585, 0.0372113)
-bones/19/scale = Vector3(0.714713, 0.714713, 0.714713)
+bones/5/rotation = Quaternion(-0.0881715, -0.346828, 0.0567865, 0.932047)
+bones/6/position = Vector3(0.0497461, 0.06541, 0.0863488)
+bones/7/position = Vector3(0.0325783, 0.0844477, 0.0974102)
+bones/13/position = Vector3(-3.45945e-05, 0.07375, -0.0149831)
+bones/14/position = Vector3(-0.0497282, 0.0653927, 0.0863799)
+bones/15/position = Vector3(-0.0228713, 0.0763822, 0.0997854)
+bones/16/position = Vector3(0.0544564, 0.154922, 0.036459)
+bones/16/scale = Vector3(0.714222, 0.714222, 0.714221)
+bones/17/position = Vector3(0.0689016, 0.118231, 0.0657991)
+bones/18/position = Vector3(-0.0689017, 0.118231, 0.0657991)
+bones/19/position = Vector3(-0.0547432, 0.154758, 0.036292)
+bones/19/scale = Vector3(0.714707, 0.714707, 0.714707)
 bones/20/position = Vector3(1.32419e-05, 0.0859879, 0.09327)
-bones/21/position = Vector3(0.0694254, 0.179861, 0.0436815)
+bones/21/position = Vector3(0.0694288, 0.179941, 0.0436625)
 bones/22/position = Vector3(-0.0694537, 0.180529, 0.0435233)
 bones/22/rotation = Quaternion(0.574497, -0.00427106, -0.0029976, 0.81849)
 bones/23/rotation = Quaternion(-0.535559, -0.441949, -0.458366, 0.554759)
-bones/24/rotation = Quaternion(-0.352934, 0.612472, -0.508949, 0.49121)
-bones/25/rotation = Quaternion(0.199395, -0.173096, 0.0146183, 0.964399)
-bones/28/position = Vector3(0.0114443, 0.132005, -0.0409624)
-bones/28/rotation = Quaternion(-0.382637, -0.647994, 0.468118, 0.463205)
-bones/29/rotation = Quaternion(0.201895, 0.171621, -0.00878386, 0.964213)
+bones/24/rotation = Quaternion(-0.334815, 0.627817, -0.491581, 0.502088)
+bones/25/rotation = Quaternion(0.383373, -0.240561, 0.026915, 0.891309)
+bones/28/position = Vector3(0.0206232, 0.13284, -0.0405552)
+bones/28/rotation = Quaternion(-0.403508, -0.695835, 0.399973, 0.439337)
+bones/29/rotation = Quaternion(0.381992, 0.240318, -0.0269653, 0.891965)
 bones/30/rotation = Quaternion(-0.00711013, -0.0729187, 0.0929765, 0.992969)
-bones/35/rotation = Quaternion(0.972511, -4.47933e-08, 3.50634e-07, 0.232856)
-bones/36/rotation = Quaternion(0.262291, 3.33826e-09, 2.78236e-08, 0.964989)
-bones/37/rotation = Quaternion(-0.614363, 1.88118e-07, -2.92951e-07, 0.789023)
-bones/40/rotation = Quaternion(0.973536, -7.08104e-08, 1.13971e-07, 0.228533)
-bones/41/rotation = Quaternion(0.258523, -4.87264e-09, -3.31346e-08, 0.966005)
-bones/42/rotation = Quaternion(-0.614363, -1.88118e-07, 2.92951e-07, 0.789023)
+bones/35/rotation = Quaternion(0.956112, -6.76456e-08, 3.47186e-07, 0.293002)
+bones/36/rotation = Quaternion(0.404865, 7.56943e-09, 2.7467e-08, 0.914376)
+bones/37/rotation = Quaternion(-0.676674, 1.75543e-07, -3.22664e-07, 0.736282)
+bones/40/rotation = Quaternion(0.954419, -8.04189e-08, 1.0866e-07, 0.298469)
+bones/41/rotation = Quaternion(0.401351, -9.87615e-09, -3.23923e-08, 0.915925)
+bones/42/rotation = Quaternion(-0.676675, -1.75543e-07, 3.22664e-07, 0.736282)
 
 [node name="FlashLightTPS" parent="PlayerObject" index="9"]
 visible = false
@@ -7500,28 +7501,28 @@ HP = 999999
 npcName = "Customer"
 
 [node name="Skeleton3D" parent="Thrait Albino/Thrait Young/Armature" index="0"]
-bones/0/position = Vector3(-1.23677e-08, 0.98767, 0.0510924)
-bones/2/rotation = Quaternion(0.314632, -0.133022, 0.174059, 0.923588)
-bones/4/rotation = Quaternion(0.427679, 0.0396181, 0.157109, 0.889291)
-bones/5/rotation = Quaternion(0.0188253, 0.0138778, -0.0118382, 0.999656)
-bones/7/position = Vector3(0.0702588, 0.280053, 0.107278)
-bones/9/position = Vector3(0.0697547, 0.169848, 0.00820548)
-bones/9/scale = Vector3(0.850987, 0.850987, 0.850987)
-bones/10/position = Vector3(-0.0702587, 0.280053, 0.107278)
-bones/12/position = Vector3(-0.0697548, 0.169848, 0.00820566)
-bones/12/scale = Vector3(0.850987, 0.850987, 0.850987)
-bones/14/rotation = Quaternion(0.390345, -0.0558645, -0.00716116, 0.918945)
-bones/21/rotation = Quaternion(0.390345, 0.0558645, 0.00716115, 0.918945)
-bones/29/rotation = Quaternion(0.221012, -4.98683e-09, -7.34919e-08, 0.975271)
-bones/30/rotation = Quaternion(0.1175, -1.27548e-09, -4.14018e-08, 0.993073)
-bones/33/rotation = Quaternion(0.623123, -0.108506, -0.366415, 0.682411)
-bones/34/rotation = Quaternion(0.244718, 0.0752217, -0.72023, 0.644766)
-bones/35/rotation = Quaternion(-0.106018, -1.0198e-07, 0.493743, 0.863121)
-bones/36/rotation = Quaternion(-0.150292, 1.29454e-07, 0.699935, 0.698214)
-bones/39/rotation = Quaternion(0.623123, 0.108506, 0.366415, 0.682411)
-bones/40/rotation = Quaternion(0.244718, -0.0752217, 0.72023, 0.644766)
-bones/41/rotation = Quaternion(-0.106019, 1.02911e-07, -0.493743, 0.863121)
-bones/42/rotation = Quaternion(-0.150292, -7.45058e-09, -0.699935, 0.698215)
+bones/0/position = Vector3(-1.62103e-08, 0.974192, 0.0494751)
+bones/2/rotation = Quaternion(0.31442, -0.133986, 0.175321, 0.923282)
+bones/4/rotation = Quaternion(0.43055, 0.0398339, 0.157965, 0.887743)
+bones/5/rotation = Quaternion(0.0666623, 0.0304749, -0.0259961, 0.996971)
+bones/7/position = Vector3(0.0702588, 0.279317, 0.104388)
+bones/9/position = Vector3(0.0683285, 0.171374, 0.00843071)
+bones/9/scale = Vector3(0.792464, 0.792464, 0.792463)
+bones/10/position = Vector3(-0.0702586, 0.279317, 0.104388)
+bones/12/position = Vector3(-0.0683285, 0.171374, 0.00843085)
+bones/12/scale = Vector3(0.792464, 0.792464, 0.792463)
+bones/14/rotation = Quaternion(0.38741, -0.0635339, -0.0200088, 0.919498)
+bones/21/rotation = Quaternion(0.38741, 0.0635339, 0.0200088, 0.919498)
+bones/29/rotation = Quaternion(0.268754, -8.59859e-09, -7.31573e-08, 0.963209)
+bones/30/rotation = Quaternion(0.156891, -2.92059e-09, -4.13183e-08, 0.987616)
+bones/33/rotation = Quaternion(0.615155, -0.123144, -0.355661, 0.692767)
+bones/34/rotation = Quaternion(0.246884, 0.0785034, -0.74419, 0.615684)
+bones/35/rotation = Quaternion(-0.107519, -8.89413e-08, 0.50073, 0.8589)
+bones/36/rotation = Quaternion(-0.152468, 1.10827e-07, 0.710068, 0.687428)
+bones/39/rotation = Quaternion(0.615155, 0.123143, 0.355661, 0.692767)
+bones/40/rotation = Quaternion(0.246883, -0.0785033, 0.744191, 0.615684)
+bones/41/rotation = Quaternion(-0.107519, 7.59028e-08, -0.50073, 0.8589)
+bones/42/rotation = Quaternion(-0.152468, 1.86265e-09, -0.710068, 0.687428)
 
 [node name="Clothes" parent="Thrait Albino/Thrait Young/Armature/Skeleton3D" index="1"]
 surface_material_override/0 = null
@@ -7590,7 +7591,7 @@ ThunderSounds = Array[AudioStream]([ExtResource("58_b4s87"), ExtResource("59_ntm
 RainParticles = [NodePath("TutorialSetUp/GPUParticles3D"), NodePath("TutorialSetUp2/GPUParticles3D"), NodePath("TutorialSetUp2/GPUParticles3D2"), NodePath("TutorialSetUp2/GPUParticles3D3")]
 ThunderFlashesParent = NodePath("FlickerLights")
 ActiveChance = 3
-MinimumThunderDelay = 20.0
+MinimumThunderDelay = 5.0
 
 [node name="Rain0" type="AudioStreamPlayer3D" parent="RainParent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0153456, 4.55203, 18.6106)

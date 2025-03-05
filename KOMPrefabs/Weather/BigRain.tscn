@@ -1,9 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvo5ss58fjjsv"]
-
-[ext_resource type="Texture2D" uid="uid://c2hdi3po6xxps" path="res://Weather/industrial_sunset_puresky_4k.exr" id="1_8vi21"]
+[gd_scene load_steps=10 format=3 uid="uid://bvo5ss58fjjsv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3sony"]
-panorama = ExtResource("1_8vi21")
 
 [sub_resource type="Sky" id="Sky_ug3vl"]
 sky_material = SubResource("PanoramaSkyMaterial_3sony")
@@ -50,7 +47,7 @@ use_particle_trails = true
 material = SubResource("StandardMaterial3D_elyy2")
 curve = SubResource("Curve_jge44")
 
-[node name="Rain_FX_Tutorial" type="Node3D"]
+[node name="BigRain" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_nyb1n")
