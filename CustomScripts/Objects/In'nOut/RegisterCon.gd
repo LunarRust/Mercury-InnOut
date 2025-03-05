@@ -17,7 +17,7 @@ var OrderClock : float = 0.0
 @export var ClockDisplay : RichTextLabel
 var WaitingForOrder : bool = false
 var FallBackSpawnClock : float = 0.0
-var SpawnerID
+var NpcHasExisted : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
@@ -129,7 +129,7 @@ func BeginTimer():
 	WaitingForOrder = true
 	FallBackSpawnClock = 0.0
 	currentNPC = find_closest_or_furthest(PosRefrence,"PompNPC")
-	SpawnerID = currentNPC.SpawnerID
+	NpcHasExisted = true
 	
 func NpcLost():
 	SignalBusInnOut.Score += TotalItems
@@ -140,6 +140,7 @@ func NpcLost():
 
 func _process(delta):
 	if WaitingForOrder:
+		FallBackSpawnClock = 0.0
 		if currentNPC == null:
 			NpcLost()
 		if SignalBusInnOut.DoTimer:
@@ -150,10 +151,12 @@ func _process(delta):
 			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
 			WaitingForOrder = false
 	else:
-		FallBackSpawnClock += delta
-		if FallBackSpawnClock >= 30:
-			FallBackSpawnClock = 0.0
-			SignalBusKOM.emit_signal("CreateNpc",SpawnerID)
+		if NpcHasExisted:
+			if currentNPC == null:
+				FallBackSpawnClock += delta
+				if FallBackSpawnClock >= 30:
+					FallBackSpawnClock = 0.0
+					SignalBusKOM.emit_signal("CreateNpc",ItemGen.GenID)
 
 func _on_pressed():
 	if ItemGen.ReadyToServe == true:

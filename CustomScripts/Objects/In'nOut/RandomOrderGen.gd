@@ -53,6 +53,21 @@ func Generate(ID):
 		ReadyForOrder(GenID)
 		inv.clear()
 		ItemListGen()
+		ItemsInInvDictionary.keys().shuffle()
+		RelevantItems.keys().shuffle()
+		var items
+		while items == 0:
+			for i in RelevantItems.values():
+				items += i
+			if items == 0:
+				ItemListGen()
+		
+		#var keys = RelevantItems.keys()
+		## shuffle the keys
+		#keys.shuffle()
+		## index the dictionary with shuffled keys
+		#while not keys.is_empty():
+			#print(RelevantItems[keys.pop_back()])
 		for i in RelevantItems:
 			var count = 1
 			var InvFull = false
@@ -80,20 +95,22 @@ func Generate(ID):
 			if  RelevantItems[i.prototype_id]:
 				print(str(i.prototype_id) + " " + str(RelevantItems[i.prototype_id]))
 				ItemCounts[i.prototype_id] += 1
-				
 func ItemListGen():
 	#print_rich("InvItemsList:[color=red] " + str(InvItemsList) + "[/color]")
 	RandList = generate_sum_array(InvFreeSpace,1,3)
 	var iterant = -1
 	for i in ItemCounts:
 		iterant += 1
-		ItemCounts[i] = RandList[iterant]
+		ItemCounts[i] = randi_range(0,3)
+	ItemCounts.keys().shuffle()
 	#print_rich("InvCounts:[color=red] " + str(ItemCounts) + "[/color]")
+	InvItemsList.keys().shuffle()
 	for i in InvItemsList:
 		for ii in ItemCounts.size():
 			if i == ItemCounts.keys()[ii]:
 				print(str(i) + " matches " + str(ItemCounts.keys()[ii]))
 				RelevantItems[i] = ItemCounts.values()[ii]
+	RelevantItems.keys().sort()
 			
 	
 	Labels.get_child(2).set_text("Items:[color=red] " + str(RelevantItems) + "[/color]")

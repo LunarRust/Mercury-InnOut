@@ -1,6 +1,7 @@
 extends Node
 @export var Scene : PackedScene
 @export var TargetLoc : RayCast3D
+@export var TargetRegister : TextureButton
 @export var distance : float
 @export var ArrivalAction : int = 0
 @export var AcknowledgeNVT : bool = true
@@ -41,6 +42,7 @@ func Packload():
 	TargetLoc.get_collision_point()
 	node.SpawnerID = SpawnerID
 	node.AcknowledgeNVT = AcknowledgeNVT
+	TargetRegister.currentNPC = node
 
 	await get_tree().create_timer(0.1).timeout
 
