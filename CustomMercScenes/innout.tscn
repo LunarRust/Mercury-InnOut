@@ -1,4 +1,4 @@
-[gd_scene load_steps=458 format=3 uid="uid://bnsf0wmclcn8f"]
+[gd_scene load_steps=471 format=3 uid="uid://bnsf0wmclcn8f"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/InnOutSignalBus.gd" id="1_cabgq"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_edl00"]
@@ -69,6 +69,14 @@
 [ext_resource type="Texture2D" uid="uid://dxm30tht0pq2b" path="res://Models/SmallPipe_0.png" id="67_w8fd8"]
 [ext_resource type="Texture2D" uid="uid://dhn6j0okop72k" path="res://Models/BigPipe_0.png" id="68_uabu3"]
 [ext_resource type="Texture2D" uid="uid://cqsbu54p1hyks" path="res://Models/BigPipe3_0.png" id="69_1r1hp"]
+[ext_resource type="Material" uid="uid://bv3n43nuolqjk" path="res://Material/BloodParticle.tres" id="70_jqemh"]
+[ext_resource type="PackedScene" uid="uid://qlu3fc72dykb" path="res://Models/Wetfloor.glb" id="71_vqlxe"]
+[ext_resource type="PackedScene" uid="uid://ctoytmb5i5mao" path="res://Models/TV Set.glb" id="72_pdmil"]
+[ext_resource type="Texture2D" uid="uid://1ywysqvkuq4v" path="res://KOMSprites/Paper/WantedPosterVenus.png" id="73_2qsl3"]
+[ext_resource type="Material" uid="uid://b2q8quyis51mr" path="res://KOMShaders/CRT.tres" id="74_3um8q"]
+[ext_resource type="Texture2D" uid="uid://0eyk37hoo024" path="res://KOMMaterials/green.PNG" id="75_bt1hd"]
+[ext_resource type="Script" path="res://Scripts/tabletpage.cs" id="76_b5m2q"]
+[ext_resource type="AudioStream" uid="uid://uoct5ltxpx3u" path="res://Sounds/Bookturn.wav" id="77_lpkvm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex6no"]
 resource_local_to_scene = true
@@ -5937,6 +5945,50 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_obiwy")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_la20p"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("67_w8fd8")
+metallic = 0.381818
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_plj4q"]
+_surfaces = [{
+"aabb": AABB(-0.19653, -1.66675, -0.689113, 0.393061, 3.3335, 0.895764),
+"format": 34896613377,
+"index_count": 150,
+"index_data": PackedByteArray(16, 0, 1, 0, 15, 0, 15, 0, 1, 0, 0, 0, 17, 0, 2, 0, 16, 0, 16, 0, 2, 0, 1, 0, 1, 0, 2, 0, 7, 0, 5, 0, 1, 0, 7, 0, 18, 0, 3, 0, 17, 0, 17, 0, 3, 0, 2, 0, 19, 0, 4, 0, 18, 0, 18, 0, 4, 0, 3, 0, 8, 0, 9, 0, 13, 0, 13, 0, 9, 0, 14, 0, 4, 0, 0, 0, 9, 0, 9, 0, 0, 0, 6, 0, 0, 0, 1, 0, 6, 0, 6, 0, 1, 0, 5, 0, 2, 0, 3, 0, 7, 0, 7, 0, 3, 0, 8, 0, 3, 0, 4, 0, 9, 0, 8, 0, 3, 0, 9, 0, 5, 0, 7, 0, 10, 0, 10, 0, 7, 0, 12, 0, 9, 0, 6, 0, 14, 0, 14, 0, 6, 0, 11, 0, 7, 0, 8, 0, 12, 0, 12, 0, 8, 0, 13, 0, 6, 0, 5, 0, 11, 0, 11, 0, 5, 0, 10, 0, 22, 0, 17, 0, 16, 0, 20, 0, 22, 0, 16, 0, 29, 0, 24, 0, 28, 0, 28, 0, 24, 0, 23, 0, 21, 0, 15, 0, 24, 0, 24, 0, 15, 0, 19, 0, 20, 0, 16, 0, 21, 0, 21, 0, 16, 0, 15, 0, 23, 0, 18, 0, 22, 0, 22, 0, 18, 0, 17, 0, 24, 0, 19, 0, 18, 0, 23, 0, 24, 0, 18, 0, 27, 0, 22, 0, 25, 0, 25, 0, 22, 0, 20, 0, 26, 0, 21, 0, 29, 0, 29, 0, 21, 0, 24, 0, 28, 0, 23, 0, 27, 0, 27, 0, 23, 0, 22, 0, 25, 0, 20, 0, 26, 0, 26, 0, 20, 0, 21, 0, 15, 0, 0, 0, 19, 0, 19, 0, 0, 0, 4, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray(255, 127, 134, 227, 254, 255, 0, 0, 0, 0, 134, 227, 47, 215, 0, 0, 228, 48, 134, 227, 41, 149, 0, 0, 26, 207, 134, 227, 41, 149, 0, 0, 255, 255, 134, 227, 47, 215, 0, 0, 0, 0, 7, 245, 12, 150, 0, 0, 255, 127, 255, 255, 12, 150, 0, 0, 228, 48, 73, 227, 12, 150, 0, 0, 26, 207, 73, 227, 12, 150, 0, 0, 254, 255, 7, 245, 12, 150, 0, 0, 0, 0, 7, 245, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 228, 48, 73, 227, 0, 0, 0, 0, 26, 207, 73, 227, 0, 0, 0, 0, 254, 255, 7, 245, 0, 0, 0, 0, 255, 127, 120, 28, 254, 255, 0, 0, 0, 0, 120, 28, 47, 215, 0, 0, 228, 48, 120, 28, 41, 149, 0, 0, 26, 207, 120, 28, 41, 149, 0, 0, 255, 255, 120, 28, 47, 215, 0, 0, 0, 0, 246, 10, 12, 150, 0, 0, 255, 127, 0, 0, 12, 150, 0, 0, 228, 48, 181, 28, 12, 150, 0, 0, 26, 207, 181, 28, 12, 150, 0, 0, 254, 255, 246, 10, 12, 150, 0, 0, 0, 0, 246, 10, 0, 0, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 228, 48, 181, 28, 0, 0, 0, 0, 26, 207, 181, 28, 0, 0, 0, 0, 254, 255, 246, 10, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pdte1"]
+resource_name = "SmallPipe_mesh"
+_surfaces = [{
+"aabb": AABB(-0.19653, -1.66675, -0.689113, 0.393061, 3.3335, 0.895764),
+"attribute_data": PackedByteArray(166, 187, 255, 80, 8, 150, 255, 80, 254, 159, 255, 80, 142, 170, 255, 80, 142, 170, 176, 159, 139, 182, 255, 80, 139, 182, 255, 80, 190, 204, 255, 80, 190, 204, 176, 159, 8, 150, 255, 80, 78, 215, 255, 80, 254, 159, 136, 67, 254, 159, 223, 159, 27, 182, 136, 67, 166, 187, 25, 59, 166, 187, 223, 159, 142, 170, 223, 159, 142, 170, 223, 159, 27, 182, 46, 81, 27, 182, 46, 81, 190, 204, 223, 159, 190, 204, 223, 159, 27, 182, 136, 67, 78, 215, 136, 67, 78, 215, 223, 159, 254, 159, 220, 128, 255, 255, 136, 67, 166, 187, 220, 128, 142, 170, 220, 128, 255, 255, 46, 81, 190, 204, 220, 128, 255, 255, 46, 81, 78, 215, 220, 128, 255, 255, 136, 67, 166, 187, 25, 234, 8, 150, 25, 234, 254, 159, 25, 234, 142, 170, 176, 159, 142, 170, 25, 234, 139, 182, 25, 234, 139, 182, 25, 234, 190, 204, 176, 159, 190, 204, 25, 234, 8, 150, 25, 234, 78, 215, 25, 234, 254, 159, 223, 159, 254, 159, 143, 247, 27, 182, 143, 247, 166, 187, 223, 159, 166, 187, 255, 255, 142, 170, 223, 159, 142, 170, 223, 159, 27, 182, 234, 233, 27, 182, 234, 233, 190, 204, 223, 159, 190, 204, 223, 159, 27, 182, 143, 247, 78, 215, 223, 159, 78, 215, 143, 247, 254, 159, 220, 128, 255, 255, 143, 247, 166, 187, 220, 128, 142, 170, 220, 128, 255, 255, 234, 233, 190, 204, 220, 128, 255, 255, 234, 233, 78, 215, 220, 128, 255, 255, 143, 247),
+"format": 34896613399,
+"index_count": 150,
+"index_data": PackedByteArray(36, 0, 2, 0, 34, 0, 34, 0, 2, 0, 0, 0, 39, 0, 5, 0, 35, 0, 35, 0, 5, 0, 1, 0, 1, 0, 5, 0, 18, 0, 13, 0, 1, 0, 18, 0, 42, 0, 7, 0, 38, 0, 38, 0, 7, 0, 3, 0, 43, 0, 9, 0, 40, 0, 40, 0, 9, 0, 6, 0, 19, 0, 22, 0, 31, 0, 31, 0, 22, 0, 33, 0, 10, 0, 0, 0, 23, 0, 23, 0, 0, 0, 14, 0, 0, 0, 2, 0, 14, 0, 14, 0, 2, 0, 11, 0, 4, 0, 8, 0, 16, 0, 16, 0, 8, 0, 20, 0, 6, 0, 9, 0, 22, 0, 19, 0, 6, 0, 22, 0, 13, 0, 18, 0, 26, 0, 26, 0, 18, 0, 29, 0, 24, 0, 15, 0, 32, 0, 32, 0, 15, 0, 27, 0, 17, 0, 21, 0, 28, 0, 28, 0, 21, 0, 30, 0, 15, 0, 12, 0, 27, 0, 27, 0, 12, 0, 25, 0, 52, 0, 39, 0, 35, 0, 47, 0, 52, 0, 35, 0, 67, 0, 56, 0, 65, 0, 65, 0, 56, 0, 53, 0, 49, 0, 34, 0, 58, 0, 58, 0, 34, 0, 44, 0, 46, 0, 36, 0, 49, 0, 49, 0, 36, 0, 34, 0, 54, 0, 41, 0, 51, 0, 51, 0, 41, 0, 37, 0, 56, 0, 43, 0, 40, 0, 53, 0, 56, 0, 40, 0, 63, 0, 52, 0, 60, 0, 60, 0, 52, 0, 47, 0, 61, 0, 48, 0, 66, 0, 66, 0, 48, 0, 57, 0, 64, 0, 55, 0, 62, 0, 62, 0, 55, 0, 50, 0, 59, 0, 45, 0, 61, 0, 61, 0, 45, 0, 48, 0, 34, 0, 0, 0, 44, 0, 44, 0, 0, 0, 10, 0),
+"material": SubResource("StandardMaterial3D_la20p"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(1.81803, 4.33156, 0, 0),
+"vertex_count": 68,
+"vertex_data": PackedByteArray(255, 127, 134, 227, 254, 255, 30, 142, 0, 0, 134, 227, 47, 215, 112, 244, 0, 0, 134, 227, 47, 215, 145, 175, 228, 48, 134, 227, 41, 149, 149, 233, 228, 48, 134, 227, 41, 149, 149, 233, 228, 48, 134, 227, 41, 149, 195, 245, 26, 207, 134, 227, 41, 149, 34, 212, 26, 207, 134, 227, 41, 149, 149, 233, 26, 207, 134, 227, 41, 149, 149, 233, 255, 255, 134, 227, 47, 215, 81, 177, 255, 255, 134, 227, 47, 215, 145, 175, 0, 0, 7, 245, 12, 150, 235, 182, 0, 0, 7, 245, 12, 150, 8, 195, 0, 0, 7, 245, 12, 150, 158, 241, 255, 127, 255, 255, 12, 150, 224, 177, 255, 127, 255, 255, 12, 150, 224, 177, 228, 48, 73, 227, 12, 150, 158, 182, 228, 48, 73, 227, 12, 150, 158, 182, 228, 48, 73, 227, 12, 150, 5, 236, 26, 207, 73, 227, 12, 150, 163, 183, 26, 207, 73, 227, 12, 150, 158, 182, 26, 207, 73, 227, 12, 150, 158, 182, 254, 255, 7, 245, 12, 150, 122, 185, 254, 255, 7, 245, 12, 150, 235, 182, 254, 255, 7, 245, 12, 150, 8, 195, 0, 0, 7, 245, 0, 0, 94, 206, 0, 0, 7, 245, 0, 0, 245, 246, 255, 127, 255, 255, 0, 0, 255, 191, 228, 48, 73, 227, 0, 0, 228, 195, 228, 48, 73, 227, 0, 0, 93, 229, 26, 207, 73, 227, 0, 0, 228, 195, 26, 207, 73, 227, 0, 0, 116, 200, 254, 255, 7, 245, 0, 0, 94, 206, 254, 255, 7, 245, 0, 0, 254, 192, 255, 127, 120, 28, 254, 255, 30, 142, 0, 0, 120, 28, 47, 215, 111, 244, 0, 0, 120, 28, 47, 215, 145, 175, 228, 48, 120, 28, 41, 149, 149, 233, 228, 48, 120, 28, 41, 149, 149, 233, 228, 48, 120, 28, 41, 149, 194, 245, 26, 207, 120, 28, 41, 149, 34, 212, 26, 207, 120, 28, 41, 149, 149, 233, 26, 207, 120, 28, 41, 149, 149, 233, 255, 255, 120, 28, 47, 215, 81, 177, 255, 255, 120, 28, 47, 215, 145, 175, 0, 0, 246, 10, 12, 150, 8, 195, 0, 0, 246, 10, 12, 150, 235, 182, 0, 0, 246, 10, 12, 150, 158, 241, 255, 127, 0, 0, 12, 150, 224, 177, 255, 127, 0, 0, 12, 150, 224, 177, 228, 48, 181, 28, 12, 150, 158, 182, 228, 48, 181, 28, 12, 150, 158, 182, 228, 48, 181, 28, 12, 150, 5, 236, 26, 207, 181, 28, 12, 150, 163, 183, 26, 207, 181, 28, 12, 150, 158, 182, 26, 207, 181, 28, 12, 150, 158, 182, 254, 255, 246, 10, 12, 150, 122, 185, 254, 255, 246, 10, 12, 150, 8, 195, 254, 255, 246, 10, 12, 150, 235, 182, 0, 0, 246, 10, 0, 0, 94, 206, 0, 0, 246, 10, 0, 0, 245, 246, 255, 127, 0, 0, 0, 0, 255, 191, 228, 48, 181, 28, 0, 0, 228, 195, 228, 48, 181, 28, 0, 0, 93, 229, 26, 207, 181, 28, 0, 0, 228, 195, 26, 207, 181, 28, 0, 0, 116, 200, 254, 255, 246, 10, 0, 0, 94, 206, 254, 255, 246, 10, 0, 0, 254, 192, 254, 255, 255, 127, 96, 252, 212, 49, 89, 152, 64, 230, 231, 242, 108, 181, 231, 242, 108, 181, 146, 246, 184, 73, 184, 155, 208, 12, 146, 202, 231, 114, 146, 202, 231, 114, 185, 159, 251, 6, 190, 153, 90, 24, 57, 167, 224, 216, 242, 217, 38, 205, 1, 246, 164, 52, 255, 255, 0, 128, 255, 255, 0, 128, 204, 78, 48, 180, 204, 78, 48, 180, 157, 77, 162, 118, 57, 113, 121, 48, 47, 52, 49, 49, 47, 52, 49, 49, 72, 169, 117, 16, 30, 167, 58, 39, 216, 178, 242, 89, 21, 218, 209, 203, 154, 246, 76, 59, 255, 255, 0, 128, 106, 50, 52, 153, 254, 76, 2, 102, 52, 25, 148, 77, 178, 95, 154, 64, 44, 180, 22, 90, 200, 158, 101, 15, 0, 0, 0, 128, 42, 78, 96, 124, 64, 102, 164, 231, 109, 53, 23, 141, 109, 53, 23, 141, 70, 54, 147, 118, 46, 115, 185, 27, 23, 13, 146, 74, 23, 13, 146, 74, 4, 121, 186, 31, 165, 103, 189, 25, 38, 77, 12, 166, 224, 88, 195, 216, 90, 75, 1, 118, 0, 0, 255, 127, 0, 0, 255, 127, 206, 203, 204, 206, 206, 203, 204, 206, 163, 246, 97, 50, 120, 176, 197, 14, 50, 177, 206, 75, 50, 177, 206, 75, 138, 111, 71, 41, 12, 38, 216, 50, 196, 88, 30, 39, 210, 75, 232, 165, 176, 68, 155, 118, 0, 0, 0, 128, 201, 230, 106, 178, 2, 230, 1, 51, 148, 205, 202, 102, 153, 192, 76, 32, 233, 37, 44, 52, 154, 112, 202, 30)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_plj4q")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_llqq8"]
+material = ExtResource("70_jqemh")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8yt7y"]
+
 [node name="Innout" type="Node3D"]
 
 [node name="VerLabel" type="RichTextLabel" parent="."]
@@ -5996,40 +6048,35 @@ offset_right = -596.999
 offset_bottom = 220.996
 
 [node name="Skeleton3D" parent="PlayerObject/Player Model/PompRig" index="0"]
-bones/0/position = Vector3(1.77517e-09, 0.885062, -0.158666)
-bones/1/rotation = Quaternion(-0.0628926, 0.000945223, 0.00010601, 0.99802)
-bones/2/rotation = Quaternion(-0.110016, -0.0635383, -0.0042906, 0.991888)
-bones/3/rotation = Quaternion(-0.00205245, -0.000122854, -0.000425171, 0.999998)
-bones/4/rotation = Quaternion(0.0298244, 2.17346e-15, 7.11069e-09, 0.999555)
-bones/5/rotation = Quaternion(0.164089, -0.102672, 0.019259, 0.980899)
-bones/6/position = Vector3(0.0545839, 0.0799372, 0.0816173)
-bones/7/position = Vector3(0.0228991, 0.0751284, 0.100356)
-bones/13/position = Vector3(-0.00027588, 0.0734696, -0.0159041)
-bones/14/position = Vector3(-0.0562119, 0.0810306, 0.081703)
-bones/15/position = Vector3(-0.0228197, 0.0751423, 0.100339)
-bones/16/position = Vector3(0.0447245, 0.144414, 0.0369434)
-bones/16/scale = Vector3(0.714727, 0.714727, 0.714727)
-bones/17/position = Vector3(0.0694364, 0.121775, 0.0647497)
-bones/18/position = Vector3(-0.0694364, 0.121775, 0.0647497)
-bones/19/position = Vector3(-0.0768135, 0.139571, 0.0237422)
-bones/19/scale = Vector3(0.714776, 0.714776, 0.714776)
-bones/20/position = Vector3(0.000178608, 0.0853734, 0.0935113)
-bones/21/position = Vector3(0.069127, 0.172794, 0.0453559)
-bones/22/position = Vector3(-0.0693324, 0.17814, 0.0443421)
-bones/22/rotation = Quaternion(0.574497, -0.00427106, -0.0029976, 0.81849)
-bones/23/rotation = Quaternion(-0.535559, -0.441949, -0.458366, 0.554759)
-bones/24/rotation = Quaternion(-0.385144, 0.63788, -0.4884, 0.454136)
-bones/25/rotation = Quaternion(0.054785, -0.107287, 0.00068085, 0.992717)
-bones/28/position = Vector3(0.00329072, 0.131263, -0.0413243)
-bones/28/rotation = Quaternion(-0.379594, -0.640369, 0.49013, 0.45344)
-bones/29/rotation = Quaternion(0.0586945, 0.104646, 0.00584884, 0.992759)
-bones/30/rotation = Quaternion(-0.00711013, -0.0729187, 0.0929765, 0.992969)
-bones/35/rotation = Quaternion(0.979424, -3.36244e-08, 3.51881e-07, 0.201815)
-bones/36/rotation = Quaternion(0.185188, 1.21989e-09, 2.67102e-08, 0.982703)
-bones/37/rotation = Quaternion(-0.582097, 1.93863e-07, -2.77565e-07, 0.813119)
-bones/40/rotation = Quaternion(0.980741, -6.657e-08, 1.16265e-07, 0.195312)
-bones/41/rotation = Quaternion(0.18702, -2.43077e-09, -3.34027e-08, 0.982356)
-bones/42/rotation = Quaternion(-0.582097, -1.93863e-07, 2.77565e-07, 0.813119)
+bones/0/position = Vector3(-1.22536e-10, 0.901004, -0.158666)
+bones/2/rotation = Quaternion(-0.0824123, -0.0158551, 0.000738717, 0.996472)
+bones/3/rotation = Quaternion(-0.00203364, -0.000101537, -0.000425832, 0.999998)
+bones/5/rotation = Quaternion(0.160362, -0.018817, 0.00351424, 0.986873)
+bones/6/position = Vector3(0.054619, 0.0800412, 0.0815816)
+bones/7/position = Vector3(0.0228448, 0.0750761, 0.100373)
+bones/13/position = Vector3(-9.54017e-05, 0.0736793, -0.0152151)
+bones/14/position = Vector3(-0.0550379, 0.0803505, 0.0816434)
+bones/15/position = Vector3(-0.0228171, 0.0750809, 0.100367)
+bones/16/position = Vector3(0.047966, 0.144766, 0.037917)
+bones/16/scale = Vector3(0.714764, 0.714764, 0.714764)
+bones/17/position = Vector3(0.0694476, 0.121849, 0.0647277)
+bones/18/position = Vector3(-0.0694477, 0.121849, 0.0647277)
+bones/19/position = Vector3(-0.0679395, 0.141902, 0.0300171)
+bones/19/scale = Vector3(0.714781, 0.714781, 0.714781)
+bones/20/position = Vector3(7.09435e-05, 0.0857735, 0.0933542)
+bones/21/position = Vector3(0.0694051, 0.17938, 0.0437955)
+bones/22/position = Vector3(-0.0694258, 0.179979, 0.0437117)
+bones/24/rotation = Quaternion(-0.367714, 0.603727, -0.522472, 0.476784)
+bones/25/rotation = Quaternion(0.00236912, -0.0950587, -0.00214836, 0.995467)
+bones/28/position = Vector3(0.0032123, 0.131256, -0.0413278)
+bones/28/rotation = Quaternion(-0.365564, -0.605301, 0.524223, 0.474514)
+bones/29/rotation = Quaternion(0.00215991, 0.094132, 0.00376721, 0.99555)
+bones/35/rotation = Quaternion(0.984593, -2.50341e-08, 3.52828e-07, 0.174861)
+bones/36/rotation = Quaternion(0.137141, -2.15366e-10, 2.78621e-08, 0.990552)
+bones/37/rotation = Quaternion(-0.557753, 1.97889e-07, -2.65957e-07, 0.830007)
+bones/40/rotation = Quaternion(0.984116, -6.58434e-08, 1.17735e-07, 0.17753)
+bones/41/rotation = Quaternion(0.143918, -8.40118e-10, -3.55598e-08, 0.98959)
+bones/42/rotation = Quaternion(-0.557753, -1.97889e-07, 2.65957e-07, 0.830007)
 
 [node name="FlashLightTPS" parent="PlayerObject" index="9"]
 visible = false
@@ -7286,18 +7333,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_88ilq")
 [node name="Griddle" parent="KitchenParent" instance=ExtResource("29_8b2gq")]
 transform = Transform3D(-2.40413e-08, 0, -0.55, 0, 0.55, 0, 0.55, 0, -2.40413e-08, 1.42145, 0.144059, -0.675399)
 
-[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent" index="0"]
-transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
-
-[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent2" index="0"]
-transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
-
-[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent3" index="0"]
-transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
-
-[node name="Spatula" parent="KitchenParent/Griddle/griddle /SpatParent4" index="0"]
-transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.07853, -0.0795141, 2.07701, 19.8917, 80.2958, 54.7197, -96.9448)
-
 [node name="Quad" parent="KitchenParent/Griddle/StaticBody3D/GUI" index="1"]
 mesh = SubResource("QuadMesh_nvitt")
 surface_material_override/0 = SubResource("StandardMaterial3D_ewgnk")
@@ -7419,6 +7454,16 @@ omni_range = 5.858
 transform = Transform3D(1, 0, 0, 0, -0.0334166, -0.999442, 0, 0.999442, -0.0334166, 7.15172, 1.52315, 16.0919)
 light_color = Color(0.403922, 0.227451, 0.223529, 1)
 light_energy = 0.178
+light_indirect_energy = 1.75
+light_bake_mode = 1
+light_cull_mask = 4294967199
+shadow_enabled = true
+omni_range = 5.858
+
+[node name="SpotLight3D14" type="OmniLight3D" parent="KitchenParent"]
+transform = Transform3D(1, 0, 0, 0, -0.0334166, -0.999442, 0, 0.999442, -0.0334166, 7.15172, 1.64882, 12.3332)
+light_color = Color(0.403922, 0.227451, 0.223529, 1)
+light_energy = 2.693
 light_indirect_energy = 1.75
 light_bake_mode = 1
 light_cull_mask = 4294967199
@@ -7734,46 +7779,46 @@ HP = 999999
 npcName = "Customer"
 
 [node name="Skeleton3D" parent="Thrait Albino/Thrait Young/Armature" index="0"]
-bones/0/position = Vector3(-9.42131e-09, 1.008, 0.0535329)
+bones/0/position = Vector3(-1.65809e-09, 1.06159, 0.0599628)
 bones/0/rotation = Quaternion(0.374228, -1.10547e-07, -4.46115e-08, 0.927337)
 bones/1/rotation = Quaternion(0.0368758, 1.24146e-14, -8.79186e-09, 0.99932)
-bones/2/rotation = Quaternion(0.316984, -0.112852, 0.147667, 0.930043)
+bones/2/rotation = Quaternion(0.32222, -0.0408967, 0.053513, 0.944266)
 bones/3/rotation = Quaternion(-0.023332, -1.19065e-07, 1.94036e-08, 0.999728)
-bones/4/rotation = Quaternion(0.425083, 0.0335977, 0.133235, 0.894664)
-bones/5/rotation = Quaternion(0.00536868, 0.00920534, -0.00785248, 0.999912)
-bones/7/position = Vector3(0.0702588, 0.28194, 0.114677)
+bones/4/rotation = Quaternion(0.417695, 0.0121655, 0.0482431, 0.907224)
+bones/5/rotation = Quaternion(-0.0174432, 0.00128086, -0.0010926, 0.999847)
+bones/7/position = Vector3(0.0702588, 0.287058, 0.134757)
 bones/8/rotation = Quaternion(-0.734234, -5.60875e-09, 8.70089e-07, 0.678896)
 bones/8/scale = Vector3(1, 0.25695, 1)
-bones/9/position = Vector3(0.0719044, 0.167547, 0.00786614)
-bones/9/scale = Vector3(0.934965, 0.934965, 0.934965)
-bones/10/position = Vector3(-0.0702585, 0.28194, 0.114677)
+bones/9/position = Vector3(0.0775467, 0.161509, 0.00697527)
+bones/9/scale = Vector3(1.15622, 1.15622, 1.15622)
+bones/10/position = Vector3(-0.0702585, 0.287058, 0.134757)
 bones/11/rotation = Quaternion(-0.734234, 8.03699e-07, -5.18596e-09, 0.678896)
 bones/11/scale = Vector3(1, 0.25695, 1)
-bones/12/position = Vector3(-0.0719044, 0.167547, 0.00786634)
-bones/12/scale = Vector3(0.934965, 0.934965, 0.934965)
+bones/12/position = Vector3(-0.0775467, 0.161509, 0.00697547)
+bones/12/scale = Vector3(1.15622, 1.15622, 1.15622)
 bones/13/rotation = Quaternion(0.297837, 0.0652871, -0.729319, 0.612474)
-bones/14/rotation = Quaternion(0.394568, -0.0443565, 0.0120794, 0.917716)
+bones/14/rotation = Quaternion(0.404708, -0.0139289, 0.0627365, 0.912185)
 bones/15/rotation = Quaternion(0.123018, 0.307445, 0.272414, 0.903402)
 bones/16/rotation = Quaternion(0.149465, 0.0111215, 0.136538, 0.979231)
 bones/17/rotation = Quaternion(0.129105, -0.0135471, -0.011818, 0.991468)
 bones/19/rotation = Quaternion(-0.489503, 0.475102, 0.604935, -0.410754)
-bones/21/rotation = Quaternion(0.394568, 0.0443565, -0.0120794, 0.917716)
+bones/21/rotation = Quaternion(0.404708, 0.0139289, -0.0627365, 0.912185)
 bones/22/rotation = Quaternion(0.123018, -0.307445, -0.272414, 0.903402)
 bones/23/rotation = Quaternion(0.149465, -0.0111215, -0.136538, 0.979231)
 bones/24/rotation = Quaternion(0.129105, 0.0135471, 0.0118179, 0.991468)
 bones/26/rotation = Quaternion(0.489503, 0.475102, 0.604934, 0.410754)
 bones/28/rotation = Quaternion(-0.122532, -2.18122e-14, 5.84275e-08, 0.992465)
-bones/29/rotation = Quaternion(0.201097, -3.48848e-09, -7.35783e-08, 0.979571)
-bones/30/rotation = Quaternion(0.106983, -8.37268e-10, -4.14129e-08, 0.994261)
+bones/29/rotation = Quaternion(0.161668, -5.36201e-10, -7.3659e-08, 0.986845)
+bones/30/rotation = Quaternion(0.0896089, -1.14131e-10, -4.14213e-08, 0.995977)
 bones/31/rotation = Quaternion(0.117241, -3.4768e-13, -5.59046e-08, 0.993104)
-bones/33/rotation = Quaternion(0.634413, -0.0866016, -0.382093, 0.666353)
-bones/34/rotation = Quaternion(0.240957, 0.0702768, -0.683692, 0.685249)
-bones/35/rotation = Quaternion(-0.103811, -1.03144e-07, 0.483468, 0.869184)
-bones/36/rotation = Quaternion(-0.146972, 1.14553e-07, 0.68447, 0.714073)
-bones/39/rotation = Quaternion(0.634413, 0.0866015, 0.382093, 0.666352)
-bones/40/rotation = Quaternion(0.240958, -0.0702769, 0.683692, 0.685249)
-bones/41/rotation = Quaternion(-0.103812, 1.01049e-07, -0.483468, 0.869184)
-bones/42/rotation = Quaternion(-0.146972, -1.76951e-08, -0.68447, 0.714072)
+bones/33/rotation = Quaternion(0.660775, -0.0284442, -0.421356, 0.620505)
+bones/34/rotation = Quaternion(0.227575, 0.0562427, -0.577613, 0.781927)
+bones/35/rotation = Quaternion(-0.0979257, -1.1368e-07, 0.456056, 0.884547)
+bones/36/rotation = Quaternion(-0.13787, 1.14553e-07, 0.642085, 0.754134)
+bones/39/rotation = Quaternion(0.660775, 0.0284442, 0.421356, 0.620505)
+bones/40/rotation = Quaternion(0.227575, -0.0562427, 0.577613, 0.781927)
+bones/41/rotation = Quaternion(-0.0979258, 9.87785e-08, -0.456055, 0.884547)
+bones/42/rotation = Quaternion(-0.13787, -6.7521e-09, -0.642085, 0.754134)
 
 [node name="Body" parent="Thrait Albino/Thrait Young/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = null
@@ -8125,12 +8170,104 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152054, 0, 0)
 mesh = SubResource("ArrayMesh_43tgi")
 skeleton = NodePath("")
 
+[node name="BigPipe2" type="Node3D" parent="."]
+transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -7.89816, 6.07969, 8.69765)
+
+[node name="Cylinder" type="MeshInstance3D" parent="BigPipe2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.374068, 0, 0)
+mesh = SubResource("ArrayMesh_43tgi")
+skeleton = NodePath("")
+
+[node name="BigPipe4" type="Node3D" parent="."]
+transform = Transform3D(-1, -7.64274e-15, 8.74228e-08, 0, -1, -8.74228e-08, 8.74228e-08, -8.74228e-08, 1, -7.38659, 5.41863, 8.69765)
+
+[node name="Cylinder" type="MeshInstance3D" parent="BigPipe4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.480374, -0.188705, 0)
+mesh = SubResource("ArrayMesh_43tgi")
+skeleton = NodePath("")
+
 [node name="BigPipe3" type="Node3D" parent="."]
 transform = Transform3D(-0.375, -3.27835e-08, 0, 3.27835e-08, -0.375, 0, 0, 0, 0.375, 14.4185, 3.79171, -1.98021)
 
 [node name="Cylinder" type="MeshInstance3D" parent="BigPipe3"]
 mesh = SubResource("ArrayMesh_nbqea")
 skeleton = NodePath("")
+
+[node name="SmallPipe2" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.4189, 4.71477, -5.28176)
+
+[node name="Cylinder" type="MeshInstance3D" parent="SmallPipe2"]
+mesh = SubResource("ArrayMesh_pdte1")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.88836, 1.01434, 0.524657)
+mesh = SubResource("PlaneMesh_llqq8")
+skeleton = NodePath("../SmallPipe2")
+
+[node name="Wetfloor" parent="." instance=ExtResource("71_vqlxe")]
+transform = Transform3D(0.837966, 0, -0.545722, 0, 1, 0, 0.545722, 0, 0.837966, 8.67118, 1.19786, 1.40132)
+
+[node name="EmployeeRoom" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1473, 2.32409, 4.3556)
+
+[node name="TV Set" parent="EmployeeRoom" instance=ExtResource("72_pdmil")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.169139, -0.776124, -2.76823)
+
+[node name="GUI2" type="Node3D" parent="EmployeeRoom/TV Set" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+transform = Transform3D(-7.64949e-08, 0, -1.75, 0, 1.75, 0, 1.75, 0, -7.64949e-08, 0.0673676, 0.497001, 1.61274)
+script = ExtResource("55_o0k05")
+node_viewport = NodePath("../SubViewport")
+node_quad = NodePath("Quad")
+node_area = NodePath("Quad/Area3D")
+
+[node name="Quad" type="MeshInstance3D" parent="EmployeeRoom/TV Set/GUI2"]
+process_mode = 3
+transform = Transform3D(-6.19099e-08, -7.24999e-08, 0.35, -2.1168e-08, 0.46, 5.51629e-08, -0.38, -2.56244e-08, -5.70222e-08, -0.247681, -0.274467, 0.0359783)
+mesh = SubResource("QuadMesh_4h30c")
+skeleton = NodePath("../../../../WallTv2")
+surface_material_override/0 = SubResource("StandardMaterial3D_rf8hv")
+
+[node name="Area3D" type="Area3D" parent="EmployeeRoom/TV Set/GUI2/Quad"]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EmployeeRoom/TV Set/GUI2/Quad/Area3D"]
+shape = SubResource("BoxShape3D_w737o")
+
+[node name="SubViewport" type="SubViewport" parent="EmployeeRoom/TV Set"]
+
+[node name="Sprite2D" type="Sprite2D" parent="EmployeeRoom/TV Set/SubViewport"]
+position = Vector2(257.97, 250.57)
+scale = Vector2(2.455, 2.455)
+texture = ExtResource("73_2qsl3")
+
+[node name="TextureRect" type="TextureRect" parent="EmployeeRoom/TV Set/SubViewport"]
+material = ExtResource("74_3um8q")
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("75_bt1hd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EmployeeRoom/TV Set"]
+transform = Transform3D(2.25735, 0, 0, 0, 1.79554, 0, 0, 0, 0.304508, 0, 0.0617917, 1.71211)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EmployeeRoom/TV Set/StaticBody3D"]
+shape = SubResource("BoxShape3D_8yt7y")
+
+[node name="Behavior" type="Node3D" parent="EmployeeRoom/TV Set/StaticBody3D" node_paths=PackedStringArray("pageSprite", "soundSource")]
+script = ExtResource("76_b5m2q")
+pageSprite = NodePath("../../PageSprite")
+soundSource = NodePath("../../AudioStreamPlayer")
+
+[node name="PageSprite" type="Sprite2D" parent="EmployeeRoom/TV Set"]
+visible = false
+position = Vector2(475, 251)
+rotation = 0.0610865
+scale = Vector2(2.06, 2.06)
+texture = ExtResource("73_2qsl3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="EmployeeRoom/TV Set"]
+stream = ExtResource("77_lpkvm")
 
 [connection signal="closed" from="WorldParent/FrontDoor/DoorGlass/Behavior" to="WorldParent/FrontDoor/AreaTrigger" method="_on_behavior_closed"]
 [connection signal="open" from="WorldParent/FrontDoor/DoorGlass/Behavior" to="WorldParent/FrontDoor/AreaTrigger" method="_on_behavior_open"]
