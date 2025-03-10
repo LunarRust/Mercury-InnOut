@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://dq76dvwj2h1p0"]
+
+[ext_resource type="Texture2D" uid="uid://dqlm1w4i5pt00" path="res://KOMSprites/innout/VendingMachineSkinsCropped.jpg" id="1_a3uil"]
+[ext_resource type="Script" path="res://CustomScripts/Behavior/VendingMachineBehavior.gd" id="1_rjyhn"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_w7ucc"]
+[ext_resource type="AudioStream" uid="uid://chbbwlv8b0kby" path="res://KOMSounds/Vending.ogg" id="2_de6qb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgkyb"]
+albedo_color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+metallic = 0.12
+roughness = 0.83
+
+[sub_resource type="BoxMesh" id="BoxMesh_pn1l6"]
+material = SubResource("StandardMaterial3D_hgkyb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_854fw"]
+size = Vector3(1, 1, 0.76474)
+
+[node name="SodaMachine" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="DialogueSystem" type="Node3D" parent="StaticBody3D" node_paths=PackedStringArray("soundSource")]
+script = ExtResource("1_w7ucc")
+npcName = "Vending Machine"
+Dialogue = Array[String](["The electrical hum of the condenser is rather comforting."])
+LookDescription = Array[String](["You wonder how much money these things really make...", "Staring into the vending machine, you feel it begin to stare back. It's gaze is icy."])
+TouchDescription = Array[String](["Feels cold, dirty, and cruel.", "You can feel the contamination of every being who has ever touched this vending machine on you're hands."])
+DoTouch = false
+soundSource = NodePath("DialoguePlayer")
+looking = false
+
+[node name="DialoguePlayer" type="AudioStreamPlayer3D" parent="StaticBody3D/DialogueSystem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.290638, 0.271893)
+max_distance = 5.0
+max_polyphony = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.74, 0, 0, 0)
+mesh = SubResource("BoxMesh_pn1l6")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0121918)
+shape = SubResource("BoxShape3D_854fw")
+
+[node name="Behavior" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("SoundSource")]
+script = ExtResource("1_rjyhn")
+SoundSource = NodePath("../../VendingSoundPlayer")
+Sound = ExtResource("2_de6qb")
+ItemID = "cokecan"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.53383, 0, 0, 0, 0.770739, 0, 0, 0, 1, 0, 0, 0.37102)
+double_sided = false
+texture = ExtResource("1_a3uil")
+hframes = 4
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.310056, 0.392256, 0, -0.784513, -0.620113, 0, 0.470079, 0.231729)
+light_color = Color(0.823529, 0.392157, 0.415686, 1)
+light_energy = 3.454
+light_bake_mode = 1
+spot_range = 4.433
+spot_angle = 31.15
+
+[node name="VendingSoundPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.0999382, 0.503471)
+volume_db = -25.0
+max_distance = 5.0

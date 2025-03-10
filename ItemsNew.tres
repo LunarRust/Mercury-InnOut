@@ -156,5 +156,25 @@ json_data = "[
         \"name\": \"Raw Patty\",
         \"usable\": \"true\",
         \"width\": 2
+    },
+    {
+        \"description\": \"A delicious carcinogenic\",
+        \"health\": 1,
+        \"height\": 2,
+        \"id\": \"cokecan\",
+        \"image\": \"res://KOMSprites/innout/Coke200TransparentCropped.png\",
+        \"name\": \"Can of Coke\",
+        \"usable\": \"true\",
+        \"width\": 1
+    },
+    {
+        \"description\": \"Refreshing selections include Coca-Cola®, Diet Coke®, Cherry Coke®, 7UP®, Dr. Pepper®, Root Beer, Signature Pink Lemonade, Lite Pink Lemonade, Iced Tea, Milk, Coffee and Hot Cocoa\",
+        \"health\": 1,
+        \"height\": 2,
+        \"id\": \"drink\",
+        \"image\": \"res://KOMSprites/innout/InnoutDrinkCompressed.png\",
+        \"name\": \"Soft Drink\",
+        \"usable\": \"true\",
+        \"width\": 1
     }
 ]"

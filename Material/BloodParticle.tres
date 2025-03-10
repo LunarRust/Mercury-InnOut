@@ -1,7 +1,8 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bv3n43nuolqjk"]
 
 [ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="1"]
 
 [resource]
 transparency = 1
+shading_mode = 2
 albedo_texture = ExtResource("1")

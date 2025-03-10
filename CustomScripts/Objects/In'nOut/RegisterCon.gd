@@ -16,15 +16,19 @@ var TotalItems = 0
 var OrderClock : float = 0.0
 @export var ClockDisplay : RichTextLabel
 var WaitingForOrder : bool = false
+var FallBackSpawnClock : float = 0.0
+var NpcHasExisted : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
 	SignalBusInnOut = get_tree().get_first_node_in_group("InnOutSignalBus")
+	await SignalBusInnOut.is_node_ready()
+	ItemGen.ReadyToServeSignal.connect(BeginTimer)
 	if SignalBusInnOut.DoTimer == true:
-		ItemGen.ReadyToServeSignal.connect(BeginTimer)
 		ClockDisplay.text = "[shake rate=20][center]0"
 	else:
 		ClockDisplay.hide()
+	
 
 
 func NpcInvCheck():
@@ -119,21 +123,40 @@ func get_all_children(in_node, array := []):
 func BeginTimer():
 	if SignalBusInnOut.DoTimer == true:
 		ClockDisplay.show()
-		OrderClock = 0.0
-		WaitingForOrder = true
 	else:
 		ClockDisplay.hide()
-		OrderClock = 0.0
-		WaitingForOrder = true
+	OrderClock = SignalBusInnOut.OrderWaitLimit + randf_range(-10,20)
+	WaitingForOrder = true
+	FallBackSpawnClock = 0.0
+	currentNPC = find_closest_or_furthest(PosRefrence,"PompNPC")
+	NpcHasExisted = true
 	
+func NpcLost():
+	SignalBusInnOut.Score += TotalItems
+	SignalBusInnOut.emit_signal("ScoreChanged")
+	OrderClock = SignalBusInnOut.OrderWaitLimit + randf_range(-10,20)
+	WaitingForOrder = false
+	ItemGen.Clear()
+
 func _process(delta):
 	if WaitingForOrder:
-		OrderClock += delta
+		FallBackSpawnClock = 0.0
+		if currentNPC == null:
+			NpcLost()
+		if SignalBusInnOut.DoTimer:
+			OrderClock -= delta
 		ClockDisplay.text = "[shake rate=20][center]" + str(snapped(OrderClock,1))
-		if OrderClock >= SignalBusInnOut.OrderWaitLimit:
+		if OrderClock <= 0.0:
 			ClockDisplay.add_theme_color_override("default_color",Color(1, 0.15294100344181, 0.25490200519562))
 			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
 			WaitingForOrder = false
+	else:
+		if NpcHasExisted:
+			if currentNPC == null:
+				FallBackSpawnClock += delta
+				if FallBackSpawnClock >= 30:
+					FallBackSpawnClock = 0.0
+					SignalBusKOM.emit_signal("CreateNpc",ItemGen.GenID)
 
 func _on_pressed():
 	if ItemGen.ReadyToServe == true:
@@ -163,4 +186,4 @@ func _on_pressed():
 
 
 func _on_behavior_item_taken():
-	OrderClock -= 10
+	OrderClock += 15

@@ -1,14 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://untrnqh2eqkn"]
 
 [ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_cxfha"]
-[ext_resource type="AudioStream" uid="uid://kn7tcqpdwy3a" path="res://Sounds/Itadakimasu.ogg" id="2_2r3nx"]
+[ext_resource type="AudioStream" uid="uid://cpl623l5ks1at" path="res://Sounds/Itadakimasu.ogg" id="2_2r3nx"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="3_2of72"]
 [ext_resource type="PackedScene" uid="uid://b1hj5csrgmv67" path="res://Models/AnimeStalk.blend" id="4_101by"]
-[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="4_bn2tl"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="4_bn2tl"]
 [ext_resource type="Script" path="res://Scripts/InteractableObject.cs" id="6_rrbmv"]
 [ext_resource type="Script" path="res://Scripts/AnimeStalkBehavior.cs" id="7_1k6c2"]
 [ext_resource type="PackedScene" uid="uid://db6g3h73daw5r" path="res://Models/AnimeStalk3.blend" id="8_gh4w5"]
 [ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="9_peouv"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hqa23"]
 

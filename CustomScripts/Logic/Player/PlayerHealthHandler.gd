@@ -29,7 +29,7 @@ var MoverTestC = load("res://Scripts/MoverTest.cs") as Script
 var MoverTest = MoverTestC.new()
 #var CameraShaker = preload("res://Scripts/CameraShake.cs") as Script
 #var camshake = CameraShaker.new()
-var HudManage = load("res://prefabs/hudmanager.cs")
+@export var HudManage : CanvasLayer
 var CamCastC = load("res://Scripts/CameraCast.cs")
 var CamCast = CamCastC.new()
 var usedHeal : bool

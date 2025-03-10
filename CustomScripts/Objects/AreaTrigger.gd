@@ -11,6 +11,7 @@ extends Area3D
 var opened : bool
 
 
+
 #TODO Item gets door stuck while player is in AreaTrigger
 func _on_area_entered(area):
 	if OnVolumeEntered:

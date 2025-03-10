@@ -1,19 +1,19 @@
 [gd_scene load_steps=53 format=3 uid="uid://cqn0gyd1vcqh2"]
 
-[ext_resource type="Texture2D" uid="uid://fnur461jyc4e" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_d3ufr"]
-[ext_resource type="Texture2D" uid="uid://cr6qkmssk1r2" path="res://KOMModels/innout/restaurant_Metal_006_basecolor.jpg" id="2_h7jx2"]
-[ext_resource type="Texture2D" uid="uid://bgme1no8045sd" path="res://KOMModels/innout/restaurant_Metal_006_roughness.png" id="3_vjt1h"]
-[ext_resource type="Texture2D" uid="uid://co0e8djfdgvn2" path="res://KOMModels/innout/restaurant_Metal_006_normal.jpg" id="4_n4t0m"]
-[ext_resource type="Texture2D" uid="uid://ce5v34wq3gdkl" path="res://KOMModels/innout/restaurant_dial Base Color.png" id="5_d4d2j"]
-[ext_resource type="Texture2D" uid="uid://h8eiphbtudkv" path="res://textures/glass_bright.png" id="6_uc764"]
+[ext_resource type="Texture2D" uid="uid://b08v5m5rhwj3g" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_d3ufr"]
+[ext_resource type="Texture2D" uid="uid://b1jbauqt5tjix" path="res://KOMModels/innout/restaurant_Metal_006_basecolor.jpg" id="2_h7jx2"]
+[ext_resource type="Texture2D" uid="uid://dc8yvbyjat5m2" path="res://KOMModels/innout/restaurant_Metal_006_roughness.png" id="3_vjt1h"]
+[ext_resource type="Texture2D" uid="uid://dqibbq01pq5wr" path="res://KOMModels/innout/restaurant_Metal_006_normal.jpg" id="4_n4t0m"]
+[ext_resource type="Texture2D" uid="uid://bt0an4f3ckwb" path="res://KOMModels/innout/restaurant_dial Base Color.png" id="5_d4d2j"]
+[ext_resource type="Texture2D" uid="uid://o7yjytajcbf2" path="res://textures/glass_bright.png" id="6_uc764"]
 [ext_resource type="PackedScene" uid="uid://bjhio0w4l3d5o" path="res://KOMModels/innout/Spatula.tscn" id="7_82u0b"]
-[ext_resource type="Texture2D" uid="uid://b3ff2t2wvlbv7" path="res://KOMSprites/innout/raw-patty.png" id="8_ppg8c"]
+[ext_resource type="Texture2D" uid="uid://bl64mywvhcrqi" path="res://KOMSprites/innout/raw-patty.png" id="8_ppg8c"]
 [ext_resource type="SpriteFrames" uid="uid://bwwe0yu1rhfcs" path="res://KOMSprites/innout/FFriesFire.tres" id="9_26h2y"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/GriddleBehavior.gd" id="9_hery2"]
-[ext_resource type="Texture2D" uid="uid://bote0nnsinsvg" path="res://KOMSprites/innout/FryPile.png" id="11_emme3"]
-[ext_resource type="Texture2D" uid="uid://b2j0kt7ppsv7a" path="res://KOMSprites/innout/In-N-Out-Burger.png" id="12_yrevu"]
-[ext_resource type="Texture2D" uid="uid://bwb81o7vwgs1" path="res://KOMSprites/innout/fries.png" id="13_7s17i"]
-[ext_resource type="Texture2D" uid="uid://ctdyh27w12rb4" path="res://KOMSprites/innout/cooked-patty.png" id="14_u303k"]
+[ext_resource type="Texture2D" uid="uid://driq2dafkx6o1" path="res://KOMSprites/innout/FryPile.png" id="11_emme3"]
+[ext_resource type="Texture2D" uid="uid://l3b4taiqqnid" path="res://KOMSprites/innout/In-N-Out-Burger.png" id="12_yrevu"]
+[ext_resource type="Texture2D" uid="uid://b8cnpnu0vqxy6" path="res://KOMSprites/innout/fries.png" id="13_7s17i"]
+[ext_resource type="Texture2D" uid="uid://cerxxnv0hmn5k" path="res://KOMSprites/innout/cooked-patty.png" id="14_u303k"]
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="15_khx6i"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="16_fcgkm"]
 [ext_resource type="Texture2D" uid="uid://0i4iha5ir3i1" path="res://Sprites/UI/ButtonEmpty.png" id="17_4uinn"]
@@ -352,6 +352,7 @@ transitions = ["Up", "Down", SubResource("AnimationNodeStateMachineTransition_gs
 graph_offset = Vector2(-266, -114)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f4g3g"]
+size = Vector3(2.10449, 0.120605, 1.30322)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v5uib"]
 texture = ExtResource("17_4uinn")
@@ -603,6 +604,7 @@ transform = Transform3D(-6.58728e-06, -7.85266e-13, -55.2581, 55.2581, 6.58728e-
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -1.44107)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.81936, 0, 0, 0, 1, 0, 0, 0, 1, -0.861825, -0.534167, -0.151611)
 shape = SubResource("BoxShape3D_f4g3g")
 
 [node name="Behavior" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject", "DebugLabels")]
@@ -639,7 +641,7 @@ text = "
 Text"
 
 [node name="GUI" type="Node3D" parent="StaticBody3D" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.713391, -1.26428, 0.268717)
+transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 3.00254, -2.05568, 0.268717)
 visible = false
 script = ExtResource("15_khx6i")
 node_viewport = NodePath("SubViewport")
@@ -667,7 +669,8 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D/GUI/Quad"]
-collision_layer = 2
+collision_layer = 0
+collision_mask = 0
 input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/GUI/Quad/Area3D"]
@@ -677,6 +680,7 @@ shape = SubResource("BoxShape3D_wwdtl")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -1.07714)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1.81936, 0, 0, 0, 1, 0, 0, 0, 1, -0.841417, -0.534167, 0)
 shape = SubResource("BoxShape3D_f4g3g")
 
 [node name="Behavior" type="Node" parent="StaticBody3D2" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
@@ -693,7 +697,7 @@ AltSprites = Array[Texture2D]([ExtResource("13_7s17i"), ExtResource("8_ppg8c"), 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody3D2"]
 
 [node name="GUI2" type="Node3D" parent="StaticBody3D2" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.713391, -0.970388, 0.325675)
+transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 2.90115, -1.77983, 0.325675)
 visible = false
 script = ExtResource("15_khx6i")
 node_viewport = NodePath("SubViewport")
@@ -721,7 +725,8 @@ skeleton = NodePath("../../../StaticBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D2/GUI2/Quad"]
-collision_layer = 2
+collision_layer = 0
+collision_mask = 0
 input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/GUI2/Quad/Area3D"]
@@ -731,6 +736,7 @@ shape = SubResource("BoxShape3D_wwdtl")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -0.679723)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1.81936, 0, 0, 0, 1, 0, 0, 0, 1, -0.841417, -0.54431, 0)
 shape = SubResource("BoxShape3D_f4g3g")
 
 [node name="Behavior" type="Node" parent="StaticBody3D3" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
@@ -747,7 +753,7 @@ AltSprites = Array[Texture2D]([ExtResource("13_7s17i"), ExtResource("8_ppg8c"), 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody3D3"]
 
 [node name="GUI3" type="Node3D" parent="StaticBody3D3" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.713391, -1.26428, 0.391651)
+transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 3.00254, -2.05568, 0.391651)
 visible = false
 script = ExtResource("15_khx6i")
 node_viewport = NodePath("SubViewport")
@@ -775,7 +781,8 @@ skeleton = NodePath("../../../StaticBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D3/GUI3/Quad"]
-collision_layer = 2
+collision_layer = 0
+collision_mask = 0
 input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/GUI3/Quad/Area3D"]
@@ -785,6 +792,7 @@ shape = SubResource("BoxShape3D_wwdtl")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -0.260636)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1.81936, 0, 0, 0, 1.40648, 0, 0, 0, 1.32606, -0.841417, -0.509929, 0.179514)
 shape = SubResource("BoxShape3D_f4g3g")
 
 [node name="Behavior" type="Node" parent="StaticBody3D4" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
@@ -801,7 +809,7 @@ AltSprites = Array[Texture2D]([ExtResource("13_7s17i"), ExtResource("8_ppg8c"), 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody3D4"]
 
 [node name="GUI4" type="Node3D" parent="StaticBody3D4" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.713391, -0.956303, 0.393887)
+transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 2.89629, -1.76661, 0.393887)
 visible = false
 script = ExtResource("15_khx6i")
 node_viewport = NodePath("SubViewport")
@@ -829,7 +837,8 @@ skeleton = NodePath("../../../StaticBody3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D4/GUI4/Quad"]
-collision_layer = 2
+collision_layer = 0
+collision_mask = 0
 input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4/GUI4/Quad/Area3D"]

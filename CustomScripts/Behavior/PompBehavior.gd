@@ -1,7 +1,7 @@
 @icon("res://Sprites/iconsmile128Gold.png")
 
 extends Node
-
+var SignalBusKOM
 @export var anim : AnimationTree
 @export var PompAI : Node3D
 @export var dialogue : Node3D
@@ -10,8 +10,10 @@ extends Node
 #@export var PlayerObject : MeshInstance3D
 
 var InteractionButton = load("res://Scripts/InteractionButton.cs")
-@onready var DialogueBox = get_tree().get_first_node_in_group("player").get_node("UI Overlay/CanvasLayer/DialogueParent/DialogueBox")
-
+@onready var DialogueBox = get_tree().get_first_node_in_group("DialogueBox")
+func _ready():
+	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
+	
 func StartAttack(name : StringName):
 	print(name)
 	if name == "Angry":
@@ -26,7 +28,7 @@ func Touch(AmNpc = false):
 func Talk(DoDiolouge : bool = true):
 	AnimTrigger("Talk")
 	if DoDiolouge:
-		self.get_parent().DialogueSystem.DialogueProcessing()
+		dialogue.DialogueProcessing()
 	
 func Hurt():
 	AnimTrigger("Hurt")
@@ -36,6 +38,8 @@ func Hurt():
 		AnimTrigger("Hurt")
 		await get_tree().create_timer(1).timeout
 		#PompAI.set("hurt", false)
+		SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+
 	
 
 func AnimTrigger(triggerName : String):

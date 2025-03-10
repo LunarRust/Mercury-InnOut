@@ -27,7 +27,6 @@ texture = ExtResource("3_1bn2u")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636349, 0)
-visible = false
 light_color = Color(0.662745, 0.45098, 0.054902, 1)
 distance_fade_enabled = true
 distance_fade_begin = 12.0

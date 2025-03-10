@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_ur3oc"]
 [ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2_v7d2y"]
-[ext_resource type="Texture2D" uid="uid://b3ff2t2wvlbv7" path="res://KOMSprites/innout/raw-patty.png" id="3_3xckt"]
+[ext_resource type="Texture2D" uid="uid://bl64mywvhcrqi" path="res://KOMSprites/innout/raw-patty.png" id="3_3xckt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7sm0"]
 size = Vector3(0.446385, 0.812319, 0.210897)

@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/DialogueSystem.cs" id="1_vi4fc"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealthHandler.cs" id="2_0xy8e"]
-[ext_resource type="Script" path="res://CustomScripts/NPC/NpcToNpcHealthController.gd" id="3_gok5h"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/HealthController.gd" id="3_gok5h"]
 [ext_resource type="Script" path="res://Scripts/FamilyBehavior.cs" id="3_qsy31"]
 [ext_resource type="PackedScene" uid="uid://buseoax8q1b7n" path="res://Models/Child.blend" id="4_no3eq"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a2lqy"]
 

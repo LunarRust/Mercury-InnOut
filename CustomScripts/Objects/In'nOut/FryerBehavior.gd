@@ -63,45 +63,54 @@ func _process(delta):
 			SpriteObject.texture = BurnedSprites[SpriteNum]
 		
 func Item(item : String):
-	match item:
-		"Fresh Fries":
-			SpriteObject.texture = Sprites[2]
-			SpriteNum = 2
-			print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
-			ItemInBasket = true
-			RecivedItem = "FFries"
-			ItemInBasketName = "Fries"
-			SpriteObject.show()
-			if up:
-				animTrigger("Down")
-			if ItemInBasket:
-				Cooking = true
-			GUI.show()
-			up = false
-			return true
-		"Fries":
-			SpriteObject.texture = Sprites[0]
-			SpriteNum = 0
-			print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
-			ItemInBasket = true
-			RecivedItem = "Fries"
-			ItemInBasketName = "Fries"
-			SpriteObject.show()
-			if up:
-				animTrigger("Down")
-			if ItemInBasket:
-				Cooking = true
-			GUI.show()
-			up = false
-			return true
-		_:
-			if item == "Raw Patty":
-				var newItem = inv.create_and_add_item("RawPatty")
-			elif item == "Fresh Fries":
-				var newItem = inv.create_and_add_item("FFries")
-			else:
-				var newItem = inv.create_and_add_item(item)
-			return false
+	if !ItemInBasket:
+		match item:
+			"Fresh Fries":
+				SpriteObject.texture = Sprites[2]
+				SpriteNum = 2
+				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
+				ItemInBasket = true
+				RecivedItem = "FFries"
+				ItemInBasketName = "Fries"
+				SpriteObject.show()
+				if up:
+					animTrigger("Down")
+				if ItemInBasket:
+					Cooking = true
+				GUI.show()
+				up = false
+				return true
+			"Fries":
+				SpriteObject.texture = Sprites[0]
+				SpriteNum = 0
+				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
+				ItemInBasket = true
+				RecivedItem = "Fries"
+				ItemInBasketName = "Fries"
+				SpriteObject.show()
+				if up:
+					animTrigger("Down")
+				if ItemInBasket:
+					Cooking = true
+				GUI.show()
+				up = false
+				return true
+			_:
+				if item == "Raw Patty":
+					var newItem = inv.create_and_add_item("RawPatty")
+				elif item == "Fresh Fries":
+					var newItem = inv.create_and_add_item("FFries")
+				else:
+					var newItem = inv.create_and_add_item(item)
+				return false
+	else:
+		if item == "Raw Patty":
+			var newItem = inv.create_and_add_item("RawPatty")
+		elif item == "Fresh Fries":
+			var newItem = inv.create_and_add_item("FFries")
+		else:
+			var newItem = inv.create_and_add_item(item)
+		return false
 
 func Touch(AmNpc = false):
 	if !ItemInBasket || up:

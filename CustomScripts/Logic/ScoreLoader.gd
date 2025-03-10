@@ -1,12 +1,15 @@
 extends Node
 @export_category("Score Loader")
 var ScoreFile = ConfigFile.new()
-@export var EncryptionKey : String
 @export var listContainer : VBoxContainer
 @export var ScoresParent : Node2D
 @export var ScoreEntryPrefabRoot : PackedScene
 @export var NoScoresLabel : RichTextLabel
 @export var BestScoreContainer : ColorRect
+@export_category("Encryption")
+@export var EncryptionKey : String
+@export var KeyInput : LineEdit
+@export var TextObject : RichTextLabel
 var InnoutBus
 var SignalBusKOM
 var Clock
@@ -86,3 +89,27 @@ func Delete():
 	ScoresParent.hide()
 	BestScoreContainer.get_parent().hide()
 	
+	
+func ScoreDecoder():
+		var Inputkey = KeyInput.text
+		var err = ScoreFile.load_encrypted_pass("user://Scores.Mercury",Inputkey)
+		if err != OK || !ScoreFile.has_section("ScoreFile_Data"):
+			print("Failed to load file!")
+			TextObject.text = "[center][wave]\nIncorrect Key!"
+			TextObject.show()
+		else:
+			ScoreFile.save("user://Scores.ini")
+			TextObject.text = "[center][wave]\nScore file decoded!"
+			TextObject.show()
+	
+func ScoreEncoder():
+	var Inputkey = KeyInput.text
+	var err = ScoreFile.load("user://Scores.ini")
+	if err != OK || !ScoreFile.has_section("ScoreFile_Data"):
+		print("Failed to load file!")
+		TextObject.text = "[center][wave]\nIncorrect Key!"
+		TextObject.show()
+	else:
+		TextObject.text = "[center][wave]\nScore file (re)encoded!"
+		TextObject.show()
+		ScoreFile.save_encrypted_pass("user://Scores.Mercury",EncryptionKey)

@@ -6,6 +6,7 @@ extends Node
 @export var Property : String
 @export var SourceProperty: Node
 @export var Value : String
+@export var LocOffset : Vector3
 var id
 var ScenePack
 var start : bool = false
@@ -31,6 +32,6 @@ func Packload():
 	var node : Node = Scene.instantiate()
 	node.InstID = id
 	get_tree().current_scene.add_child(node)
-	node.global_position = TargetLoc.get_collision_point()
+	node.global_position = TargetLoc.get_collision_point() + LocOffset
 	print(node.get_tree_string_pretty())
 	TargetLoc.get_collision_point()

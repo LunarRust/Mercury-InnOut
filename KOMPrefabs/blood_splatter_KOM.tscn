@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dbrrtfnihdheq"]
 
 [ext_resource type="Material" path="res://Material/BloodParticle.tres" id="1_rlnbw"]
-[ext_resource type="Script" path="res://Scripts/bloodsplatter.cs" id="2_16a6b"]
+[ext_resource type="Script" path="res://CustomScripts/NPC/Objects/BloodSplatter.gd" id="2_wg0lf"]
 [ext_resource type="PackedScene" path="res://prefabs/gib.tscn" id="3_62s37"]
 [ext_resource type="Texture2D" uid="uid://kb35blhp0og7" path="res://Sprites/Particles/BloodPart.png" id="4_2shob"]
 [ext_resource type="AudioStream" uid="uid://c8iqhpsgxqd4g" path="res://Sounds/Scream-03.ogg" id="5_cksfy"]
@@ -109,7 +109,7 @@ _data = {
 "RESET": SubResource("Animation_6xbcq")
 }
 
-[node name="BloodSplatter" type="GPUParticles3D" node_paths=PackedStringArray("bloodMark")]
+[node name="BloodSplatter" type="GPUParticles3D" node_paths=PackedStringArray("bloodMark", "GibRef")]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 cast_shadow = 0
 emitting = false
@@ -119,8 +119,9 @@ explosiveness = 1.0
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_rqlxh")
 draw_pass_1 = SubResource("QuadMesh_i0uvj")
-script = ExtResource("2_16a6b")
+script = ExtResource("2_wg0lf")
 bloodMark = NodePath("BloodDecal")
+GibRef = NodePath("Gib")
 
 [node name="Gib" parent="." instance=ExtResource("3_62s37")]
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -0.0356801, 0.412851, 0.193209)

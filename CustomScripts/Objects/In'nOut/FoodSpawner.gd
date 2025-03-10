@@ -8,6 +8,7 @@ var NpcInv : Inventory
 @export var FoodSpriteStretchScale : float
 @export var ItemID : String
 var FoodSpriteBeginingScale : Vector3
+var DoNotTarget : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
