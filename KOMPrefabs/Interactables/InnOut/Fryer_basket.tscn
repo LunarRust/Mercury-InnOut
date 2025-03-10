@@ -1,14 +1,14 @@
 [gd_scene load_steps=37 format=3 uid="uid://ukgfvuqmgmx6"]
 
-[ext_resource type="Texture2D" uid="uid://fnur461jyc4e" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_lqmyy"]
-[ext_resource type="AudioStream" uid="uid://dpdoe14tukan8" path="res://Sounds/Droplet.ogg" id="2_pp7sf"]
+[ext_resource type="Texture2D" uid="uid://b08v5m5rhwj3g" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_lqmyy"]
+[ext_resource type="AudioStream" uid="uid://x3xpwx5jds16" path="res://Sounds/Droplet.ogg" id="2_pp7sf"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/FryerBehavior.gd" id="3_ikwmq"]
-[ext_resource type="Texture2D" uid="uid://bwb81o7vwgs1" path="res://KOMSprites/innout/fries.png" id="4_3ixg2"]
-[ext_resource type="Texture2D" uid="uid://b3ff2t2wvlbv7" path="res://KOMSprites/innout/raw-patty.png" id="5_x77u4"]
-[ext_resource type="Texture2D" uid="uid://bote0nnsinsvg" path="res://KOMSprites/innout/FryPile.png" id="6_x2hep"]
+[ext_resource type="Texture2D" uid="uid://b8cnpnu0vqxy6" path="res://KOMSprites/innout/fries.png" id="4_3ixg2"]
+[ext_resource type="Texture2D" uid="uid://bl64mywvhcrqi" path="res://KOMSprites/innout/raw-patty.png" id="5_x77u4"]
+[ext_resource type="Texture2D" uid="uid://driq2dafkx6o1" path="res://KOMSprites/innout/FryPile.png" id="6_x2hep"]
 [ext_resource type="SpriteFrames" uid="uid://bwwe0yu1rhfcs" path="res://KOMSprites/innout/FFriesFire.tres" id="7_ljurn"]
-[ext_resource type="Texture2D" uid="uid://ctdyh27w12rb4" path="res://KOMSprites/innout/cooked-patty.png" id="7_sox1w"]
-[ext_resource type="Texture2D" uid="uid://dxdbgpdskrtjp" path="res://KOMSprites/innout/friesBurnt.png" id="8_rhgwp"]
+[ext_resource type="Texture2D" uid="uid://cerxxnv0hmn5k" path="res://KOMSprites/innout/cooked-patty.png" id="7_sox1w"]
+[ext_resource type="Texture2D" uid="uid://c5roc13i1yo0r" path="res://KOMSprites/innout/friesBurnt.png" id="8_rhgwp"]
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="10_0j84d"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="11_00qx1"]
 [ext_resource type="Texture2D" uid="uid://0i4iha5ir3i1" path="res://Sprites/UI/ButtonEmpty.png" id="12_kau7w"]
@@ -314,6 +314,7 @@ parameters/conditions/Down = false
 parameters/conditions/Up = false
 
 [node name="GUI" type="Node3D" parent="." node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+transform = Transform3D(0.936219, -0.351417, 0, 0.351417, 0.936219, 0, 0, 0, 1, 1.2939, 0.120806, -0.0661913)
 visible = false
 script = ExtResource("10_0j84d")
 node_viewport = NodePath("SubViewport")

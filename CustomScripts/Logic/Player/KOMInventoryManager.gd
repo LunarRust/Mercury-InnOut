@@ -84,14 +84,8 @@ func ItemCast(item):
 		print("Not true!")
 
 func OnItemLook(item:Variant):
-	if item.get_title() == null:
-		itemName.text = "ERROR"
-	else:		
-		itemName.text = item.get_title()
-	if item.get_property("description", 0) == null:
-		itemDescription.text = "ERROR"
-	else:
-		itemDescription.text = item.get_property("description", 0)
+	itemName.text = str(item.get_title())
+	itemDescription.text = str(item.get_property("description", 0))
 
 func OnItemLeave(_item):
 	itemName.text = ""

@@ -33,6 +33,10 @@ func Item(item : String):
 					SetItem("res://KOMPrefabs/Items/Fries_pickup.tscn")
 				"Burger":
 					SetItem("res://KOMPrefabs/Items/Burger_pickup.tscn")
+				"Raw Patty":
+					SetItem("res://KOMPrefabs/Items/Raw_Patty.tscn")
+				"Fresh Fries":
+					SetItem("res://KOMPrefabs/Items/Fresh_Fries_pickup.tscn")
 				_:
 					if item == "Raw Patty":
 						var newItem = inv.create_and_add_item("RawPatty")
@@ -55,6 +59,10 @@ func Item(item : String):
 					SetItem("res://KOMPrefabs/Items/Fries_pickup.tscn")
 				"Burger":
 					SetItem("res://KOMPrefabs/Items/Burger_pickup.tscn")
+				"Raw Patty":
+					SetItem("res://KOMPrefabs/Items/Raw_Patty.tscn")
+				"Fresh Fries":
+					SetItem("res://KOMPrefabs/Items/Fresh_Fries_pickup.tscn")
 				_:
 					if item == "Raw Patty":
 						var newItem = inv.create_and_add_item("RawPatty")
