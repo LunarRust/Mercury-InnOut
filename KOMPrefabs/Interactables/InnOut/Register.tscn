@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/NavNodeCon.gd" id="1_xotax"]
 [ext_resource type="PackedScene" uid="uid://jur7vxccf5uw" path="res://KOMPrefabs/Interactables/CamGrabber.tscn" id="2_i7a0y"]
-[ext_resource type="AudioStream" uid="uid://bb67bgrowip25" path="res://Sounds/DNAstart.ogg" id="3_4gt68"]
-[ext_resource type="AudioStream" uid="uid://dqx257ns6tgoe" path="res://Sounds/DNAfail.ogg" id="4_2rfeb"]
-[ext_resource type="PackedScene" uid="uid://tqaa24cqkri3" path="res://KOMModels/innout/cash_register.glb" id="5_8cdur"]
+[ext_resource type="AudioStream" uid="uid://wi5bbugtlb5w" path="res://Sounds/DNAstart.ogg" id="3_4gt68"]
+[ext_resource type="AudioStream" uid="uid://cfjal7c4hnmq" path="res://Sounds/DNAfail.ogg" id="4_2rfeb"]
+[ext_resource type="PackedScene" uid="uid://cbmb6fb7ncl8" path="res://KOMModels/innout/cash_register.glb" id="5_8cdur"]
 [ext_resource type="PackedScene" uid="uid://cp46x0ogan7h0" path="res://KOMPrefabs/Interactables/InnOut/food_tray.tscn" id="6_c3pmk"]
 [ext_resource type="PackedScene" uid="uid://cf08hharkb570" path="res://KOMPrefabs/Logic/RandomOrderGen.tscn" id="9_7lvxl"]
 [ext_resource type="PackedScene" uid="uid://c2d6efsd3ij6e" path="res://KOMPrefabs/Interactables/InnOut/OrderPanel.tscn" id="10_yb0mo"]

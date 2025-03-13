@@ -399,6 +399,26 @@ func ArrivalAction(action : int):
 ###################################
 ###
 ###################################
+func Speak(anim : int,SoundString : String):
+	match anim:
+		1:
+			animTrigger("Talk")
+		2:
+			animTrigger("touch")
+		3:
+			animTrigger("Look")
+		4:
+			animTrigger("Hurt")
+		0:
+			pass
+		_:
+			pass
+	DialogueSystem.soundSource.stream = load(SoundString) as AudioStream
+	DialogueSystem.soundSource.play()
+
+###################################
+###
+###################################
 func TargetLocator(SpefTarget = "default",MaxDist = MaxDistanceDef):
 	var NearestTarget
 	if MaxDist != MaxDistanceDef:

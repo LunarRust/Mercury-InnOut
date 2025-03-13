@@ -7,9 +7,14 @@ extends Node
 var seconds
 var minutes
 var hours
+var InnOutBus
+
+func _ready():
+	InnOutBus = get_tree().get_first_node_in_group("InnOutSignalBus")
 
 func _process(delta: float) -> void:
-	date_time.increase_by_sec(delta * ticks_pr_second)
+	if InnOutBus.DoTimer:
+		date_time.increase_by_sec(delta * ticks_pr_second)
 	seconds = add_leading_zero(date_time.seconds)
 	minutes = add_leading_zero(date_time.minutes)
 	hours = add_leading_zero(date_time.hours)
