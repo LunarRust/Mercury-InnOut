@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://hnpyj83thdr6"]
+
+[ext_resource type="Texture2D" uid="uid://b7npuvbc7buv8" path="res://KOMModels/innout/SodaFountain/SodaFountain_VendingMachineSkinsCropped.jpg" id="1_bmwv4"]
+
+[resource]
+resource_name = "SodaTextMat"
+cull_mode = 2
+albedo_texture = ExtResource("1_bmwv4")
+emission_enabled = true
+emission_texture = ExtResource("1_bmwv4")

@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://pccstrb6eiys"]
+
+[resource]
+resource_name = "MetalText"
+cull_mode = 2
+metallic = 0.804545
+roughness = 0.309091
