@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c2vmt7n15rwky"]
+
+[ext_resource type="Texture2D" uid="uid://bvypedoqmiw32" path="res://KOMModels/innout/Cup/Cup_CrumpledPaper2Compressed.png" id="1_txmub"]
+
+[resource]
+resource_name = "Lip"
+cull_mode = 2
+albedo_texture = ExtResource("1_txmub")
+metallic = 0.0681818
+roughness = 0.922727

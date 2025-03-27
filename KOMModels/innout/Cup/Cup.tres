@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dr252t7jdl5vj"]
+
+[ext_resource type="Texture2D" uid="uid://q3hlatu6g6py" path="res://KOMModels/innout/Cup/Cup_stripes_White_BG.png" id="1_wgv06"]
+
+[resource]
+resource_name = "Cup"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_wgv06")
+roughness = 0.5
+texture_repeat = false

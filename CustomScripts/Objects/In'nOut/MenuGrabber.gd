@@ -25,6 +25,7 @@ func _ready():
 	MenuCam.set_process(false)
 	PlayerCam = get_viewport().get_camera_3d()
 	playerObject = get_tree().get_first_node_in_group("player") as Node3D
+	head = playerObject.get_node("Head")
 	
 	await get_tree().create_timer(0.3).timeout
 	

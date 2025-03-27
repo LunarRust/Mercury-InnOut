@@ -176,5 +176,15 @@ json_data = "[
         \"name\": \"Soft Drink\",
         \"usable\": \"true\",
         \"width\": 1
+    },
+    {
+        \"description\": \"Empty Cup\",
+        \"health\": 0,
+        \"height\": 2,
+        \"id\": \"emptycup\",
+        \"image\": \"res://KOMSprites/innout/CupRenderCropped.png\",
+        \"name\": \"Drink Cup\",
+        \"usable\": \"false\",
+        \"width\": 1
     }
 ]"
