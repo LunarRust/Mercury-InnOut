@@ -10,6 +10,7 @@ var last_event_time: float = -1.0
 @export var node_viewport : SubViewport
 @export var node_quad : MeshInstance3D
 @export var node_area : Area3D
+@export var Billboard : bool = false
 
 func _ready():
 	node_area.mouse_entered.connect(_mouse_entered_area)
@@ -22,6 +23,9 @@ func _ready():
 	NewMaterial.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	NewMaterial.resource_local_to_scene = true
 	node_quad.set_surface_override_material(0,NewMaterial)
+	if Billboard == true:
+		node_quad.get_surface_override_material(0).billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
+		node_quad.get_surface_override_material(0).billboard_keep_scale = true
 	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
 	if node_quad.get_surface_override_material(0).billboard_mode == BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED:
 		set_process(false)
@@ -116,7 +120,7 @@ func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Ve
 
 
 func rotate_area_to_billboard():
-	var billboard_mode = node_quad.get_surface_override_material(0).params_billboard_mode
+	var billboard_mode = node_quad.get_surface_override_material(0).billboard_mode
 
 	# Try to match the area with the material's billboard setting, if enabled.
 	if billboard_mode > 0:

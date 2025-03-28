@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cltwtlee847lk"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_gjg0a"]
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2_nn3xy"]
+[ext_resource type="Texture2D" uid="uid://b2m686urfhjjl" path="res://KOMSprites/innout/InnoutDrinkCompressed.png" id="3_3m6en"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87okn"]
+size = Vector3(0.6073, 1, 0.173462)
+
+[node name="EmptyCup" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.273173, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0143433)
+shape = SubResource("BoxShape3D_87okn")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("1_gjg0a")
+ItemID = "drink"
+
+[node name="ModelRoot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42273, 0)
+script = ExtResource("2_nn3xy")
+
+[node name="Sprite3D" type="Sprite3D" parent="ModelRoot"]
+transform = Transform3D(0.065, 0, 0, 0, 0.065, 0, 0, 0, 0.065, 0, 0, 0)
+texture = ExtResource("3_3m6en")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05908, 0)
+light_color = Color(0.505882, 0.529412, 0.615686, 1)
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+omni_range = 1.09562

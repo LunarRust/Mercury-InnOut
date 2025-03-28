@@ -100,6 +100,8 @@ func Item(item : String):
 					var newItem = inv.create_and_add_item("RawPatty")
 				elif item == "Fresh Fries":
 					var newItem = inv.create_and_add_item("FFries")
+				elif item == "Drink Cup":
+					var newItem = inv.create_and_add_item("emptycup")
 				else:
 					var newItem = inv.create_and_add_item(item)
 				return false
@@ -108,6 +110,8 @@ func Item(item : String):
 			var newItem = inv.create_and_add_item("RawPatty")
 		elif item == "Fresh Fries":
 			var newItem = inv.create_and_add_item("FFries")
+		elif item == "Drink Cup":
+			var newItem = inv.create_and_add_item("emptycup")
 		else:
 			var newItem = inv.create_and_add_item(item)
 		return false

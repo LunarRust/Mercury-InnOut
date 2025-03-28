@@ -13,6 +13,9 @@ func _ready():
 	InnOutBus = get_tree().get_first_node_in_group("InnOutSignalBus")
 
 func _process(delta: float) -> void:
+	#
+	#if player has timer disabled, do not record time.
+	#
 	if InnOutBus.DoTimer:
 		date_time.increase_by_sec(delta * ticks_pr_second)
 	seconds = add_leading_zero(date_time.seconds)

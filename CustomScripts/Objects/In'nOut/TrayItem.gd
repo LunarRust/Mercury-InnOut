@@ -37,11 +37,15 @@ func Item(item : String):
 					SetItem("res://KOMPrefabs/Items/Raw_Patty.tscn")
 				"Fresh Fries":
 					SetItem("res://KOMPrefabs/Items/Fresh_Fries_pickup.tscn")
+				"Soft Drink":
+					SetItem("res://KOMPrefabs/Items/Full_Cup.tscn")
 				_:
 					if item == "Raw Patty":
 						var newItem = inv.create_and_add_item("RawPatty")
 					elif item == "Fresh Fries":
 						var newItem = inv.create_and_add_item("FFries")
+					elif item == "Drink Cup":
+						var newItem = inv.create_and_add_item("emptycup")
 					else:
 						var newItem = inv.create_and_add_item(item)
 					return false
@@ -50,6 +54,8 @@ func Item(item : String):
 				var newItem = inv.create_and_add_item("RawPatty")
 			elif item == "Fresh Fries":
 				var newItem = inv.create_and_add_item("FFries")
+			elif item == "Drink Cup":
+				var newItem = inv.create_and_add_item("emptycup")
 			else:
 				var newItem = inv.create_and_add_item(item)
 			return false
@@ -63,11 +69,15 @@ func Item(item : String):
 					SetItem("res://KOMPrefabs/Items/Raw_Patty.tscn")
 				"Fresh Fries":
 					SetItem("res://KOMPrefabs/Items/Fresh_Fries_pickup.tscn")
+				"Soft Drink":
+					SetItem("res://KOMPrefabs/Items/Full_Cup.tscn")
 				_:
 					if item == "Raw Patty":
 						var newItem = inv.create_and_add_item("RawPatty")
 					elif item == "Fresh Fries":
 						var newItem = inv.create_and_add_item("FFries")
+					elif item == "Drink Cup":
+						var newItem = inv.create_and_add_item("emptycup")
 					else:
 						var newItem = inv.create_and_add_item(item)
 					return false
@@ -76,6 +86,8 @@ func Item(item : String):
 			var newItem = inv.create_and_add_item("RawPatty")
 		elif item == "Fresh Fries":
 			var newItem = inv.create_and_add_item("FFries")
+		elif item == "Drink Cup":
+			var newItem = inv.create_and_add_item("emptycup")
 		else:
 			var newItem = inv.create_and_add_item(item)
 		return false

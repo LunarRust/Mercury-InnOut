@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cj6nfviosnb4o"]
+[gd_scene load_steps=21 format=3 uid="uid://cj6nfviosnb4o"]
 
 [ext_resource type="Material" uid="uid://bpeflgdmq3es7" path="res://KOMModels/Textures/8x8.tres" id="1_bga2g"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/RotateTo.gd" id="2_32ggh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cjlvvrm2owvaa" path="res://KOMPrefabs/UI/Gold_Checker_Banner.tscn" id="5_3qbcu"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Time/Time_System.gd" id="5_sirc1"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Time/Date_Time.gd" id="6_c61sy"]
+[ext_resource type="SpriteFrames" uid="uid://lcwuywb1m8s8" path="res://KOMSprites/GamaPhone.tres" id="7_edxm1"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/MenuGrabber.gd" id="7_v1e7p"]
 [ext_resource type="Curve" uid="uid://iwl6freusb4t" path="res://KOMResources/Curves/CamGrabberCurve.tres" id="8_6cht8"]
 [ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="9_mt5de"]
@@ -103,6 +104,13 @@ offset_top = 1040.0
 offset_right = 10000.0
 offset_bottom = 1208.0
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GUI/SubViewport"]
+position = Vector2(300, 500)
+scale = Vector2(3.555, 3.555)
+sprite_frames = ExtResource("7_edxm1")
+autoplay = "default"
+frame_progress = 0.244122
+
 [node name="Quad" type="MeshInstance3D" parent="GUI"]
 process_mode = 3
 transform = Transform3D(-2.39101e-08, -1.73289e-21, 0.875, 5.2667e-22, 0.47, 3.22612e-21, -0.547, 4.52532e-22, -3.82475e-08, 0, 0, 0.00781775)
@@ -117,8 +125,9 @@ input_capture_on_drag = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GUI/Quad/Area3D"]
 shape = SubResource("BoxShape3D_w737o")
 
-[node name="ScoreTracker" type="Node" parent="." node_paths=PackedStringArray("ScoreLabel")]
+[node name="ScoreTracker" type="Node" parent="." node_paths=PackedStringArray("GamaPhone", "ScoreLabel")]
 script = ExtResource("4_r6pjt")
+GamaPhone = NodePath("../GUI/SubViewport/AnimatedSprite2D")
 ScoreLabel = NodePath("../GUI/SubViewport/RichTextLabel")
 EncryptionKey = "t4tsexnastystyle"
 
