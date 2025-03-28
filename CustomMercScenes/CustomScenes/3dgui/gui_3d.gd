@@ -1,12 +1,12 @@
+@tool
 extends Node3D
-
 # Used for checking if the mouse is inside the Area3D.
 var is_mouse_inside = false
 # The last processed input touch/mouse event. To calculate relative movement.
 var last_event_pos2D = null
 # The time of the last event in seconds since engine start.
 var last_event_time: float = -1.0
-
+@export_category("GUI 3D")
 @export var node_viewport : SubViewport
 @export var node_quad : MeshInstance3D
 @export var node_area : Area3D

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c22a0u26gscfw"]
+
+[ext_resource type="Texture2D" uid="uid://c70bbwxer4w5s" path="res://textures/InnoutTextures/CheckerBoardClean.png" id="1_sq34d"]
+
+[resource]
+albedo_texture = ExtResource("1_sq34d")
+metallic_specular = 0.0
+texture_filter = 2

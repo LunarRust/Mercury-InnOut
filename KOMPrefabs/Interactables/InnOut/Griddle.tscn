@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cqn0gyd1vcqh2"]
+[gd_scene load_steps=59 format=3 uid="uid://cqn0gyd1vcqh2"]
 
 [ext_resource type="Texture2D" uid="uid://b08v5m5rhwj3g" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_d3ufr"]
 [ext_resource type="Texture2D" uid="uid://b1jbauqt5tjix" path="res://KOMModels/innout/restaurant_Metal_006_basecolor.jpg" id="2_h7jx2"]
@@ -363,17 +363,44 @@ texture = ExtResource("17_4uinn")
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_lwuib"]
-viewport_path = NodePath("GUI/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_idu07"]
+viewport_path = NodePath("StaticBody3D/GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auag1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eowuk"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_lwuib")
+albedo_texture = SubResource("ViewportTexture_idu07")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wwdtl"]
 size = Vector3(3, 2, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2sgp6"]
+viewport_path = NodePath("StaticBody3D2/GUI2/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jusv"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_2sgp6")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fjoky"]
+viewport_path = NodePath("StaticBody3D3/GUI3/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kbfq"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_fjoky")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xcr60"]
+viewport_path = NodePath("StaticBody3D4/GUI4/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bybs8"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_xcr60")
 
 [node name="Griddle" type="Node3D"]
 
@@ -666,7 +693,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
+surface_material_override/0 = SubResource("StandardMaterial3D_eowuk")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D/GUI/Quad"]
 collision_layer = 0
@@ -722,7 +749,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
+surface_material_override/0 = SubResource("StandardMaterial3D_8jusv")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D2/GUI2/Quad"]
 collision_layer = 0
@@ -778,7 +805,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
+surface_material_override/0 = SubResource("StandardMaterial3D_3kbfq")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D3/GUI3/Quad"]
 collision_layer = 0
@@ -834,7 +861,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_auag1")
+surface_material_override/0 = SubResource("StandardMaterial3D_bybs8")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D4/GUI4/Quad"]
 collision_layer = 0

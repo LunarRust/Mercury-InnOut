@@ -12,7 +12,7 @@ var opened : bool
 
 
 
-#TODO Item gets door stuck while player is in AreaTrigger
+#TODO Rewrite entire door system
 func _on_area_entered(area):
 	if OnVolumeEntered:
 		#print("area entered")
@@ -21,7 +21,8 @@ func _on_area_entered(area):
 			match opened:
 				true:
 					if Exit:
-						close()
+						#close()
+						pass
 				false:
 					if Entrance:
 						open()
@@ -59,7 +60,7 @@ func _on_area_exited(area):
 							close()
 					false:
 						if Entrance:
-							open()
+							pass
 			else:
 				await get_tree().create_timer((Target.get_child(ChildNumber).Duration) + 0.1).timeout
 				_on_area_exited(area)

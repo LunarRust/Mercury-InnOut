@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_34j1f"]
 [ext_resource type="Resource" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_pfff6"]
 [ext_resource type="Material" path="res://textures/Plastic2.tres" id="3_amkx1"]
+[ext_resource type="AudioStream" uid="uid://cxje01fdrdex0" path="res://Sounds/tick4.ogg" id="3_g2wb2"]
 [ext_resource type="Material" path="res://textures/Rust.tres" id="4_aj38o"]
 [ext_resource type="Material" uid="uid://cs2yiyk8wt251" path="res://KOMShaders/InvertColor.tres" id="4_kevsu"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/FoodSpawner.gd" id="5_y1vtp"]
-[ext_resource type="AudioStream" uid="uid://cnohmfrk4pxtj" path="res://Sounds/Pickup.ogg" id="6_8dvv0"]
 [ext_resource type="Texture2D" uid="uid://bl64mywvhcrqi" path="res://KOMSprites/innout/raw-patty.png" id="7_l2pam"]
 [ext_resource type="Material" uid="uid://b2q8quyis51mr" path="res://KOMShaders/CRT.tres" id="8_jv6nd"]
 [ext_resource type="Texture2D" uid="uid://0eyk37hoo024" path="res://KOMMaterials/green.PNG" id="9_6bhio"]
@@ -56,14 +56,14 @@ points = PackedVector3Array(0, -1, -1, 0, 0, -1, -1, 0, -1, -1, 0, 0, 0, -1, 0, 
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_esyqx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_drby4"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xknp7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akveg"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_esyqx")
+albedo_texture = SubResource("ViewportTexture_drby4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n1oak"]
 size = Vector3(3, 2, 0.1)
@@ -83,18 +83,19 @@ shape = SubResource("BoxShape3D_wl11t")
 [node name="Behavior" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("SoundPlayer", "FoodSprite")]
 script = ExtResource("5_y1vtp")
 SoundPlayer = NodePath("../../SoundPlayer")
-FoodSprite = NodePath("../../FoodDisplay")
+FoodSprite = NodePath("../../SubViewport/Sprite2D")
 FoodSpriteStretchScale = 1.1
 ItemID = "RawPatty"
 
 [node name="SoundPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458403, 0.36084, -0.39983)
-stream = ExtResource("6_8dvv0")
+stream = ExtResource("3_g2wb2")
 volume_db = -10.0
 max_distance = 5.0
 
 [node name="FoodDisplay" type="Sprite3D" parent="."]
-transform = Transform3D(-3.36578e-09, 0, -0.077, 0, 0.077, 0, 0.077, 0, -3.36578e-09, -0.77107, 0.376952, -0.382354)
+transform = Transform3D(-3.36578e-09, 0, -0.077, 0, 0.077, 0, 0.077, 0, -3.36578e-09, -0.79667, 0.376952, -0.382354)
+visible = false
 material_overlay = ExtResource("4_kevsu")
 visibility_range_end = 10.0
 visibility_range_end_margin = 5.0
@@ -125,6 +126,11 @@ shape = SubResource("ConvexPolygonShape3D_uuscy")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+position = Vector2(255.165, 250)
+scale = Vector2(0.565, 0.565)
+texture = ExtResource("7_l2pam")
+
 [node name="TextureRect" type="TextureRect" parent="SubViewport"]
 material = ExtResource("8_jv6nd")
 offset_right = 512.0
@@ -135,7 +141,7 @@ texture = ExtResource("9_6bhio")
 process_mode = 3
 transform = Transform3D(-1.11464e-08, 0, -0.875, 0, 0.375, 0, 0.255, 0, -3.82475e-08, -0.770244, 0.38581, -0.383956)
 mesh = SubResource("QuadMesh_0ulbx")
-surface_material_override/0 = SubResource("StandardMaterial3D_xknp7")
+surface_material_override/0 = SubResource("StandardMaterial3D_akveg")
 
 [node name="Area3D" type="Area3D" parent="Quad"]
 collision_layer = 2

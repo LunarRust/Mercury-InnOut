@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://clak8qk3qyhik"]
+[gd_scene load_steps=6 format=3 uid="uid://clak8qk3qyhik"]
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_met4v"]
 [ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2_i4gop"]
-[ext_resource type="Texture2D" uid="uid://b2j0kt7ppsv7a" path="res://KOMSprites/innout/In-N-Out-Burger.png" id="3_2onjn"]
+[ext_resource type="Texture2D" uid="uid://l3b4taiqqnid" path="res://KOMSprites/innout/In-N-Out-Burger.png" id="3_2onjn"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="4_vedyf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7sm0"]
 size = Vector3(0.446385, 0.812319, 0.210897)
@@ -31,3 +32,7 @@ light_color = Color(0.662745, 0.45098, 0.054902, 1)
 distance_fade_enabled = true
 distance_fade_begin = 12.0
 omni_range = 1.09562
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_vedyf")
+autoplay = true

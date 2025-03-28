@@ -1,8 +1,8 @@
-[gd_scene load_steps=159 format=3 uid="uid://cvdfk0p6gjdfs"]
+[gd_scene load_steps=161 format=3 uid="uid://cvdfk0p6gjdfs"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/Player/MovementController.gd" id="1_vssii"]
 [ext_resource type="Texture2D" uid="uid://bofd4xxv6rmbl" path="res://Sprites/DownArrow.png" id="2_ifr1t"]
-[ext_resource type="AudioStream" uid="uid://cuu8riyrj8p6k" path="res://Sounds/Footstep.wav" id="5_qerm0"]
+[ext_resource type="AudioStream" uid="uid://ct5ssa0yauej4" path="res://Sounds/Footstep.wav" id="5_qerm0"]
 [ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="6_spel8"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Player/hudmanager.gd" id="8_migb3"]
 [ext_resource type="Texture2D" uid="uid://i22sptxj8tse" path="res://Sprites/UI/HurtOverlay.png" id="8_sbru4"]
@@ -67,10 +67,10 @@
 [ext_resource type="Texture2D" uid="uid://blcb86m67vhwu" path="res://Sprites/UI/Flashlight3.png" id="65_rvxt0"]
 [ext_resource type="Texture2D" uid="uid://b140iif6mdmye" path="res://Sprites/UI/Flashlight2.png" id="66_bic7y"]
 [ext_resource type="Script" path="res://Scripts/FlashLight.cs" id="67_jkxc1"]
-[ext_resource type="AudioStream" uid="uid://d0smcgxv4cke5" path="res://Sounds/FlashLight.ogg" id="68_2a51e"]
+[ext_resource type="AudioStream" uid="uid://6wexyx8jhkym" path="res://Sounds/FlashLight.ogg" id="68_2a51e"]
 [ext_resource type="Script" path="res://Scripts/Usebutton.cs" id="69_62jd1"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="70_h6pp7"]
-[ext_resource type="AudioStream" uid="uid://byaypi50ps5kd" path="res://Sounds/tick4.ogg" id="72_g5mrj"]
+[ext_resource type="AudioStream" uid="uid://cxje01fdrdex0" path="res://Sounds/tick4.ogg" id="72_g5mrj"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderTextureButtonFullPath.gd" id="72_xxy7n"]
 [ext_resource type="Script" path="res://Scenes/TPSUnlocker.gd" id="73_os4y1"]
 [ext_resource type="Texture2D" uid="uid://4rl20qwu2v3u" path="res://Sprites/UI/View1.png" id="74_ocuuc"]
@@ -79,8 +79,10 @@
 [ext_resource type="Texture2D" uid="uid://ym8xvbx2r8dx" path="res://Sprites/UI/InventoryCursor.png" id="77_62t7j"]
 [ext_resource type="Script" path="res://Scripts/InventoryCursor.cs" id="78_3y37l"]
 [ext_resource type="Texture2D" uid="uid://d0xe5p1yx5ggi" path="res://Sprites/CompassNSEW.png" id="79_c5y55"]
+[ext_resource type="Texture2D" uid="uid://djsr2t070j88q" path="res://Sprites/UI/Trash.png" id="80_jdj8r"]
 [ext_resource type="Script" path="res://Scripts/CompassArrow.cs" id="80_xttg5"]
 [ext_resource type="Texture2D" uid="uid://bs3vk6f87r1s4" path="res://Sprites/CompassArrow.png" id="81_4d13e"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Player/ClearInv.gd" id="81_ytt51"]
 [ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="82_iiwr0"]
 [ext_resource type="PackedScene" uid="uid://dfnd2drrmwkyf" path="res://KOMPrefabs/NPCs/PompNpc.tscn" id="83_r03ox"]
 [ext_resource type="Texture2D" uid="uid://ck3g65wtfufno" path="res://Sprites/UI/iconsmile128Gold.png" id="84_g33xn"]
@@ -5549,6 +5551,17 @@ position = Vector2(-122, -78.475)
 texture = ExtResource("77_62t7j")
 script = ExtResource("78_3y37l")
 
+[node name="Trash" type="TextureButton" parent="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent" node_paths=PackedStringArray("PlayerInv", "SoundSource")]
+offset_left = -134.998
+offset_top = 17.9981
+offset_right = -102.998
+offset_bottom = 49.9981
+texture_normal = ExtResource("80_jdj8r")
+texture_pressed = ExtResource("9_06m03")
+script = ExtResource("81_ytt51")
+PlayerInv = NodePath("../InventoryGrid")
+SoundSource = NodePath("../2DSound")
+
 [node name="CompassArrow2" type="Sprite2D" parent="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar" node_paths=PackedStringArray("playerNode")]
 modulate = Color(0.517647, 0.517647, 0.517647, 1)
 z_index = 5
@@ -5882,57 +5895,57 @@ color = Color(1, 0, 0, 0)
 transform = Transform3D(-0.842657, 0, 7.36673e-08, 0, 0.842657, 0, -7.36673e-08, 0, -0.842657, 0, -1, 0)
 
 [node name="Skeleton3D" parent="Player Model/PompRig" index="0"]
-bones/0/position = Vector3(-6.85041e-09, 0.846134, -0.158666)
+bones/0/position = Vector3(-1.82826e-10, 0.90151, -0.158666)
 bones/1/rotation = Quaternion(-0.0628926, 0.000945223, 0.00010601, 0.99802)
-bones/2/rotation = Quaternion(-0.0778271, -0.00791879, 0.00156151, 0.996934)
-bones/3/rotation = Quaternion(0.0423632, 0.109111, 0.0294056, 0.992691)
+bones/2/rotation = Quaternion(-0.0790501, -0.0100739, 0.00134797, 0.996819)
+bones/3/rotation = Quaternion(-0.00202907, -9.63522e-05, -0.000425992, 0.999998)
 bones/4/rotation = Quaternion(0.0298244, 2.17346e-15, 7.11069e-09, 0.999555)
 bones/4/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(0.219258, -0.0894121, 0.00135613, 0.97156)
-bones/6/position = Vector3(0.0560482, 0.0809315, 0.0803408)
+bones/5/rotation = Quaternion(0.159592, -0.00917643, 0.00167908, 0.987139)
+bones/6/position = Vector3(0.0546275, 0.0800665, 0.081573)
 bones/6/rotation = Quaternion(0.574667, -4.35862e-08, 1.99083e-07, 0.818388)
 bones/6/scale = Vector3(1, 1, 1)
-bones/7/position = Vector3(0.0240567, 0.0805116, 0.0981403)
+bones/7/position = Vector3(0.0228316, 0.0750634, 0.100377)
 bones/8/rotation = Quaternion(0.574667, 7.93556e-12, 1.37e-07, 0.818387)
 bones/10/rotation = Quaternion(-0.133424, -2.36208e-07, -6.30349e-08, 0.991059)
 bones/11/rotation = Quaternion(-0.133424, -2.36287e-07, -6.36183e-08, 0.991059)
 bones/12/rotation = Quaternion(-0.133424, -4.72495e-07, -3.12241e-08, 0.991059)
-bones/13/position = Vector3(-1.37024e-05, 0.0737743, -0.0149032)
+bones/13/position = Vector3(-5.21031e-05, 0.0737297, -0.0150498)
 bones/13/rotation = Quaternion(-0.785934, -1.47419e-07, -3.7476e-07, 0.618311)
-bones/14/position = Vector3(-0.0560482, 0.0809328, 0.0803444)
+bones/14/position = Vector3(-0.0548563, 0.0802354, 0.0816067)
 bones/14/rotation = Quaternion(0.574667, -2.38705e-07, 6.20714e-08, 0.818388)
 bones/14/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(-0.0229839, 0.0790812, 0.0985794)
-bones/16/position = Vector3(0.0619846, 0.13228, 0.0438355)
+bones/15/position = Vector3(-0.0228165, 0.075066, 0.100373)
+bones/16/position = Vector3(0.051457, 0.145091, 0.0388272)
 bones/16/rotation = Quaternion(0.570114, -2.42461e-08, 1.70866e-07, 0.821566)
-bones/16/scale = Vector3(0.61907, 0.61907, 0.61907)
-bones/17/position = Vector3(0.0685364, 0.11581, 0.0665157)
+bones/16/scale = Vector3(0.714773, 0.714773, 0.714773)
+bones/17/position = Vector3(0.0694504, 0.121867, 0.0647224)
 bones/17/rotation = Quaternion(0.574496, 0.00427076, 0.00299788, 0.81849)
 bones/17/scale = Vector3(1, 1, 1)
-bones/18/position = Vector3(-0.0685364, 0.11581, 0.0665157)
+bones/18/position = Vector3(-0.0694504, 0.121867, 0.0647224)
 bones/18/rotation = Quaternion(0.574496, -0.00427106, -0.0029976, 0.81849)
 bones/18/scale = Vector3(1, 1, 1)
-bones/19/position = Vector3(-0.0484683, 0.13361, 0.0433288)
+bones/19/position = Vector3(-0.059103, 0.144142, 0.0361182)
 bones/19/rotation = Quaternion(0.570114, -2.20123e-07, 3.49399e-08, 0.821566)
-bones/19/scale = Vector3(0.600076, 0.600076, 0.600076)
-bones/20/position = Vector3(1.32419e-05, 0.0859879, 0.09327)
+bones/19/scale = Vector3(0.714782, 0.714782, 0.714782)
+bones/20/position = Vector3(4.47582e-05, 0.0858708, 0.093316)
 bones/20/rotation = Quaternion(0.986162, 1.68942e-11, 2.35116e-07, 0.165785)
 bones/20/scale = Vector3(1, 1, 1)
-bones/21/position = Vector3(0.0694438, 0.180296, 0.0435785)
+bones/21/position = Vector3(0.0694289, 0.179944, 0.0436619)
 bones/21/scale = Vector3(1, 1, 1)
-bones/22/position = Vector3(-0.0694537, 0.180529, 0.0435233)
+bones/22/position = Vector3(-0.0694384, 0.180229, 0.0436262)
 bones/22/rotation = Quaternion(0.574497, -0.00427106, -0.0029976, 0.81849)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/rotation = Quaternion(-0.535559, -0.441949, -0.458366, 0.554759)
-bones/24/rotation = Quaternion(-0.342376, 0.621326, -0.499335, 0.497391)
+bones/24/rotation = Quaternion(-0.365329, 0.59991, -0.526434, 0.479073)
 bones/24/scale = Vector3(1, 1, 1)
-bones/25/rotation = Quaternion(0.191657, -0.170128, 0.0127066, 0.966521)
+bones/25/rotation = Quaternion(-0.00322834, -0.0936527, -0.00276542, 0.995596)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/scale = Vector3(1, 1, 1)
-bones/28/position = Vector3(0.0167259, 0.132485, -0.0407282)
-bones/28/rotation = Quaternion(-0.395095, -0.67586, 0.429834, 0.44984)
+bones/28/position = Vector3(0.00319323, 0.131254, -0.0413286)
+bones/28/rotation = Quaternion(-0.364101, -0.601252, 0.528063, 0.476524)
 bones/28/scale = Vector3(1, 1, 1)
-bones/29/rotation = Quaternion(0.191522, 0.169445, -0.010816, 0.966691)
+bones/29/rotation = Quaternion(-0.00440711, 0.093181, 0.00323339, 0.995634)
 bones/29/scale = Vector3(1, 1, 1)
 bones/30/rotation = Quaternion(-0.00711013, -0.0729187, 0.0929765, 0.992969)
 bones/31/rotation = Quaternion(3.36933e-08, 0.61389, 0.789391, 1.9271e-07)
@@ -5941,16 +5954,16 @@ bones/32/rotation = Quaternion(-2.73707e-07, 0.61389, 0.789391, -4.63474e-08)
 bones/32/scale = Vector3(1, 1, 1)
 bones/33/rotation = Quaternion(-0.152455, -0.793331, -0.285504, 0.515627)
 bones/34/rotation = Quaternion(-0.152455, 0.793331, 0.285504, 0.515627)
-bones/35/rotation = Quaternion(0.964939, -1.20018e-08, 3.42714e-07, 0.262475)
-bones/36/rotation = Quaternion(0.33793, -7.14789e-09, 1.25648e-07, 0.941171)
-bones/37/rotation = Quaternion(-0.646091, 1.81975e-07, -3.0808e-07, 0.76326)
+bones/35/rotation = Quaternion(0.985087, -2.40288e-08, 3.52898e-07, 0.172059)
+bones/36/rotation = Quaternion(0.133457, -3.69486e-10, 2.82517e-08, 0.991055)
+bones/37/rotation = Quaternion(-0.555272, 1.98285e-07, -2.64774e-07, 0.831669)
 bones/37/scale = Vector3(1, 1, 1)
 bones/38/rotation = Quaternion(1.10642e-07, 0.961249, -0.275683, 3.01752e-07)
 bones/39/rotation = Quaternion(0.679706, 0.679705, -0.194937, 0.194938)
 bones/39/scale = Vector3(1, 1, 1)
-bones/40/rotation = Quaternion(0.964308, -1.19542e-07, 1.17818e-07, 0.264783)
-bones/41/rotation = Quaternion(0.330389, 5.15712e-09, -1.29982e-07, 0.943845)
-bones/42/rotation = Quaternion(-0.646079, -1.81978e-07, 3.08075e-07, 0.76327)
+bones/40/rotation = Quaternion(0.984222, -6.61053e-08, 1.17833e-07, 0.176936)
+bones/41/rotation = Quaternion(0.134765, -5.01743e-10, -3.47329e-08, 0.990878)
+bones/42/rotation = Quaternion(-0.555272, -1.98285e-07, 2.64774e-07, 0.831669)
 bones/43/rotation = Quaternion(-1.10642e-07, 0.961249, -0.275683, -3.01752e-07)
 bones/43/scale = Vector3(1, 1, 1)
 bones/44/rotation = Quaternion(0.679706, -0.679705, 0.194937, 0.194937)
@@ -6048,6 +6061,7 @@ OtherNodes = [NodePath("../UI Overlay/CanvasLayer/UIPARENT/SceneSpawner"), NodeP
 [connection signal="item_mouse_entered" from="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/CtrlInventoryGridEx" to="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/InventoryManager" method="OnItemLook"]
 [connection signal="item_mouse_exited" from="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/CtrlInventoryGridEx" to="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/InventoryManager" method="OnItemLeave"]
 [connection signal="pressed" from="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/Usebutton" to="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/InventoryManager" method="UseButton"]
+[connection signal="pressed" from="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/Trash" to="UI Overlay/CanvasLayer/UIPARENT/UI/HotbarParent/Hotbar/HotBarContentsParent/Trash" method="_on_pressed"]
 [connection signal="pressed" from="UI Overlay/CanvasLayer/PompFriendParent/ExtraButtons/PompFriendParent/PompFriendButton" to="UI Overlay/CanvasLayer/PompFriendParent/ExtraButtons/PompFriendParent/PompFriendButton" method="_on_pressed"]
 [connection signal="pressed" from="UI Overlay/CanvasLayer/PompFriendParent/ExtraButtons/AttackEnemy/AttackButton" to="PompFriendController" method="_on_attack_button_pressed"]
 [connection signal="pressed" from="UI Overlay/CanvasLayer/PompFriendParent/ExtraButtons/FollowPlayer/PlayerButton" to="PompFriendController" method="_on_player_button_pressed"]

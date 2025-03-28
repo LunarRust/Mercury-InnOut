@@ -1,18 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://cxyisi7c13orx"]
+[gd_scene load_steps=33 format=3 uid="uid://cxyisi7c13orx"]
 
 [ext_resource type="Texture2D" uid="uid://b08v5m5rhwj3g" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_c2uwf"]
 [ext_resource type="Texture2D" uid="uid://b1jbauqt5tjix" path="res://KOMModels/innout/restaurant_Metal_006_basecolor.jpg" id="2_127ff"]
 [ext_resource type="PlaneMesh" uid="uid://cyarhtuasivgb" path="res://KOMMaterials/FryerGrease.tres" id="2_trfn5"]
-[ext_resource type="Texture2D" uid="uid://dc8yvbyjat5m2" path="res://KOMModels/innout/restaurant_Metal_006_roughness.png" id="3_pguhi"]
+[ext_resource type="Texture2D" uid="uid://bm8bwkct6b6n3" path="res://KOMModels/innout/restaurant_Metal_006_roughness.png" id="3_pguhi"]
 [ext_resource type="Texture2D" uid="uid://dqibbq01pq5wr" path="res://KOMModels/innout/restaurant_Metal_006_normal.jpg" id="4_sog7v"]
 [ext_resource type="Texture2D" uid="uid://bt0an4f3ckwb" path="res://KOMModels/innout/restaurant_dial Base Color.png" id="5_pyhir"]
 [ext_resource type="PackedScene" uid="uid://ukgfvuqmgmx6" path="res://KOMPrefabs/Interactables/InnOut/Fryer_basket.tscn" id="7_fe22b"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_em812"]
-albedo_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
-subsurf_scatter_enabled = true
-refraction_enabled = true
-refraction_scale = -0.14
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp3qd"]
 resource_name = "grill"
@@ -357,8 +351,7 @@ albedo_texture = SubResource("ViewportTexture_pluu8")
 [node name="Fryer" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(5.92659e-08, -1.30988e-07, -0.591, -1.18531e-07, 0.804, -9.62861e-08, 0.785, 1.214e-07, 4.46193e-08, -0.861977, 1.76846, -0.883721)
-material_overlay = SubResource("StandardMaterial3D_em812")
+transform = Transform3D(5.92659e-08, -1.30988e-07, -0.591, -1.18531e-07, 0.804, -9.62861e-08, 0.785, 1.214e-07, 4.46193e-08, -0.861977, 1.78061, -0.883721)
 mesh = ExtResource("2_trfn5")
 skeleton = NodePath("../fryer ")
 

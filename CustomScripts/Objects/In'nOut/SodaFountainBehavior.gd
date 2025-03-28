@@ -6,6 +6,8 @@ extends Node
 @export var GUI : Node3D
 @export var PourSoundPlayer : AudioStreamPlayer3D
 @export var SoundArray : Array[AudioStream]
+@export_category("Parameters")
+@export var TimeToFull : float = 7
 
 var progressBar : ProgressBar
 var inv : Inventory
@@ -14,7 +16,7 @@ var SodaStreamMesh : ArrayMesh
 var SodaStreamMat : StandardMaterial3D
 var sb
 
-var TimeToFull : float = 7
+
 var isFilling : bool = false
 var HasCup : bool = false
 var FillTime : float = 0.0

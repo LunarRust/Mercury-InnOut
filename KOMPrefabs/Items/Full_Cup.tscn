@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cltwtlee847lk"]
+[gd_scene load_steps=6 format=3 uid="uid://cltwtlee847lk"]
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_gjg0a"]
 [ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2_nn3xy"]
-[ext_resource type="Texture2D" uid="uid://b2m686urfhjjl" path="res://KOMSprites/innout/InnoutDrinkCompressed.png" id="3_3m6en"]
+[ext_resource type="Texture2D" uid="uid://d2upu58mwgls7" path="res://KOMSprites/innout/InnoutDrinkCompressed.png" id="3_3m6en"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="4_tujkv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_87okn"]
 size = Vector3(0.6073, 1, 0.173462)
@@ -32,3 +33,7 @@ light_color = Color(0.505882, 0.529412, 0.615686, 1)
 distance_fade_enabled = true
 distance_fade_begin = 12.0
 omni_range = 1.09562
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_tujkv")
+autoplay = true
