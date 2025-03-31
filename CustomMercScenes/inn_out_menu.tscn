@@ -607,9 +607,9 @@ power = 0.61
 
 [node name="Title Text" type="RichTextLabel" parent="InNOutLogo"]
 top_level = true
-offset_left = 227.0
+offset_left = 223.0
 offset_top = 340.0
-offset_right = 627.0
+offset_right = 623.0
 offset_bottom = 540.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.494118, 0.45098, 0.235294, 1)
