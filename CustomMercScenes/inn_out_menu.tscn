@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://csoxy0mwqqiht"]
+[gd_scene load_steps=40 format=3 uid="uid://csoxy0mwqqiht"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/DebugLoader.gd" id="1_st3hk"]
 [ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="2_xaf11"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://cyfel3873se5j" path="res://Music/Dying on a Warm Planet.ogg" id="19_5nt5i"]
 [ext_resource type="Texture2D" uid="uid://ckpmwhiujin77" path="res://Sprites/UI/CheckInvert.png" id="19_en22c"]
 [ext_resource type="AudioStream" uid="uid://cier214kedabp" path="res://Music/CityScape.ogg" id="20_ivsm5"]
+[ext_resource type="Texture2D" uid="uid://du6yw40v8rrot" path="res://KOMSprites/innout/InNOut_logo.png" id="28_qexly"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1jls"]
 
@@ -596,6 +597,27 @@ offset_right = 267.0
 offset_bottom = 75.0
 theme = ExtResource("3_gjmtm")
 text = "Time: "
+
+[node name="InNOutLogo" type="Sprite2D" parent="."]
+position = Vector2(334, 426)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("28_qexly")
+script = ExtResource("2_xaf11")
+power = 0.61
+
+[node name="Title Text" type="RichTextLabel" parent="InNOutLogo"]
+top_level = true
+offset_left = 227.0
+offset_top = 340.0
+offset_right = 627.0
+offset_bottom = 540.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.494118, 0.45098, 0.235294, 1)
+theme_override_fonts/normal_font = ExtResource("12_euwns")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]Mercury goes to"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Play" to="Play/AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="LineEdit/Decrypt" to="ScoreLoader" method="ScoreDecoder"]

@@ -1,6 +1,7 @@
 extends Node
 @export_category("Assignments")
 @export var PlayerCam : Camera3D
+@export var SoundSource : AudioStreamPlayer
 @export var MenuCam : Camera3D
 @export var head : Node3D
 @export var CanvasToShow : CanvasLayer
@@ -8,10 +9,13 @@ extends Node
 @export var CamCurve : Curve
 @export var CollisionShape : CollisionShape3D
 @export var UIToToggle : Array[Node2D] = []
+@export var MoveCamera : bool = true
+@export var DistanceToClose : float = 2
 
 
 var PlayerInvCtlGrid
 
+var CamIsInterpolating : bool = false
 var used : bool = false
 var t = 0.0
 var MenuCamCurrentTransform
@@ -65,14 +69,44 @@ func _process(delta):
 			tween.tween_property(head, "rotation", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_QUAD)
 			#sPlayerCam.make_current()
 			
-		if CamCurve.sample(t) <= 1:
+		if CamCurve.sample(t) <= 1 && MoveCamera:
 			t += delta * Speed
-		PlayerCam.global_transform = PlayerCamCurrentTransform.interpolate_with(MenuCamCurrentTransform,CamCurve.sample(t))
+			CamIsInterpolating = true
+			
+		else:
+			CamIsInterpolating = false
+		if MoveCamera:
+			PlayerCam.global_transform = PlayerCamCurrentTransform.interpolate_with(MenuCamCurrentTransform,CamCurve.sample(t))
+		
+		
+		if !CamIsInterpolating && get_parent().global_position.distance_to(playerObject.global_position) > DistanceToClose:
+			ReturnCamera()
 	
+	
+func ReturnCamera():
+	used = false
+	#MenuCam.set_process(false)
+	playerObject.set_process(true)
+	CanvasToShow.hide()
+	if !UIToToggle.is_empty():
+		for i in UIToToggle:
+			print_rich("Showing: [color=red]" + str(i.name) + "[/color]")
+			i.show()
+	else:
+		print("No UI to show!")
+	t = 0
+	CollisionShape.disabled = false
+	PlayerCam.global_transform = PlayerCam.get_parent().global_transform
+	var tween
+	tween = create_tween()
+	tween.set_parallel()
+	tween.tween_property(PlayerCam, "rotation", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(head, "rotation", Vector3.ZERO, 0.5).set_trans(Tween.TRANS_QUAD)
 	
 func CameraGrab():
 	CollisionShape.disabled = true
 	CanvasToShow.show()
+	SoundSource.play()
 	if !UIToToggle.is_empty():
 		for i in UIToToggle:
 			if i != null:

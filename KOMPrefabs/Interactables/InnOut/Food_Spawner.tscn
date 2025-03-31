@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1_5jc4k"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_34j1f"]
-[ext_resource type="Resource" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_pfff6"]
+[ext_resource type="Resource" uid="uid://b2trfb87kx3aq" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_pfff6"]
 [ext_resource type="Material" path="res://textures/Plastic2.tres" id="3_amkx1"]
 [ext_resource type="AudioStream" uid="uid://cxje01fdrdex0" path="res://Sounds/tick4.ogg" id="3_g2wb2"]
 [ext_resource type="Material" path="res://textures/Rust.tres" id="4_aj38o"]
@@ -56,14 +56,14 @@ points = PackedVector3Array(0, -1, -1, 0, 0, -1, -1, 0, -1, -1, 0, 0, 0, -1, 0, 
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_drby4"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2j40f"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akveg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gj7yr"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_drby4")
+albedo_texture = SubResource("ViewportTexture_2j40f")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n1oak"]
 size = Vector3(3, 2, 0.1)
@@ -141,7 +141,7 @@ texture = ExtResource("9_6bhio")
 process_mode = 3
 transform = Transform3D(-1.11464e-08, 0, -0.875, 0, 0.375, 0, 0.255, 0, -3.82475e-08, -0.770244, 0.38581, -0.383956)
 mesh = SubResource("QuadMesh_0ulbx")
-surface_material_override/0 = SubResource("StandardMaterial3D_akveg")
+surface_material_override/0 = SubResource("StandardMaterial3D_gj7yr")
 
 [node name="Area3D" type="Area3D" parent="Quad"]
 collision_layer = 2
