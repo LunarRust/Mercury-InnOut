@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cqn0gyd1vcqh2"]
+[gd_scene load_steps=61 format=3 uid="uid://cqn0gyd1vcqh2"]
 
 [ext_resource type="Texture2D" uid="uid://b08v5m5rhwj3g" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_d3ufr"]
 [ext_resource type="Texture2D" uid="uid://b1jbauqt5tjix" path="res://KOMModels/innout/restaurant_Metal_006_basecolor.jpg" id="2_h7jx2"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="15_khx6i"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="16_fcgkm"]
 [ext_resource type="Texture2D" uid="uid://0i4iha5ir3i1" path="res://Sprites/UI/ButtonEmpty.png" id="17_4uinn"]
+[ext_resource type="AudioStream" uid="uid://nhraj515soyx" path="res://Sounds/SizzleLoop.ogg" id="18_gunji"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/Innout/GriddleTracker.gd" id="19_x51do"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp3qd"]
 resource_name = "grill"
@@ -363,44 +365,44 @@ texture = ExtResource("17_4uinn")
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_df62c"]
-viewport_path = NodePath("StaticBody3D/GUI/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_w0qu6"]
+viewport_path = NodePath("GriddleSurfaces/StaticBody3D/GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ggcu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ckbs"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_df62c")
+albedo_texture = SubResource("ViewportTexture_w0qu6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wwdtl"]
 size = Vector3(3, 2, 0.1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4oqcv"]
-viewport_path = NodePath("StaticBody3D2/GUI2/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_q3uiy"]
+viewport_path = NodePath("GriddleSurfaces/StaticBody3D2/GUI2/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h8u2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jy58"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_4oqcv")
+albedo_texture = SubResource("ViewportTexture_q3uiy")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fg3qh"]
-viewport_path = NodePath("StaticBody3D3/GUI3/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_3gkb5"]
+viewport_path = NodePath("GriddleSurfaces/StaticBody3D3/GUI3/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gci5k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu3fg"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_fg3qh")
+albedo_texture = SubResource("ViewportTexture_3gkb5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5srqf"]
-viewport_path = NodePath("StaticBody3D4/GUI4/SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_i8xxn"]
+viewport_path = NodePath("GriddleSurfaces/StaticBody3D4/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqgtn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7frr"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_5srqf")
+albedo_texture = SubResource("ViewportTexture_i8xxn")
 
 [node name="Griddle" type="Node3D"]
 
@@ -627,47 +629,48 @@ texture = ExtResource("8_ppg8c")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="griddle "]
 transform = Transform3D(-6.58728e-06, -7.85266e-13, -55.2581, 55.2581, 6.58728e-06, -6.58728e-06, 6.58728e-06, -55.2581, -7.85266e-13, 45.1529, 14.0252, -115.281)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="GriddleSurfaces" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="GriddleSurfaces"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -1.44107)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D"]
 transform = Transform3D(1.81936, 0, 0, 0, 1, 0, 0, 0, 1, -0.861825, -0.534167, -0.151611)
 shape = SubResource("BoxShape3D_f4g3g")
 
-[node name="Behavior" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject", "DebugLabels")]
+[node name="Behavior" type="Node" parent="GriddleSurfaces/StaticBody3D" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "GrillTracker", "TargetLoc", "SpriteObject", "AnimatedSpriteObject", "DebugLabels")]
 script = ExtResource("9_hery2")
-Spatula = NodePath("../../griddle /SpatParent/Spatula")
+Spatula = NodePath("../../../griddle /SpatParent/Spatula")
 GUI = NodePath("../GUI")
-GriddleSound = NodePath("../AudioStreamPlayer")
+GriddleSound = NodePath("../../../GrillingSound")
+GrillTracker = NodePath("../../../TotalGrillsGrilling")
 TargetLoc = NodePath("..")
-SpriteObject = NodePath("../../griddle /SpatParent/Spatula/SpriteOnSpat")
-AnimatedSpriteObject = NodePath("../../griddle /SpatParent/AnimatedSprite3D")
+SpriteObject = NodePath("../../../griddle /SpatParent/Spatula/SpriteOnSpat")
+AnimatedSpriteObject = NodePath("../../../griddle /SpatParent/AnimatedSprite3D")
 Sprites = Array[Resource]([ExtResource("11_emme3"), ExtResource("12_yrevu"), ExtResource("13_7s17i"), ExtResource("8_ppg8c")])
 AltSprites = Array[Texture2D]([ExtResource("13_7s17i"), ExtResource("8_ppg8c"), ExtResource("11_emme3"), ExtResource("14_u303k")])
 DebugLabels = NodePath("../DebugLabels")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody3D"]
-
-[node name="DebugLabels" type="Node3D" parent="StaticBody3D"]
+[node name="DebugLabels" type="Node3D" parent="GriddleSurfaces/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.183072, -0.233397)
 visible = false
 
-[node name="Label3D" type="Label3D" parent="StaticBody3D/DebugLabels"]
+[node name="Label3D" type="Label3D" parent="GriddleSurfaces/StaticBody3D/DebugLabels"]
 transform = Transform3D(-8.74228e-08, -5.92119e-15, 2, 1.15648e-20, 2, 5.92119e-15, -2, 1.18236e-20, -8.74228e-08, -0.451802, 1.58621, 0.181295)
 text = "
 Text"
 
-[node name="Label3D2" type="Label3D" parent="StaticBody3D/DebugLabels"]
+[node name="Label3D2" type="Label3D" parent="GriddleSurfaces/StaticBody3D/DebugLabels"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -0.451802, 1.07181, 0.181295)
 text = "
 Text"
 
-[node name="Label3D3" type="Label3D" parent="StaticBody3D/DebugLabels"]
+[node name="Label3D3" type="Label3D" parent="GriddleSurfaces/StaticBody3D/DebugLabels"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -0.451802, 0.607481, 0.181295)
 text = "
 Text"
 
-[node name="GUI" type="Node3D" parent="StaticBody3D" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+[node name="GUI" type="Node3D" parent="GriddleSurfaces/StaticBody3D" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
 transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 3.00254, -2.05568, 0.268717)
 visible = false
 script = ExtResource("15_khx6i")
@@ -675,10 +678,10 @@ node_viewport = NodePath("SubViewport")
 node_quad = NodePath("Quad")
 node_area = NodePath("Quad/Area3D")
 
-[node name="SubViewport" type="SubViewport" parent="StaticBody3D/GUI"]
+[node name="SubViewport" type="SubViewport" parent="GriddleSurfaces/StaticBody3D/GUI"]
 size = Vector2i(512, 50)
 
-[node name="ProgressBar" type="ProgressBar" parent="StaticBody3D/GUI/SubViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="GriddleSurfaces/StaticBody3D/GUI/SubViewport"]
 offset_right = 512.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("16_fcgkm")
@@ -688,42 +691,41 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7o4uu")
 allow_greater = true
 allow_lesser = true
 
-[node name="Quad" type="MeshInstance3D" parent="StaticBody3D/GUI"]
+[node name="Quad" type="MeshInstance3D" parent="GriddleSurfaces/StaticBody3D/GUI"]
 process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_4ggcu")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ckbs")
 
-[node name="Area3D" type="Area3D" parent="StaticBody3D/GUI/Quad"]
+[node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D/GUI/Quad"]
 collision_layer = 0
 collision_mask = 0
 input_capture_on_drag = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/GUI/Quad/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D/GUI/Quad/Area3D"]
 shape = SubResource("BoxShape3D_wwdtl")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+[node name="StaticBody3D2" type="StaticBody3D" parent="GriddleSurfaces"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -1.07714)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D2"]
 transform = Transform3D(1.81936, 0, 0, 0, 1, 0, 0, 0, 1, -0.841417, -0.534167, 0)
 shape = SubResource("BoxShape3D_f4g3g")
 
-[node name="Behavior" type="Node" parent="StaticBody3D2" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
+[node name="Behavior" type="Node" parent="GriddleSurfaces/StaticBody3D2" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "GrillTracker", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
 script = ExtResource("9_hery2")
-Spatula = NodePath("../../griddle /SpatParent2/Spatula")
+Spatula = NodePath("../../../griddle /SpatParent2/Spatula")
 GUI = NodePath("../GUI2")
-GriddleSound = NodePath("../AudioStreamPlayer")
+GriddleSound = NodePath("../../../GrillingSound")
+GrillTracker = NodePath("../../../TotalGrillsGrilling")
 TargetLoc = NodePath("..")
-SpriteObject = NodePath("../../griddle /SpatParent2/Spatula/SpriteOnSpat")
-AnimatedSpriteObject = NodePath("../../griddle /SpatParent/AnimatedSprite3D")
+SpriteObject = NodePath("../../../griddle /SpatParent2/Spatula/SpriteOnSpat")
+AnimatedSpriteObject = NodePath("../../../griddle /SpatParent/AnimatedSprite3D")
 Sprites = Array[Resource]([ExtResource("11_emme3"), ExtResource("12_yrevu"), ExtResource("13_7s17i"), ExtResource("8_ppg8c")])
 AltSprites = Array[Texture2D]([ExtResource("13_7s17i"), ExtResource("8_ppg8c"), ExtResource("11_emme3"), ExtResource("14_u303k")])
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody3D2"]
-
-[node name="GUI2" type="Node3D" parent="StaticBody3D2" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+[node name="GUI2" type="Node3D" parent="GriddleSurfaces/StaticBody3D2" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
 transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 2.90115, -1.77983, 0.325675)
 visible = false
 script = ExtResource("15_khx6i")
@@ -731,10 +733,10 @@ node_viewport = NodePath("SubViewport")
 node_quad = NodePath("Quad")
 node_area = NodePath("Quad/Area3D")
 
-[node name="SubViewport" type="SubViewport" parent="StaticBody3D2/GUI2"]
+[node name="SubViewport" type="SubViewport" parent="GriddleSurfaces/StaticBody3D2/GUI2"]
 size = Vector2i(512, 50)
 
-[node name="ProgressBar" type="ProgressBar" parent="StaticBody3D2/GUI2/SubViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="GriddleSurfaces/StaticBody3D2/GUI2/SubViewport"]
 offset_right = 512.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("16_fcgkm")
@@ -744,42 +746,41 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7o4uu")
 allow_greater = true
 allow_lesser = true
 
-[node name="Quad" type="MeshInstance3D" parent="StaticBody3D2/GUI2"]
+[node name="Quad" type="MeshInstance3D" parent="GriddleSurfaces/StaticBody3D2/GUI2"]
 process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_5h8u2")
+surface_material_override/0 = SubResource("StandardMaterial3D_3jy58")
 
-[node name="Area3D" type="Area3D" parent="StaticBody3D2/GUI2/Quad"]
+[node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D2/GUI2/Quad"]
 collision_layer = 0
 collision_mask = 0
 input_capture_on_drag = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/GUI2/Quad/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D2/GUI2/Quad/Area3D"]
 shape = SubResource("BoxShape3D_wwdtl")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+[node name="StaticBody3D3" type="StaticBody3D" parent="GriddleSurfaces"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -0.679723)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D3"]
 transform = Transform3D(1.81936, 0, 0, 0, 1, 0, 0, 0, 1, -0.841417, -0.54431, 0)
 shape = SubResource("BoxShape3D_f4g3g")
 
-[node name="Behavior" type="Node" parent="StaticBody3D3" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
+[node name="Behavior" type="Node" parent="GriddleSurfaces/StaticBody3D3" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "GrillTracker", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
 script = ExtResource("9_hery2")
-Spatula = NodePath("../../griddle /SpatParent3/Spatula")
+Spatula = NodePath("../../../griddle /SpatParent3/Spatula")
 GUI = NodePath("../GUI3")
-GriddleSound = NodePath("../AudioStreamPlayer")
+GriddleSound = NodePath("../../../GrillingSound")
+GrillTracker = NodePath("../../../TotalGrillsGrilling")
 TargetLoc = NodePath("..")
-SpriteObject = NodePath("../../griddle /SpatParent3/Spatula/SpriteOnSpat")
-AnimatedSpriteObject = NodePath("../../griddle /SpatParent/AnimatedSprite3D")
+SpriteObject = NodePath("../../../griddle /SpatParent3/Spatula/SpriteOnSpat")
+AnimatedSpriteObject = NodePath("../../../griddle /SpatParent/AnimatedSprite3D")
 Sprites = Array[Resource]([ExtResource("11_emme3"), ExtResource("12_yrevu"), ExtResource("13_7s17i"), ExtResource("8_ppg8c")])
 AltSprites = Array[Texture2D]([ExtResource("13_7s17i"), ExtResource("8_ppg8c"), ExtResource("11_emme3"), ExtResource("14_u303k")])
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody3D3"]
-
-[node name="GUI3" type="Node3D" parent="StaticBody3D3" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+[node name="GUI3" type="Node3D" parent="GriddleSurfaces/StaticBody3D3" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
 transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 3.00254, -2.05568, 0.391651)
 visible = false
 script = ExtResource("15_khx6i")
@@ -787,10 +788,10 @@ node_viewport = NodePath("SubViewport")
 node_quad = NodePath("Quad")
 node_area = NodePath("Quad/Area3D")
 
-[node name="SubViewport" type="SubViewport" parent="StaticBody3D3/GUI3"]
+[node name="SubViewport" type="SubViewport" parent="GriddleSurfaces/StaticBody3D3/GUI3"]
 size = Vector2i(512, 50)
 
-[node name="ProgressBar" type="ProgressBar" parent="StaticBody3D3/GUI3/SubViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="GriddleSurfaces/StaticBody3D3/GUI3/SubViewport"]
 offset_right = 512.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("16_fcgkm")
@@ -800,42 +801,41 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7o4uu")
 allow_greater = true
 allow_lesser = true
 
-[node name="Quad" type="MeshInstance3D" parent="StaticBody3D3/GUI3"]
+[node name="Quad" type="MeshInstance3D" parent="GriddleSurfaces/StaticBody3D3/GUI3"]
 process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_gci5k")
+surface_material_override/0 = SubResource("StandardMaterial3D_pu3fg")
 
-[node name="Area3D" type="Area3D" parent="StaticBody3D3/GUI3/Quad"]
+[node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D3/GUI3/Quad"]
 collision_layer = 0
 collision_mask = 0
 input_capture_on_drag = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/GUI3/Quad/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D3/GUI3/Quad/Area3D"]
 shape = SubResource("BoxShape3D_wwdtl")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+[node name="StaticBody3D4" type="StaticBody3D" parent="GriddleSurfaces"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.885196, 1.91619, -0.260636)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D4"]
 transform = Transform3D(1.81936, 0, 0, 0, 1.40648, 0, 0, 0, 1.32606, -0.841417, -0.509929, 0.179514)
 shape = SubResource("BoxShape3D_f4g3g")
 
-[node name="Behavior" type="Node" parent="StaticBody3D4" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
+[node name="Behavior" type="Node" parent="GriddleSurfaces/StaticBody3D4" node_paths=PackedStringArray("Spatula", "GUI", "GriddleSound", "GrillTracker", "TargetLoc", "SpriteObject", "AnimatedSpriteObject")]
 script = ExtResource("9_hery2")
-Spatula = NodePath("../../griddle /SpatParent4/Spatula")
+Spatula = NodePath("../../../griddle /SpatParent4/Spatula")
 GUI = NodePath("../GUI4")
-GriddleSound = NodePath("../AudioStreamPlayer")
+GriddleSound = NodePath("../../../GrillingSound")
+GrillTracker = NodePath("../../../TotalGrillsGrilling")
 TargetLoc = NodePath("../../StaticBody3D")
-SpriteObject = NodePath("../../griddle /SpatParent4/Spatula/SpriteOnSpat")
-AnimatedSpriteObject = NodePath("../../griddle /SpatParent/AnimatedSprite3D")
+SpriteObject = NodePath("../../../griddle /SpatParent4/Spatula/SpriteOnSpat")
+AnimatedSpriteObject = NodePath("../../../griddle /SpatParent/AnimatedSprite3D")
 Sprites = Array[Resource]([ExtResource("11_emme3"), ExtResource("12_yrevu"), ExtResource("13_7s17i"), ExtResource("8_ppg8c")])
 AltSprites = Array[Texture2D]([ExtResource("13_7s17i"), ExtResource("8_ppg8c"), ExtResource("11_emme3"), ExtResource("14_u303k")])
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody3D4"]
-
-[node name="GUI4" type="Node3D" parent="StaticBody3D4" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+[node name="GUI4" type="Node3D" parent="GriddleSurfaces/StaticBody3D4" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
 transform = Transform3D(0.938607, -0.344987, 0, 0.344987, 0.938607, 0, 0, 0, 1, 2.89629, -1.76661, 0.393887)
 visible = false
 script = ExtResource("15_khx6i")
@@ -843,10 +843,10 @@ node_viewport = NodePath("SubViewport")
 node_quad = NodePath("Quad")
 node_area = NodePath("Quad/Area3D")
 
-[node name="SubViewport" type="SubViewport" parent="StaticBody3D4/GUI4"]
+[node name="SubViewport" type="SubViewport" parent="GriddleSurfaces/StaticBody3D4/GUI4"]
 size = Vector2i(512, 50)
 
-[node name="ProgressBar" type="ProgressBar" parent="StaticBody3D4/GUI4/SubViewport"]
+[node name="ProgressBar" type="ProgressBar" parent="GriddleSurfaces/StaticBody3D4/GUI4/SubViewport"]
 offset_right = 512.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("16_fcgkm")
@@ -856,17 +856,25 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7o4uu")
 allow_greater = true
 allow_lesser = true
 
-[node name="Quad" type="MeshInstance3D" parent="StaticBody3D4/GUI4"]
+[node name="Quad" type="MeshInstance3D" parent="GriddleSurfaces/StaticBody3D4/GUI4"]
 process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_rqgtn")
+surface_material_override/0 = SubResource("StandardMaterial3D_k7frr")
 
-[node name="Area3D" type="Area3D" parent="StaticBody3D4/GUI4/Quad"]
+[node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D4/GUI4/Quad"]
 collision_layer = 0
 collision_mask = 0
 input_capture_on_drag = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4/GUI4/Quad/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GriddleSurfaces/StaticBody3D4/GUI4/Quad/Area3D"]
 shape = SubResource("BoxShape3D_wwdtl")
+
+[node name="GrillingSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.663525, 2.22741, -0.844319)
+stream = ExtResource("18_gunji")
+max_distance = 7.0
+
+[node name="TotalGrillsGrilling" type="Node" parent="."]
+script = ExtResource("19_x51do")

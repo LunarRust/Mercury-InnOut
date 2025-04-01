@@ -2,7 +2,8 @@ extends Node
 @export var Spatula : Node3D
 @export var GUI : Node3D
 var progressBar : ProgressBar
-@export var GriddleSound : AudioStreamPlayer
+@export var GriddleSound : AudioStreamPlayer3D
+@export var GrillTracker : Node
 var up = false
 var ItemOnSpatula : bool = false
 var ItemOnSpatulaName : String
@@ -72,6 +73,9 @@ func Item(item : String):
 				ItemOnSpatula = true
 				RecivedItem = "RawPatty"
 				ItemOnSpatulaName = "RawPatty"
+				if !GriddleSound.playing:
+					GriddleSound.play()
+				GrillTracker.GrillsGrilling += 1
 				Spatula.get_parent().show()
 				SpriteObject.show()
 				GUI.show()
@@ -82,6 +86,9 @@ func Item(item : String):
 				ItemOnSpatula = true
 				RecivedItem = "RawPatty"
 				ItemOnSpatulaName = "Burger"
+				if !GriddleSound.playing:
+					GriddleSound.play()
+				GrillTracker.GrillsGrilling += 1
 				Spatula.get_parent().show()
 				SpriteObject.show()
 				GUI.show()
@@ -133,6 +140,9 @@ func Touch(AmNpc = false):
 							ItemOnSpatula = false
 							Cooking = false
 							GUI.hide()
+							GrillTracker.GrillsGrilling -= 1
+							if GrillTracker.GrillsGrilling == 0:
+								GriddleSound.stop()
 							progressBar.value = 0
 							CookTime = 0
 						else:
@@ -146,6 +156,9 @@ func Touch(AmNpc = false):
 						Spatula.get_parent().hide()
 						ItemOnSpatula = false
 						GUI.hide()
+						GrillTracker.GrillsGrilling -= 1
+						if GrillTracker.GrillsGrilling == 0:
+								GriddleSound.stop()
 						progressBar.value = 0
 						Cooking = false
 						CookTime = 0

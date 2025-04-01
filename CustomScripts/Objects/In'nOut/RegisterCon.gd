@@ -122,6 +122,8 @@ func get_all_children(in_node, array := []):
 	return array
 
 func BeginTimer():
+	SoundSource.stream = load("res://Sounds/tick3.ogg")
+	SoundSource.play()
 	if SignalBusInnOut.DoTimer == true:
 		ClockDisplay.show()
 	else:

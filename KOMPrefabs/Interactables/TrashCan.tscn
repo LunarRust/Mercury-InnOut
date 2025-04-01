@@ -46,7 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_ge6m5")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xq0go"]
 radius = 0.332734
-height = 1.72404
+height = 1.25663
 
 [node name="TrashCan" type="Node3D"]
 
@@ -60,7 +60,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718879, -0.00444484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50726, -0.00444484)
 shape = SubResource("CapsuleShape3D_xq0go")
 
 [node name="Behavior" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("SoundSource")]
