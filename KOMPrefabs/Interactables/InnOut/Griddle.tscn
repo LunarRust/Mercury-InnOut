@@ -365,44 +365,44 @@ texture = ExtResource("17_4uinn")
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w0qu6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mafj3"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D/GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ckbs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vcng"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_w0qu6")
+albedo_texture = SubResource("ViewportTexture_mafj3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wwdtl"]
 size = Vector3(3, 2, 0.1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q3uiy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ygvy8"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D2/GUI2/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jy58"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7lml"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_q3uiy")
+albedo_texture = SubResource("ViewportTexture_ygvy8")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3gkb5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ravvc"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D3/GUI3/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu3fg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6s4gq"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_3gkb5")
+albedo_texture = SubResource("ViewportTexture_ravvc")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_i8xxn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_x5qw4"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D4/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7frr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ocv1"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_i8xxn")
+albedo_texture = SubResource("ViewportTexture_x5qw4")
 
 [node name="Griddle" type="Node3D"]
 
@@ -696,7 +696,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8ckbs")
+surface_material_override/0 = SubResource("StandardMaterial3D_2vcng")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D/GUI/Quad"]
 collision_layer = 0
@@ -751,7 +751,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_3jy58")
+surface_material_override/0 = SubResource("StandardMaterial3D_x7lml")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D2/GUI2/Quad"]
 collision_layer = 0
@@ -806,7 +806,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_pu3fg")
+surface_material_override/0 = SubResource("StandardMaterial3D_6s4gq")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D3/GUI3/Quad"]
 collision_layer = 0
@@ -861,7 +861,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_k7frr")
+surface_material_override/0 = SubResource("StandardMaterial3D_8ocv1")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D4/GUI4/Quad"]
 collision_layer = 0

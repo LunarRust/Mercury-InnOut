@@ -123,5 +123,5 @@ func CameraGrab():
 				i.hide()
 	else:
 		print("No UI to hide!")
-	print("Lever flipped!")
+	print("Menu active!")
 	used = true
