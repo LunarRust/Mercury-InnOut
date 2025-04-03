@@ -69,14 +69,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fi5if"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qhyob"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jl5dp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agcwd"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_fi5if")
+albedo_texture = SubResource("ViewportTexture_qhyob")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_iaby5"]
 resource_local_to_scene = true
@@ -87,14 +87,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qmytc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_l5voy"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6ow3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3f3ui"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_qmytc")
+albedo_texture = SubResource("ViewportTexture_l5voy")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tsopt"]
 resource_local_to_scene = true
@@ -105,14 +105,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q55up"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_kuwsq"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q832v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u6g5w"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_q55up")
+albedo_texture = SubResource("ViewportTexture_kuwsq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uc27f"]
 
@@ -157,7 +157,7 @@ mesh = SubResource("CylinderMesh_3e0oi")
 
 [node name="Quad" parent="Cup0/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_wf0yj")
-surface_material_override/0 = SubResource("StandardMaterial3D_jl5dp")
+surface_material_override/0 = SubResource("StandardMaterial3D_agcwd")
 
 [node name="Cup1" parent="." instance=ExtResource("5_5x1tj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209179, 0.0225601, -0.00765072)
@@ -167,7 +167,7 @@ mesh = SubResource("CylinderMesh_iaby5")
 
 [node name="Quad" parent="Cup1/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_dyaic")
-surface_material_override/0 = SubResource("StandardMaterial3D_c6ow3")
+surface_material_override/0 = SubResource("StandardMaterial3D_3f3ui")
 
 [node name="Cup2" parent="." instance=ExtResource("5_5x1tj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.406244, 0.0225601, -0.00765071)
@@ -180,7 +180,7 @@ transform = Transform3D(-1.18556e-08, 4.36201e-09, -0.582, 0.0997907, 0.271225, 
 
 [node name="Quad" parent="Cup2/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_kvlv4")
-surface_material_override/0 = SubResource("StandardMaterial3D_q832v")
+surface_material_override/0 = SubResource("StandardMaterial3D_u6g5w")
 
 [node name="GetCup" type="Node3D" parent="."]
 

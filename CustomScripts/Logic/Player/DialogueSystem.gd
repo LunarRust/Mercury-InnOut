@@ -21,6 +21,7 @@ var active : bool = false
 @export_category("Physical parameters")
 @export var looking : bool = true
 @export var Distance : bool = true
+@export var CloseDistance : float = 4
 var parentnode : Node3D
 var ActionButtonMaster : Node
 var RandNum : RandomNumberGenerator
@@ -43,7 +44,7 @@ func _process(delta):
 	if active:
 		if looking:
 			parentnode.look_at(lookTarget,Vector3.UP,true)
-		if self.global_position.distance_to(PlayerObject.global_position) > 4 && isTalking && Distance:
+		if self.global_position.distance_to(PlayerObject.global_position) > CloseDistance && isTalking && Distance:
 			CloseDialogue()
 		
 func OpenDialogue():
