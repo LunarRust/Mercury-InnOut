@@ -56,14 +56,14 @@ points = PackedVector3Array(0, -1, -1, 0, 0, -1, -1, 0, -1, -1, 0, 0, 0, -1, 0, 
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_evhv2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hgasi"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bklq7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_de33g"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_evhv2")
+albedo_texture = SubResource("ViewportTexture_hgasi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n1oak"]
 size = Vector3(3, 2, 0.1)
@@ -141,7 +141,7 @@ texture = ExtResource("9_6bhio")
 process_mode = 3
 transform = Transform3D(-1.11464e-08, 0, -0.875, 0, 0.375, 0, 0.255, 0, -3.82475e-08, -0.770244, 0.38581, -0.383956)
 mesh = SubResource("QuadMesh_0ulbx")
-surface_material_override/0 = SubResource("StandardMaterial3D_bklq7")
+surface_material_override/0 = SubResource("StandardMaterial3D_de33g")
 
 [node name="Area3D" type="Area3D" parent="Quad"]
 collision_layer = 2

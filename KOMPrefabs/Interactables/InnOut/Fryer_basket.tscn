@@ -216,14 +216,14 @@ texture = ExtResource("12_kau7w")
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d0pt8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2oa4d"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s21xa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bw5du"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_d0pt8")
+albedo_texture = SubResource("ViewportTexture_2oa4d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqxtd"]
 size = Vector3(3, 2, 0.1)
@@ -235,8 +235,10 @@ transform = Transform3D(-2.15732e-09, 0.0180969, 2.15732e-09, 0, 2.15732e-09, -0
 mesh = SubResource("ArrayMesh_gkguj")
 skeleton = NodePath("")
 
-[node name="FryerSound" type="AudioStreamPlayer" parent="fryer basket1 "]
+[node name="FryerSound" type="AudioStreamPlayer3D" parent="fryer basket1 "]
 stream = ExtResource("2_pp7sf")
+volume_db = -10.681
+max_distance = 5.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="fryer basket1 "]
 transform = Transform3D(1, -2.84217e-14, -3.38814e-21, 2.84217e-14, 1, -2.84217e-14, -3.38813e-21, 2.84217e-14, 1, 0, 0, 0)
@@ -339,7 +341,7 @@ process_mode = 3
 transform = Transform3D(-1.11464e-08, 0, 0.875, 0, 0.045, 0, -0.255, 0, -3.82475e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_y3prw")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_s21xa")
+surface_material_override/0 = SubResource("StandardMaterial3D_bw5du")
 
 [node name="Area3D" type="Area3D" parent="GUI/Quad"]
 collision_layer = 2

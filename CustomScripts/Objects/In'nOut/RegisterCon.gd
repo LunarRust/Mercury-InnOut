@@ -152,6 +152,7 @@ func _process(delta):
 		if OrderClock <= 0.0:
 			ClockDisplay.add_theme_color_override("default_color",Color(1, 0.15294100344181, 0.25490200519562))
 			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+			SignalBusInnOut.emit_signal("GameOver")
 			WaitingForOrder = false
 		if OrderClock <= 30.0 && !HasComplained:
 			currentNPC.Speak(1,"res://KOMSounds/VO/Venus/WhereIsMyDamnFood.wav")
@@ -184,6 +185,7 @@ func _on_pressed():
 			SignalBusInnOut.Score -= TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
 			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+			SignalBusInnOut.emit_signal("GameOver")
 			OrderClock = 0.0
 			WaitingForOrder = false
 			SoundSource.play()

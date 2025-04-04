@@ -326,27 +326,27 @@ data = PackedVector3Array(0.168076, 0.299906, 0.410334, 0.202739, 0.299906, 0.43
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_t3frj"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cub3h"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rl7h5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_26agf"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_t3frj")
+albedo_texture = SubResource("ViewportTexture_cub3h")
 
 [sub_resource type="QuadMesh" id="QuadMesh_iel0i"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pluu8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_p6iki"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpq88"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wakum"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_pluu8")
+albedo_texture = SubResource("ViewportTexture_p6iki")
 
 [node name="Fryer" type="Node3D"]
 
@@ -392,16 +392,22 @@ shape = SubResource("ConcavePolygonShape3D_6x1wt")
 
 [node name="Fryer_basket" parent="." instance=ExtResource("7_fe22b")]
 
+[node name="FryerSound" parent="Fryer_basket/fryer basket1 " index="0"]
+transform = Transform3D(55.2581, -9.09495e-13, 7.85266e-13, 9.09495e-13, 55.2581, -9.09495e-13, -3.25261e-19, 9.09495e-13, 55.2581, 25.6912, 40.1185, -110.775)
+
 [node name="Quad" parent="Fryer_basket/GUI" index="1"]
 mesh = SubResource("QuadMesh_xfx03")
-surface_material_override/0 = SubResource("StandardMaterial3D_rl7h5")
+surface_material_override/0 = SubResource("StandardMaterial3D_26agf")
 
 [node name="Fryer_basket2" parent="." instance=ExtResource("7_fe22b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.853869)
 
+[node name="FryerSound" parent="Fryer_basket2/fryer basket1 " index="0"]
+transform = Transform3D(55.2581, -9.09495e-13, 7.85266e-13, 9.09495e-13, 55.2581, -9.09495e-13, -4.33681e-19, 9.09495e-13, 55.2581, 21.4418, 40.0873, -111.637)
+
 [node name="Quad" parent="Fryer_basket2/GUI" index="1"]
 mesh = SubResource("QuadMesh_iel0i")
-surface_material_override/0 = SubResource("StandardMaterial3D_qpq88")
+surface_material_override/0 = SubResource("StandardMaterial3D_wakum")
 
 [editable path="Fryer_basket"]
 [editable path="Fryer_basket2"]

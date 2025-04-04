@@ -1,6 +1,7 @@
 extends Node
 @export var Scene : PackedScene
 @export var TargetLoc : Node3D
+@export var SoundSource : AudioStreamPlayer
 @export var distance : float
 @export var OrderGen : Node
 @export var RegisterCon : TextureButton
@@ -33,10 +34,6 @@ func Item(item : String):
 					SetItem("res://KOMPrefabs/Items/Fries_pickup.tscn")
 				"Burger":
 					SetItem("res://KOMPrefabs/Items/Burger_pickup.tscn")
-				"Raw Patty":
-					SetItem("res://KOMPrefabs/Items/Raw_Patty.tscn")
-				"Fresh Fries":
-					SetItem("res://KOMPrefabs/Items/Fresh_Fries_pickup.tscn")
 				"Soft Drink":
 					SetItem("res://KOMPrefabs/Items/Full_Cup.tscn")
 				_:
@@ -48,6 +45,8 @@ func Item(item : String):
 						var newItem = inv.create_and_add_item("emptycup")
 					else:
 						var newItem = inv.create_and_add_item(item)
+					SoundSource.stream = load("res://Sounds/PhoneFail.ogg")
+					SoundSource.play()
 					return false
 		else:
 			if item == "Raw Patty":
@@ -58,6 +57,8 @@ func Item(item : String):
 				var newItem = inv.create_and_add_item("emptycup")
 			else:
 				var newItem = inv.create_and_add_item(item)
+			SoundSource.stream = load("res://Sounds/PhoneFail.ogg")
+			SoundSource.play()
 			return false
 	elif HasItem == false:
 			match item:
@@ -65,10 +66,6 @@ func Item(item : String):
 					SetItem("res://KOMPrefabs/Items/Fries_pickup.tscn")
 				"Burger":
 					SetItem("res://KOMPrefabs/Items/Burger_pickup.tscn")
-				"Raw Patty":
-					SetItem("res://KOMPrefabs/Items/Raw_Patty.tscn")
-				"Fresh Fries":
-					SetItem("res://KOMPrefabs/Items/Fresh_Fries_pickup.tscn")
 				"Soft Drink":
 					SetItem("res://KOMPrefabs/Items/Full_Cup.tscn")
 				_:
@@ -80,6 +77,8 @@ func Item(item : String):
 						var newItem = inv.create_and_add_item("emptycup")
 					else:
 						var newItem = inv.create_and_add_item(item)
+					SoundSource.stream = load("res://Sounds/PhoneFail.ogg")
+					SoundSource.play()
 					return false
 	else:
 		if item == "Raw Patty":
@@ -90,6 +89,8 @@ func Item(item : String):
 			var newItem = inv.create_and_add_item("emptycup")
 		else:
 			var newItem = inv.create_and_add_item(item)
+		SoundSource.stream = load("res://Sounds/PhoneFail.ogg")
+		SoundSource.play()
 		return false
 	
 func SetItem(prefab : String):

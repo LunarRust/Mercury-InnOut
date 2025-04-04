@@ -27,7 +27,7 @@ func _ready():
 				KOMVerLabel.text = ("[shake rate=20] [" + KOMVer + "]")
 		if InnoutVer != null:
 			if InnoutVerLabel != null:
-				InnoutVerLabel.text = ("[shake rate=20]In'nOut [" + InnoutVer + "]")
+				InnoutVerLabel.text = ("[shake rate=20]In-n-Out [" + InnoutVer + "]")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

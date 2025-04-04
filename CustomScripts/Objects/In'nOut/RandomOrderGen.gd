@@ -22,6 +22,7 @@ var InvFreeSpace
 var RandList : Array
 var ReadyToServe : bool = false
 signal ReadyToServeSignal
+signal NotReadyToServe
 var ItemsInInv : Array
 var ItemsInInvDictionary : Dictionary
 
@@ -47,6 +48,7 @@ func Clear():
 	ItemsInInv.clear()
 	ItemsInInvDictionary.clear()
 	ReadyToServe = false
+	NotReadyToServe.emit()
 	
 func Generate(ID):
 	if ID == GenID:

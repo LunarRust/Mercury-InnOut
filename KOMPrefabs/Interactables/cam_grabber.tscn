@@ -42,6 +42,7 @@ CanvasToShow = NodePath("../CanvasLayer")
 CamCurve = ExtResource("6_83fdw")
 CollisionShape = NodePath("../CollisionShape3D")
 UIToToggle = [null, null, null, null]
+DistanceToClose = 4.0
 
 [node name="SoundSource" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_7ptkb")

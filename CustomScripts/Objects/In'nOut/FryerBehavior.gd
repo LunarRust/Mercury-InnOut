@@ -1,6 +1,6 @@
 extends Node
 @export var FryBasketAnim : AnimationTree
-@export var FryerSound : AudioStreamPlayer
+@export var FryerSound : AudioStreamPlayer3D
 @export var progressBar : ProgressBar
 @export var GUI : Node3D
 var up = false
@@ -21,6 +21,7 @@ var inv : Inventory
 var NpcInv : Inventory
 var used : bool = false
 var Cooking : bool = false
+var BellDinged : bool = false
 var CookTime : float
 var SpriteNum : int
 var sb
@@ -61,6 +62,12 @@ func _process(delta):
 			SpriteObject.texture = CookedSprites[SpriteNum]
 		elif CookTime >= BurnTime:
 			SpriteObject.texture = BurnedSprites[SpriteNum]
+		if CookTime >= CookedTime && !BellDinged:
+			BellDinged = true
+			FryerSound.pitch_scale = randf_range(0.8,1.2)
+			FryerSound.stream = load("res://KOMSounds/beep-104060.mp3")
+			FryerSound.volume_db = FryerSound.volume_db - 15
+			FryerSound.play()
 		
 func Item(item : String):
 	if !ItemInBasket:
@@ -70,6 +77,7 @@ func Item(item : String):
 				SpriteNum = 2
 				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
 				ItemInBasket = true
+				BellDinged = false
 				RecivedItem = "FFries"
 				ItemInBasketName = "Fries"
 				SpriteObject.show()
@@ -77,6 +85,9 @@ func Item(item : String):
 					animTrigger("Down")
 				if ItemInBasket:
 					Cooking = true
+				FryerSound.stream = load("res://Sounds/SizzleLoop.ogg")
+				FryerSound.volume_db = -10
+				FryerSound.play()
 				GUI.show()
 				up = false
 				return true
@@ -85,6 +96,7 @@ func Item(item : String):
 				SpriteNum = 0
 				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
 				ItemInBasket = true
+				BellDinged = false
 				RecivedItem = "Fries"
 				ItemInBasketName = "Fries"
 				SpriteObject.show()
@@ -92,6 +104,9 @@ func Item(item : String):
 					animTrigger("Down")
 				if ItemInBasket:
 					Cooking = true
+				FryerSound.volume_db = -10
+				FryerSound.stream = load("res://Sounds/SizzleLoop.ogg")
+				FryerSound.play()
 				GUI.show()
 				up = false
 				return true
@@ -104,6 +119,8 @@ func Item(item : String):
 					var newItem = inv.create_and_add_item("emptycup")
 				else:
 					var newItem = inv.create_and_add_item(item)
+				FryerSound.stream = load("res://Sounds/PhoneFail.ogg")
+				FryerSound.play()
 				return false
 	else:
 		if item == "Raw Patty":
@@ -114,11 +131,12 @@ func Item(item : String):
 			var newItem = inv.create_and_add_item("emptycup")
 		else:
 			var newItem = inv.create_and_add_item(item)
+		FryerSound.stream = load("res://Sounds/PhoneFail.ogg")
+		FryerSound.play()
 		return false
 
 func Touch(AmNpc = false):
 	if !ItemInBasket || up:
-		FryerSound.play()
 		if up:
 			animTrigger("Down")
 			if ItemInBasket:
@@ -143,6 +161,7 @@ func Touch(AmNpc = false):
 						animTrigger("Up")
 						up = true
 						ItemInBasket = false
+						FryerSound.stop()
 						Cooking = false
 						GUI.hide()
 						progressBar.value = 0
@@ -160,6 +179,7 @@ func Touch(AmNpc = false):
 						up = true
 						ItemInBasket = false
 						GUI.hide()
+						FryerSound.stop()
 						progressBar.value = 0
 						Cooking = false
 		else :
@@ -175,6 +195,7 @@ func Touch(AmNpc = false):
 					up = true
 					ItemInBasket = false
 					Cooking = false
+					FryerSound.stop()
 					GUI.hide()
 					progressBar.value = 0
 					CookTime = 0.0
@@ -191,6 +212,7 @@ func Touch(AmNpc = false):
 						up = true
 						ItemInBasket = false
 						Cooking = false
+						FryerSound.stop()
 						GUI.hide()
 						progressBar.value = 0
 						CookTime = 0.0
