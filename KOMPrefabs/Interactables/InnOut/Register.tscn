@@ -17,14 +17,14 @@
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_826g7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_77yrh"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xt4g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihjbq"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_826g7")
+albedo_texture = SubResource("ViewportTexture_77yrh")
 
 [node name="Register" type="Node3D"]
 
@@ -200,7 +200,7 @@ scale = Vector2(2, 2)
 
 [node name="Quad" parent="OrderPanel" index="1"]
 mesh = SubResource("QuadMesh_cisdd")
-surface_material_override/0 = SubResource("StandardMaterial3D_7xt4g")
+surface_material_override/0 = SubResource("StandardMaterial3D_ihjbq")
 
 [connection signal="ItemTaken" from="FoodTray/Behavior" to="RegisterGrabber/CanvasLayer/Register2" method="_on_behavior_item_taken"]
 
