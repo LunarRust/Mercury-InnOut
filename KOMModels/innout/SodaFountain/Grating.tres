@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cx1m5b27uvsvq"]
+
+[ext_resource type="Texture2D" uid="uid://cvn4ly7e68kcx" path="res://KOMModels/innout/SodaFountain/SodaFountain_rusted-metal-grid-compressed.jpg" id="1_fynqe"]
+
+[resource]
+resource_name = "Grating"
+cull_mode = 2
+albedo_texture = ExtResource("1_fynqe")

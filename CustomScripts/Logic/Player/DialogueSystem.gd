@@ -16,10 +16,12 @@ var DialogueBox : Node2D
 var isTalking : bool
 var PlayerObject : Node
 var lookTarget : Vector3
+var active : bool = false
 
 @export_category("Physical parameters")
 @export var looking : bool = true
 @export var Distance : bool = true
+@export var CloseDistance : float = 4
 var parentnode : Node3D
 var ActionButtonMaster : Node
 var RandNum : RandomNumberGenerator
@@ -30,17 +32,20 @@ func _ready():
 	DialogueBox = get_tree().get_first_node_in_group("DialogueBox")
 	PlayerObject = get_tree().get_first_node_in_group("player")
 	ActionButtonMaster = get_tree().get_first_node_in_group("InteractionButtonKOMMaster")
+	DialogueBox.DialogueClosed.connect(CloseDialogue)
 	
 	parentnode = self.get_parent()
 	var vector : Vector3 = parentnode.global_position + parentnode.basis.z * 2
 	lookTarget = Vector3(vector.x,self.global_position.y,vector.z)
+	active = true
 
 
 func _process(delta):
-	if looking:
-		parentnode.look_at(lookTarget,Vector3.UP,true)
-	if self.global_position.distance_to(PlayerObject.global_position) > 4 && isTalking && Distance:
-		CloseDialogue()
+	if active:
+		if looking:
+			parentnode.look_at(lookTarget,Vector3.UP,true)
+		if self.global_position.distance_to(PlayerObject.global_position) > CloseDistance && isTalking && Distance:
+			CloseDialogue()
 		
 func OpenDialogue():
 	DialogueBox.show()
@@ -88,5 +93,6 @@ func  DialogueProcessing():
 	
 func CloseDialogue():
 	DialogueBox.hide()
+	soundSource.stop()
 	isTalking = false
 		

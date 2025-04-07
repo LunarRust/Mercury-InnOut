@@ -1,6 +1,8 @@
 extends Node
 @export_category("Score Tracker")
 var ScoreFile = ConfigFile.new()
+var DebugFile = ConfigFile.new()
+@export var GamaPhone : AnimatedSprite2D
 @export var ScoreLabel : RichTextLabel
 @export var EncryptionKey : String
 var InnoutBus
@@ -17,6 +19,14 @@ func _ready():
 	InnoutBus = get_tree().get_first_node_in_group("InnOutSignalBus")
 	InnoutBus.ScoreChanged.connect(ScoreUpdate)
 	ScoreUpdate()
+	var Debug = DebugFile.load("user://KOM_Debug.cfg")
+	if !DebugFile.has_section_key("InOutOptions", "GramaphoneEnable"):
+		DebugFile.set_value("InOutOptions", "GramaphoneEnable", false)
+	DebugFile.save("user://KOM_Debug.cfg")
+	if DebugFile.get_value("InOutOptions", "GramaphoneEnable"):
+		GamaPhone.show()
+	else:
+		GamaPhone.hide()
 
 func ScoreUpdate():
 	ScoreLabel.text = "[shake rate=15][center]" + str(InnoutBus.Score)

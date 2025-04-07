@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://do4fcd8ymtfr6"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_7g5v1"]
+[ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="1_j1u6d"]
+[ext_resource type="Texture2D" uid="uid://buu1orbv2667e" path="res://KOMSprites/innout/CupRenderCropped.png" id="1_sun66"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="4_81gkb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87okn"]
+size = Vector3(0.6073, 1, 0.173462)
+
+[node name="EmptyCup" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0143433)
+shape = SubResource("BoxShape3D_87okn")
+
+[node name="Behavior" type="Node" parent="."]
+script = ExtResource("1_7g5v1")
+ItemID = "emptycup"
+
+[node name="ModelRoot" type="Node3D" parent="."]
+script = ExtResource("1_j1u6d")
+
+[node name="Sprite3D" type="Sprite3D" parent="ModelRoot"]
+transform = Transform3D(0.105, 0, 0, 0, 0.105, 0, 0, 0, 0.105, 0, 0, 0)
+texture = ExtResource("1_sun66")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.636349, 0)
+light_color = Color(0.505882, 0.529412, 0.615686, 1)
+distance_fade_enabled = true
+distance_fade_begin = 12.0
+omni_range = 1.09562
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_81gkb")
+autoplay = true

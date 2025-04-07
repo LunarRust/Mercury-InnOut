@@ -7,6 +7,7 @@ var err
 signal ScoreChanged
 signal OrderGen(ID : int)
 signal ReadyToOrder(ID : int)
+signal GameOver
 
 func _ready():
 	err = DebugFile.load("user://KOM_Debug.cfg")

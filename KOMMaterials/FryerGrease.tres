@@ -39,7 +39,7 @@ void fragment() {
 load_path = "res://.godot/imported/Water.png-69a9a0415cc936f6687437459009f098.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_okxdt"]
-render_priority = 0
+render_priority = -1
 shader = SubResource("Shader_7l68r")
 shader_parameter/tint_color = Color(0.745098, 0.713726, 0.0431373, 0.964706)
 shader_parameter/slowdown = 0.6

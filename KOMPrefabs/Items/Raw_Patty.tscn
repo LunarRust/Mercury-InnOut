@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://crbfw5y17xjmt"]
+[gd_scene load_steps=6 format=3 uid="uid://crbfw5y17xjmt"]
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/NpcCompatItemPickup.gd" id="1_ur3oc"]
 [ext_resource type="Script" path="res://Scripts/RotatingObject.cs" id="2_v7d2y"]
 [ext_resource type="Texture2D" uid="uid://bl64mywvhcrqi" path="res://KOMSprites/innout/raw-patty.png" id="3_3xckt"]
+[ext_resource type="AudioStream" uid="uid://cwu83yi6qfjwb" path="res://Sounds/tick3.ogg" id="4_yosfj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7sm0"]
 size = Vector3(0.446385, 0.812319, 0.210897)
@@ -31,3 +32,7 @@ light_color = Color(0.733333, 0.376471, 0.392157, 1)
 distance_fade_enabled = true
 distance_fade_begin = 12.0
 omni_range = 1.09562
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_yosfj")
+autoplay = true

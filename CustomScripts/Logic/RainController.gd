@@ -7,6 +7,7 @@ var err
 @export var ThunderPlayer : AudioStreamPlayer3D
 @export var ThunderSounds : Array[AudioStream]
 @export var RainParticles : Array[GPUParticles3D]
+@export var OtherNodes : Array[Node3D]
 @export var ThunderFlashesParent : Node3D
 @export_category("Variables")
 @export var RainSystemActive : bool = true
@@ -55,9 +56,13 @@ func ActiveCheck():
 			i.play()
 		for i in RainParticles:
 			i.emitting = true
+		for i in OtherNodes:
+			i.show()
 	else:
 		WorldEnv.environment.fog_enabled = false
 		for i in RainSounds:
 			i.stop()
 		for i in RainParticles:
 			i.emitting = false
+		for i in OtherNodes:
+			i.hide()

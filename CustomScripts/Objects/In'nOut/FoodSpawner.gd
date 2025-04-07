@@ -3,11 +3,12 @@ var inv : Inventory
 var NpcInv : Inventory
 @export_category("Assignments")
 @export var SoundPlayer : AudioStreamPlayer3D
-@export var FoodSprite : Sprite3D
+@export var SoundStream : AudioStream
+@export var FoodSprite : Sprite2D
 @export_category("Parameters")
 @export var FoodSpriteStretchScale : float
 @export var ItemID : String
-var FoodSpriteBeginingScale : Vector3
+var FoodSpriteBeginingScale : Vector2
 var DoNotTarget : bool
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +25,7 @@ func Touch(AmNpc = false):
 		if NpcInv.can_add_item(create_item(ItemID)):
 			var newItem = NpcInv.create_and_add_item(ItemID)
 			if (newItem != null):
-				SoundPlayer.stream = load("res://Sounds/Pickup.ogg")
+				SoundPlayer.stream = SoundStream
 				SoundPlayer.play()
 				ModifySprite()
 				return true
@@ -37,7 +38,7 @@ func Touch(AmNpc = false):
 	else:
 		var newItem = inv.create_and_add_item(ItemID)
 		if (newItem != null):
-			SoundPlayer.stream = load("res://Sounds/Pickup.ogg")
+			SoundPlayer.stream = SoundStream
 			SoundPlayer.play()
 			ModifySprite()
 			return true

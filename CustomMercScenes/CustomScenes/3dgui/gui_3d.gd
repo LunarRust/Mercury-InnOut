@@ -1,15 +1,16 @@
+@tool
 extends Node3D
-
 # Used for checking if the mouse is inside the Area3D.
 var is_mouse_inside = false
 # The last processed input touch/mouse event. To calculate relative movement.
 var last_event_pos2D = null
 # The time of the last event in seconds since engine start.
 var last_event_time: float = -1.0
-
+@export_category("GUI 3D")
 @export var node_viewport : SubViewport
 @export var node_quad : MeshInstance3D
 @export var node_area : Area3D
+@export var Billboard : bool = false
 
 func _ready():
 	node_area.mouse_entered.connect(_mouse_entered_area)
@@ -22,6 +23,9 @@ func _ready():
 	NewMaterial.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	NewMaterial.resource_local_to_scene = true
 	node_quad.set_surface_override_material(0,NewMaterial)
+	if Billboard == true:
+		node_quad.get_surface_override_material(0).billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
+		node_quad.get_surface_override_material(0).billboard_keep_scale = true
 	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
 	if node_quad.get_surface_override_material(0).billboard_mode == BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED:
 		set_process(false)
@@ -116,21 +120,22 @@ func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Ve
 
 
 func rotate_area_to_billboard():
-	var billboard_mode = node_quad.get_surface_override_material(0).params_billboard_mode
+	var billboard_mode = node_quad.get_surface_override_material(0).billboard_mode
 
 	# Try to match the area with the material's billboard setting, if enabled.
 	if billboard_mode > 0:
 		# Get the camera.
 		var camera = get_viewport().get_camera_3d()
 		# Look in the same direction as the camera.
-		var look = camera.to_global(Vector3(0, 0, -100)) - camera.global_transform.origin
-		look = node_area.position + look
+		if camera != null:
+			var look = camera.to_global(Vector3(0, 0, -100)) - camera.global_transform.origin
+			look = node_area.position + look
 
-		# Y-Billboard: Lock Y rotation, but gives bad results if the camera is tilted.
-		if billboard_mode == 2:
-			look = Vector3(look.x, 0, look.z)
+			# Y-Billboard: Lock Y rotation, but gives bad results if the camera is tilted.
+			if billboard_mode == 2:
+				look = Vector3(look.x, 0, look.z)
 
-		node_area.look_at(look, Vector3.UP)
+			node_area.look_at(look, Vector3.UP)
 
-		# Rotate in the Z axis to compensate camera tilt.
-		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
+			# Rotate in the Z axis to compensate camera tilt.
+			node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)

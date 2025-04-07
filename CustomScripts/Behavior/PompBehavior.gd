@@ -9,10 +9,17 @@ var SignalBusKOM
 @export var follow : bool
 #@export var PlayerObject : MeshInstance3D
 
+var SignalBusInnout
+var InnoutExists : bool = false
 var InteractionButton = load("res://Scripts/InteractionButton.cs")
 @onready var DialogueBox = get_tree().get_first_node_in_group("DialogueBox")
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
+	if get_tree().get_first_node_in_group("InnOutSignalBus") != null:
+		SignalBusInnout = get_tree().get_first_node_in_group("InnOutSignalBus")
+		InnoutExists = true
+	else:
+		InnoutExists = false
 	
 func StartAttack(name : StringName):
 	print(name)
@@ -39,6 +46,8 @@ func Hurt():
 		await get_tree().create_timer(1).timeout
 		#PompAI.set("hurt", false)
 		SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+		if InnoutExists == true:
+			SignalBusInnout.emit_signal("GameOver")
 
 	
 

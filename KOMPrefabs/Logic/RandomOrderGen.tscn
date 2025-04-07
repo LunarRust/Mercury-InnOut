@@ -16,7 +16,8 @@ Labels = NodePath("CtrlInventoryGridEx/Labels")
 Protoset = ExtResource("3_4lwhx")
 ItemCounts = {
 "Burger": 0,
-"Fries": 2
+"Fries": 2,
+"drink": 0
 }
 
 [node name="InvItems" type="Node" parent="."]
@@ -33,6 +34,11 @@ prototype_id = "Fries"
 properties = {
 "grid_position": Vector2i(2, 0)
 }
+
+[node name="_Node_68920" type="Node" parent="InvItems"]
+script = ExtResource("6_f56l7")
+protoset = ExtResource("3_4lwhx")
+prototype_id = "drink"
 
 [node name="Button" type="Button" parent="."]
 visible = false

@@ -18,6 +18,7 @@ var OrderClock : float = 0.0
 var WaitingForOrder : bool = false
 var FallBackSpawnClock : float = 0.0
 var NpcHasExisted : bool = false
+var HasComplained : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
@@ -121,6 +122,8 @@ func get_all_children(in_node, array := []):
 	return array
 
 func BeginTimer():
+	SoundSource.stream = load("res://Sounds/tick3.ogg")
+	SoundSource.play()
 	if SignalBusInnOut.DoTimer == true:
 		ClockDisplay.show()
 	else:
@@ -149,7 +152,11 @@ func _process(delta):
 		if OrderClock <= 0.0:
 			ClockDisplay.add_theme_color_override("default_color",Color(1, 0.15294100344181, 0.25490200519562))
 			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+			SignalBusInnOut.emit_signal("GameOver")
 			WaitingForOrder = false
+		if OrderClock <= 30.0 && !HasComplained:
+			currentNPC.Speak(1,"res://KOMSounds/VO/Venus/WhereIsMyDamnFood.wav")
+			HasComplained = true;
 	else:
 		if NpcHasExisted:
 			if currentNPC == null:
@@ -165,6 +172,7 @@ func _on_pressed():
 			SoundSource.play()
 			SignalBusInnOut.Score += TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
+			HasComplained = false
 			OrderClock = 0.0
 			WaitingForOrder = false
 			
@@ -177,6 +185,7 @@ func _on_pressed():
 			SignalBusInnOut.Score -= TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
 			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
+			SignalBusInnOut.emit_signal("GameOver")
 			OrderClock = 0.0
 			WaitingForOrder = false
 			SoundSource.play()

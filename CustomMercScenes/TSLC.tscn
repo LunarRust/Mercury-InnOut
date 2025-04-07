@@ -1,10 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://r8ulkx2gpni6"]
+[gd_scene load_steps=22 format=3 uid="uid://r8ulkx2gpni6"]
 
 [ext_resource type="Script" path="res://Scripts/scene_loader.gd" id="1_p1mgs"]
 [ext_resource type="Texture2D" uid="uid://h613quhoual4" path="res://Sprites/HUDFACESHEETM1.png" id="2_2khq0"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AppearOnPress.gd" id="2_po2ij"]
 [ext_resource type="Texture2D" uid="uid://crd0tcmhgc1vc" path="res://Sprites/UI/Mercury tip.png" id="3_xyx4t"]
-[ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="4_7nq2m"]
+[ext_resource type="AudioStream" uid="uid://cnohmfrk4pxtj" path="res://Sounds/Pickup.ogg" id="4_7nq2m"]
 [ext_resource type="Script" path="res://Scripts/SpriteShake.cs" id="4_fiaev"]
 [ext_resource type="Script" path="res://Scripts/Tweener2D.cs" id="5_6h13j"]
 [ext_resource type="Script" path="res://RandomSizeTween.cs" id="6_to57f"]
@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://nk5prdh13401" path="res://PSX.tres" id="9_1mx3r"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/TipLoader.gd" id="10_0i2ko"]
 [ext_resource type="AudioStream" uid="uid://bc1eqopo3khhg" path="res://Sounds/WeirdGong.ogg" id="10_7knj8"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="13_y8ekg"]
 
 [sub_resource type="Curve" id="1"]
 max_value = 425.0
@@ -66,6 +67,7 @@ offset_right = 662.0
 offset_bottom = 70.0
 theme_override_fonts/normal_font = ExtResource("7_ubp3j")
 theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
 text = "Console Output"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ConsoleParent"]
@@ -146,7 +148,7 @@ text = "[wave][center]
 If you work in the food service industry, you can sue you're employer for mental health damages."
 scroll_active = false
 script = ExtResource("10_0i2ko")
-tips = Array[String](["If you work in the food service industry, you can sue you're employer for mental health damages.", "You should try estrogen.", "I really hate In'nOut.", "I swear to god if that bitch comes in and orders three sets of fries again I will commit manslaughter.", "Will I get PTA if I dunk my head in the fryer?", "I left college 4 years ago.", "You can take all the napkins in the napkin dispenser home with you. No one gets paid enough to try to stop you."])
+tips = Array[String](["If you work in the food service industry, you can sue you're employer for mental health damages.", "You should try estrogen.", "I hate [img=100]res://KOMSprites/innout/InNOut_logo.png[/img].", "I swear to god if that bitch comes in and orders three sets of fries again I will commit manslaughter.", "Will I get PTO if I dunk my head in the fryer?", "You can take all the napkins in the napkin dispenser home with you. No one gets paid enough to try to stop you.", "Don't let you're ice get too cold. Put them in the Deep fryer.", "I miss my wife."])
 
 [node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
 modulate = Color(0.0941176, 0.113725, 0.211765, 1)
@@ -221,3 +223,21 @@ stream = ExtResource("10_7knj8")
 volume_db = -9.729
 pitch_scale = 0.87
 autoplay = true
+
+[node name="VerLabel" type="RichTextLabel" parent="."]
+z_index = 5
+offset_left = 734.625
+offset_top = 8.0
+offset_right = 1285.62
+offset_bottom = 107.0
+scale = Vector2(0.635, 0.635)
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.411765, 0.305882, 0.505882, 1)
+theme_override_fonts/normal_font = ExtResource("7_ubp3j")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[shake rate=20] PLACEHOLDER"
+
+[node name="KOMStats" type="Node" parent="VerLabel" node_paths=PackedStringArray("InnoutVerLabel")]
+script = ExtResource("13_y8ekg")
+InnoutVerLabel = NodePath("..")

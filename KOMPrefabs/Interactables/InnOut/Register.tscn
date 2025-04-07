@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/NavNodeCon.gd" id="1_xotax"]
 [ext_resource type="PackedScene" uid="uid://jur7vxccf5uw" path="res://KOMPrefabs/Interactables/CamGrabber.tscn" id="2_i7a0y"]
-[ext_resource type="AudioStream" uid="uid://bb67bgrowip25" path="res://Sounds/DNAstart.ogg" id="3_4gt68"]
-[ext_resource type="AudioStream" uid="uid://dqx257ns6tgoe" path="res://Sounds/DNAfail.ogg" id="4_2rfeb"]
-[ext_resource type="PackedScene" uid="uid://tqaa24cqkri3" path="res://KOMModels/innout/cash_register.glb" id="5_8cdur"]
+[ext_resource type="AudioStream" uid="uid://wi5bbugtlb5w" path="res://Sounds/DNAstart.ogg" id="3_4gt68"]
+[ext_resource type="AudioStream" uid="uid://cfjal7c4hnmq" path="res://Sounds/DNAfail.ogg" id="4_2rfeb"]
+[ext_resource type="PackedScene" uid="uid://cbmb6fb7ncl8" path="res://KOMModels/innout/cash_register.glb" id="5_8cdur"]
 [ext_resource type="PackedScene" uid="uid://cp46x0ogan7h0" path="res://KOMPrefabs/Interactables/InnOut/food_tray.tscn" id="6_c3pmk"]
 [ext_resource type="PackedScene" uid="uid://cf08hharkb570" path="res://KOMPrefabs/Logic/RandomOrderGen.tscn" id="9_7lvxl"]
 [ext_resource type="PackedScene" uid="uid://c2d6efsd3ij6e" path="res://KOMPrefabs/Interactables/InnOut/OrderPanel.tscn" id="10_yb0mo"]
@@ -17,14 +17,14 @@
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_826g7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_f1hhk"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xt4g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7eti"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_826g7")
+albedo_texture = SubResource("ViewportTexture_f1hhk")
 
 [node name="Register" type="Node3D"]
 
@@ -200,7 +200,7 @@ scale = Vector2(2, 2)
 
 [node name="Quad" parent="OrderPanel" index="1"]
 mesh = SubResource("QuadMesh_cisdd")
-surface_material_override/0 = SubResource("StandardMaterial3D_7xt4g")
+surface_material_override/0 = SubResource("StandardMaterial3D_o7eti")
 
 [connection signal="ItemTaken" from="FoodTray/Behavior" to="RegisterGrabber/CanvasLayer/Register2" method="_on_behavior_item_taken"]
 

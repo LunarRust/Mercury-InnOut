@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmjbvoxnk7nmy"]
+
+[ext_resource type="Script" path="res://CustomScripts/Objects/TriggerVolume.gd" id="1_s8rhm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tlv32"]
+
+[node name="TriggerVolume" type="Area3D"]
+script = ExtResource("1_s8rhm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tlv32")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

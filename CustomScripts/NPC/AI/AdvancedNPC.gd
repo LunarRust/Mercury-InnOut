@@ -57,6 +57,8 @@ var direction : Vector3
 var PointNavrunning : bool
 var InstID
 var SignalBusKOM
+var SignalBusInnout
+var InnoutExists : bool = false
 var instance
 var player
 var RandFloat : float
@@ -74,6 +76,11 @@ func _ready():
 	InstID = self.get_instance_id()
 	self.add_to_group(str(InstID))
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
+	if get_tree().get_first_node_in_group("InnOutSignalBus") != null:
+		SignalBusInnout = get_tree().get_first_node_in_group("InnOutSignalBus")
+		InnoutExists = true
+	else:
+		InnoutExists = false
 	player = get_tree().get_first_node_in_group("player")
 	SignalBusKOM.PompNpcInstances.append(InstID)
 	MaxDistance = MaxDistanceDef
@@ -395,6 +402,26 @@ func ArrivalAction(action : int):
 			pass
 		_:
 			pass
+
+###################################
+###
+###################################
+func Speak(anim : int,SoundString : String):
+	match anim:
+		1:
+			animTrigger("Talk")
+		2:
+			animTrigger("touch")
+		3:
+			animTrigger("Look")
+		4:
+			animTrigger("Hurt")
+		0:
+			pass
+		_:
+			pass
+	DialogueSystem.soundSource.stream = load(SoundString) as AudioStream
+	DialogueSystem.soundSource.play()
 
 ###################################
 ###

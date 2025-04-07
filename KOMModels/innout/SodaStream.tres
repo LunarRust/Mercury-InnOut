@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://26bhyod2fbdo"]
+
+[ext_resource type="Texture2D" uid="uid://b5qj7dem3l3br" path="res://KOMModels/innout/SodaStream_water-drops-glass-red-bright-background_23-2148070979.jpg" id="1_4w4yg"]
+
+[resource]
+resource_name = "SodaStream"
+cull_mode = 2
+albedo_texture = ExtResource("1_4w4yg")
+roughness = 0.5
+uv1_scale = Vector3(0.76, 0.76, 0.76)
+uv1_offset = Vector3(0.57, 0.055, 0.415)
+uv1_triplanar = true

@@ -27,7 +27,12 @@ _surfaces = [{
 [node name="Radio" type="Node3D"]
 transform = Transform3D(-0.164407, 0, 0.174843, 0, 0.24, 0, -0.174843, 0, -0.164407, 0, 0, 0)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="RadioMusicPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(4.16667, 0, 4.76837e-07, 0, 4.16667, 0, -4.76837e-07, 0, 4.16667, 0, 0.814218, 0)
+autoplay = true
+max_distance = 10.0
+
+[node name="RadioSoundEffect" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(4.16667, 0, 4.76837e-07, 0, 4.16667, 0, -4.76837e-07, 0, 4.16667, 0, 0.814218, 0)
 autoplay = true
 max_distance = 10.0
@@ -45,4 +50,4 @@ skeleton = NodePath("../../..")
 
 [node name="Behavior" type="Node" parent="StaticBody3D" node_paths=PackedStringArray("SoundPlayer")]
 script = ExtResource("3_n1ian")
-SoundPlayer = NodePath("../../AudioStreamPlayer3D")
+SoundPlayer = NodePath("../../RadioMusicPlayer")

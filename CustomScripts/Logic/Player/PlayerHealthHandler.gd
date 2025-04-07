@@ -3,7 +3,7 @@ extends Node
 var health : int = 9
 var mana : int = 16
 var dead : bool = false
-@export var manaTimer : Timer
+var manaTimer : float = 0.0
 @export var playerAnim : AnimationTree
 @export var playerBody : MeshInstance3D
 @export var playerObject : MeshInstance3D
@@ -45,25 +45,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	manaTimer += delta
 	if InvButton.open:
 		label.text = str(health)
 		manaLabel.text = str(mana)
 	manaBar.frame = (9 - mana / 2)
 	mana = clamp(mana,1,16)
-	if Input.is_action_pressed("Run"):
+	if Input.is_action_pressed("Run") && manaTimer > 0.35:
 		RemoveMana()
-	else:
+	elif manaTimer > 0.35:
 		AddMana()
 	
 func AddMana():
 	if !Input.is_action_pressed("Run") && mana < 16:
 		mana += 1
-	manaTimer.start(0.3499999940395355)
+		manaTimer = 0.0
 	
 func RemoveMana():
-	if Input.is_action_pressed("Run") && mana < 16:
+	if Input.is_action_pressed("Run") && mana > 0:
 		mana -= 1
-	manaTimer.start(0.3499999940395355)
+		manaTimer = 0.0
 	
 func changeHealth(amount : int):
 	if dead:

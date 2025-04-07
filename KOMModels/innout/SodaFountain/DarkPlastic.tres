@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bway1v8um84ah"]
+
+[resource]
+resource_name = "DarkPlastic"
+cull_mode = 2
+albedo_color = Color(0.100462, 0.100463, 0.100462, 1)
+metallic = 0.0590909

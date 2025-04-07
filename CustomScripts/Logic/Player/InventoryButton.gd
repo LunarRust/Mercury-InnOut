@@ -14,11 +14,15 @@ var Hided : bool
 @export var Speed : float = 1.0
 @export var ItemDropRange : float = 200
 var HealthHandler
+var Inv : Inventory
+var InvCtl : CtrlInventoryGridEx
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	HealthHandler = load("res://Scripts/PlayerHealthHandler.cs")
 	HealthHandler = HealthHandler.new()
+	Inv = get_tree().get_first_node_in_group("KOMInventoryManager").inv
+	InvCtl = get_tree().get_first_node_in_group("KOMInventoryManager").invCtrl
 	open = false
 	
 
@@ -39,7 +43,7 @@ func _process(delta):
 		#manalabel.text = str(HealthHandler.mana)
 		pass
 	
-	if Input.is_action_pressed("MouseAction") && get_viewport().get_mouse_position().y > ItemDropRange && open && !Hided:
+	if Input.is_action_pressed("MouseAction") && get_viewport().get_mouse_position().y > ItemDropRange && open && !Hided && InvCtl._grabbed_ctrl_inventory_item != null:
 		var tween : Tween = create_tween()
 		tween.set_parallel()
 		tween.tween_property(HotBar,"position",Vector2(480,500),Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)

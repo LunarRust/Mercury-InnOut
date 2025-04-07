@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1yg1gqmfbbcw"]
+
+[resource]
+resource_name = "InnerCup"
+cull_mode = 2
+albedo_color = Color(0.869852, 0.850243, 0.830464, 1)
+metallic = 0.0454545
+roughness = 0.909091

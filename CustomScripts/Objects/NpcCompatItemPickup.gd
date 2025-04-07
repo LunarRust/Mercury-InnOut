@@ -1,6 +1,4 @@
 extends Node
-
-
 var inv : Inventory
 var NpcInv : Inventory
 var used : bool = false
@@ -10,7 +8,6 @@ func _ready():
 	inv = get_tree().get_first_node_in_group("KOMInventoryManager").inv
 	if inv == null:
 		inv = InventoryManager.inventoryInstance
-	pass # Replace with function body.
 
 
 func Touch(AmNpc = false):

@@ -2,7 +2,8 @@ extends Node
 @export var Spatula : Node3D
 @export var GUI : Node3D
 var progressBar : ProgressBar
-@export var GriddleSound : AudioStreamPlayer
+@export var GriddleSound : AudioStreamPlayer3D
+@export var GrillTracker : Node
 var up = false
 var ItemOnSpatula : bool = false
 var ItemOnSpatulaName : String
@@ -12,12 +13,15 @@ var RecivedItem : String
 @export var AnimatedSpriteObject : AnimatedSprite3D
 @export var Sprites : Array[Resource]
 @export var AltSprites : Array[Texture2D]
+@export var BurnedSprites : Array[Texture2D]
 @export var DebugLabels : Node3D
 @export var CookedTime : float = 15
+@export var BurnedTime : float = 30
 var inv : Inventory
 var NpcInv : Inventory
 var used : bool = false
 var Cooking : bool = false
+var Cooked : bool = false
 var CookTime : float
 var sb
 # Called when the node enters the scene tree for the first time.
@@ -59,9 +63,16 @@ func _process(delta):
 		progressBar.value = CookTime 
 		#if CookTime >=  CookedTime * 0.70:
 		sb.bg_color = Color.DARK_RED.lerp(Color.DARK_GREEN, CookTime / CookedTime)
-		if CookTime >= CookedTime && ItemOnSpatula:
+		if CookTime >= CookedTime && ItemOnSpatula && CookTime <= BurnedTime:
 			if RecivedItem == "RawPatty":
 				SpriteObject.texture = AltSprites[3]
+		if CookTime >= BurnedTime:
+			SpriteObject.texture = BurnedSprites[3]
+		if CookTime >= CookedTime && !Cooked:
+			GrillTracker.GrillsGrilling -= 1
+			if GrillTracker.GrillsGrilling == 0:
+				GriddleSound.stop()
+			Cooked = true
 		
 func Item(item : String):
 	if  !ItemOnSpatula:
@@ -70,8 +81,12 @@ func Item(item : String):
 				SpriteObject.texture = Sprites[3]
 				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
 				ItemOnSpatula = true
+				Cooked = false
 				RecivedItem = "RawPatty"
 				ItemOnSpatulaName = "RawPatty"
+				if !GriddleSound.playing:
+					GriddleSound.play()
+				GrillTracker.GrillsGrilling += 1
 				Spatula.get_parent().show()
 				SpriteObject.show()
 				GUI.show()
@@ -80,8 +95,12 @@ func Item(item : String):
 				SpriteObject.texture = Sprites[3]
 				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
 				ItemOnSpatula = true
+				Cooked = false
 				RecivedItem = "RawPatty"
 				ItemOnSpatulaName = "Burger"
+				if !GriddleSound.playing:
+					GriddleSound.play()
+				GrillTracker.GrillsGrilling += 1
 				Spatula.get_parent().show()
 				SpriteObject.show()
 				GUI.show()
@@ -91,6 +110,8 @@ func Item(item : String):
 					var newItem = inv.create_and_add_item("RawPatty")
 				elif item == "Fresh Fries":
 					var newItem = inv.create_and_add_item("FFries")
+				elif item == "Drink Cup":
+					var newItem = inv.create_and_add_item("emptycup")
 				else:
 					var newItem = inv.create_and_add_item(item)
 				return false
@@ -99,6 +120,8 @@ func Item(item : String):
 			var newItem = inv.create_and_add_item("RawPatty")
 		elif item == "Fresh Fries":
 			var newItem = inv.create_and_add_item("FFries")
+		elif item == "Drink Cup":
+					var newItem = inv.create_and_add_item("emptycup")
 		else:
 			var newItem = inv.create_and_add_item(item)
 		return false
@@ -129,22 +152,44 @@ func Touch(AmNpc = false):
 							ItemOnSpatula = false
 							Cooking = false
 							GUI.hide()
+							GrillTracker.GrillsGrilling -= 1
+							if GrillTracker.GrillsGrilling == 0:
+								GriddleSound.stop()
 							progressBar.value = 0
 							CookTime = 0
 						else:
 							print("Cannot Add Item, not enough Room")
 				else :
-					if inv.can_add_item(create_item(ItemOnSpatulaName)):
-						var newItem = inv.create_and_add_item(ItemOnSpatulaName)
-						if (newItem != null):
-							newItem.set_property("CookTime", CookTime)
-						SpriteObject.hide()
-						Spatula.get_parent().hide()
-						ItemOnSpatula = false
-						GUI.hide()
-						progressBar.value = 0
-						Cooking = false
-						CookTime = 0
+					if CookTime >= BurnedTime:
+						if inv.can_add_item(create_item("Burned Patty")):
+							var newItem = inv.create_and_add_item("Burned Patty")
+							if (newItem != null):
+								newItem.set_property("CookTime", CookTime)
+							SpriteObject.hide()
+							Spatula.get_parent().hide()
+							ItemOnSpatula = false
+							GUI.hide()
+							GrillTracker.GrillsGrilling -= 1
+							if GrillTracker.GrillsGrilling == 0:
+									GriddleSound.stop()
+							progressBar.value = 0
+							Cooking = false
+							CookTime = 0
+					else:
+						if inv.can_add_item(create_item(ItemOnSpatulaName)):
+							var newItem = inv.create_and_add_item(ItemOnSpatulaName)
+							if (newItem != null):
+								newItem.set_property("CookTime", CookTime)
+							SpriteObject.hide()
+							Spatula.get_parent().hide()
+							ItemOnSpatula = false
+							GUI.hide()
+							GrillTracker.GrillsGrilling -= 1
+							if GrillTracker.GrillsGrilling == 0:
+									GriddleSound.stop()
+							progressBar.value = 0
+							Cooking = false
+							CookTime = 0
 		else:
 			animTrigger("Flip")   
 
