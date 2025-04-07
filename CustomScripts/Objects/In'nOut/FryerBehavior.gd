@@ -15,6 +15,7 @@ var RecivedItem : String
 @export var BurnedSprites : Array[CompressedTexture2D]
 @export var DebugLabels : Node3D
 @export_category("Parameters")
+@export var TimeTillBuzzer : float = 0
 @export var CookedTime : float = 15
 @export var BurnTime : float = 30
 var inv : Inventory
@@ -22,6 +23,7 @@ var NpcInv : Inventory
 var used : bool = false
 var Cooking : bool = false
 var BellDinged : bool = false
+var HasCooked : bool = false
 var CookTime : float
 var SpriteNum : int
 var sb
@@ -62,11 +64,13 @@ func _process(delta):
 			SpriteObject.texture = CookedSprites[SpriteNum]
 		elif CookTime >= BurnTime:
 			SpriteObject.texture = BurnedSprites[SpriteNum]
-		if CookTime >= CookedTime && !BellDinged:
+		if CookTime >= CookedTime && !HasCooked:
+			HasCooked = true
+			FryerSound.stop()
+		if CookTime >= CookedTime + TimeTillBuzzer && !BellDinged:
 			BellDinged = true
 			FryerSound.pitch_scale = randf_range(0.8,1.2)
-			FryerSound.stream = load("res://KOMSounds/beep-104060.mp3")
-			FryerSound.volume_db = FryerSound.volume_db - 15
+			FryerSound.stream = load("res://KOMSounds/buzzer-short_out.ogg")
 			FryerSound.play()
 		
 func Item(item : String):
@@ -78,6 +82,7 @@ func Item(item : String):
 				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
 				ItemInBasket = true
 				BellDinged = false
+				HasCooked = false
 				RecivedItem = "FFries"
 				ItemInBasketName = "Fries"
 				SpriteObject.show()
@@ -97,6 +102,7 @@ func Item(item : String):
 				print_rich("Showing: [color=red]" + str(SpriteObject.name) + "[/color]")
 				ItemInBasket = true
 				BellDinged = false
+				HasCooked = false
 				RecivedItem = "Fries"
 				ItemInBasketName = "Fries"
 				SpriteObject.show()
@@ -162,6 +168,7 @@ func Touch(AmNpc = false):
 						up = true
 						ItemInBasket = false
 						FryerSound.stop()
+						HasCooked = false
 						Cooking = false
 						GUI.hide()
 						progressBar.value = 0
@@ -178,6 +185,7 @@ func Touch(AmNpc = false):
 						animTrigger("Up")
 						up = true
 						ItemInBasket = false
+						HasCooked = false
 						GUI.hide()
 						FryerSound.stop()
 						progressBar.value = 0
@@ -193,6 +201,7 @@ func Touch(AmNpc = false):
 					SpriteObject.hide()
 					animTrigger("Up")
 					up = true
+					HasCooked = false
 					ItemInBasket = false
 					Cooking = false
 					FryerSound.stop()
@@ -211,6 +220,7 @@ func Touch(AmNpc = false):
 						animTrigger("Up")
 						up = true
 						ItemInBasket = false
+						HasCooked = false
 						Cooking = false
 						FryerSound.stop()
 						GUI.hide()

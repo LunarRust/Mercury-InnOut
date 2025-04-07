@@ -1,13 +1,13 @@
 [gd_scene load_steps=27 format=3 uid="uid://cqfbunn8jynnh"]
 
-[ext_resource type="PackedScene" uid="uid://cvlrfychtnn6d" path="res://KOMModels/innout/SodaFountain/SodaFountain.glb" id="1_kpuxa"]
-[ext_resource type="Texture2D" uid="uid://cvn4ly7e68kcx" path="res://KOMModels/innout/SodaFountain/SodaFountain_rusted-metal-grid-compressed.jpg" id="2_i87mg"]
-[ext_resource type="AudioStream" uid="uid://cko5gy6ojxehk" path="res://KOMSounds/ac-unit-67600.ogg" id="3_86msb"]
+[ext_resource type="PackedScene" uid="uid://bi60j12dqu7x" path="res://KOMModels/innout/SodaFountain/SodaFountain.glb" id="1_kpuxa"]
+[ext_resource type="Texture2D" uid="uid://cgkeuiselnooh" path="res://KOMModels/innout/SodaFountain/SodaFountain_rusted-metal-grid-compressed.jpg" id="2_i87mg"]
+[ext_resource type="AudioStream" uid="uid://cckcxluygxyse" path="res://KOMSounds/ac-unit-67600.ogg" id="3_86msb"]
 [ext_resource type="PackedScene" uid="uid://crlxkf7rvm4e" path="res://KOMPrefabs/Interactables/cam_grabber.tscn" id="4_dq6og"]
 [ext_resource type="PackedScene" uid="uid://b042y4h4fj04b" path="res://KOMPrefabs/Interactables/InnOut/DrinkDispenser.tscn" id="5_5x1tj"]
-[ext_resource type="PackedScene" uid="uid://r32kty50b3px" path="res://KOMModels/innout/Cup/Cup.glb" id="6_wct0i"]
+[ext_resource type="PackedScene" uid="uid://bkoa0vtc3wgc2" path="res://KOMModels/innout/Cup/Cup.glb" id="6_wct0i"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/GiveItem.gd" id="7_x2t77"]
-[ext_resource type="AudioStream" uid="uid://2rndok7ukey5" path="res://KOMSounds/container-close-super-short.ogg" id="8_tlgkc"]
+[ext_resource type="AudioStream" uid="uid://b206q5f5nvxor" path="res://KOMSounds/container-close-super-short.ogg" id="8_tlgkc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3s7v"]
 resource_name = "Grating"
@@ -69,14 +69,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bbihn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ck3ek"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_flvnx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7502h"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_bbihn")
+albedo_texture = SubResource("ViewportTexture_ck3ek")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_iaby5"]
 resource_local_to_scene = true
@@ -87,14 +87,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_grdoc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lv03t"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbrnm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbg5s"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_grdoc")
+albedo_texture = SubResource("ViewportTexture_lv03t")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tsopt"]
 resource_local_to_scene = true
@@ -105,14 +105,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ivgpd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xjmdd"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54sjl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gexr"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ivgpd")
+albedo_texture = SubResource("ViewportTexture_xjmdd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uc27f"]
 
@@ -150,14 +150,14 @@ transform = Transform3D(3.77359, 1.20272e-06, 7.11254e-08, -4.48936e-07, 1.38875
 UIToToggle = []
 
 [node name="Cup0" parent="." instance=ExtResource("5_5x1tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000257645, 0.0225601, -0.00765073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0263935, 0.0225601, -0.00765073)
 
 [node name="MeshInstance3D" parent="Cup0" index="2"]
 mesh = SubResource("CylinderMesh_3e0oi")
 
 [node name="Quad" parent="Cup0/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_wf0yj")
-surface_material_override/0 = SubResource("StandardMaterial3D_flvnx")
+surface_material_override/0 = SubResource("StandardMaterial3D_7502h")
 
 [node name="Cup1" parent="." instance=ExtResource("5_5x1tj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209179, 0.0225601, -0.00765072)
@@ -167,10 +167,10 @@ mesh = SubResource("CylinderMesh_iaby5")
 
 [node name="Quad" parent="Cup1/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_dyaic")
-surface_material_override/0 = SubResource("StandardMaterial3D_bbrnm")
+surface_material_override/0 = SubResource("StandardMaterial3D_nbg5s")
 
 [node name="Cup2" parent="." instance=ExtResource("5_5x1tj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.406244, 0.0225601, -0.00765071)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433433, 0.0225601, -0.00765071)
 
 [node name="MeshInstance3D" parent="Cup2" index="2"]
 mesh = SubResource("CylinderMesh_tsopt")
@@ -180,7 +180,7 @@ transform = Transform3D(-1.18556e-08, 4.36201e-09, -0.582, 0.0997907, 0.271225, 
 
 [node name="Quad" parent="Cup2/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_kvlv4")
-surface_material_override/0 = SubResource("StandardMaterial3D_54sjl")
+surface_material_override/0 = SubResource("StandardMaterial3D_5gexr")
 
 [node name="GetCup" type="Node3D" parent="."]
 

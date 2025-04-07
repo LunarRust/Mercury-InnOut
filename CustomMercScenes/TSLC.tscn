@@ -146,7 +146,7 @@ text = "[wave][center]
 If you work in the food service industry, you can sue you're employer for mental health damages."
 scroll_active = false
 script = ExtResource("10_0i2ko")
-tips = Array[String](["If you work in the food service industry, you can sue you're employer for mental health damages.", "You should try estrogen.", "I really hate In'nOut.", "I swear to god if that bitch comes in and orders three sets of fries again I will commit manslaughter.", "Will I get PTA if I dunk my head in the fryer?", "I left college 4 years ago.", "You can take all the napkins in the napkin dispenser home with you. No one gets paid enough to try to stop you."])
+tips = Array[String](["If you work in the food service industry, you can sue you're employer for mental health damages.", "You should try estrogen.", "I hate [img=100]res://KOMSprites/innout/InNOut_logo.png[/img].", "I swear to god if that bitch comes in and orders three sets of fries again I will commit manslaughter.", "Will I get PTO if I dunk my head in the fryer?", "You can take all the napkins in the napkin dispenser home with you. No one gets paid enough to try to stop you.", "Don't let you're ice get too cold. Put them in the Deep fryer."])
 
 [node name="MeshInstance2D5" type="MeshInstance2D" parent="."]
 modulate = Color(0.0941176, 0.113725, 0.211765, 1)
