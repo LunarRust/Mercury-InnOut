@@ -192,12 +192,10 @@ func Touch(AmNpc = false):
 						Cooking = false
 		else :
 			if CookTime >= BurnTime:
-				var newItem = inv.create_and_add_item(ItemInBasketName)
-				if (newItem != null):
-					newItem.set_property("CookTime", CookTime)
-					if newItem.get_property("name","FFries") && CookTime >= 50:
-						newItem.set_property("image","res://KOMSprites/innout/friesBurnt.png")
-						newItem.set_property("name",str("burnt " + newItem.name))
+				if inv.can_add_item(create_item("Burned Fries")):
+					var newItem = inv.create_and_add_item("Burned Fries")
+					if (newItem != null):
+						newItem.set_property("CookTime", CookTime)
 					SpriteObject.hide()
 					animTrigger("Up")
 					up = true

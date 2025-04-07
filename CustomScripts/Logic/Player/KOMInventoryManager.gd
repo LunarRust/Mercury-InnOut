@@ -5,8 +5,8 @@ static var inventoryInstance : Inventory
 @export var invCtrl : CtrlInventoryGrid
 static var instance
 static var itemArray : Dictionary
-@export var itemName : Label
-@export var itemDescription : Label
+@export var itemName : RichTextLabel
+@export var itemDescription : RichTextLabel
 @export var health_handler : Node2D
 @export var MouseCasting : Node3D
 var camCast : Camera3D

@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://cj6nfviosnb4o"]
+[gd_scene load_steps=22 format=3 uid="uid://cj6nfviosnb4o"]
 
 [ext_resource type="Material" uid="uid://bpeflgdmq3es7" path="res://KOMModels/Textures/8x8.tres" id="1_bga2g"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/RotateTo.gd" id="2_32ggh"]
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="2_dbo6l"]
 [ext_resource type="FontFile" uid="uid://dg3h8s7di2p7v" path="res://Fonts/DBStylez2.ttf" id="3_aemic"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/ScoreTracker.gd" id="4_r6pjt"]
-[ext_resource type="Material" uid="uid://b2q8quyis51mr" path="res://KOMShaders/CRT.tres" id="4_ue66k"]
 [ext_resource type="PackedScene" uid="uid://cjlvvrm2owvaa" path="res://KOMPrefabs/UI/Gold_Checker_Banner.tscn" id="5_3qbcu"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Time/Time_System.gd" id="5_sirc1"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Time/Date_Time.gd" id="6_c61sy"]
@@ -29,18 +28,96 @@ _surfaces = [{
 "vertex_data": PackedByteArray(0, 0, 254, 255, 238, 255, 255, 191, 0, 0, 99, 6, 238, 255, 255, 191, 0, 0, 254, 255, 199, 65, 255, 191, 0, 0, 99, 6, 199, 65, 255, 191, 146, 7, 124, 243, 0, 0, 255, 255, 146, 7, 228, 18, 0, 0, 255, 255, 108, 248, 124, 243, 0, 0, 255, 255, 108, 248, 228, 18, 0, 0, 255, 255, 255, 255, 254, 255, 199, 65, 255, 191, 255, 255, 99, 6, 199, 65, 255, 191, 255, 255, 254, 255, 238, 255, 255, 191, 255, 255, 99, 6, 238, 255, 255, 191, 10, 250, 55, 16, 238, 255, 255, 191, 244, 5, 55, 16, 238, 255, 255, 191, 10, 250, 55, 16, 151, 161, 255, 191, 244, 5, 55, 16, 151, 161, 255, 191, 255, 255, 99, 6, 199, 65, 255, 191, 0, 0, 99, 6, 199, 65, 255, 191, 255, 255, 99, 6, 238, 255, 255, 191, 0, 0, 99, 6, 238, 255, 255, 191, 0, 0, 254, 255, 199, 65, 255, 191, 255, 255, 254, 255, 199, 65, 255, 191, 0, 0, 254, 255, 238, 255, 255, 191, 255, 255, 254, 255, 238, 255, 255, 191, 244, 5, 41, 246, 238, 255, 254, 127, 244, 5, 55, 16, 238, 255, 254, 127, 0, 0, 254, 255, 238, 255, 254, 127, 0, 0, 99, 6, 238, 255, 254, 127, 10, 250, 55, 16, 238, 255, 254, 127, 10, 250, 41, 246, 238, 255, 254, 127, 255, 255, 99, 6, 238, 255, 254, 127, 255, 255, 254, 255, 238, 255, 254, 127, 10, 250, 41, 246, 151, 161, 254, 127, 10, 250, 55, 16, 151, 161, 254, 127, 244, 5, 41, 246, 151, 161, 254, 127, 244, 5, 55, 16, 151, 161, 254, 127, 244, 5, 55, 16, 238, 255, 255, 191, 244, 5, 41, 246, 238, 255, 255, 191, 244, 5, 55, 16, 151, 161, 255, 191, 244, 5, 41, 246, 151, 161, 255, 191, 244, 5, 41, 246, 238, 255, 255, 191, 10, 250, 41, 246, 238, 255, 255, 191, 244, 5, 41, 246, 151, 161, 255, 191, 10, 250, 41, 246, 151, 161, 255, 191, 10, 250, 41, 246, 238, 255, 255, 191, 10, 250, 55, 16, 238, 255, 255, 191, 10, 250, 41, 246, 151, 161, 255, 191, 10, 250, 55, 16, 151, 161, 255, 191, 185, 108, 194, 8, 175, 228, 255, 191, 184, 114, 0, 0, 113, 222, 255, 191, 185, 108, 194, 8, 108, 97, 255, 191, 184, 114, 0, 0, 169, 103, 255, 191, 185, 108, 194, 8, 108, 97, 234, 254, 184, 114, 0, 0, 169, 103, 234, 254, 69, 147, 194, 8, 108, 97, 234, 254, 178, 141, 0, 0, 169, 103, 234, 254, 69, 147, 194, 8, 108, 97, 255, 191, 178, 141, 0, 0, 169, 103, 255, 191, 69, 147, 194, 8, 175, 228, 255, 191, 178, 141, 0, 0, 113, 222, 255, 191, 41, 141, 56, 2, 6, 224, 20, 65, 58, 115, 56, 2, 6, 224, 20, 65, 41, 141, 64, 2, 41, 191, 20, 65, 58, 115, 64, 2, 41, 191, 20, 65, 178, 141, 0, 0, 169, 103, 255, 191, 184, 114, 0, 0, 169, 103, 255, 191, 178, 141, 0, 0, 113, 222, 255, 191, 184, 114, 0, 0, 113, 222, 255, 191, 185, 108, 194, 8, 108, 97, 255, 191, 69, 147, 194, 8, 108, 97, 255, 191, 185, 108, 194, 8, 175, 228, 255, 191, 69, 147, 194, 8, 175, 228, 255, 191, 69, 112, 137, 6, 26, 227, 235, 126, 58, 115, 56, 2, 6, 224, 235, 126, 185, 108, 194, 8, 175, 228, 235, 126, 184, 114, 0, 0, 113, 222, 235, 126, 41, 141, 56, 2, 6, 224, 235, 126, 232, 143, 137, 6, 26, 227, 235, 126, 178, 141, 0, 0, 113, 222, 235, 126, 69, 147, 194, 8, 175, 228, 235, 126, 58, 115, 56, 2, 6, 224, 235, 126, 41, 141, 56, 2, 6, 224, 235, 126, 184, 114, 0, 0, 113, 222, 235, 126, 178, 141, 0, 0, 113, 222, 235, 126, 232, 143, 137, 6, 26, 227, 235, 126, 69, 112, 137, 6, 26, 227, 235, 126, 69, 147, 194, 8, 175, 228, 235, 126, 185, 108, 194, 8, 175, 228, 235, 126, 232, 143, 146, 6, 61, 194, 235, 126, 41, 141, 64, 2, 41, 191, 235, 126, 69, 112, 146, 6, 61, 194, 235, 126, 58, 115, 64, 2, 41, 191, 235, 126, 58, 115, 56, 2, 6, 224, 240, 64, 69, 112, 137, 6, 26, 227, 240, 64, 58, 115, 64, 2, 41, 191, 240, 64, 69, 112, 146, 6, 61, 194, 240, 64, 69, 112, 137, 6, 26, 227, 19, 193, 232, 143, 137, 6, 26, 227, 19, 193, 69, 112, 146, 6, 61, 194, 19, 193, 232, 143, 146, 6, 61, 194, 19, 193, 232, 143, 137, 6, 26, 227, 238, 64, 41, 141, 56, 2, 6, 224, 238, 64, 232, 143, 146, 6, 61, 194, 238, 64, 41, 141, 64, 2, 41, 191, 238, 64, 146, 7, 228, 18, 0, 0, 113, 250, 146, 7, 124, 243, 0, 0, 113, 250, 0, 0, 99, 6, 199, 65, 113, 250, 0, 0, 254, 255, 199, 65, 113, 250, 108, 248, 228, 18, 0, 0, 35, 248, 146, 7, 228, 18, 0, 0, 35, 248, 255, 255, 99, 6, 199, 65, 35, 248, 0, 0, 99, 6, 199, 65, 35, 248, 146, 7, 124, 243, 0, 0, 35, 248, 108, 248, 124, 243, 0, 0, 35, 248, 0, 0, 254, 255, 199, 65, 35, 248, 255, 255, 254, 255, 199, 65, 35, 248, 108, 248, 124, 243, 0, 0, 113, 250, 108, 248, 228, 18, 0, 0, 113, 250, 255, 255, 254, 255, 199, 65, 113, 250, 255, 255, 99, 6, 199, 65, 113, 250, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 44, 35, 43, 163, 44, 35, 43, 163, 44, 35, 43, 163, 44, 35, 43, 163, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 143, 36, 111, 91, 143, 36, 111, 91, 143, 36, 111, 91, 143, 36, 111, 91, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 206, 220, 207, 92, 206, 220, 207, 92, 206, 220, 207, 92, 206, 220, 207, 92, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 107, 219, 147, 164, 107, 219, 147, 164, 107, 219, 147, 164, 107, 219, 147, 164, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0)
 }]
 
+[sub_resource type="Shader" id="Shader_6r228"]
+code = "//based on https://godotshaders.com/shader/crt-shader-2/
+shader_type canvas_item;
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform float fisheye_strength = 1.0; // Adjust this to control the fisheye effect strength
+uniform float curve_strength = 2.5;
+
+vec2 fisheye(vec2 uv) {
+    vec2 d = uv - 0.5;
+    float r = length(d);
+    float theta = atan(d.y, d.x);
+    float rf = pow(r, fisheye_strength) / pow(0.5, fisheye_strength - 1.0);
+    return vec2(0.5) + rf * normalize(d);
+}
+
+vec2 curve(vec2 uv)
+{
+	uv = (uv - 0.5) * 2.0;
+	uv *= 1.1;
+	uv.x *= 1.0 + pow((abs(uv.y) / 5.0), curve_strength);
+	uv.y *= 1.0 + pow((abs(uv.x) / 4.0), curve_strength);
+	uv  = (uv / 2.0) + 0.5;
+	uv =  uv *0.92 + 0.04;
+	return uv;
+}
+
+void fragment() {
+    vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
+    vec2 q = FRAGCOORD.xy / iResolution.xy;
+
+    // Apply fisheye distortion
+    q = fisheye(q);
+
+    vec2 uv = curve(q);
+    uv = curve( uv );
+    vec3 oricol = texture( screen_texture, vec2(q.x,q.y) ).xyz;
+    vec3 col;
+	float x =  sin(0.3*TIME+uv.y*21.0)*sin(0.7*TIME+uv.y*29.0)*sin(0.3+0.33*TIME+uv.y*31.0)*0.0017;
+
+    col.r = texture(screen_texture,vec2(x+uv.x+0.001,uv.y+0.001)).x+0.05;
+    col.g = texture(screen_texture,vec2(x+uv.x+0.000,uv.y-0.002)).y+0.05;
+    col.b = texture(screen_texture,vec2(x+uv.x-0.002,uv.y+0.000)).z+0.05;
+    col.r += 0.08*texture(screen_texture,0.75*vec2(x+0.025, -0.027)+vec2(uv.x+0.001,uv.y+0.001)).x;
+    col.g += 0.05*texture(screen_texture,0.75*vec2(x+-0.022, -0.02)+vec2(uv.x+0.000,uv.y-0.002)).y;
+    col.b += 0.08*texture(screen_texture,0.75*vec2(x+-0.02, -0.018)+vec2(uv.x-0.002,uv.y+0.000)).z;
+
+    col = clamp(col*0.6+0.4*col*col*1.0,0.0,1.0);
+
+    float vig = (0.0 + 1.0*16.0*uv.x*uv.y*(1.0-uv.x)*(1.0-uv.y));
+	col *= vec3(pow(vig,0.3));
+
+    col *= vec3(0.95,1.05,0.95);
+	col *= 2.8;
+
+	float scans = clamp( 0.35+0.35*sin(3.5*TIME+uv.y*iResolution.y*1.5), 0.0, 1.0);
+
+	float s = pow(scans,1.7);
+	col = col*vec3( 0.4+0.7*s) ;
+
+    col *= 1.0+0.01*sin(110.0*TIME);
+	if (uv.x < 0.0 || uv.x > 1.0)
+		col *= 0.0;
+	if (uv.y < 0.0 || uv.y > 1.0)
+		col *= 0.0;
+
+	col*=1.0-0.65*vec3(clamp((mod(FRAGCOORD.x, 2.0)-1.0)*2.0,0.0,1.0));
+
+    float comp = smoothstep( 0.1, 0.9, sin(TIME) );
+
+
+    COLOR = vec4(col,1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0x3j8"]
+shader = SubResource("Shader_6r228")
+shader_parameter/fisheye_strength = 0.945
+shader_parameter/curve_strength = 6.995
+
 [sub_resource type="QuadMesh" id="QuadMesh_vtdor"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_082ko"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4e31h"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pthpq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihigu"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_082ko")
+albedo_texture = SubResource("ViewportTexture_4e31h")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w737o"]
 size = Vector3(3, 2, 0.1)
@@ -77,18 +154,18 @@ bbcode_enabled = true
 text = "[shake rate=15][center]%"
 
 [node name="TimeLabel" type="RichTextLabel" parent="GUI/SubViewport"]
-offset_left = -70.0
+offset_left = 66.05
 offset_top = 900.0
-offset_right = 889.0
+offset_right = 2066.05
 offset_bottom = 1100.0
 theme_override_colors/default_color = Color(0.494118, 0.415686, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_aemic")
 theme_override_font_sizes/normal_font_size = 170
 bbcode_enabled = true
-text = "[shake rate=10][center]00:00:00"
+text = "[shake rate=10]00:00:00"
 
 [node name="ColorRect" type="ColorRect" parent="GUI/SubViewport"]
-material = ExtResource("4_ue66k")
+material = SubResource("ShaderMaterial_0x3j8")
 offset_right = 1920.0
 offset_bottom = 1080.0
 
@@ -116,7 +193,7 @@ process_mode = 3
 transform = Transform3D(-2.39101e-08, -1.73289e-21, 0.875, 5.2667e-22, 0.47, 3.22612e-21, -0.547, 4.52532e-22, -3.82475e-08, 0, 0, 0.00781775)
 mesh = SubResource("QuadMesh_vtdor")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_pthpq")
+surface_material_override/0 = SubResource("StandardMaterial3D_ihigu")
 
 [node name="Area3D" type="Area3D" parent="GUI/Quad"]
 collision_layer = 2

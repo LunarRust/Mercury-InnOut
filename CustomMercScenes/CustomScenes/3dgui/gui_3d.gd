@@ -127,14 +127,15 @@ func rotate_area_to_billboard():
 		# Get the camera.
 		var camera = get_viewport().get_camera_3d()
 		# Look in the same direction as the camera.
-		var look = camera.to_global(Vector3(0, 0, -100)) - camera.global_transform.origin
-		look = node_area.position + look
+		if camera != null:
+			var look = camera.to_global(Vector3(0, 0, -100)) - camera.global_transform.origin
+			look = node_area.position + look
 
-		# Y-Billboard: Lock Y rotation, but gives bad results if the camera is tilted.
-		if billboard_mode == 2:
-			look = Vector3(look.x, 0, look.z)
+			# Y-Billboard: Lock Y rotation, but gives bad results if the camera is tilted.
+			if billboard_mode == 2:
+				look = Vector3(look.x, 0, look.z)
 
-		node_area.look_at(look, Vector3.UP)
+			node_area.look_at(look, Vector3.UP)
 
-		# Rotate in the Z axis to compensate camera tilt.
-		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
+			# Rotate in the Z axis to compensate camera tilt.
+			node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)

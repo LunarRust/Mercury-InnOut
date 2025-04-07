@@ -8,12 +8,15 @@ extends Area3D
 @export var Exit : bool
 @export var OnVolumeExit : bool
 @export var OnVolumeEntered : bool
-var opened : bool
 
+var opened : bool
+var ObjectCount : int = 0
+var t : float = 0
 
 
 #TODO Rewrite entire door system
 func _on_area_entered(area):
+	ObjectCount += 1
 	if OnVolumeEntered:
 		#print("area entered")
 		#print_rich("is Entrance: [color=red]" + str(Entrance) + "[/color] and is opened: [color=red]" + str(opened) + "[/color] and is moving: [color=red]" + str(Target.get_child(ChildNumber).moving) + "[/color]")
@@ -37,7 +40,12 @@ func open():
 func close():
 	Target.get_child(ChildNumber).RemoteTriggerDeactivate()
 
-
+func _process(delta):
+	t += delta
+	if t >= 5:
+		t = 0
+		if ObjectCount > 0 && !DoorBehavior.moving:
+			open()
 
 func _on_behavior_open():
 	#print("Door opened")
@@ -50,6 +58,7 @@ func _on_behavior_closed():
 
 
 func _on_area_exited(area):
+		ObjectCount -= 1
 		if OnVolumeExit:
 			#print("area exited")
 			#print_rich("is Entrance: [color=red]" + str(Entrance) + "[/color] and is opened: [color=red]" + str(opened) + "[/color] and is moving: [color=red]" + str(Target.get_child(ChildNumber).moving) + "[/color]")

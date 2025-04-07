@@ -1,7 +1,9 @@
 extends Node
-@export var ItemID : String
 @export var SoundSource : AudioStreamPlayer
 @export var SoundStream : AudioStream
+@export_category("Parameters")
+@export var ItemID : String
+@export var DestroyRecivedItem : bool = true
 
 var inv : Inventory
 var NpcInv : Inventory
@@ -42,6 +44,31 @@ func create_item(prototype_id: String) -> InventoryItem:
 	item.prototype_id = prototype_id
 	return item
 	
+func Item(item : String):
+		match item:
+			"emptycup":
+				Destroy()
+			"Drink Cup":
+				Destroy()
+			_:
+				if item == "Raw Patty":
+					var newItem = inv.create_and_add_item("RawPatty")
+				elif item == "Fresh Fries":
+					var newItem = inv.create_and_add_item("FFries")
+				elif item == "Drink Cup":
+					var newItem = inv.create_and_add_item("emptycup")
+				else:
+					var newItem = inv.create_and_add_item(item)
+				return false
+		return true
+		
+func Destroy():
+	if DestroyRecivedItem:
+		SoundSource.stream = SoundStream
+		SoundSource.play()
+		return true
+	else:
+		return false
 	
 func find_closest_or_furthest(node: Object,group_name,get_closest:= true) -> Object:
 	@warning_ignore("unassigned_variable")

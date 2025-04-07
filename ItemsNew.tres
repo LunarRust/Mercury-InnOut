@@ -158,6 +158,26 @@ json_data = "[
         \"width\": 2
     },
     {
+        \"description\": \"Ruined Hamburger patty. [shake]Congratulations.[/shake]\",
+        \"health\": -5,
+        \"height\": 1,
+        \"id\": \"Burned Patty\",
+        \"image\": \"res://KOMSprites/innout/burnt-patty.png\",
+        \"name\": \"Burned Patty\",
+        \"usable\": \"true\",
+        \"width\": 2
+    },
+    {
+        \"description\": \"Ruined French fries. [shake]Good job.[/shake]\",
+        \"health\": -5,
+        \"height\": 1,
+        \"id\": \"Burned Fries\",
+        \"image\": \"res://KOMSprites/innout/friesBurnt.png\",
+        \"name\": \"Burned Fries\",
+        \"usable\": \"true\",
+        \"width\": 2
+    },
+    {
         \"description\": \"A delicious carcinogenic\",
         \"health\": 1,
         \"height\": 2,
