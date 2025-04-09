@@ -216,14 +216,14 @@ texture = ExtResource("12_kau7w")
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_gqbyc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sgsad"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odvqh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fq0cw"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_gqbyc")
+albedo_texture = SubResource("ViewportTexture_sgsad")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqxtd"]
 size = Vector3(3, 2, 0.1)
@@ -342,7 +342,7 @@ process_mode = 3
 transform = Transform3D(-1.11464e-08, 0, 0.875, 0, 0.045, 0, -0.255, 0, -3.82475e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_y3prw")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_odvqh")
+surface_material_override/0 = SubResource("StandardMaterial3D_fq0cw")
 
 [node name="Area3D" type="Area3D" parent="GUI/Quad"]
 collision_layer = 2

@@ -14,11 +14,13 @@ var currentID
 var currentMark
 var currentNPC
 var SignalBusKOM
+var SignalBusInnout
 @export var SpawnerID : int
 @export var NavNodeTarget : Node
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
+	SignalBusInnout = get_tree().get_first_node_in_group("InnOutSignalBus")
 	await SignalBusKOM.is_node_ready()
 	SignalBusKOM.CreateNpc.connect(Spawn)
 	await get_tree().create_timer(0.3).timeout
@@ -28,7 +30,7 @@ func _ready():
 	
 
 func Spawn(ID):
-	if ID == SpawnerID:
+	if ID == SpawnerID && SignalBusInnout.WavesActive:
 		Packload()
 
 func Packload():

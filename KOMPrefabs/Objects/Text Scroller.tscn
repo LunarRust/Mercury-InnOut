@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxpvnri76qher"]
+
+[ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="1_dl6v4"]
+[ext_resource type="Material" uid="uid://cpdjiy0pv6jhf" path="res://KOMShaders/Loop.tres" id="2_dijkt"]
+[ext_resource type="Script" path="res://CustomScripts/Objects/TextScroller.gd" id="3_h567t"]
+[ext_resource type="Material" uid="uid://crorm2i0ne0gc" path="res://KOMShaders/SubPixelDisplay.tres" id="3_ls0q7"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="4_i1uk8"]
+[ext_resource type="Material" uid="uid://b2q8quyis51mr" path="res://KOMShaders/CRT.tres" id="4_pf5wd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxsoc"]
+albedo_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnqcx"]
+material = SubResource("StandardMaterial3D_mxsoc")
+size = Vector3(0.27, 1, 5)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wor48"]
+material = ExtResource("3_ls0q7")
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pqi4h"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijajg"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_pqi4h")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h0mcf"]
+size = Vector3(3, 2, 0.1)
+
+[node name="ScrollingMarkee" type="Node3D" node_paths=PackedStringArray("node_viewport", "node_quad", "node_area")]
+script = ExtResource("1_dl6v4")
+node_viewport = NodePath("SubViewport")
+node_quad = NodePath("Quad")
+node_area = NodePath("Quad/Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.364393, 0, 0)
+mesh = SubResource("BoxMesh_gnqcx")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+gui_embed_subwindows = true
+size = Vector2i(2152, 437)
+render_target_update_mode = 4
+
+[node name="ClockLabel" type="RichTextLabel" parent="SubViewport"]
+offset_left = -255.315
+offset_top = 44.33
+offset_right = -34.24
+offset_bottom = 103.77
+scale = Vector2(12.115, 12.115)
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 0.152941, 0.254902, 1)
+theme_override_fonts/normal_font = ExtResource("4_i1uk8")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[center] ||Lunch Rush!|| "
+visible_characters = 10
+visible_characters_behavior = 1
+visible_ratio = 0.6454
+script = ExtResource("3_h567t")
+BlinkSpeed = 0.3
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+material = ExtResource("4_pf5wd")
+offset_right = 500.0
+offset_bottom = 60.0
+scale = Vector2(9.05, 9.05)
+color = Color(1, 1, 1, 0)
+
+[node name="Quad" type="MeshInstance3D" parent="."]
+transform = Transform3D(-7.2998e-08, 0, 1.02, 0, 0.52, 0, -1.67, 0, -4.45856e-08, 0.517031, -0.013, 3.9205e-10)
+material_overlay = ExtResource("2_dijkt")
+mesh = SubResource("QuadMesh_wor48")
+surface_material_override/0 = SubResource("StandardMaterial3D_ijajg")
+
+[node name="Area3D" type="Area3D" parent="Quad"]
+collision_layer = 2
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quad/Area3D"]
+shape = SubResource("BoxShape3D_h0mcf")

@@ -326,27 +326,27 @@ data = PackedVector3Array(0.168076, 0.299906, 0.410334, 0.202739, 0.299906, 0.43
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_r1a7p"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0do1t"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_36eex"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3pbv"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_r1a7p")
+albedo_texture = SubResource("ViewportTexture_0do1t")
 
 [sub_resource type="QuadMesh" id="QuadMesh_iel0i"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5h8be"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lnrhs"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qecw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwioo"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_5h8be")
+albedo_texture = SubResource("ViewportTexture_lnrhs")
 
 [node name="Fryer" type="Node3D"]
 
@@ -397,7 +397,7 @@ transform = Transform3D(55.2581, -9.09495e-13, 7.85266e-13, 9.09495e-13, 55.2581
 
 [node name="Quad" parent="Fryer_basket/GUI" index="1"]
 mesh = SubResource("QuadMesh_xfx03")
-surface_material_override/0 = SubResource("StandardMaterial3D_36eex")
+surface_material_override/0 = SubResource("StandardMaterial3D_o3pbv")
 
 [node name="Fryer_basket2" parent="." instance=ExtResource("7_fe22b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.853869)
@@ -407,7 +407,7 @@ transform = Transform3D(55.2581, -9.09495e-13, 7.85266e-13, 9.09495e-13, 55.2581
 
 [node name="Quad" parent="Fryer_basket2/GUI" index="1"]
 mesh = SubResource("QuadMesh_iel0i")
-surface_material_override/0 = SubResource("StandardMaterial3D_7qecw")
+surface_material_override/0 = SubResource("StandardMaterial3D_dwioo")
 
 [editable path="Fryer_basket"]
 [editable path="Fryer_basket2"]

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://crorm2i0ne0gc"]
+
+[ext_resource type="Shader" path="res://KOMShaders/SubPixelDisplay.gdshader" id="1_v3xv2"]
+
+[resource]
+shader = ExtResource("1_v3xv2")
+shader_parameter/alpha = 0.765
+shader_parameter/stripe = 0.2
+shader_parameter/scan = 0.3
