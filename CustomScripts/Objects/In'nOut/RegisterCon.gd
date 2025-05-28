@@ -19,6 +19,8 @@ var WaitingForOrder : bool = false
 var FallBackSpawnClock : float = 0.0
 var NpcHasExisted : bool = false
 var HasComplained : bool = false
+### Vars for lunch rush segment ###
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
@@ -172,6 +174,7 @@ func _on_pressed():
 			SoundSource.play()
 			SignalBusInnOut.Score += TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
+			SignalBusInnOut.ServedCustomers += 1
 			HasComplained = false
 			OrderClock = 0.0
 			WaitingForOrder = false
@@ -184,7 +187,6 @@ func _on_pressed():
 			SoundSource.stream = SoundNegative
 			SignalBusInnOut.Score -= TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
-			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
 			SignalBusInnOut.emit_signal("GameOver")
 			OrderClock = 0.0
 			WaitingForOrder = false

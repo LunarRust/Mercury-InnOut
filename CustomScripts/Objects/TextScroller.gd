@@ -33,10 +33,13 @@ func update(newSpeed : float = speed,newLoops : int = -1):
 	loops = newLoops
 	scroll_text()
 
-#func _process(_delta):
-	#DoBlinking = !DoBlinking
-	#blink_timer.start()
-	#print(blink_timer.time_left) # Outputs the 1 second I have it set to, is not going down
+func Disable():
+	DoBlinking = false
+	update(1,1)
+	self.hide()
+
+func Enable():
+	self.show()
 
 func _on_timer_timeout():
 	blink_timer.wait_time = BlinkSpeed
@@ -45,12 +48,10 @@ func _on_timer_timeout():
 			self.hide()
 		else:
 			self.show()
-	else:
-		self.show()
 
 func scroll_text():
 	tween = create_tween()
-	tween.set_loops(-1)
+	tween.set_loops(loops)
 	tween.tween_property(self, "visible_ratio", 0, speed)
 	tween.tween_property(self, "visible_ratio", 1, speed)
 	tween.tween_property(self, "visible_ratio", 1, speed)

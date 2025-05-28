@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ccimvk3bfhkf7"]
 
-[ext_resource type="Theme" path="res://Fonts/DBStyles.tres" id="2_r75kb"]
+[ext_resource type="Theme" uid="uid://bkrmgobma4l0y" path="res://Fonts/DBStyles.tres" id="2_r75kb"]
 
 [node name="ScoreContainer" type="ColorRect"]
 custom_minimum_size = Vector2(170, 61)
@@ -11,26 +11,35 @@ color = Color(0.498039, 0.454902, 0.235294, 1)
 [node name="ScoreEntry" type="Label" parent="."]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 3.0
+offset_top = 5.0
 offset_right = 75.0
-offset_bottom = 26.0
+offset_bottom = 28.0
 theme = ExtResource("2_r75kb")
 text = "Score #"
 
 [node name="TotalItemsServed" type="Label" parent="."]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 20.0
+offset_top = 25.0
 offset_right = 140.0
-offset_bottom = 43.0
+offset_bottom = 48.0
 theme = ExtResource("2_r75kb")
 text = "Items served: #"
 
 [node name="TimeTaken" type="Label" parent="."]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 39.0
+offset_top = 44.0
 offset_right = 267.0
-offset_bottom = 74.0
+offset_bottom = 79.0
 theme = ExtResource("2_r75kb")
 text = "Time: "
+
+[node name="ModVer" type="Label" parent="."]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 5.0
+offset_right = 364.0
+offset_bottom = 40.0
+theme = ExtResource("2_r75kb")
+text = "Ver: "

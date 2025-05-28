@@ -1,20 +1,20 @@
 [gd_scene load_steps=62 format=3 uid="uid://cqn0gyd1vcqh2"]
 
-[ext_resource type="Texture2D" uid="uid://b08v5m5rhwj3g" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_d3ufr"]
-[ext_resource type="Texture2D" uid="uid://b1jbauqt5tjix" path="res://KOMModels/innout/restaurant_Metal_006_basecolor.jpg" id="2_h7jx2"]
-[ext_resource type="Texture2D" uid="uid://bm8bwkct6b6n3" path="res://KOMModels/innout/restaurant_Metal_006_roughness.png" id="3_vjt1h"]
-[ext_resource type="Texture2D" uid="uid://dqibbq01pq5wr" path="res://KOMModels/innout/restaurant_Metal_006_normal.jpg" id="4_n4t0m"]
-[ext_resource type="Texture2D" uid="uid://bt0an4f3ckwb" path="res://KOMModels/innout/restaurant_dial Base Color.png" id="5_d4d2j"]
-[ext_resource type="Texture2D" uid="uid://o7yjytajcbf2" path="res://textures/glass_bright.png" id="6_uc764"]
+[ext_resource type="Texture2D" uid="uid://fnur461jyc4e" path="res://KOMModels/innout/restaurant_Metal_Grill_024_basecolor.png" id="1_d3ufr"]
+[ext_resource type="Texture2D" uid="uid://cr6qkmssk1r2" path="res://KOMModels/innout/restaurant_Metal_006_basecolor.jpg" id="2_h7jx2"]
+[ext_resource type="Texture2D" uid="uid://bgme1no8045sd" path="res://KOMModels/innout/restaurant_Metal_006_roughness.png" id="3_vjt1h"]
+[ext_resource type="Texture2D" uid="uid://co0e8djfdgvn2" path="res://KOMModels/innout/restaurant_Metal_006_normal.jpg" id="4_n4t0m"]
+[ext_resource type="Texture2D" uid="uid://ce5v34wq3gdkl" path="res://KOMModels/innout/restaurant_dial Base Color.png" id="5_d4d2j"]
+[ext_resource type="Texture2D" uid="uid://h8eiphbtudkv" path="res://textures/glass_bright.png" id="6_uc764"]
 [ext_resource type="PackedScene" uid="uid://bjhio0w4l3d5o" path="res://KOMModels/innout/Spatula.tscn" id="7_82u0b"]
-[ext_resource type="Texture2D" uid="uid://bl64mywvhcrqi" path="res://KOMSprites/innout/raw-patty.png" id="8_ppg8c"]
+[ext_resource type="Texture2D" uid="uid://b3ff2t2wvlbv7" path="res://KOMSprites/innout/raw-patty.png" id="8_ppg8c"]
 [ext_resource type="SpriteFrames" uid="uid://bwwe0yu1rhfcs" path="res://KOMSprites/innout/FFriesFire.tres" id="9_26h2y"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/GriddleBehavior.gd" id="9_hery2"]
-[ext_resource type="Texture2D" uid="uid://driq2dafkx6o1" path="res://KOMSprites/innout/FryPile.png" id="11_emme3"]
-[ext_resource type="Texture2D" uid="uid://l3b4taiqqnid" path="res://KOMSprites/innout/In-N-Out-Burger.png" id="12_yrevu"]
-[ext_resource type="Texture2D" uid="uid://b8cnpnu0vqxy6" path="res://KOMSprites/innout/fries.png" id="13_7s17i"]
-[ext_resource type="Texture2D" uid="uid://cerxxnv0hmn5k" path="res://KOMSprites/innout/cooked-patty.png" id="14_u303k"]
-[ext_resource type="Texture2D" uid="uid://du6mdehe6se1v" path="res://KOMSprites/innout/burnt-patty.png" id="15_4akw6"]
+[ext_resource type="Texture2D" uid="uid://bote0nnsinsvg" path="res://KOMSprites/innout/FryPile.png" id="11_emme3"]
+[ext_resource type="Texture2D" uid="uid://b2j0kt7ppsv7a" path="res://KOMSprites/innout/In-N-Out-Burger.png" id="12_yrevu"]
+[ext_resource type="Texture2D" uid="uid://bwb81o7vwgs1" path="res://KOMSprites/innout/fries.png" id="13_7s17i"]
+[ext_resource type="Texture2D" uid="uid://ctdyh27w12rb4" path="res://KOMSprites/innout/cooked-patty.png" id="14_u303k"]
+[ext_resource type="Texture2D" uid="uid://s7yc4eu6b4lw" path="res://KOMSprites/innout/burnt-patty.png" id="15_4akw6"]
 [ext_resource type="Script" path="res://CustomMercScenes/CustomScenes/3dgui/gui_3d.gd" id="15_khx6i"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="16_fcgkm"]
 [ext_resource type="Texture2D" uid="uid://0i4iha5ir3i1" path="res://Sprites/UI/ButtonEmpty.png" id="17_4uinn"]
@@ -366,44 +366,44 @@ texture = ExtResource("17_4uinn")
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mslmi"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_i55nn"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D/GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ipft"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5js86"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_mslmi")
+albedo_texture = SubResource("ViewportTexture_i55nn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wwdtl"]
 size = Vector3(3, 2, 0.1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w7sny"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k7q1m"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D2/GUI2/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8v72a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhljk"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_w7sny")
+albedo_texture = SubResource("ViewportTexture_k7q1m")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8ep5b"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ixu3s"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D3/GUI3/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g11cs"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqmns"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_8ep5b")
+albedo_texture = SubResource("ViewportTexture_ixu3s")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bpotf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ul382"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D4/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ehtqc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atduc"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_bpotf")
+albedo_texture = SubResource("ViewportTexture_ul382")
 
 [node name="Griddle" type="Node3D"]
 
@@ -698,7 +698,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_7ipft")
+surface_material_override/0 = SubResource("StandardMaterial3D_5js86")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D/GUI/Quad"]
 collision_layer = 0
@@ -754,7 +754,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_8v72a")
+surface_material_override/0 = SubResource("StandardMaterial3D_yhljk")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D2/GUI2/Quad"]
 collision_layer = 0
@@ -810,7 +810,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_g11cs")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqmns")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D3/GUI3/Quad"]
 collision_layer = 0
@@ -866,7 +866,7 @@ process_mode = 3
 transform = Transform3D(-2.75382e-08, 0, 2.162, 0, 0.111, 0, -0.63, 0, -9.4504e-08, -0.93313, 2.34503, -0.383956)
 mesh = SubResource("QuadMesh_em6ux")
 skeleton = NodePath("../../../StaticBody3D")
-surface_material_override/0 = SubResource("StandardMaterial3D_ehtqc")
+surface_material_override/0 = SubResource("StandardMaterial3D_atduc")
 
 [node name="Area3D" type="Area3D" parent="GriddleSurfaces/StaticBody3D4/GUI4/Quad"]
 collision_layer = 0

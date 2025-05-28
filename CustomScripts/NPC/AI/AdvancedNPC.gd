@@ -662,6 +662,3 @@ func find_rotation_to(node1 : Node3D,node2 : Node3D,degree = false):
 		return angle_degrees
 	else:
 		return angle
-
-
-

@@ -28,6 +28,7 @@ func _ready():
 		if InnoutVer != null:
 			if InnoutVerLabel != null:
 				InnoutVerLabel.text = ("[shake rate=20]In-n-Out [" + InnoutVer + "]")
+	InnoutVer = config.get_value("Versions", "InnoutVer")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -55,14 +55,20 @@ func loadBest():
 	var seconds = ScoreFile.get_value("BestScore", "Seconds")
 	var minutes = ScoreFile.get_value("BestScore", "Minutes")
 	var hours = ScoreFile.get_value("BestScore", "Hours")
+	var Ver = ScoreFile.get_value("BestScore", "Ver")
 	var formated_time = ScoreFile.get_value("BestScore", "TimeTotal")
 	var node = BestScoreContainer
 	var ScoreEntry = node.get_child(0)
 	var TotalServed = node.get_child(1)
 	var TimeTaken = node.get_child(2)
+	var VerText = node.get_child(3)
 	ScoreEntry.text = "Entry #" + str(entry)
 	TotalServed.text = "Items served: " + str(Score)
 	TimeTaken.text = "Time: " + formated_time
+	if Ver != null || Ver == "":
+		VerText.text = "[" + Ver + "]"
+	else:
+		VerText.text = "NULL"
 	
 func loadScore():
 	
@@ -72,13 +78,19 @@ func loadScore():
 	var minutes = ScoreFile.get_value("Attempt" + str(Attempt), "Minutes")
 	var hours = ScoreFile.get_value("Attempt" + str(Attempt), "Hours")
 	var formated_time = ScoreFile.get_value("Attempt" + str(Attempt), "TimeTotal")
+	var Ver = ScoreFile.get_value("Attempt" + str(Attempt), "Ver")
 	var node = ScoreEntryPrefabRoot.instantiate(PackedScene.GEN_EDIT_STATE_DISABLED)
 	var ScoreEntry = node.get_child(0)
 	var TotalServed = node.get_child(1)
 	var TimeTaken = node.get_child(2)
+	var VerText = node.get_child(3)
 	ScoreEntry.text = "Entry #" + str(Attempt)
 	TotalServed.text = "Items served: " + str(Score)
 	TimeTaken.text = "Time: " + formated_time
+	if Ver != null || Ver == "":
+		VerText.text = "[" + Ver + "]"
+	else:
+		VerText.text = "NULL"
 	listContainer.add_child(node)
 	Attempt -= 1
 	

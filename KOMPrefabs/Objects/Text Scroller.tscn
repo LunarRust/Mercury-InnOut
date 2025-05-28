@@ -18,14 +18,14 @@ size = Vector3(0.27, 1, 5)
 material = ExtResource("3_ls0q7")
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pqi4h"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2k8o5"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijajg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5w0a0"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_pqi4h")
+albedo_texture = SubResource("ViewportTexture_2k8o5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h0mcf"]
 size = Vector3(3, 2, 0.1)
@@ -46,11 +46,11 @@ gui_embed_subwindows = true
 size = Vector2i(2152, 437)
 render_target_update_mode = 4
 
-[node name="ClockLabel" type="RichTextLabel" parent="SubViewport"]
+[node name="MarkeeLabel" type="RichTextLabel" parent="SubViewport"]
 offset_left = -255.315
-offset_top = 44.33
+offset_top = 62.41
 offset_right = -34.24
-offset_bottom = 103.77
+offset_bottom = 121.85
 scale = Vector2(12.115, 12.115)
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 0.152941, 0.254902, 1)
@@ -58,11 +58,9 @@ theme_override_fonts/normal_font = ExtResource("4_i1uk8")
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "[center] ||Lunch Rush!|| "
-visible_characters = 10
 visible_characters_behavior = 1
-visible_ratio = 0.6454
 script = ExtResource("3_h567t")
-BlinkSpeed = 0.3
+BlinkSpeed = 0.5
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport"]
 material = ExtResource("4_pf5wd")
@@ -75,7 +73,7 @@ color = Color(1, 1, 1, 0)
 transform = Transform3D(-7.2998e-08, 0, 1.02, 0, 0.52, 0, -1.67, 0, -4.45856e-08, 0.517031, -0.013, 3.9205e-10)
 material_overlay = ExtResource("2_dijkt")
 mesh = SubResource("QuadMesh_wor48")
-surface_material_override/0 = SubResource("StandardMaterial3D_ijajg")
+surface_material_override/0 = SubResource("StandardMaterial3D_5w0a0")
 
 [node name="Area3D" type="Area3D" parent="Quad"]
 collision_layer = 2

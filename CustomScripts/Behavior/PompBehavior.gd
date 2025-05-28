@@ -45,7 +45,6 @@ func Hurt():
 		AnimTrigger("Hurt")
 		await get_tree().create_timer(1).timeout
 		#PompAI.set("hurt", false)
-		SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
 		if InnoutExists == true:
 			SignalBusInnout.emit_signal("GameOver")
 
