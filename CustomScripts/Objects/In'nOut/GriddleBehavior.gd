@@ -152,9 +152,6 @@ func Touch(AmNpc = false):
 							ItemOnSpatula = false
 							Cooking = false
 							GUI.hide()
-							GrillTracker.GrillsGrilling -= 1
-							if GrillTracker.GrillsGrilling == 0:
-								GriddleSound.stop()
 							progressBar.value = 0
 							CookTime = 0
 						else:
@@ -169,9 +166,6 @@ func Touch(AmNpc = false):
 							Spatula.get_parent().hide()
 							ItemOnSpatula = false
 							GUI.hide()
-							GrillTracker.GrillsGrilling -= 1
-							if GrillTracker.GrillsGrilling == 0:
-									GriddleSound.stop()
 							progressBar.value = 0
 							Cooking = false
 							CookTime = 0
@@ -184,9 +178,6 @@ func Touch(AmNpc = false):
 							Spatula.get_parent().hide()
 							ItemOnSpatula = false
 							GUI.hide()
-							GrillTracker.GrillsGrilling -= 1
-							if GrillTracker.GrillsGrilling == 0:
-									GriddleSound.stop()
 							progressBar.value = 0
 							Cooking = false
 							CookTime = 0

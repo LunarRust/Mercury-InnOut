@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cp46x0ogan7h0"]
 
-[ext_resource type="PackedScene" uid="uid://q4ebr5vkf584" path="res://KOMModels/innout/food_tray.glb" id="1_pni7r"]
+[ext_resource type="PackedScene" uid="uid://hwn7dvmm3jm1" path="res://KOMModels/innout/food_tray.glb" id="1_pni7r"]
 [ext_resource type="Script" path="res://CustomScripts/Objects/In'nOut/TrayItem.gd" id="2_olmgf"]
 [ext_resource type="PackedScene" uid="uid://cmthr6fl3qdjq" path="res://KOMPrefabs/Items/Fries_pickup.tscn" id="3_xrbes"]
 
