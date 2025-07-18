@@ -36,20 +36,20 @@ func _ready():
 	InvSize = inv._constraint_manager.get_grid_constraint().size
 	InvFreeSpace = InvSize.x * InvSize.y
 	InvItemsList = Protoset._prototypes
-	
+
 func ReadyForOrder(ID):
 	if ID == GenID:
 		ReadyToServe = true
 		ReadyToServeSignal.emit()
-	
-	
+
+
 func Clear():
 	inv.clear()
 	ItemsInInv.clear()
 	ItemsInInvDictionary.clear()
 	ReadyToServe = false
 	NotReadyToServe.emit()
-	
+
 func Generate(ID):
 	if ID == GenID:
 		ReadyForOrder(GenID)
@@ -63,7 +63,7 @@ func Generate(ID):
 				items += i
 			if items == 0:
 				ItemListGen()
-		
+
 		#var keys = RelevantItems.keys()
 		## shuffle the keys
 		#keys.shuffle()
@@ -85,7 +85,7 @@ func Generate(ID):
 						ItemsInInvDictionary[Item.prototype_id] = 1
 				else:
 					InvFull = true
-					
+
 		for i in ItemCounts:
 			ItemCounts[i] = 0
 			print(str(ItemCounts))
@@ -113,8 +113,8 @@ func ItemListGen():
 				print(str(i) + " matches " + str(ItemCounts.keys()[ii]))
 				RelevantItems[i] = ItemCounts.values()[ii]
 	RelevantItems.keys().sort()
-			
-	
+
+
 	Labels.get_child(2).set_text("Items:[color=red] " + str(RelevantItems) + "[/color]")
 	#print_rich("Items:[color=red] " + str(RelevantItems) + "[/color]")
 	pass
@@ -131,8 +131,10 @@ func generate_sum_array(maxSum, factor, maxNumber):
 		if sum > maxSum:
 			n -= sum - maxSum
 			cont = false
-		if n != 0:                           
+		if n != 0:
 			array.append(n)
+	if array[0] == 0 && array[1] == 0 && array[2] == 0:
+		generate_sum_array(maxSum,factor,maxNumber)
 
 	return array
 

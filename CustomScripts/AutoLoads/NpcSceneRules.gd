@@ -15,7 +15,7 @@ func _ready():
 		DebugFile.set_value("NPCOptions","InventoryVisible",true)
 		DebugFile.set_value("NPCOptions","FlashLightsEnabled",false)
 		DebugFile.save("user://KOM_Debug.cfg")
-	
+
 	if DebugFile.get_value("NPCOptions","AllowPlayerControl") == true:
 		AllowPlayerControl = true
 	else:

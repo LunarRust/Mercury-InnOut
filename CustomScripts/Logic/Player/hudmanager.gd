@@ -4,7 +4,7 @@ var instance
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	instance = self
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -15,15 +15,15 @@ func _input(event):
 			HideHUD()
 		else:
 			ShowHUD()
-			
-			
-			
+
+
+
 func HideHUD():
 	instance.hide()
 	if instance.backupFilter != null:
 		instance.backupFilter.show()
-		
-		
+
+
 func ShowHUD():
 	instance.show()
 	if instance.backupFilter != null:

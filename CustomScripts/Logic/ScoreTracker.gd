@@ -33,7 +33,7 @@ func _ready():
 
 func ScoreUpdate():
 	ScoreLabel.text = "[shake rate=15][center]" + str(InnoutBus.Score)
-	
+
 func ScoreWrite():
 	var err = ScoreFile.load_encrypted_pass("user://Scores.Mercury",EncryptionKey)
 	if err != OK:
@@ -62,12 +62,12 @@ func ScoreWrite():
 	ScoreFile.set_value("Attempt" + Count, "Hours", Clock.date_time.hours)
 	ScoreFile.set_value("Attempt" + Count, "TimeTotal",Clock.formated_time)
 	ScoreFile.set_value("Attempt" + Count, "Ver",ModVerString)
-	
+
 	var time_substring = Clock.formated_time.replace(':','')
 	var time = type_convert(time_substring,TYPE_INT)
 	var best_time_substring = ScoreFile.get_value("BestScore", "TimeTotal").replace(':','')
 	var best_time = type_convert(best_time_substring,TYPE_INT)
-	
+
 	if InnoutBus.Score > ScoreFile.get_value("BestScore","Score"):
 		print("New high score!")
 		ScoreFile.set_value("BestScore", "Entry", CountInt)
@@ -88,6 +88,6 @@ func ScoreWrite():
 		ScoreFile.set_value("BestScore", "Ver",ModVerString)
 	Count = type_convert(Count,TYPE_INT)
 	ScoreFile.set_value("Count","Amount",Count)
-	
+
 # Save it to a file (overwrite if already exists).
 	ScoreFile.save_encrypted_pass("user://Scores.Mercury",EncryptionKey)

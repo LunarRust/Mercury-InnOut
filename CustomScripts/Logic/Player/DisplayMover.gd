@@ -42,8 +42,8 @@ func Open():
 		tween.tween_property(self,"position",OpenPosition,Speed).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(Gear1,"rotation",5,Speed).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(Gear2,"rotation",-5,Speed).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	
-	
+
+
 func Close():
 	if InnoutSignalBus.DoTimer == true && open == true:
 		open = false

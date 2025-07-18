@@ -5,7 +5,7 @@ extends Node
 @export var distance : float
 @export var ArrivalAction : int = 0
 @export var AcknowledgeNVT : bool = true
-@export var SpawnOnLoad : bool = false 
+@export var SpawnOnLoad : bool = false
 @export var SpawnDelay : float = 0.0
 @export var InitalDelay : float = 0.0
 var firstSpawnDone : bool = false
@@ -27,7 +27,7 @@ func _ready():
 	if SpawnOnLoad:
 		await get_tree().create_timer(InitalDelay).timeout
 		Packload()
-	
+
 
 func Spawn(ID):
 	if ID == SpawnerID && SignalBusInnout.WavesActive:
@@ -54,7 +54,7 @@ func Packload():
 	currentNPC.MaxSpeed = 2
 	print_rich("Spawner Current ID: [color=red]" + str(currentID) + "[/color]")
 	SignalBusKOM.emit_signal("NavToPoint",currentID,true,NavNodeTarget,distance,ArrivalAction,"player")
-	
+
 	currentMark.global_position = NavNodeTarget.global_position
 	currentMark = null
 	currentID = null
@@ -82,7 +82,7 @@ func find_closest_or_furthest(node: Object,group_name,get_closest:= true) -> Obj
 		return return_node
 	else:
 		return null
-			
+
 func get_all_children(in_node, array := []):
 	array.push_back(in_node)
 	for child in in_node.get_children():

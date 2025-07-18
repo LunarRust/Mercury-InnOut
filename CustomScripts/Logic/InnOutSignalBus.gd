@@ -18,7 +18,7 @@ signal WaveActivate
 signal WaveToggle
 
 func _ready():
-	
+
 	WaveToggle.connect(LunchRushToggle)
 	WaveActivate.connect(LunchRushActivate)
 	WaveDeactivate.connect(LunchRushDeactivate)
@@ -29,15 +29,15 @@ func _ready():
 		DebugFile.set_value("DebugOptions","ShowInOutDebug",false)
 		DebugFile.set_value("InOutOptions","DoTimer",true)
 		DebugFile.save("user://KOM_Debug.cfg")
-	
+
 	if DebugFile.get_value("InOutOptions","DoTimer") == true:
 		DoTimer = true
 	else:
 		DoTimer = false
-		
+
 	await get_tree().create_timer(0.5).timeout
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
-	
+
 func _process(delta):
 	if Input.is_physical_key_pressed(KEY_F3):
 		GameOver.emit()
@@ -47,10 +47,10 @@ func LunchRushToggle():
 		WavesActive = false
 	else:
 		WavesActive = true
-		
+
 func LunchRushActivate():
 	WavesActive = true
-	
+
 func LunchRushDeactivate():
 	WavesActive = false
 

@@ -33,12 +33,12 @@ func GameOver():
 func clearText():
 	for i in TextDisplays:
 		i.Disable()
-		
+
 func ChangeText(newText : String = "[center] ERROR",FontSize : int = 28,):
 	for i in TextDisplays:
 		i.text = newText
 		i.add_theme_font_size_override("normal_font_size", FontSize)
-		
+
 func ChangeDisplaySettings(newSpeed : float = 1,newLoops : int = -1,DoBlink : bool = false,BlinkRate : float = 0.5):
 	for i in TextDisplays:
 		i.update(newSpeed,newLoops)

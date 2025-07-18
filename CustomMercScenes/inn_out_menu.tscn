@@ -618,6 +618,7 @@ theme = ExtResource("3_gjmtm")
 text = "Time: "
 
 [node name="ModVer" type="Label" parent="BestParent/BestScore"]
+layout_mode = 0
 offset_left = 100.0
 offset_top = 3.0
 offset_right = 363.0

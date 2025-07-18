@@ -105,9 +105,9 @@ func _ready():
 	running = true
 	CheckGlobals()
 	DebugLabelParent.get_child(1).text = ("InstanceID " +  str(InstID))
-		
-	
-		
+
+
+
 func _physics_process(delta):
 	if (running):
 		if AllowPlayerCon:
@@ -123,7 +123,7 @@ func _physics_process(delta):
 				DoLookAt = false
 				TargetEntity = TargetLocator("NpcMarker",1.2)
 		running_handling(delta)
-		
+
 
 func running_handling(delta):
 	if TargetIsCreature:
@@ -157,7 +157,7 @@ func running_handling(delta):
 								KillSelf()
 				else:
 					print("NavNodeTarget is NULL")
-				
+
 		if (attackTimer > attackThreshold && attacking && hostile):
 			Attack()
 			attackTimer = 0
@@ -168,10 +168,10 @@ func running_handling(delta):
 			TargetReached = true
 		else:
 			TargetReached = false
-		
-		
+
+
 	elif TargetIsItem:
-		
+
 		if (position.distance_to(TargetEntity.position) > MaxDistance && !hurt):
 			handle_Move(delta)
 		else:
@@ -183,9 +183,9 @@ func running_handling(delta):
 			attackTimer = 0
 	else:
 		TargetFallback()
-	
+
 	AnimAndVelocity(delta)
-	
+
 ####MOVEMENT HANDLING##############
 ###Calculations based on speed, velocity and Distance to nav target
 ### Uses these values to determine animation blend positions
@@ -215,15 +215,15 @@ func AnimAndVelocity(delta):
 		animTree["parameters/Normal2D/blend_position"] = velV2
 		animTree["parameters/Normal2D/4/blend_position"] = float(HealthHandler.HP)
 		animTree["parameters/TalkBlend/blend_position"] = velV2
-	
+
 	if speed > 1.2:
 		AttackDistance = 3
 	else:
 		AttackDistance = AttackDistanceDefault
-	
+
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
-	
+
 ###################################
 ### Nav Targeting,Velocity, and modelroot rotation
 ###################################
@@ -233,9 +233,9 @@ func handle_Move(delta):
 	if PathFindClock > NavUpdateInterval:
 		direction = nav_agent.get_next_path_position() - global_position
 		PathFindClock = RandFloat
-		
+
 	direction = direction.normalized()
-	
+
 	velocity = velocity.lerp(direction * speed, delta * acceleration)
 	NewVelocity = velocity
 	nav_agent.set_velocity_forced(NewVelocity)
@@ -252,8 +252,8 @@ func handle_Move(delta):
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	LastLocation = self.position
 	velocity = velocity + clamp(safe_velocity,Vector3(-0.10,0,-0.10),Vector3(0.10,0,0.10))
-	
-	
+
+
 ###################################
 ###INTERACTION METHODS
 ###################################
@@ -269,7 +269,7 @@ func Attack():
 		elif position.distance_to(TargetEntity.position) < AttackDistance && TargetEntity.has_node("HealthHandler"):
 			TargetEntity.get_node("HealthHandler").Hurt(1)
 	await get_tree().create_timer(1.0).timeout
-	
+
 func GrabItem():
 	if (anim != null):
 		animTrigger("Touch")
@@ -296,7 +296,7 @@ func FlashLightToggle():
 	else:
 		FlashLight.visible = true
 	print_rich("Flashlight toggled: [color=red]" + str(FlashLight.visible) + "[/color]")
-	
+
 func FlashLightOff():
 	animTrigger("Flashlight");
 	SoundSource.stream = LightSound
@@ -327,11 +327,11 @@ func CheckGlobals():
 			AllowPlayerCon = true
 		else:
 			AllowPlayerCon = false
-				
+
 
 ###################################
 ### Function from hell.
-###################################	
+###################################
 func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distance : float,Action : int,LookTargetFromBus : String):
 	if id == InstID || id == 000:
 		AcknowledgeNVT = true
@@ -348,7 +348,7 @@ func NavToPoint(id : int,doLook : bool,NavNodeTargetFromSignalBus : Node,distanc
 			DoLookAt = true
 		else:
 			DoLookAt = false
-			
+
 ###################################
 ### This makes me sad, Surley there is a way around having a function with 6 required arguments.
 ###################################
@@ -367,7 +367,7 @@ func TargetCreature(id : int,doLook : bool,TargetEntityFromSignalBus : String,di
 		DoLookAt = false
 	TargetIsCreature = true
 	TargetIsItem = false
-	
+
 ###################################
 ###
 ###################################
@@ -535,14 +535,14 @@ func TargetEnimies():
 	if TargetEntity == self:
 		LookTarget = player
 	DoLookAt = true
-	
+
 ###################################
 ###
 ###################################
 func KillSelf():
 	SignalBusKOM.PompNpcInstances.erase(InstID)
 	self.get_node("HealthController").Hurt(99999)
-	
+
 ###################################
 ###
 ###################################
@@ -554,7 +554,7 @@ func TargetPlayer():
 	LookTarget = self
 	TargetEntity = get_tree().get_first_node_in_group("player")
 	LookTarget = TargetEntity
-	
+
 
 ###################################
 ###Yikes. would like to compress this function down.
@@ -631,7 +631,7 @@ func animTrigger(triggername : String):
 	animTree["parameters/conditions/" + triggername] = true;
 	await get_tree().create_timer(0.1).timeout
 	animTree["parameters/conditions/" + triggername] = false;
-	
+
 func get_all_children(in_node, array := []):
 	array.push_back(in_node)
 	for child in in_node.get_children():

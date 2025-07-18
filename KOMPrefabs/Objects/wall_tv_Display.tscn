@@ -110,14 +110,14 @@ shader_parameter/curve_strength = 6.995
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_x4p8x"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yhh5w"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww1vk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocysm"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_x4p8x")
+albedo_texture = SubResource("ViewportTexture_yhh5w")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w737o"]
 size = Vector3(3, 2, 0.1)
@@ -193,7 +193,7 @@ process_mode = 3
 transform = Transform3D(-2.39101e-08, -1.73289e-21, 0.875, 5.2667e-22, 0.47, 3.22612e-21, -0.547, 4.52532e-22, -3.82475e-08, 0, 0, 0.00781775)
 mesh = SubResource("QuadMesh_vtdor")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_ww1vk")
+surface_material_override/0 = SubResource("StandardMaterial3D_ocysm")
 
 [node name="Area3D" type="Area3D" parent="GUI/Quad"]
 collision_layer = 2

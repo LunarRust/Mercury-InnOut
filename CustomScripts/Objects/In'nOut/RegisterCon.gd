@@ -31,7 +31,7 @@ func _ready():
 		ClockDisplay.text = "[shake rate=20][center]0"
 	else:
 		ClockDisplay.hide()
-	
+
 
 
 func NpcInvCheck():
@@ -49,7 +49,7 @@ func NpcInvCheck():
 	for i in ItemGen.RelevantItems:
 		ItemGen.RelevantItems[i] = 0
 	print(str(ItemGen.RelevantItems))
-	
+
 	var ItemsInInv = NpcInventory.get_items()
 	for i in ItemsInInv:
 		var iterant = -1
@@ -72,7 +72,7 @@ func NpcInvCheck():
 				#print(str("not enough " + str(ItemGen.RelevantItems[i])))
 	for i in ItemGen.ItemsInInvDictionary:
 		NeededTotal += ItemGen.ItemsInInvDictionary[i]
-		
+
 	print(str(ItemGen.RelevantItems))
 	print(str(TotalItems) + " " + str(NeededTotal))
 	if TotalItems >= NeededTotal:
@@ -89,7 +89,7 @@ func Task():
 		if i.is_in_group("PompNPC"):
 			if i.InstID == currentID:
 				SignalBusKOM.emit_signal("NavToPoint",currentID,false,NavNodeTarget,1,0,"default")
-	
+
 	currentMark.global_position = NavNodeTarget.global_position
 	currentMark = null
 	currentID = null
@@ -116,7 +116,7 @@ func find_closest_or_furthest(node: Object,group_name,get_closest:= true) -> Obj
 		return return_node
 	else:
 		return null
-			
+
 func get_all_children(in_node, array := []):
 	array.push_back(in_node)
 	for child in in_node.get_children():
@@ -135,7 +135,7 @@ func BeginTimer():
 	FallBackSpawnClock = 0.0
 	currentNPC = find_closest_or_furthest(PosRefrence,"PompNPC")
 	NpcHasExisted = true
-	
+
 func NpcLost():
 	SignalBusInnOut.Score += TotalItems
 	SignalBusInnOut.emit_signal("ScoreChanged")
@@ -178,7 +178,7 @@ func _on_pressed():
 			HasComplained = false
 			OrderClock = 0.0
 			WaitingForOrder = false
-			
+
 			ItemGen.Clear()
 			Task()
 		else:

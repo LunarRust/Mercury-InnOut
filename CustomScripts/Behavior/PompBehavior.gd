@@ -20,12 +20,12 @@ func _ready():
 		InnoutExists = true
 	else:
 		InnoutExists = false
-	
+
 func StartAttack(name : StringName):
 	print(name)
 	if name == "Angry":
 		PompAI.set("Attacking", true)
-		
+
 func Look():
 	AnimTrigger("Shrug")
 
@@ -36,7 +36,7 @@ func Talk(DoDiolouge : bool = true):
 	AnimTrigger("Talk")
 	if DoDiolouge:
 		dialogue.DialogueProcessing()
-	
+
 func Hurt():
 	AnimTrigger("Hurt")
 	if follow:
@@ -48,7 +48,7 @@ func Hurt():
 		if InnoutExists == true:
 			SignalBusInnout.emit_signal("GameOver")
 
-	
+
 
 func AnimTrigger(triggerName : String):
 	anim["parameters/conditions/" + triggerName] = true;
