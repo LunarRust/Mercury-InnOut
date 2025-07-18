@@ -19,6 +19,8 @@ var WaitingForOrder : bool = false
 var FallBackSpawnClock : float = 0.0
 var NpcHasExisted : bool = false
 var HasComplained : bool = false
+### Vars for lunch rush segment ###
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalBusKOM = get_tree().get_first_node_in_group("player").get_node("KOMSignalBus")
@@ -29,7 +31,7 @@ func _ready():
 		ClockDisplay.text = "[shake rate=20][center]0"
 	else:
 		ClockDisplay.hide()
-	
+
 
 
 func NpcInvCheck():
@@ -47,7 +49,7 @@ func NpcInvCheck():
 	for i in ItemGen.RelevantItems:
 		ItemGen.RelevantItems[i] = 0
 	print(str(ItemGen.RelevantItems))
-	
+
 	var ItemsInInv = NpcInventory.get_items()
 	for i in ItemsInInv:
 		var iterant = -1
@@ -70,7 +72,7 @@ func NpcInvCheck():
 				#print(str("not enough " + str(ItemGen.RelevantItems[i])))
 	for i in ItemGen.ItemsInInvDictionary:
 		NeededTotal += ItemGen.ItemsInInvDictionary[i]
-		
+
 	print(str(ItemGen.RelevantItems))
 	print(str(TotalItems) + " " + str(NeededTotal))
 	if TotalItems >= NeededTotal:
@@ -87,7 +89,7 @@ func Task():
 		if i.is_in_group("PompNPC"):
 			if i.InstID == currentID:
 				SignalBusKOM.emit_signal("NavToPoint",currentID,false,NavNodeTarget,1,0,"default")
-	
+
 	currentMark.global_position = NavNodeTarget.global_position
 	currentMark = null
 	currentID = null
@@ -114,7 +116,7 @@ func find_closest_or_furthest(node: Object,group_name,get_closest:= true) -> Obj
 		return return_node
 	else:
 		return null
-			
+
 func get_all_children(in_node, array := []):
 	array.push_back(in_node)
 	for child in in_node.get_children():
@@ -133,7 +135,7 @@ func BeginTimer():
 	FallBackSpawnClock = 0.0
 	currentNPC = find_closest_or_furthest(PosRefrence,"PompNPC")
 	NpcHasExisted = true
-	
+
 func NpcLost():
 	SignalBusInnOut.Score += TotalItems
 	SignalBusInnOut.emit_signal("ScoreChanged")
@@ -172,10 +174,11 @@ func _on_pressed():
 			SoundSource.play()
 			SignalBusInnOut.Score += TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
+			SignalBusInnOut.ServedCustomers += 1
 			HasComplained = false
 			OrderClock = 0.0
 			WaitingForOrder = false
-			
+
 			ItemGen.Clear()
 			Task()
 		else:
@@ -184,7 +187,6 @@ func _on_pressed():
 			SoundSource.stream = SoundNegative
 			SignalBusInnOut.Score -= TotalItems
 			SignalBusInnOut.emit_signal("ScoreChanged")
-			SignalBusKOM.emit_signal("TargetCreature",true,000,"player",1.5,"default",true)
 			SignalBusInnOut.emit_signal("GameOver")
 			OrderClock = 0.0
 			WaitingForOrder = false

@@ -34,7 +34,7 @@ func _ready():
 	newRot = self.rotation
 	UISprite = self.get_node("%UI")
 
-	
+
 func _process(delta):
 	lookAxis = Vector2(Input.get_joy_axis(0,JOY_AXIS_RIGHT_X),Input.get_joy_axis(0,JOY_AXIS_RIGHT_Y))
 	if lookAxis.length() < 0.1:
@@ -62,17 +62,17 @@ func _process(delta):
 	if castBase != null:
 		castBase.global_position = newPos
 		castBase.global_rotation = newRot
-		
+
 func CameraReset():
 	camera.make_current()
 	camera.get_node("AudioListener3D").make_current()
 	hudManager.ShowHUD()
-	
-		
+
+
 func SetPos():
 	pass
 	Vector3.AXIS_Y
-	
+
 func _input(event):
 	if camFree:
 		if event is InputEventMouseMotion:
@@ -81,7 +81,7 @@ func _input(event):
 		elif lookAxis != Vector2.ZERO:
 			head.rotation = Vector3(0,0 - lookAxis.x,0)
 			camera.rotation = Vector3(0 - lookAxis.y,0,0)
-	
+
 func move(delta : float):
 	if Input.is_action_pressed("Run") && playerHealthHandler.mana > 1:
 		speed = 6.5
@@ -123,7 +123,7 @@ func move(delta : float):
 	if Input.is_action_pressed("Right") && canTurn && !playerHealthHandler.dead:
 		animTargetSpeed = Vector2(1,0)
 		Turn(-1)
-	
+
 func HitTest(amount : float,direction : Vector3,useStamina : bool = true,manaAmount : int = 1):
 	var directSpaceState : PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var physicsRayQueryParameters3D : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(newPos - self.transform.basis.y * 0.1, newPos + direction * 1.1)
@@ -155,12 +155,12 @@ func HitTest(amount : float,direction : Vector3,useStamina : bool = true,manaAmo
 	else:
 		print("No floor Detected. Will not move.")
 		animTargetSpeed = Vector2(0,0)
-		
-		
+
+
 func Turn(amount : float):
 	newRot += Vector3(0,1.5708 * amount,0)
 	canTurn = false
-	
+
 func StaticTurn(amount : int):
 	instance.newRot += Vector3(0,1.5708 * float(amount),0)
 	canTurn = false

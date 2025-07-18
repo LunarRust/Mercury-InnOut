@@ -38,7 +38,7 @@ func _ready():
 	sb = StyleBoxFlat.new()
 	progressBar.add_theme_stylebox_override("fill", sb)
 	pass # Replace with function body.
-	
+
 
 func create_item(prototype_id: String) -> InventoryItem:
 	var item: InventoryItem = InventoryItem.new()
@@ -57,7 +57,7 @@ func _process(delta):
 		up = false
 	if Cooking:
 		CookTime += delta
-		progressBar.value = CookTime 
+		progressBar.value = CookTime
 		#if CookTime >=  CookedTime * 0.70:
 		sb.bg_color = Color.DARK_RED.lerp(Color.DARK_GREEN, CookTime / CookedTime)
 		if CookTime >= CookedTime && CookTime <= BurnTime:
@@ -72,7 +72,7 @@ func _process(delta):
 			FryerSound.pitch_scale = randf_range(0.8,1.2)
 			FryerSound.stream = load("res://KOMSounds/buzzer-short_out.ogg")
 			FryerSound.play()
-		
+
 func Item(item : String):
 	if !ItemInBasket:
 		match item:
@@ -224,7 +224,7 @@ func Touch(AmNpc = false):
 						GUI.hide()
 						progressBar.value = 0
 						CookTime = 0.0
-				
+
 
 func animTrigger(triggername : String):
 	FryBasketAnim["parameters/conditions/" + triggername] = true;

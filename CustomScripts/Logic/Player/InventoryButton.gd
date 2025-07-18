@@ -24,7 +24,7 @@ func _ready():
 	Inv = get_tree().get_first_node_in_group("KOMInventoryManager").inv
 	InvCtl = get_tree().get_first_node_in_group("KOMInventoryManager").invCtrl
 	open = false
-	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,7 +42,7 @@ func _process(delta):
 		#label.text = str(HealthHandler.health)
 		#manalabel.text = str(HealthHandler.mana)
 		pass
-	
+
 	if Input.is_action_pressed("MouseAction") && get_viewport().get_mouse_position().y > ItemDropRange && open && !Hided && InvCtl._grabbed_ctrl_inventory_item != null:
 		var tween : Tween = create_tween()
 		tween.set_parallel()
@@ -50,7 +50,7 @@ func _process(delta):
 		tween.tween_property(Gear1,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		tween.tween_property(Gear2,"rotation",0,Speed / 2).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		Hided = true
-		
+
 	elif Input.is_action_just_released("MouseAction") && Hided:
 		var tween : Tween = create_tween()
 		tween.set_parallel()
@@ -65,8 +65,8 @@ func _on_pressed():
 		Open()
 	else:
 		Close()
-		
-		
+
+
 func Open():
 	open = true
 	soundSource.stream = load("res://Sounds/InvOpen.ogg")
@@ -76,7 +76,7 @@ func Open():
 	tween.tween_property(HotBar,"position",Vector2(480,300),Speed).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(Gear1,"rotation",5,Speed).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(Gear2,"rotation",-5,Speed).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	
+
 func Close():
 	open = false
 	soundSource.stream = load("res://Sounds/InvClose.ogg")

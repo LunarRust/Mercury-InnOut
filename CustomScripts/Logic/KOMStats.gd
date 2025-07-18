@@ -18,7 +18,7 @@ func _ready():
 		config.set_value("Config_Data", "Exists", true)
 	# Save it to a file (overwrite if already exists).
 		config.save("res://KOMData/system.cfg")
-		
+
 	for Versions in config.get_sections():
 		var KOMVer = config.get_value(Versions, "KOMVer")
 		var InnoutVer = config.get_value(Versions, "InnoutVer")
@@ -28,6 +28,7 @@ func _ready():
 		if InnoutVer != null:
 			if InnoutVerLabel != null:
 				InnoutVerLabel.text = ("[shake rate=20]In-n-Out [" + InnoutVer + "]")
+	InnoutVer = config.get_value("Versions", "InnoutVer")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

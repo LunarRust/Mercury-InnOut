@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq76dvwj2h1p0"]
 
-[ext_resource type="Texture2D" uid="uid://dqlm1w4i5pt00" path="res://KOMSprites/innout/VendingMachineSkinsCropped.jpg" id="1_a3uil"]
+[ext_resource type="Texture2D" uid="uid://f04vp1a4pie6" path="res://KOMSprites/innout/VendingMachineSkinsCropped.jpg" id="1_a3uil"]
 [ext_resource type="Script" path="res://CustomScripts/Behavior/VendingMachineBehavior.gd" id="1_rjyhn"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/Player/DialogueSystem.gd" id="1_w7ucc"]
-[ext_resource type="AudioStream" uid="uid://chbbwlv8b0kby" path="res://KOMSounds/Vending.ogg" id="2_de6qb"]
+[ext_resource type="AudioStream" uid="uid://cvx8n0c3d5yjc" path="res://KOMSounds/Vending.ogg" id="2_de6qb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgkyb"]
 albedo_color = Color(0.0156863, 0.0156863, 0.0156863, 1)

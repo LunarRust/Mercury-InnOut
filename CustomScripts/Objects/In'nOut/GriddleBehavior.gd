@@ -37,7 +37,7 @@ func _ready():
 	sb = StyleBoxFlat.new()
 	progressBar.add_theme_stylebox_override("fill", sb)
 	up = false
-	
+
 
 func create_item(prototype_id: String) -> InventoryItem:
 	var item: InventoryItem = InventoryItem.new()
@@ -60,7 +60,7 @@ func _process(delta):
 			Cooking = true
 	if Cooking:
 		CookTime += delta
-		progressBar.value = CookTime 
+		progressBar.value = CookTime
 		#if CookTime >=  CookedTime * 0.70:
 		sb.bg_color = Color.DARK_RED.lerp(Color.DARK_GREEN, CookTime / CookedTime)
 		if CookTime >= CookedTime && ItemOnSpatula && CookTime <= BurnedTime:
@@ -73,7 +73,7 @@ func _process(delta):
 			if GrillTracker.GrillsGrilling == 0:
 				GriddleSound.stop()
 			Cooked = true
-		
+
 func Item(item : String):
 	if  !ItemOnSpatula:
 		match item:
@@ -134,7 +134,7 @@ func Touch(AmNpc = false):
 			if ItemOnSpatula:
 				Cooking = true
 			up = false
-		
+
 	else:
 		if CookTime >= CookedTime:
 			if get_tree().get_first_node_in_group("PompNPC") != null:
@@ -152,9 +152,6 @@ func Touch(AmNpc = false):
 							ItemOnSpatula = false
 							Cooking = false
 							GUI.hide()
-							GrillTracker.GrillsGrilling -= 1
-							if GrillTracker.GrillsGrilling == 0:
-								GriddleSound.stop()
 							progressBar.value = 0
 							CookTime = 0
 						else:
@@ -169,9 +166,6 @@ func Touch(AmNpc = false):
 							Spatula.get_parent().hide()
 							ItemOnSpatula = false
 							GUI.hide()
-							GrillTracker.GrillsGrilling -= 1
-							if GrillTracker.GrillsGrilling == 0:
-									GriddleSound.stop()
 							progressBar.value = 0
 							Cooking = false
 							CookTime = 0
@@ -184,14 +178,11 @@ func Touch(AmNpc = false):
 							Spatula.get_parent().hide()
 							ItemOnSpatula = false
 							GUI.hide()
-							GrillTracker.GrillsGrilling -= 1
-							if GrillTracker.GrillsGrilling == 0:
-									GriddleSound.stop()
 							progressBar.value = 0
 							Cooking = false
 							CookTime = 0
 		else:
-			animTrigger("Flip")   
+			animTrigger("Flip")
 
 func animTrigger(triggername : String):
 	Spatula.get_node("AnimationTree")["parameters/conditions/" + triggername] = true;

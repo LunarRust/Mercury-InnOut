@@ -8,14 +8,14 @@
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_un3hb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nxyr6"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n42kg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pteck"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_un3hb")
+albedo_texture = SubResource("ViewportTexture_nxyr6")
 
 [sub_resource type="BoxShape3D" id="4"]
 size = Vector3(3, 2, 0.1)
@@ -195,7 +195,7 @@ text = "[shake rate=20][center] %"
 [node name="Quad" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.07, 0, -2.98023e-08, 0, 0.52, 0, 5.96046e-08, 0, 0.875, -0.0408268, -0.0127625, 0.0109863)
 mesh = SubResource("1")
-surface_material_override/0 = SubResource("StandardMaterial3D_n42kg")
+surface_material_override/0 = SubResource("StandardMaterial3D_pteck")
 
 [node name="Area3D" type="Area3D" parent="Quad"]
 collision_layer = 2

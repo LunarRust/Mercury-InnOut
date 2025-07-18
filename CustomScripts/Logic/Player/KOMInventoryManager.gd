@@ -20,7 +20,7 @@ func _ready():
 	itemName.text = ""
 	itemDescription.text = ""
 	camCast = get_viewport().get_camera_3d()
-	inventoryInstance = inv; 
+	inventoryInstance = inv;
 	instance = self;
 	CreateInventory()
 	pass
@@ -38,13 +38,13 @@ func StoreInventory():
 	print("Trying")
 	print(itemArray)
 	pass
-	
+
 func OnItemActivate(item):
 
 	if (item.get_property("health", 0) != 0):
 		print(item)
 		health_handler.changeHealth(item.get_property("health", 0))
-	
+
 	if (item.get_property("usable", false)):
 		inv.remove_item(item)
 	else:
@@ -54,7 +54,7 @@ func OnItemActivate(item):
 			inv.remove_item(item)
 		else:
 			print("Not true!")
-	
+
 	if (item.get_title() == "Basic Key"):
 		print("used key")
 	pass # Replace with function body.
@@ -63,7 +63,7 @@ func UseButton():
 	print("Use button Pressed")
 	if (invCtrl.get_selected_inventory_item() != null):
 		OnItemActivate(invCtrl.get_selected_inventory_item())
-	
+
 func OnItemDrop(item, offset):
 	#allows for dropping syringes on the main character's face. This wasn't originally intended, but a ton of players tried to use the syringes that way.
 	###Disabled to stop getting in way of griddle, re-implement later.

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8e68dssylvwy"]
+
+[ext_resource type="Shader" path="res://KOMShaders/TextLoop.gdshader" id="1_ml6o6"]
+
+[resource]
+shader = ExtResource("1_ml6o6")
+shader_parameter/speed = 5.0
+shader_parameter/direction = 5.0
+shader_parameter/transparency = 1.0
