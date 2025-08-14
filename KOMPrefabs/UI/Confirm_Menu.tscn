@@ -1,0 +1,110 @@
+[gd_scene load_steps=15 format=3 uid="uid://byg2qd6dlq1od"]
+
+[ext_resource type="Theme" uid="uid://bkrmgobma4l0y" path="res://Fonts/DBStyles.tres" id="1_uscck"]
+[ext_resource type="Script" path="res://CustomScripts/Logic/WarningShow.gd" id="2_ituke"]
+[ext_resource type="AudioStream" uid="uid://dv0ae3ncwwdpw" path="res://Sounds/Pickup2.ogg" id="3_1neod"]
+[ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="4_06fs5"]
+[ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="5_yykcj"]
+[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="6_ex8wu"]
+[ext_resource type="Texture2D" uid="uid://d3muaq04ysnyt" path="res://KOMSprites/UI/XInvert.png" id="7_e60ja"]
+[ext_resource type="Texture2D" uid="uid://bwwavieqcbdar" path="res://Sprites/UI/Check.png" id="8_fsc7h"]
+[ext_resource type="Texture2D" uid="uid://bwxot0l8raer7" path="res://Sprites/UI/CheckInvert.png" id="9_4rhef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bd7ru"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i72c3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tgmda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p7dfr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q1jls"]
+
+[node name="Erase" type="Button" node_paths=PackedStringArray("Warning", "ScoreLoader", "SoundPlayer")]
+top_level = true
+z_as_relative = false
+offset_left = 751.0
+offset_top = 170.0
+offset_right = 964.999
+offset_bottom = 218.0
+theme = ExtResource("1_uscck")
+theme_override_colors/font_hover_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
+theme_override_colors/font_pressed_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.933333, 0.94902, 0.980392, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bd7ru")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_i72c3")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tgmda")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p7dfr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q1jls")
+action_mode = 0
+text = "
+Erase Data
+
+"
+script = ExtResource("2_ituke")
+EncryptionKey = "t4tsexnastystyle"
+Warning = NodePath("Warning")
+ScoreLoader = NodePath("")
+SoundPlayer = NodePath("AudioStreamPlayer")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 30.0
+offset_top = 4.0
+offset_right = 236.0
+offset_bottom = 40.0
+scale = Vector2(0.760002, 1.05698)
+mouse_filter = 2
+color = Color(0.498039, 0.454902, 0.235294, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1neod")
+script = ExtResource("4_06fs5")
+
+[node name="Warning" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -99.0
+offset_top = 54.0
+offset_right = 189.0
+offset_bottom = 174.0
+scale = Vector2(0.61, 0.61)
+color = Color(0.0420522, 0.034302, 0.00829369, 1)
+
+[node name="FinnStuff" type="RichTextLabel" parent="Warning"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = 15.0
+offset_right = 344.0
+offset_bottom = 101.0
+theme_override_colors/default_color = Color(1, 0.286275, 0.00784314, 1)
+theme_override_fonts/normal_font = ExtResource("5_yykcj")
+bbcode_enabled = true
+text = "[center][wave]Warning!
+A Save File has been Detected.
+Are you sure you want erase entries?"
+
+[node name="Cancel" type="TextureButton" parent="Warning"]
+modulate = Color(0.443137, 0.262745, 0.105882, 1)
+layout_mode = 0
+offset_left = 190.0
+offset_top = 72.0
+offset_right = 230.0
+offset_bottom = 112.0
+texture_normal = ExtResource("6_ex8wu")
+texture_hover = ExtResource("7_e60ja")
+
+[node name="Confirm" type="TextureButton" parent="Warning"]
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
+layout_mode = 0
+offset_left = 78.0
+offset_top = 72.0
+offset_right = 118.0
+offset_bottom = 112.0
+texture_normal = ExtResource("8_fsc7h")
+texture_hover = ExtResource("9_4rhef")
+
+[connection signal="pressed" from="Warning/Cancel" to="." method="Close"]
+[connection signal="pressed" from="Warning/Confirm" to="." method="start"]

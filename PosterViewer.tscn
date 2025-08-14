@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy5m15knc5x5a"]
+
+[ext_resource type="Texture2D" uid="uid://v3su2jcy0552" path="res://KOMSprites/innout/Posters/HowToServe.png" id="1_jpalx"]
+[ext_resource type="PackedScene" uid="uid://crlxkf7rvm4e" path="res://KOMPrefabs/Interactables/cam_grabber.tscn" id="2_vs411"]
+[ext_resource type="AudioStream" uid="uid://uoct5ltxpx3u" path="res://Sounds/Bookturn.wav" id="3_ltfv1"]
+
+[node name="ServeFoodPoster" type="Sprite3D"]
+transform = Transform3D(-0.0899556, 0.0028254, 1.35896e-08, 0.0028254, 0.0899556, 0, -1.35829e-08, 4.26623e-10, -0.09, 3.18507, 1.53744, 3.25865)
+shaded = true
+double_sided = false
+texture = ExtResource("1_jpalx")
+
+[node name="CamGrabber3" parent="." instance=ExtResource("2_vs411")]
+transform = Transform3D(2.56992, 0.118761, -0.0173691, -0.0807179, 3.78114, 0.000545543, 0.0965719, -1.76159e-09, 0.462674, 0.0776291, 1.3884, 0.740879)
+
+[node name="Sound" parent="CamGrabber3/CanvasLayer" index="0"]
+stream = ExtResource("3_ltfv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CamGrabber3/CanvasLayer" index="2"]
+position = Vector2(489, 267)
+rotation = 0.0698132
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("1_jpalx")
+
+[node name="Behavior" parent="CamGrabber3" index="3" node_paths=PackedStringArray("PlayerCam", "head", "UIToToggle")]
+PlayerCam = NodePath("")
+head = NodePath("")
+UIToToggle = [NodePath("")]
+MoveCamera = false
+PlaySound = true
+RandomizeSoundPitch = true
+SoundEffect = ExtResource("3_ltfv1")
+
+[editable path="CamGrabber3"]

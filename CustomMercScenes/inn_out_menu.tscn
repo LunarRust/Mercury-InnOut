@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://csoxy0mwqqiht"]
+[gd_scene load_steps=36 format=3 uid="uid://csoxy0mwqqiht"]
 
 [ext_resource type="Script" path="res://CustomScripts/Logic/DebugLoader.gd" id="1_st3hk"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/KOMStats.gd" id="2_2e4ve"]
@@ -12,21 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://berrj78nhvecu" path="res://KOMTextures/goldstrip.png" id="7_q3ebw"]
 [ext_resource type="Script" path="res://Scenes/ButtonPlayer.gd" id="8_85i1u"]
 [ext_resource type="Script" path="res://CustomScripts/SceneLoaderButton.gd" id="8_u6hlf"]
-[ext_resource type="Script" path="res://CustomScripts/Logic/WarningShow.gd" id="10_0tbnq"]
-[ext_resource type="AudioStream" uid="uid://dv0ae3ncwwdpw" path="res://Sounds/Pickup2.ogg" id="11_3megt"]
 [ext_resource type="AudioStream" uid="uid://pj54k8rannuj" path="res://Music/Dry and Warm.ogg" id="11_euu56"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/SoundOnPress.gd" id="11_uvbwi"]
-[ext_resource type="Texture2D" uid="uid://h1qhsfsy30ya" path="res://Sprites/UI/X.png" id="12_1k4d2"]
 [ext_resource type="Script" path="res://CustomScripts/SceneTransferTextureButton.gd" id="12_6af45"]
 [ext_resource type="FontFile" uid="uid://dku4ohp5rmpr5" path="res://Fonts/DBStylez.ttf" id="12_euwns"]
 [ext_resource type="AudioStream" uid="uid://b6u3qkb0mte27" path="res://Sounds/Pickup.ogg" id="12_thlku"]
 [ext_resource type="Texture2D" uid="uid://neas634pjtgp" path="res://Sprites/UI/EmptyButton.png" id="13_4ibmx"]
-[ext_resource type="Texture2D" uid="uid://bwwavieqcbdar" path="res://Sprites/UI/Check.png" id="14_5x1ga"]
+[ext_resource type="PackedScene" uid="uid://byg2qd6dlq1od" path="res://KOMPrefabs/UI/Confirm_Menu.tscn" id="15_w4f7e"]
 [ext_resource type="Script" path="res://CustomScripts/Logic/AudioController.gd" id="17_2nu5d"]
-[ext_resource type="Texture2D" uid="uid://d3muaq04ysnyt" path="res://KOMSprites/UI/XInvert.png" id="17_hws3y"]
 [ext_resource type="AudioStream" uid="uid://cwvuera2d0er6" path="res://Music/Toewalker.ogg" id="18_nbord"]
 [ext_resource type="AudioStream" uid="uid://dmr4lmdq3morm" path="res://Music/Dying on a Warm Planet.ogg" id="19_5nt5i"]
-[ext_resource type="Texture2D" uid="uid://bwxot0l8raer7" path="res://Sprites/UI/CheckInvert.png" id="19_en22c"]
 [ext_resource type="AudioStream" uid="uid://c1tl05su74j85" path="res://Music/CityScape.ogg" id="20_ivsm5"]
 [ext_resource type="Texture2D" uid="uid://de2qgm2uiimc1" path="res://KOMSprites/innout/InNOut_logo.png" id="28_qexly"]
 
@@ -397,91 +392,7 @@ scale = Vector2(0.760002, 1.05698)
 mouse_filter = 2
 color = Color(0.498039, 0.454902, 0.235294, 1)
 
-[node name="Erase" type="Button" parent="." node_paths=PackedStringArray("Warning", "ScoreLoader", "SoundPlayer")]
-top_level = true
-z_as_relative = false
-offset_left = 751.0
-offset_top = 170.0
-offset_right = 964.999
-offset_bottom = 218.0
-theme = ExtResource("3_gjmtm")
-theme_override_colors/font_hover_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
-theme_override_colors/font_pressed_color = Color(0.175314, 0.142417, 2.40654e-08, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0.933333, 0.94902, 0.980392, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bd7ru")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_i72c3")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_tgmda")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_p7dfr")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_q1jls")
-action_mode = 0
-text = "
-Erase Data
-
-"
-script = ExtResource("10_0tbnq")
-EncryptionKey = "t4tsexnastystyle"
-Warning = NodePath("Warning")
-ScoreLoader = NodePath("../ScoreLoader")
-SoundPlayer = NodePath("AudioStreamPlayer")
-
-[node name="ColorRect3" type="ColorRect" parent="Erase"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = 30.0
-offset_top = 4.0
-offset_right = 236.0
-offset_bottom = 40.0
-scale = Vector2(0.760002, 1.05698)
-mouse_filter = 2
-color = Color(0.498039, 0.454902, 0.235294, 1)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Erase"]
-stream = ExtResource("11_3megt")
-script = ExtResource("8_85i1u")
-
-[node name="Warning" type="ColorRect" parent="Erase"]
-visible = false
-layout_mode = 0
-offset_left = -99.0
-offset_top = 54.0
-offset_right = 189.0
-offset_bottom = 174.0
-scale = Vector2(0.61, 0.61)
-color = Color(0.0420522, 0.034302, 0.00829369, 1)
-
-[node name="FinnStuff" type="RichTextLabel" parent="Erase/Warning"]
-layout_mode = 0
-offset_left = -49.0
-offset_top = 15.0
-offset_right = 344.0
-offset_bottom = 101.0
-theme_override_colors/default_color = Color(1, 0.286275, 0.00784314, 1)
-theme_override_fonts/normal_font = ExtResource("12_euwns")
-bbcode_enabled = true
-text = "[center][wave]Warning!
-A Save File has been Detected.
-Are you sure you want erase entries?"
-
-[node name="Cancel" type="TextureButton" parent="Erase/Warning"]
-modulate = Color(0.443137, 0.262745, 0.105882, 1)
-layout_mode = 0
-offset_left = 190.0
-offset_top = 72.0
-offset_right = 230.0
-offset_bottom = 112.0
-texture_normal = ExtResource("12_1k4d2")
-texture_hover = ExtResource("17_hws3y")
-
-[node name="Confirm" type="TextureButton" parent="Erase/Warning"]
-modulate = Color(0.517647, 0.517647, 0.517647, 1)
-layout_mode = 0
-offset_left = 78.0
-offset_top = 72.0
-offset_right = 118.0
-offset_bottom = 112.0
-texture_normal = ExtResource("14_5x1ga")
-texture_hover = ExtResource("19_en22c")
+[node name="Erase" parent="." instance=ExtResource("15_w4f7e")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
@@ -655,5 +566,3 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="TimerDisable" to="DebugLoader" method="_on_timer_disable_pressed"]
 [connection signal="pressed" from="TimerDisable" to="TimerDisable" method="_on_pressed"]
 [connection signal="toggled" from="TimerDisable" to="TimerDisable" method="_on_toggled"]
-[connection signal="pressed" from="Erase/Warning/Cancel" to="Erase" method="Close"]
-[connection signal="pressed" from="Erase/Warning/Confirm" to="Erase" method="start"]

@@ -143,7 +143,7 @@ func HitTest(amount : float,direction : Vector3,useStamina : bool = true,manaAmo
 		canMove = false
 		var vector2 : Vector3 = newPos + direction * amount
 		newPos = Vector3(vector2.x,(dictionary2["position"] as Vector3).y + 1,vector2.z)
-		newPos = newPos.snapped(Vector3(0.5,0.5,0.5))
+		#newPos = newPos.snapped(Vector3(0.5,0.5,0.5))
 		if running && useStamina:
 			headTurn = 0 - headTurn
 			var tween : Tween = create_tween()

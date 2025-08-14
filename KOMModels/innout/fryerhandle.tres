@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://beox1rh7gy1ga"]
+
+[resource]
+resource_name = "fryerhandle"
+cull_mode = 2
+albedo_color = Color(0.147721, 0.147721, 0.147721, 1)
+metallic = 0.450777
+roughness = 0.313471

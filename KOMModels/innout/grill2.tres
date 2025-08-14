@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://g5fyc6ugfu07"]
+
+[ext_resource type="Texture2D" uid="uid://u8xwtki7wws3" path="res://KOMModels/innout/textures/grill_albedo002.png" id="1_y3e4c"]
+
+[resource]
+resource_name = "grill2"
+transparency = 4
+albedo_color = Color(1, 1, 1, 1)
+albedo_texture = ExtResource("1_y3e4c")
+roughness = 0.5

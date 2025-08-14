@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://8txgmqbl8frl"]
+
+[resource]
+resource_name = "fryer1"
+cull_mode = 2
+albedo_color = Color(0.505671, 0.505671, 0.505671, 1)
+metallic = 0.823834
+roughness = 0.0906736

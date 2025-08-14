@@ -1641,159 +1641,159 @@ shadow_mesh = SubResource("ArrayMesh_obiwy")
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sfasj"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4crh6"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh2q1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gi6b4"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_sfasj")
+albedo_texture = SubResource("ViewportTexture_4crh6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_h5or2"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_govu3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_g3njq"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rt2uw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymu0i"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_govu3")
+albedo_texture = SubResource("ViewportTexture_g3njq")
 
 [sub_resource type="QuadMesh" id="QuadMesh_uhc8j"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0etk5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qy1w5"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a86m3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmoqs"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_0etk5")
+albedo_texture = SubResource("ViewportTexture_qy1w5")
 
 [sub_resource type="QuadMesh" id="QuadMesh_p3u7q"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mig2s"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hdhqe"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3g28c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ls1sl"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_mig2s")
+albedo_texture = SubResource("ViewportTexture_hdhqe")
 
 [sub_resource type="QuadMesh" id="QuadMesh_437nj"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7xsvs"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_tsv6y"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D/GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wonc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w31vb"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_7xsvs")
+albedo_texture = SubResource("ViewportTexture_tsv6y")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dtupm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yhs7y"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D2/GUI2/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6hil"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmqlg"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_dtupm")
+albedo_texture = SubResource("ViewportTexture_yhs7y")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2cf81"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_r6lbq"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D3/GUI3/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtr7g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1yjb"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2cf81")
+albedo_texture = SubResource("ViewportTexture_r6lbq")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_x1gb2"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_swkh4"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D4/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqqay"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwhxm"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_x1gb2")
+albedo_texture = SubResource("ViewportTexture_swkh4")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xbiy5"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qe372"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hu2qu"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0j7k3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5asim"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_qe372")
+albedo_texture = SubResource("ViewportTexture_hu2qu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3wwpe"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_snii5"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0j0wy"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8sf0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nqc2"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_snii5")
+albedo_texture = SubResource("ViewportTexture_0j0wy")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4kt5a"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_l3v7q"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_blu8e"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D/GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyblv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o80pi"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_l3v7q")
+albedo_texture = SubResource("ViewportTexture_blu8e")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e56mb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1nohb"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D2/GUI2/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arpvp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp81u"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_e56mb")
+albedo_texture = SubResource("ViewportTexture_1nohb")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vi843"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mad3h"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D3/GUI3/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbjf5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fei56"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_vi843")
+albedo_texture = SubResource("ViewportTexture_mad3h")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e3cyn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_g1xjp"]
 viewport_path = NodePath("GriddleSurfaces/StaticBody3D4/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n026y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnkx7"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_e3cyn")
+albedo_texture = SubResource("ViewportTexture_g1xjp")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhb7j"]
 transparency = 1
@@ -1926,36 +1926,36 @@ size = Vector3(1.10254, 2.01263, 0.390259)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sgpnw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mv5wd"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4xhk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmhj2"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_sgpnw")
+albedo_texture = SubResource("ViewportTexture_mv5wd")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_grabb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_m1n1a"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wjx8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdafk"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_grabb")
+albedo_texture = SubResource("ViewportTexture_m1n1a")
 
 [sub_resource type="QuadMesh" id="QuadMesh_u0018"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7qiyw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1al65"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc8ow"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3t5l"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_7qiyw")
+albedo_texture = SubResource("ViewportTexture_1al65")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_llqq8"]
 material = ExtResource("70_jqemh")
@@ -2051,14 +2051,14 @@ _surfaces = [{
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hcdrf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_td3hi"]
 viewport_path = NodePath("GUI/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lxjj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ml5nv"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_hcdrf")
+albedo_texture = SubResource("ViewportTexture_td3hi")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_b7vyh"]
 _surfaces = [{
@@ -2075,29 +2075,29 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAD+/+7//78AAGMG7v//vwAA/v/HQf+/AABjBsdB/7+SB3zzAAD//5IH5BIAAP//bPh88wAA//9s+OQSAAD//////v/HQf+///9jBsdB/7////7/7v//v///Ywbu//+/Cvo3EO7//7/0BTcQ7v//vwr6NxCXof+/9AU3EJeh/7///2MGx0H/vwAAYwbHQf+///9jBu7//78AAGMG7v//vwAA/v/HQf+////+/8dB/78AAP7/7v//v////v/u//+/9AUp9u7//n/0BTcQ7v/+fwAA/v/u//5/AABjBu7//n8K+jcQ7v/+fwr6Kfbu//5///9jBu7//n////7/7v/+fwr6KfaXof5/Cvo3EJeh/n/0BSn2l6H+f/QFNxCXof5/9AU3EO7//7/0BSn27v//v/QFNxCXof+/9AUp9peh/7/0BSn27v//vwr6Kfbu//+/9AUp9peh/78K+in2l6H/vwr6Kfbu//+/Cvo3EO7//78K+in2l6H/vwr6NxCXof+/uWzCCK/k/7+4cgAAcd7/v7lswghsYf+/uHIAAKln/7+5bMIIbGHq/rhyAACpZ+r+RZPCCGxh6v6yjQAAqWfq/kWTwghsYf+/so0AAKln/79Fk8IIr+T/v7KNAABx3v+/KY04AgbgFEE6czgCBuAUQSmNQAIpvxRBOnNAAim/FEGyjQAAqWf/v7hyAACpZ/+/so0AAHHe/7+4cgAAcd7/v7lswghsYf+/RZPCCGxh/7+5bMIIr+T/v0WTwgiv5P+/RXCJBhrj6346czgCBuDrfrlswgiv5Ot+uHIAAHHe634pjTgCBuDrfuiPiQYa4+t+so0AAHHe635Fk8IIr+TrfjpzOAIG4Ot+KY04Agbg6364cgAAcd7rfrKNAABx3ut+6I+JBhrj635FcIkGGuPrfkWTwgiv5Ot+uWzCCK/k637oj5IGPcLrfimNQAIpv+t+RXCSBj3C6346c0ACKb/rfjpzOAIG4PBARXCJBhrj8EA6c0ACKb/wQEVwkgY9wvBARXCJBhrjE8Hoj4kGGuMTwUVwkgY9whPB6I+SBj3CE8Hoj4kGGuPuQCmNOAIG4O5A6I+SBj3C7kApjUACKb/uQJIH5BIAAHH6kgd88wAAcfoAAGMGx0Fx+gAA/v/HQXH6bPjkEgAAI/iSB+QSAAAj+P//YwbHQSP4AABjBsdBI/iSB3zzAAAj+Gz4fPMAACP4AAD+/8dBI/j///7/x0Ej+Gz4fPMAAHH6bPjkEgAAcfr///7/x0Fx+v//YwbHQXH6/3////9/////f////3///////3////9/////f////3//fwAA/38AAP9/AAD/fwAA////f////3////9/////fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9//3////9/////f////3////9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAAAA/38AAP9/AAD/fwAA/3//f////3////9/////f///LCMroywjK6MsIyujLCMrowAA/38AAP9/AAD/fwAA/3+PJG9bjyRvW48kb1uPJG9b////f////3////9/////fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3/O3M9cztzPXM7cz1zO3M9cAAD/fwAA/38AAP9/AAD/f2vbk6Rr25Oka9uTpGvbk6T/f////3////9/////f///AAD/fwAA/38AAP9/AAD/f////3////9/////f////3//fwAA/38AAP9/AAD/fwAA")
 }]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0oed"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2c46"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_sfasj")
+albedo_texture = SubResource("ViewportTexture_4crh6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w737o"]
 size = Vector3(3, 2, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ujl7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lp8c1"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_govu3")
+albedo_texture = SubResource("ViewportTexture_g3njq")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0iprf"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_voj6f"]
 viewport_path = NodePath("EmployeeRoom/TV Set/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6uyq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kitru"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_0iprf")
+albedo_texture = SubResource("ViewportTexture_voj6f")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0lgt0"]
 
@@ -2122,14 +2122,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_b6xkt"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pophs"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no2s2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vunn"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_b6xkt")
+albedo_texture = SubResource("ViewportTexture_pophs")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_520kg"]
 resource_local_to_scene = true
@@ -2140,14 +2140,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_i60kd"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_7tqf3"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0fb1d"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1mja"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_i60kd")
+albedo_texture = SubResource("ViewportTexture_7tqf3")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_of2k5"]
 resource_local_to_scene = true
@@ -2158,14 +2158,14 @@ height = 0.001
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_d5ntn"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_tn4c3"]
 viewport_path = NodePath("StaticBody3D/GUI4/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr6fk"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxof3"]
 resource_local_to_scene = true
 transparency = 1
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_d5ntn")
+albedo_texture = SubResource("ViewportTexture_tn4c3")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_30q7g"]
 resource_name = "QueenAnimeNew_mesh"
@@ -2452,40 +2452,40 @@ offset_right = -596.999
 offset_bottom = 220.996
 
 [node name="Skeleton3D" parent="PlayerObject/Player Model/PompRig" index="0"]
-bones/0/position = Vector3(-8.76459e-10, 0.794976, -0.158666)
+bones/0/position = Vector3(-5.61871e-10, 0.791912, -0.158666)
 bones/1/rotation = Quaternion(-0.0628926, 0.000945223, 0.00010601, 0.99802)
-bones/2/rotation = Quaternion(-0.0778248, -0.00787661, 0.00155628, 0.996935)
-bones/3/rotation = Quaternion(0.001382, 0.0534276, 0.0310763, 0.998087)
+bones/2/rotation = Quaternion(-0.0905378, 0.039155, -0.0170176, 0.994978)
+bones/3/rotation = Quaternion(-0.00214755, -0.000230617, -0.000421834, 0.999998)
 bones/4/rotation = Quaternion(0.0298244, 2.17346e-15, 7.11069e-09, 0.999555)
-bones/5/rotation = Quaternion(0.114402, -0.248673, 0.0288721, 0.961374)
-bones/6/position = Vector3(0.0530679, 0.0735491, 0.0830815)
-bones/7/position = Vector3(0.029818, 0.0842292, 0.097213)
-bones/13/position = Vector3(-2.3491e-05, 0.0737629, -0.0149406)
-bones/14/position = Vector3(-0.0530678, 0.0735721, 0.0831453)
-bones/15/position = Vector3(-0.0229535, 0.0783522, 0.0989051)
-bones/16/position = Vector3(0.0607063, 0.134586, 0.0431454)
-bones/16/scale = Vector3(0.619497, 0.619497, 0.619497)
-bones/17/position = Vector3(0.0682786, 0.114101, 0.0670217)
-bones/18/position = Vector3(-0.0682786, 0.114101, 0.0670216)
-bones/19/position = Vector3(-0.0496718, 0.135968, 0.0426184)
-bones/19/scale = Vector3(0.600588, 0.600588, 0.600588)
-bones/20/position = Vector3(1.32419e-05, 0.0859879, 0.09327)
-bones/21/position = Vector3(0.0694368, 0.18013, 0.0436179)
-bones/22/position = Vector3(-0.0694537, 0.180529, 0.0435233)
+bones/5/rotation = Quaternion(0.164771, -0.0480391, 0.0052011, 0.985148)
+bones/6/position = Vector3(0.0544067, 0.0794113, 0.0817976)
+bones/7/position = Vector3(0.0231736, 0.0753926, 0.100273)
+bones/13/position = Vector3(-0.00277582, 0.0705642, -0.0254501)
+bones/14/position = Vector3(-0.0705413, 0.0883601, 0.0797451)
+bones/15/position = Vector3(-0.0228326, 0.0754523, 0.100201)
+bones/16/position = Vector3(0.0828194, 0.141647, 0.0186826)
+bones/16/scale = Vector3(0.714543, 0.714543, 0.714543)
+bones/17/position = Vector3(0.0693798, 0.1214, 0.0648608)
+bones/18/position = Vector3(-0.0693798, 0.1214, 0.0648608)
+bones/19/position = Vector3(-0.044409, 0.147501, 0.0423345)
+bones/19/scale = Vector3(0.714751, 0.714751, 0.714751)
+bones/20/position = Vector3(0.00120825, 0.081548, 0.0950135)
+bones/21/position = Vector3(0.0690768, 0.171605, 0.0456377)
+bones/22/position = Vector3(-0.0679969, 0.151823, 0.0533605)
 bones/22/rotation = Quaternion(0.574497, -0.00427106, -0.0029976, 0.81849)
 bones/23/rotation = Quaternion(-0.535559, -0.441949, -0.458366, 0.554759)
-bones/24/rotation = Quaternion(-0.321442, 0.639921, -0.475192, 0.511243)
-bones/25/rotation = Quaternion(0.390912, -0.243233, 0.0274832, 0.887283)
-bones/28/position = Vector3(0.0280737, 0.133518, -0.0402244)
-bones/28/rotation = Quaternion(-0.417263, -0.731604, 0.339546, 0.418755)
-bones/29/rotation = Quaternion(0.38952, 0.24299, -0.027574, 0.887958)
+bones/24/rotation = Quaternion(-0.408534, 0.698245, -0.425106, 0.406003)
+bones/25/rotation = Quaternion(0.219042, -0.14024, 0.00223155, 0.965582)
+bones/28/position = Vector3(0.00368714, 0.131299, -0.0413067)
+bones/28/rotation = Quaternion(-0.406183, -0.699903, 0.426557, 0.403981)
+bones/29/rotation = Quaternion(0.218528, 0.139691, -0.000768419, 0.96578)
 bones/30/rotation = Quaternion(-0.00711013, -0.0729187, 0.0929765, 0.992969)
-bones/35/rotation = Quaternion(0.940644, -4.08601e-08, 3.37159e-07, 0.339395)
-bones/36/rotation = Quaternion(0.502895, -2.11053e-09, 1.22178e-07, 0.864347)
-bones/37/rotation = Quaternion(-0.719874, 1.65488e-07, -3.43263e-07, 0.694105)
-bones/40/rotation = Quaternion(0.938665, -1.28965e-07, 1.11143e-07, 0.34483)
-bones/41/rotation = Quaternion(0.498358, -9.25466e-10, -1.26532e-07, 0.866972)
-bones/42/rotation = Quaternion(-0.719874, -1.65488e-07, 3.43263e-07, 0.694105)
+bones/35/rotation = Quaternion(0.93796, -4.39041e-08, 3.36441e-07, 0.346743)
+bones/36/rotation = Quaternion(0.513377, -1.80891e-09, 1.21121e-07, 0.858163)
+bones/37/rotation = Quaternion(-0.725736, 1.64026e-07, -3.46058e-07, 0.687974)
+bones/40/rotation = Quaternion(0.936826, -1.29123e-07, 1.10632e-07, 0.349796)
+bones/41/rotation = Quaternion(0.518792, -1.4921e-09, -1.27613e-07, 0.8549)
+bones/42/rotation = Quaternion(-0.725736, -1.64026e-07, 3.46058e-07, 0.687973)
 
 [node name="FlashLightTPS" parent="PlayerObject" index="9"]
 visible = false
@@ -4170,7 +4170,7 @@ offset_bottom = 124.965
 [node name="Quad" parent="CounterParent/Register/OrderPanel" index="1"]
 process_mode = 3
 mesh = SubResource("QuadMesh_lx0m2")
-surface_material_override/0 = SubResource("StandardMaterial3D_wh2q1")
+surface_material_override/0 = SubResource("StandardMaterial3D_gi6b4")
 
 [node name="Register2" parent="CounterParent" instance=ExtResource("23_upf76")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.96203, 0, 0)
@@ -4209,7 +4209,7 @@ offset_bottom = 124.965
 
 [node name="Quad" parent="CounterParent/Register2/OrderPanel" index="1"]
 mesh = SubResource("QuadMesh_h5or2")
-surface_material_override/0 = SubResource("StandardMaterial3D_rt2uw")
+surface_material_override/0 = SubResource("StandardMaterial3D_ymu0i")
 
 [node name="Sprite3D" type="Sprite3D" parent="CounterParent"]
 transform = Transform3D(0.805, 0, 0, 0, 0.724046, -0.351828, 0, 0.351828, 0.724046, 5.56142, 6.48704, -0.827409)
@@ -4229,11 +4229,11 @@ transform = Transform3D(-2.40413e-08, 0, -0.55, 0, 0.55, 0, 0.55, 0, -2.40413e-0
 
 [node name="Quad" parent="KitchenParent/Fryer/Fryer_basket/GUI" index="1"]
 mesh = SubResource("QuadMesh_uhc8j")
-surface_material_override/0 = SubResource("StandardMaterial3D_a86m3")
+surface_material_override/0 = SubResource("StandardMaterial3D_tmoqs")
 
 [node name="Quad" parent="KitchenParent/Fryer/Fryer_basket2/GUI" index="1"]
 mesh = SubResource("QuadMesh_p3u7q")
-surface_material_override/0 = SubResource("StandardMaterial3D_3g28c")
+surface_material_override/0 = SubResource("StandardMaterial3D_ls1sl")
 
 [node name="Griddle" parent="KitchenParent" instance=ExtResource("29_8b2gq")]
 transform = Transform3D(-2.40413e-08, 0, -0.55, 0, 0.55, 0, 0.55, 0, -2.40413e-08, 1.42145, 0.144059, -0.675399)
@@ -4252,19 +4252,19 @@ transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.
 
 [node name="Quad" parent="KitchenParent/Griddle/GriddleSurfaces/StaticBody3D/GUI" index="1"]
 mesh = SubResource("QuadMesh_437nj")
-surface_material_override/0 = SubResource("StandardMaterial3D_5wonc")
+surface_material_override/0 = SubResource("StandardMaterial3D_w31vb")
 
 [node name="Quad" parent="KitchenParent/Griddle/GriddleSurfaces/StaticBody3D2/GUI2" index="1"]
 mesh = SubResource("QuadMesh_437nj")
-surface_material_override/0 = SubResource("StandardMaterial3D_r6hil")
+surface_material_override/0 = SubResource("StandardMaterial3D_pmqlg")
 
 [node name="Quad" parent="KitchenParent/Griddle/GriddleSurfaces/StaticBody3D3/GUI3" index="1"]
 mesh = SubResource("QuadMesh_437nj")
-surface_material_override/0 = SubResource("StandardMaterial3D_jtr7g")
+surface_material_override/0 = SubResource("StandardMaterial3D_u1yjb")
 
 [node name="Quad" parent="KitchenParent/Griddle/GriddleSurfaces/StaticBody3D4/GUI4" index="1"]
 mesh = SubResource("QuadMesh_437nj")
-surface_material_override/0 = SubResource("StandardMaterial3D_hqqay")
+surface_material_override/0 = SubResource("StandardMaterial3D_xwhxm")
 
 [node name="CamGrabber" parent="KitchenParent" instance=ExtResource("26_fsf04")]
 transform = Transform3D(0.7, 0, 1.66893e-07, 0, 0.7, 0, -1.66893e-07, 0, 0.7, 2.32148, 1.4295, 0.0488453)
@@ -4422,11 +4422,11 @@ transform = Transform3D(-2.40413e-08, 0, -0.55, 0, 0.55, 0, 0.55, 0, -2.40413e-0
 
 [node name="Quad" parent="KitchenParent/Fryer2/Fryer_basket/GUI" index="1"]
 mesh = SubResource("QuadMesh_xbiy5")
-surface_material_override/0 = SubResource("StandardMaterial3D_0j7k3")
+surface_material_override/0 = SubResource("StandardMaterial3D_5asim")
 
 [node name="Quad" parent="KitchenParent/Fryer2/Fryer_basket2/GUI" index="1"]
 mesh = SubResource("QuadMesh_3wwpe")
-surface_material_override/0 = SubResource("StandardMaterial3D_d8sf0")
+surface_material_override/0 = SubResource("StandardMaterial3D_4nqc2")
 
 [node name="Griddle2" parent="KitchenParent" instance=ExtResource("29_8b2gq")]
 transform = Transform3D(-2.40413e-08, 0, -0.55, 0, 0.55, 0, 0.55, 0, -2.40413e-08, 3.99522, 0.143388, -0.67319)
@@ -4445,19 +4445,19 @@ transform = Transform3D(-19.9855, -0.76127, -0.000400376, 0.757106, -19.8773, 2.
 
 [node name="Quad" parent="KitchenParent/Griddle2/GriddleSurfaces/StaticBody3D/GUI" index="1"]
 mesh = SubResource("QuadMesh_4kt5a")
-surface_material_override/0 = SubResource("StandardMaterial3D_cyblv")
+surface_material_override/0 = SubResource("StandardMaterial3D_o80pi")
 
 [node name="Quad" parent="KitchenParent/Griddle2/GriddleSurfaces/StaticBody3D2/GUI2" index="1"]
 mesh = SubResource("QuadMesh_4kt5a")
-surface_material_override/0 = SubResource("StandardMaterial3D_arpvp")
+surface_material_override/0 = SubResource("StandardMaterial3D_rp81u")
 
 [node name="Quad" parent="KitchenParent/Griddle2/GriddleSurfaces/StaticBody3D3/GUI3" index="1"]
 mesh = SubResource("QuadMesh_4kt5a")
-surface_material_override/0 = SubResource("StandardMaterial3D_lbjf5")
+surface_material_override/0 = SubResource("StandardMaterial3D_fei56")
 
 [node name="Quad" parent="KitchenParent/Griddle2/GriddleSurfaces/StaticBody3D4/GUI4" index="1"]
 mesh = SubResource("QuadMesh_4kt5a")
-surface_material_override/0 = SubResource("StandardMaterial3D_n026y")
+surface_material_override/0 = SubResource("StandardMaterial3D_nnkx7")
 
 [node name="KitchenLights" type="Node3D" parent="KitchenParent"]
 
@@ -4931,7 +4931,7 @@ SoundStream = ExtResource("59_kmhb2")
 
 [node name="Quad" parent="FreezerParent/FoodSpawner" index="5"]
 mesh = SubResource("QuadMesh_pbdrl")
-surface_material_override/0 = SubResource("StandardMaterial3D_c4xhk")
+surface_material_override/0 = SubResource("StandardMaterial3D_kmhj2")
 
 [node name="FoodSpawner3" parent="FreezerParent" instance=ExtResource("17_np13h")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.600121, -0.451822, 2.38619)
@@ -4949,7 +4949,7 @@ texture = ExtResource("58_anyyx")
 
 [node name="Quad" parent="FreezerParent/FoodSpawner3" index="5"]
 mesh = SubResource("QuadMesh_pbdrl")
-surface_material_override/0 = SubResource("StandardMaterial3D_4wjx8")
+surface_material_override/0 = SubResource("StandardMaterial3D_wdafk")
 
 [node name="FoodSpawner2" parent="FreezerParent" instance=ExtResource("17_np13h")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.16996, -0.442741, 2.37371)
@@ -4969,7 +4969,7 @@ texture = ExtResource("53_ka4si")
 
 [node name="Quad" parent="FreezerParent/FoodSpawner2" index="5"]
 mesh = SubResource("QuadMesh_u0018")
-surface_material_override/0 = SubResource("StandardMaterial3D_wc8ow")
+surface_material_override/0 = SubResource("StandardMaterial3D_s3t5l")
 
 [node name="FreezerLight" type="OmniLight3D" parent="FreezerParent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1433, 0.8852, -0.61135)
@@ -5097,46 +5097,46 @@ HP = 999999
 npcName = "Customer"
 
 [node name="Skeleton3D" parent="Thrait Albino/Thrait Young/Armature" index="0"]
-bones/0/position = Vector3(-2.35488e-08, 0.975101, 0.0495841)
+bones/0/position = Vector3(-2.4856e-08, 0.975263, 0.0496035)
 bones/0/rotation = Quaternion(0.374228, -1.10547e-07, -4.46115e-08, 0.927337)
 bones/1/rotation = Quaternion(0.0368758, 1.24146e-14, -8.79186e-09, 0.99932)
-bones/2/rotation = Quaternion(0.3194, 0.082189, -0.107545, 0.937903)
+bones/2/rotation = Quaternion(0.316489, 0.115415, -0.151021, 0.929358)
 bones/3/rotation = Quaternion(-0.023332, -1.19065e-07, 1.94036e-08, 0.999728)
-bones/4/rotation = Quaternion(0.434227, -0.0242598, -0.0962039, 0.895323)
-bones/5/rotation = Quaternion(0.127251, 0.0514667, -0.0439028, 0.989561)
-bones/7/position = Vector3(0.0702588, 0.285882, 0.130143)
+bones/4/rotation = Quaternion(0.432088, -0.0342106, -0.135664, 0.890913)
+bones/5/rotation = Quaternion(0.0761999, 0.0337815, -0.0288168, 0.996103)
+bones/7/position = Vector3(0.0702588, 0.286921, 0.134217)
 bones/8/rotation = Quaternion(-0.734234, -5.60875e-09, 8.70089e-07, 0.678896)
 bones/8/scale = Vector3(1, 0.25695, 1)
-bones/9/position = Vector3(0.0686708, 0.171008, 0.00837659)
+bones/9/position = Vector3(0.0687318, 0.170943, 0.00836695)
 bones/9/scale = Vector3(0.792464, 0.792464, 0.792464)
-bones/10/position = Vector3(-0.0702586, 0.285882, 0.130143)
+bones/10/position = Vector3(-0.0702585, 0.286921, 0.134217)
 bones/11/rotation = Quaternion(-0.734234, 8.03699e-07, -5.18596e-09, 0.678896)
 bones/11/scale = Vector3(1, 0.25695, 1)
-bones/12/position = Vector3(-0.0686708, 0.171008, 0.00837685)
+bones/12/position = Vector3(-0.0687317, 0.170943, 0.00836723)
 bones/12/scale = Vector3(0.792464, 0.792464, 0.792464)
 bones/13/rotation = Quaternion(0.297837, 0.0652871, -0.729319, 0.612474)
-bones/14/rotation = Quaternion(0.387503, -0.0632953, -0.0196089, 0.919484)
+bones/14/rotation = Quaternion(0.387519, -0.0632529, -0.0195377, 0.919482)
 bones/15/rotation = Quaternion(0.123018, 0.307445, 0.272414, 0.903402)
 bones/16/rotation = Quaternion(0.149465, 0.0111215, 0.136538, 0.979231)
 bones/17/rotation = Quaternion(0.129105, -0.0135471, -0.011818, 0.991468)
 bones/19/rotation = Quaternion(-0.489503, 0.475102, 0.604935, -0.410754)
-bones/21/rotation = Quaternion(0.387503, 0.0632953, 0.0196089, 0.919484)
+bones/21/rotation = Quaternion(0.387519, 0.0632529, 0.0195377, 0.919482)
 bones/22/rotation = Quaternion(0.123018, -0.307445, -0.272414, 0.903402)
 bones/23/rotation = Quaternion(0.149465, -0.0111215, -0.136538, 0.979231)
 bones/24/rotation = Quaternion(0.129105, 0.0135471, 0.0118179, 0.991468)
 bones/26/rotation = Quaternion(0.489503, 0.475102, 0.604934, 0.410754)
 bones/28/rotation = Quaternion(-0.122532, -2.18122e-14, 5.84275e-08, 0.992465)
-bones/29/rotation = Quaternion(0.194565, 5.97698e-09, -1.31002e-07, 0.98089)
-bones/30/rotation = Quaternion(0.238943, -6.36615e-09, -4.09293e-08, 0.971034)
+bones/29/rotation = Quaternion(0.174487, 7.47543e-09, -1.31012e-07, 0.984659)
+bones/30/rotation = Quaternion(0.244295, -6.5918e-09, -4.08936e-08, 0.969701)
 bones/31/rotation = Quaternion(0.117241, -3.4768e-13, -5.59046e-08, 0.993104)
-bones/33/rotation = Quaternion(0.615189, -0.123082, -0.355706, 0.692724)
-bones/34/rotation = Quaternion(0.246872, 0.0784849, -0.744056, 0.615852)
-bones/35/rotation = Quaternion(-0.107392, -9.77889e-08, 0.500144, 0.859257)
-bones/36/rotation = Quaternion(-0.152401, 1.08965e-07, 0.709755, 0.687766)
-bones/39/rotation = Quaternion(0.615189, 0.123082, 0.355706, 0.692724)
-bones/40/rotation = Quaternion(0.246872, -0.0784849, 0.744057, 0.615852)
-bones/41/rotation = Quaternion(-0.107392, 8.5216e-08, -0.500144, 0.859257)
-bones/42/rotation = Quaternion(-0.152401, -1.58325e-08, -0.709755, 0.687766)
+bones/33/rotation = Quaternion(0.615195, -0.123071, -0.355714, 0.692717)
+bones/34/rotation = Quaternion(0.24687, 0.0784816, -0.744033, 0.615883)
+bones/35/rotation = Quaternion(-0.10737, -9.77889e-08, 0.50004, 0.859321)
+bones/36/rotation = Quaternion(-0.152389, 1.17347e-07, 0.709699, 0.687826)
+bones/39/rotation = Quaternion(0.615194, 0.123071, 0.355714, 0.692717)
+bones/40/rotation = Quaternion(0.24687, -0.0784816, 0.744033, 0.615882)
+bones/41/rotation = Quaternion(-0.10737, 8.801e-08, -0.50004, 0.859321)
+bones/42/rotation = Quaternion(-0.152389, -1.76951e-08, -0.709699, 0.687826)
 
 [node name="Body" parent="Thrait Albino/Thrait Young/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = null
@@ -5175,7 +5175,7 @@ RotateTarget = NodePath("../../PlayerObject")
 layers = 2
 gi_mode = 0
 mesh = SubResource("QuadMesh_4h30c")
-surface_material_override/0 = SubResource("StandardMaterial3D_6lxjj")
+surface_material_override/0 = SubResource("StandardMaterial3D_ml5nv")
 
 [node name="ScoreTracker" parent="TVRotatePoint/WallTv" index="1" node_paths=PackedStringArray("ModVer")]
 ModVer = NodePath("../../../VerLabel/KOMStats")
@@ -5202,7 +5202,7 @@ process_mode = 3
 transform = Transform3D(-5.96046e-08, -4.09782e-08, 0.438, -2.98023e-08, 0.26, 1.86265e-08, -0.535, 7.45058e-09, -4.47035e-08, -0.00443172, -0.197112, 0.0340919)
 mesh = SubResource("QuadMesh_4h30c")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_p0oed")
+surface_material_override/0 = SubResource("StandardMaterial3D_c2c46")
 
 [node name="Area3D" type="Area3D" parent="WallTv2/GUI/Quad"]
 collision_layer = 2
@@ -5238,7 +5238,7 @@ process_mode = 3
 transform = Transform3D(-5.96046e-08, -4.09782e-08, 0.438, -2.98023e-08, 0.26, 1.86265e-08, -0.535, 7.45058e-09, -4.47035e-08, -0.00443172, -0.197112, 0.0340919)
 mesh = SubResource("QuadMesh_4h30c")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_1ujl7")
+surface_material_override/0 = SubResource("StandardMaterial3D_lp8c1")
 
 [node name="Area3D" type="Area3D" parent="WallTv3/GUI/Quad"]
 collision_layer = 2
@@ -5352,7 +5352,7 @@ process_mode = 3
 transform = Transform3D(-6.19099e-08, -7.24999e-08, 0.35, -2.1168e-08, 0.46, 5.51629e-08, -0.38, -2.56244e-08, -5.70222e-08, -0.247681, -0.274467, 0.0359783)
 mesh = SubResource("QuadMesh_4h30c")
 skeleton = NodePath("../../../../WallTv2")
-surface_material_override/0 = SubResource("StandardMaterial3D_i6uyq")
+surface_material_override/0 = SubResource("StandardMaterial3D_kitru")
 
 [node name="Area3D" type="Area3D" parent="EmployeeRoom/TV Set/GUI2/Quad"]
 collision_layer = 2
@@ -5426,21 +5426,21 @@ mesh = SubResource("CylinderMesh_hryn8")
 
 [node name="Quad" parent="SodaFountainParent/Cup0/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_esfox")
-surface_material_override/0 = SubResource("StandardMaterial3D_no2s2")
+surface_material_override/0 = SubResource("StandardMaterial3D_0vunn")
 
 [node name="MeshInstance3D" parent="SodaFountainParent/Cup1" index="2"]
 mesh = SubResource("CylinderMesh_520kg")
 
 [node name="Quad" parent="SodaFountainParent/Cup1/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_j1ehk")
-surface_material_override/0 = SubResource("StandardMaterial3D_0fb1d")
+surface_material_override/0 = SubResource("StandardMaterial3D_m1mja")
 
 [node name="MeshInstance3D" parent="SodaFountainParent/Cup2" index="2"]
 mesh = SubResource("CylinderMesh_of2k5")
 
 [node name="Quad" parent="SodaFountainParent/Cup2/StaticBody3D/GUI4" index="1"]
 mesh = SubResource("QuadMesh_864e2")
-surface_material_override/0 = SubResource("StandardMaterial3D_sr6fk")
+surface_material_override/0 = SubResource("StandardMaterial3D_mxof3")
 
 [node name="ManagerParent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4736, 2.59519, 5.58027)
